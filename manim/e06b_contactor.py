@@ -42,8 +42,8 @@ class ContactorB(TallerH):
     def portadilla(self, clave):
         num, titulo = getattr(self, "SECC", SECCIONES)[clave]
         sale = [m for m in (self.cinta_act, self.paso_act) if m is not None]
-        fondo = Rectangle(width=16.2, height=9.2, stroke_width=0).set_fill("#06102A", 0.97)
-        grande = T(f"0{num}", 300, MARCA, "HEAVY").set_opacity(0.14).move_to([4.6, -0.2, 0])
+        fondo = Rectangle(width=16.2, height=9.2, stroke_width=0).set_fill("#06102A" if TEMA != "negro" else "#050608", 0.97).set_z_index(40)
+        grande = T(f"0{num}", 300, MARCA, "HEAVY").set_opacity(0.14).move_to([4.6, -0.2, 0]).set_z_index(41)
         sec = T(f"SECCIÓN {num}", 30, AMBAR, "HEAVY")
         tit = T(titulo, 70, TXT, "HEAVY")
         if tit.width > 13.0:
@@ -51,6 +51,8 @@ class ContactorB(TallerH):
         VGroup(sec, tit).arrange(DOWN, buff=0.3, aligned_edge=LEFT).move_to([0, 0.2, 0])
         barra = RoundedRectangle(width=tit.width, height=0.14, corner_radius=0.07, stroke_width=0).set_fill(MARCA, 1).next_to(tit, DOWN, buff=0.3, aligned_edge=LEFT)
         cursor = Rectangle(width=0.07, height=tit.height * 0.95, stroke_width=0).set_fill(MARCA, 1)
+        for m_ in (sec, tit, barra, cursor):
+            m_.set_z_index(42)
         self.play(FadeIn(fondo), FadeIn(grande, scale=1.1), FadeIn(sec, shift=RIGHT * 0.2), *[FadeOut(m) for m in sale], run_time=0.45)
         self.cinta_act = None
         self.paso_act = None

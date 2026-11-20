@@ -62,6 +62,13 @@ if TEMA == "oscuro":     # fondo azul marino con degradado (referencia del usuar
     TINTA2 = "#B9C2E3"
     CARTA = "#2B3A7A"      # tarjetas con contraste sobre el azul (pedido 30-oct)
 
+if TEMA == "negro":      # fondo negro con cuadrícula (pedido 19-nov-2026, verticales y horizontales)
+    FONDO = "#000000"
+    REJILLA = "#161A21"
+    TINTA = "#F2F4F7"
+    TINTA2 = "#B8C0CC"
+    CARTA = "#1A1E26"
+
 SANS = "Inter"
 MONO = "JetBrains Mono"
 SEG = "DSEG7 Classic"
@@ -118,13 +125,13 @@ def pastilla(texto, color=MARCA, size=28, solido=False):
     h = t.height + 0.3
     caja = RoundedRectangle(width=t.width + 0.5, height=h, corner_radius=h / 2, stroke_color=color, stroke_width=2)
     caja.set_fill(color, 1 if solido else 0.10)
-    base = caja.copy().set_fill(FONDO if TEMA == "oscuro" else WHITE, 1).set_stroke(width=0)
+    base = caja.copy().set_fill(FONDO if TEMA in ("oscuro", "negro") else WHITE, 1).set_stroke(width=0)
     return VGroup(base, caja, t.move_to(caja))
 
 
 def tarjeta(ancho, alto, color=LINEA, relleno=None, r=0.18):
     relleno = relleno or CARTA
-    if TEMA == "oscuro" and isinstance(color, str) and color in (LINEA, METAL):
+    if TEMA in ("oscuro", "negro") and isinstance(color, str) and color in (LINEA, METAL):
         color = "#4A5AA0"
     c = RoundedRectangle(width=ancho, height=alto, corner_radius=r, stroke_color=color, stroke_width=1.6)
     c.set_fill(relleno, 1)
@@ -227,9 +234,9 @@ def cable(*pts, color=FASE, w=6, suave=False):
         g = VGroup(m.copy().set_stroke(NEUTRO_BORDE, w + 2.4), m.copy().set_stroke(WHITE, w))
     else:
         borde = interpolate_color(ManimColor(color), ManimColor(BLACK), 0.35)
-        if TEMA == "oscuro" and color == FASE:
+        if TEMA in ("oscuro", "negro") and color == FASE:
             borde = "#8F9AC8"   # contorno claro para que el cable negro se vea sobre fondo oscuro
-        g = VGroup(m.copy().set_stroke(borde, w + (2.6 if TEMA == "oscuro" and color == FASE else 1.6)), m.copy().set_stroke(color, w))
+        g = VGroup(m.copy().set_stroke(borde, w + (2.6 if TEMA in ("oscuro", "negro") and color == FASE else 1.6)), m.copy().set_stroke(color, w))
     for s in g:
         s.set_cap_style(CapStyleType.ROUND)
         s.set_joint_type(LineJointType.ROUND)

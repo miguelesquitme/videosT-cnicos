@@ -81,14 +81,14 @@ def cinta(num, titulo, color=MARCA):
     t = T(titulo, 26, TXT, "HEAVY")
     n = T(num, 26, "#08142E", "HEAVY")
     caja_n = RoundedRectangle(width=0.62, height=0.56, corner_radius=0.12, stroke_width=0).set_fill(color, 1)
-    caja_t = RoundedRectangle(width=t.width + 0.6, height=0.56, corner_radius=0.12, stroke_width=0).set_fill("#13265A", 0.96)
+    caja_t = RoundedRectangle(width=t.width + 0.6, height=0.56, corner_radius=0.12, stroke_width=0).set_fill("#13265A" if TEMA != "negro" else "#14171E", 0.96)
     borde = RoundedRectangle(width=t.width + 0.6, height=0.56, corner_radius=0.12, stroke_color=color, stroke_width=2.4)
     VGroup(caja_n, caja_t).arrange(RIGHT, buff=0.08)
     borde.move_to(caja_t)
     n.move_to(caja_n)
     t.move_to(caja_t)
     g = VGroup(caja_n, caja_t, borde, n, t)
-    return g.move_to([-7.75 + g.width / 2, 4.08, 0])
+    return g.move_to([-7.75 + g.width / 2, 4.08, 0]).set_z_index(45)
 
 
 def insignia_paso(n, total=7, color=AMBAR, palabra="CRITERIO"):
