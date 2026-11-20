@@ -52,7 +52,7 @@ class Arranque1(ContactorB):
     CARPETA_VOZ = "voz_e09"
     GUION = G9
     SECC = S9
-    DURACION_MIN = 482.0
+    DURACION_MIN = float(os.environ.get("DMIN", 482.0))
 
     def construct(self):
         self.cinta_act = None
@@ -60,6 +60,10 @@ class Arranque1(ContactorB):
         orden = ["gancho", "materiales", "dimension", "leer", "potencia", "control", "pruebas", "energizar", "errores", "final"]
         solo = os.environ.get("SOLO")
         self.armar_tablero()
+        if os.environ.get("COLA"):      # re-render del tramo final: mismo estado visual que al terminar "energizar"
+            self.add(self.tab)
+            self.cinta_act = cinta(*S9["energizar"])
+            self.add(self.cinta_act)
         for paso in orden:
             if solo and paso not in solo.split(","):
                 continue
@@ -824,7 +828,9 @@ class Arranque1(ContactorB):
 
     def f_errores(self):
         self.voz("errores")
-        self.play(FadeOut(self.tab), run_time=0.3)
+        sale = [m for m in (self.tab, self.cinta_act) if m is not None]
+        self.play(*[FadeOut(m) for m in sale], run_time=0.3)
+        self.cinta_act = None
         e1 = self.mini_mando(1)
         e1.add(equis(ROJO, 0.5).move_to([1.5, 1.0, 0]))
         e2 = self.mini_mando(2)
