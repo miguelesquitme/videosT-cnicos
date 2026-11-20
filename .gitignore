@@ -1,0 +1,9 @@
+media/
+__pycache__/
+voz_*/
+*.wav
+*.mp4
+node_modules/
+remotion/public/
+.env
+*.env
