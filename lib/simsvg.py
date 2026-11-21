@@ -62,8 +62,17 @@ def contacto(x, y0, L=220, na=True, marca=None, n1="", n2="", w=SC, retardo=Fals
     return "".join(s), ((x + xe) / 2, (yb + ye) / 2)
 
 
+ME_AZUL = "#0094B0"   # color del logo ME.
+
+
 def etiqueta(x, y, ref, size=30):
-    return T(x, y, f"-{ref}", size, 700, "end")
+    """Designación del equipo (-F1, -QM1, -KM1…) en una placa del color del logo ME. con letras blancas.
+    Se alinea a la derecha en x (queda a la izquierda del símbolo)."""
+    txt = f"-{ref}"
+    w = len(txt) * size * 0.66 + size * 0.7
+    h = size * 1.45
+    return (f'<rect x="{x - w:.1f}" y="{y - h / 2:.1f}" width="{w:.1f}" height="{h:.1f}" rx="{size * 0.18:.1f}" fill="{ME_AZUL}"/>'
+            + T(x - w / 2, y + size * 0.02, txt, size, 800, "middle", color="#FFFFFF"))
 
 
 def bobina(x, y0, ref, n1="A1", n2="A2", L=220, retardo=False):
@@ -126,7 +135,7 @@ def guardamotor(ref="QM1"):
     xm, ym = 80, mids[0][1]
     s.append(f'<rect x="{xm - 22}" y="{ym - 22}" width="44" height="44" fill="#FFFFFF" stroke="{K}" stroke-width="{SC}"/>' + ln(xm - 22, ym, xm + 22, ym, 2.5) + ln(xm, ym - 22, xm, ym + 22, 2.5))
     s.append(ln(xm + 22, ym, mids[-1][0], mids[-1][1], 2.5, "10 8") + ln(xm, ym + 22, xm, 316, 2.5, "10 8") + ln(xm, 316, x0 - dx / 2, 316, 2.5, "10 8"))
-    s.append(etiqueta(xm - 30, ym, ref))
+    s.append(etiqueta(xm + 52, ym - 52, ref))
     return envolver(W, H, "".join(s))
 
 
