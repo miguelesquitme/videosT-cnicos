@@ -17,7 +17,8 @@ def render_lote(lote, salida, px_mm=PX_MM):
         for nombre, (svg, bornes, (W, H)), margen in lote:
             wpx = int(round((W + 2 * margen) * px_mm))
             hpx = int(round((H + 2 * margen) * px_mm))
-            svg2 = svg.replace(f'width="{W + 2 * margen}mm" height="{H + 2 * margen}mm"', f'width="{wpx}" height="{hpx}"', 1)
+            import re
+            svg2 = re.sub(r'width="[\d.]+mm" height="[\d.]+mm"', f'width="{wpx}" height="{hpx}"', svg, count=1)
             pag.set_viewport_size({"width": wpx, "height": hpx})
             pag.set_content(f'<html><body style="margin:0;background:transparent">{svg2}</body></html>')
             pag.wait_for_timeout(50)
