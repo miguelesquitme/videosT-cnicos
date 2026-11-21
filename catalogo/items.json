@@ -78,7 +78,7 @@
    "Límite NEC 430.32(A)(1) con F.S. 1,25: 125 % × 24,3 = 30,4 A",
    "Clase 10 · TEST, STOP, RESET manual/automático"
   ],
-  "notas": "Cuidado con un rango anormal: el rango debe contener la corriente de placa; no se ajusta a la del contactor ni al máximo.",
+  "notas": "El rango debe contener la corriente de placa; no se ajusta a la del contactor ni al máximo. Los pines superiores son de cobre y entran directo en 2/T1 4/T2 6/T3 del contactor.",
   "fuente": "IEC 60947-4-1 · NEC 430.32"
  },
  {
@@ -103,7 +103,7 @@
    "100–240 VAC · multirrango (s / min / h)",
    "Contactos 5 A / 250 VAC (carga resistiva)"
   ],
-  "notas": "Al energizar 2-7 empieza a contar; al terminar el tiempo conmutan los contactos (LED UP).",
+  "notas": "Al energizar 2-7 empieza a contar; al terminar el tiempo conmutan los contactos (LED UP). A la par: diagrama interno del zócalo de 8 pines.",
   "fuente": "Hoja de datos H3CR-A8 (ref.)"
  },
  {
@@ -164,7 +164,7 @@
    "22 mm · LED integrado 240 VAC",
    "Colores IEC 60204-1: rojo = emergencia · amarillo = anormal · verde = normal · azul = obligatorio · blanco = neutro"
   ],
-  "notas": "El color cambia según la función; el dibujo es el mismo.",
+  "notas": "Se muestra apagado (difusor tenue) y encendido (verde pleno). El símbolo IEC no lleva color.",
   "fuente": "IEC 60204-1 10.3"
  },
  {
@@ -194,12 +194,14 @@
  },
  {
   "id": "16_sensor_optico",
-  "nombre": "Sensor óptico difuso M18",
+  "nombre": "Sensores ópticos M18 (difuso, réflex y barrera)",
   "desig": "-B",
   "bornes": "BN +24 V · BU 0 V · BK salida PNP",
   "datos": [
-   "M18 · 10–30 VDC · PNP · emisor y receptor en la misma cara",
-   "Modo light-on / dark-on"
+   "Difuso: emisor y receptor en la misma cara; la luz rebota en el objeto",
+   "Réflex: la luz vuelve desde un reflector; el objeto corta el haz",
+   "Barrera: emisor (2 hilos BN/BU) frente al receptor (3 hilos); el objeto corta el haz",
+   "M18 · 10–30 VDC · PNP · light-on / dark-on"
   ],
   "notas": "",
   "fuente": "IEC 60947-5-2"
@@ -232,7 +234,7 @@
  },
  {
   "id": "19_bornes_motor",
-  "nombre": "Caja de bornes del motor",
+  "nombre": "Caja de bornes del motor (Δ, Y y NEMA 9 puntas)",
   "desig": "-M (bornes)",
   "bornes": "NEMA 9 puntas tensión baja: T1-T6-T7 · T2-T4-T8 · T3-T5-T9 · IEC 6 bornes Δ: U1-W2 · V1-U2 · W1-V2",
   "datos": [

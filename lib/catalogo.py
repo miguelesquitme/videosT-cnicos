@@ -56,17 +56,17 @@ ITEMS = [
          "Pines 1/L1 3/L2 5/L3 (entran al contactor) · 2/T1 4/T2 6/T3 · 95-96 NC · 97-98 NO",
          ["Montaje directo bajo el contactor · 45 mm", "CASO BASE: rango 23–32 A, ajuste 24,3 A (placa)",
           "Límite NEC 430.32(A)(1) con F.S. 1,25: 125 % × 24,3 = 30,4 A", "Clase 10 · TEST, STOP, RESET manual/automático"],
-         "Cuidado con un rango anormal: el rango debe contener la corriente de placa; no se ajusta a la del contactor ni al máximo.", "IEC 60947-4-1 · NEC 430.32"),
+         "El rango debe contener la corriente de placa; no se ajusta a la del contactor ni al máximo. Los pines superiores son de cobre y entran directo en 2/T1 4/T2 6/T3 del contactor.", "IEC 60947-4-1 · NEC 430.32"),
     item("07_rele_8p", "Relé de 8 pines (2 conmutados)", "-KA",
-         lambda: [G.rele_8p("KA1", "240 VAC")], lambda: VGroup(S.bobina("KA1", "2", "7"), S.conmutado("1", "3", "4"), S.conmutado("8", "6", "5")).arrange(RIGHT, buff=0.6),
+         lambda: [G.rele_8p("KA1", "240 VAC"), G.diagrama_octal("rele")], lambda: VGroup(S.bobina("KA1", "2", "7"), S.conmutado("1", "3", "4"), S.conmutado("8", "6", "5")).arrange(RIGHT, buff=0.6),
          "Bobina 2-7 · Polo 1: común 1, NA 3, NC 4 · Polo 2: común 8, NA 6, NC 5 (patillaje octal estándar)",
          ["Base DIN de 8 pines: arriba 3 4 5 6, abajo 2 1 8 7", "Bobina 240 VAC · contactos 10 A / 250 VAC (carga resistiva)"],
          "Los números de la base son los mismos del relé enchufado. En el esquema se pueden marcar 1-3 / 1-4 tal cual.", "Hoja de datos MK2P / base PF083A (ref.)"),
     item("08_temporizador", "Temporizador (retardo a la conexión)", "-KT",
-         lambda: [G.temporizador("KT1")], lambda: VGroup(S.bobina("KT1", "2", "7", "retardo"), S.conmutado("1", "3", "4", True), S.conmutado("8", "6", "5", True)).arrange(RIGHT, buff=0.7),
+         lambda: [G.temporizador("KT1"), G.diagrama_octal("timer")], lambda: VGroup(S.bobina("KT1", "2", "7", "retardo"), S.conmutado("1", "3", "4", True), S.conmutado("8", "6", "5", True)).arrange(RIGHT, buff=0.7),
          "Alimentación 2-7 · Contactos temporizados: común 1, NA 3, NC 4 · común 8, NA 6, NC 5",
          ["Misma base de 8 pines", "100–240 VAC · multirrango (s / min / h)", "Contactos 5 A / 250 VAC (carga resistiva)"],
-         "Al energizar 2-7 empieza a contar; al terminar el tiempo conmutan los contactos (LED UP).", "Hoja de datos H3CR-A8 (ref.)"),
+         "Al energizar 2-7 empieza a contar; al terminar el tiempo conmutan los contactos (LED UP). A la par: diagrama interno del zócalo de 8 pines.", "Hoja de datos H3CR-A8 (ref.)"),
     item("09_selector", "Selector de 2 posiciones", "-S",
          lambda: [G.selector("S2"), G.bloque("3", "4")], lambda: S.contacto_mando(True, "giro", "13", "14", "– S2"),
          "Bloque NA: 3-4 (en el esquema 13-14)",
@@ -88,10 +88,10 @@ ITEMS = [
          ["Hongo rojo de 40 mm sobre fondo amarillo", "Enclavamiento mecánico; desbloqueo por giro", "Contacto de apertura positiva"],
          "Corta el mando directamente (categoría de paro 0 o 1). No sustituye al paro normal.", "ISO 13850 · IEC 60947-5-5 · IEC 60204-1"),
     item("13_piloto", "Luz piloto", "-H",
-         lambda: [G.piloto("verde", "H1"), G.bloque("X1", "X2", piloto=True)], lambda: S.lampara("H1", relleno="#22C55E"),
+         lambda: [G.piloto("verde", "H1", False), G.piloto("verde", "H1", True), G.bloque("X1", "X2", piloto=True)], lambda: S.lampara("H1", relleno="#22C55E"),
          "X1 · X2 (portalámparas LED)",
          ["22 mm · LED integrado 240 VAC", "Colores IEC 60204-1: rojo = emergencia · amarillo = anormal · verde = normal · azul = obligatorio · blanco = neutro"],
-         "El color cambia según la función; el dibujo es el mismo.", "IEC 60204-1 10.3"),
+         "Se muestra apagado (difusor tenue) y encendido (verde pleno). El símbolo IEC no lleva color.", "IEC 60204-1 10.3"),
     item("14_sensor_inductivo", "Sensor inductivo M18", "-B",
          lambda: [G.sensor("inductivo", "B1")], lambda: S.sensor("inductivo", "B1"),
          "BN (1) +24 V · BU (3) 0 V · BK (4) salida PNP",
@@ -101,10 +101,10 @@ ITEMS = [
          lambda: [G.sensor("capacitivo", "B2")], lambda: S.sensor("capacitivo", "B2"),
          "BN +24 V · BU 0 V · BK salida PNP",
          ["M18 · 10–30 VDC · PNP NA · potenciómetro de sensibilidad", "Detecta metales y no metales (agua, granos, plásticos)"], "", "IEC 60947-5-2"),
-    item("16_sensor_optico", "Sensor óptico difuso M18", "-B",
-         lambda: [G.sensor("optico", "B3")], lambda: S.sensor("optico", "B3"),
+    item("16_sensor_optico", "Sensores ópticos M18 (difuso, réflex y barrera)", "-B",
+         lambda: [G.sensor_optico("difuso", "B3"), G.sensor_optico("reflex", "B3"), G.sensor_optico("barrera", "B3")], lambda: S.sensor("optico", "B3"),
          "BN +24 V · BU 0 V · BK salida PNP",
-         ["M18 · 10–30 VDC · PNP · emisor y receptor en la misma cara", "Modo light-on / dark-on"], "", "IEC 60947-5-2"),
+         ["Difuso: emisor y receptor en la misma cara; la luz rebota en el objeto", "Réflex: la luz vuelve desde un reflector; el objeto corta el haz", "Barrera: emisor (2 hilos BN/BU) frente al receptor (3 hilos); el objeto corta el haz", "M18 · 10–30 VDC · PNP · light-on / dark-on"], "", "IEC 60947-5-2"),
     item("17_flotador", "Interruptor de nivel (flotador)", "-S",
          lambda: [G.flotador("S5")], lambda: VGroup(S.contacto_mando(True, "flotador", "C", "NA", "– S5"), S.contacto_mando(False, "flotador", "C", "NC")).arrange(RIGHT, buff=0.6),
          "C común · NA (cierra al subir) · NC (cierra al bajar)",
@@ -117,8 +117,8 @@ ITEMS = [
          ["CASO BASE (dato real de catálogo): 10 hp, 230/460 V, 24,3/12,2 A, 1760 rpm", "Corriente de arranque (rotor bloqueado): 162 A a 230 V",
           "NEC T430.250 (para calcular cable y protección): 28 A a 230 V", "A 240 V: conexión de tensión baja"],
          "De los datos del motor salen la protección, el contactor, el relé térmico y el cable.", "Hoja de datos del motor de catálogo · NEC 430.6"),
-    item("19_bornes_motor", "Caja de bornes del motor", "-M (bornes)",
-         lambda: [G.caja_bornes("9", "bajo"), G.caja_bornes("6", "delta")], lambda: S.motor("M1"),
+    item("19_bornes_motor", "Caja de bornes del motor (Δ, Y y NEMA 9 puntas)", "-M (bornes)",
+         lambda: [G.caja_bornes("6", "delta"), G.caja_bornes("6", "estrella"), G.caja_bornes("9", "bajo")], lambda: S.motor("M1"),
          "NEMA 9 puntas tensión baja: T1-T6-T7 · T2-T4-T8 · T3-T5-T9 · IEC 6 bornes Δ: U1-W2 · V1-U2 · W1-V2",
          ["Se muestra al lado del motor con zoom, como en la referencia", "Tensión alta (460 V): T4-T7 · T5-T8 · T6-T9; línea a T1 T2 T3"],
          "Siempre se toma de la placa del motor.", "NEMA MG 1 · IEC 60034-8"),
@@ -150,30 +150,22 @@ ITEMS = [
           "Punteras aisladas (DIN 46228-4): 1,5 mm² negra · 2,5 mm² azul · 4 mm² gris · 6 mm² amarilla"],
          "Todo punto de conexión: pineado + etiquetado.", "IEC 60204-1 13.2 · DIN 46228-4"),
     item("25_multimetro", "Multímetro y pinza amperimétrica", "—",
-         lambda: [G.multimetro("144", "Ω"), G.pinza("24.3", "A~")], lambda: VGroup(),
+         lambda: [G.pinza("24.3", "A AC"), G.puntas(), G.multimetro("144.0", "Ω")], lambda: VGroup(),
          "COM (negra) · V/Ω (roja)",
          ["Categoría CAT III 600 V mínimo para tableros", "Ω: en frío; V~: con tensión; A~: pinza alrededor de UN conductor"], "", "IEC 61010-1"),
 ]
 
 
 def render_simbolo(it, out):
-    from manim import tempconfig
-    class Esc(Scene):
-        def construct(self):
-            m = it["simbolo"]()
-            if len(m) == 0:
-                return
-            if len(m) in (3, 4) and m.width / max(m.height, 1e-3) > 2.4:
-                arriba = VGroup(*m[:len(m) - 1]) if len(m) == 3 else VGroup(*m[:2])
-                abajo = VGroup(*m[len(arriba):])
-                m = VGroup(arriba.arrange(RIGHT, buff=0.6), abajo.arrange(RIGHT, buff=0.7)).arrange(DOWN, buff=0.45)
-            m.move_to(ORIGIN)
-            fw, fh = config.frame_width * 0.9, config.frame_height * 0.88
-            m.scale(min(fw / m.width, fh / m.height, 2.4))
-            self.add(m)
-    with tempconfig({"transparent": True, "pixel_width": 1600, "pixel_height": 1200, "frame_width": 8.0, "frame_height": 6.0,
-                     "output_file": f"{it['id']}_simbolo", "media_dir": out, "format": "png", "save_last_frame": True, "write_to_movie": False, "disable_caching": True, "verbosity": "ERROR"}):
-        Esc().render()
+    """Símbolo IEC desde simsvg (SVG con sombra suave). Solo referencia: el usuario entrega los diagramas."""
+    import simsvg
+    f = simsvg.SIMBOLOS.get(it["id"][:2])
+    destino = Path(out) / "images" / f"{it['id']}_simbolo.png"
+    if f is None:
+        if destino.exists():
+            destino.unlink()
+        return
+    render_lote([(f"{it['id']}_simbolo", f(), 2)], Path(out) / "images", px_mm=10)
 
 
 def render_equipos(items, out):
@@ -187,6 +179,15 @@ def render_equipos(items, out):
     for it in items:
         partes = sorted(tmp.glob(f"{it['id']}__*.png"))
         ims = [Image.open(p_) for p_ in partes]
+        if it["id"].startswith("16"):
+            W = max(i.width for i in ims)
+            o = Image.new("RGBA", (W, sum(i.height for i in ims) + 40 * (len(ims) - 1)), (0, 0, 0, 0))
+            y = 0
+            for i in ims:
+                o.paste(i, (0, y), i)
+                y += i.height + 40
+            o.save(Path(out) / "images" / f"{it['id']}_equipo.png")
+            continue
         H = max(i.height for i in ims)
         W = sum(i.width for i in ims) + 40 * (len(ims) - 1)
         o = Image.new("RGBA", (W, H), (0, 0, 0, 0))
