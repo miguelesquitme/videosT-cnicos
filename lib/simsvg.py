@@ -62,17 +62,9 @@ def contacto(x, y0, L=220, na=True, marca=None, n1="", n2="", w=SC, retardo=Fals
     return "".join(s), ((x + xe) / 2, (yb + ye) / 2)
 
 
-ME_AZUL = "#0094B0"   # color del logo ME.
-
-
 def etiqueta(x, y, ref, size=30):
-    """Designación del equipo (-F1, -QM1, -KM1…) en una placa del color del logo ME. con letras blancas.
-    Se alinea a la derecha en x (queda a la izquierda del símbolo)."""
-    txt = f"-{ref}"
-    w = len(txt) * size * 0.66 + size * 0.7
-    h = size * 1.45
-    return (f'<rect x="{x - w:.1f}" y="{y - h / 2:.1f}" width="{w:.1f}" height="{h:.1f}" rx="{size * 0.18:.1f}" fill="{ME_AZUL}"/>'
-            + T(x - w / 2, y + size * 0.02, txt, size, 800, "middle", color="#FFFFFF"))
+    """Designación (-F1, -QM1…) en texto negro, siempre con guion, alineada a la derecha en x."""
+    return T(x, y, f"-{ref}", size, 700, "end")
 
 
 def bobina(x, y0, ref, n1="A1", n2="A2", L=220, retardo=False):
