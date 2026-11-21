@@ -7,3 +7,5 @@ node_modules/
 remotion/public/
 .env
 *.env
+__pycache__/
+media/

@@ -1,0 +1,319 @@
+[
+ {
+  "id": "01_disyuntor_1p",
+  "nombre": "Disyuntor monopolar (1P)",
+  "desig": "-F",
+  "bornes": "1 (entrada) · 2 (salida)",
+  "datos": [
+   "Interruptor automático modular, IEC 60898-1 · 18 mm (1 módulo) × 90 mm",
+   "Curvas: B (3–5 In), C (5–10 In), D (10–20 In)",
+   "Poder de corte típico: 6 kA / 10 kA",
+   "Capacidad: según la corriente de la carga y el calibre del conductor que protege"
+  ],
+  "notas": "Solo para circuitos fase-neutro (120 V). Un mando de 240 V entre dos fases necesita 2P (corta las dos fases).",
+  "fuente": "IEC 60898-1 · NEC 240.4"
+ },
+ {
+  "id": "02_disyuntor_2p",
+  "nombre": "Disyuntor bipolar (2P)",
+  "desig": "-F",
+  "bornes": "1-2 · 3-4 (accionamiento unido)",
+  "datos": [
+   "36 mm (2 módulos) × 90 mm, palanca común",
+   "CASO BASE: protección del mando 240 VAC (L1-L2): 2P · curva C · 6 A",
+   "Conductor de mando: 14 AWG (2,5 mm²)"
+  ],
+  "notas": "Doble del monopolar con accionamiento unido: si dispara una fase, abre las dos.",
+  "fuente": "IEC 60898-1 · NEC 430.72"
+ },
+ {
+  "id": "03_disyuntor_3p",
+  "nombre": "Disyuntor tripolar (3P)",
+  "desig": "-Q",
+  "bornes": "1-2 · 3-4 · 5-6",
+  "datos": [
+   "54 mm (3 módulos) × 90 mm",
+   "CASO BASE (si se usa breaker + relé térmico): circuito ramal del motor de 10 hp",
+   "NEC T430.250: 28 A · Tabla 430.52: 250 % × 28 A = 70 A → 70 A (tamaño estándar)",
+   "Conductor: 125 % × 28 A = 35 A → 10 AWG THHN 75 °C (NEC 430.22, T310.16)"
+  ],
+  "notas": "Protege contra cortocircuito al motor y al cable; la sobrecarga la cubre el relé térmico.",
+  "fuente": "NEC 2020 430.52, 240.6"
+ },
+ {
+  "id": "04_guardamotor",
+  "nombre": "Guardamotor",
+  "desig": "-QM",
+  "bornes": "1/L1 3/L2 5/L3 → 2/T1 4/T2 6/T3",
+  "datos": [
+   "Tamaño S0 · 45 × 97 × 97 mm (hoja de datos oficial)",
+   "Rango térmico 22–32 A · disparo magnético ≈ 400 A",
+   "Icu = 25 kA a 240 V",
+   "CASO BASE: ajuste = 24,3 A (corriente de placa del motor)"
+  ],
+  "notas": "Protege contra cortocircuito (magnético) y sobrecarga (térmico) en un solo equipo. El dial va a la corriente de placa.",
+  "fuente": "Hoja de datos 3RV2021 (ref.) · IEC 60947-2/-4-1"
+ },
+ {
+  "id": "05_contactor",
+  "nombre": "Contactor electromagnético",
+  "desig": "-KM",
+  "bornes": "Potencia 1/L1-2/T1 · 3/L2-4/T2 · 5/L3-6/T3 · Aux 13-14 NO · 21-22 NC · Bobina A1-A2",
+  "datos": [
+   "45 × 85 mm · riel DIN 35 mm",
+   "CASO BASE: 32 A en AC-3 (motor de 10 hp a 230 V)",
+   "Bobina 240 VAC 60 Hz · 1 NA + 1 NC integrados"
+  ],
+  "notas": "Se elige por categoría AC-3 a la tensión del motor, no por la corriente térmica.",
+  "fuente": "IEC 60947-4-1"
+ },
+ {
+  "id": "06_rele_termico",
+  "nombre": "Relé térmico de sobrecarga",
+  "desig": "-F",
+  "bornes": "Pines 1/L1 3/L2 5/L3 (entran al contactor) · 2/T1 4/T2 6/T3 · 95-96 NC · 97-98 NO",
+  "datos": [
+   "Montaje directo bajo el contactor · 45 mm",
+   "CASO BASE: rango 23–32 A, ajuste 24,3 A (placa)",
+   "Límite NEC 430.32(A)(1) con F.S. 1,25: 125 % × 24,3 = 30,4 A",
+   "Clase 10 · TEST, STOP, RESET manual/automático"
+  ],
+  "notas": "Cuidado con un rango anormal: el rango debe contener la corriente de placa; no se ajusta a la del contactor ni al máximo.",
+  "fuente": "IEC 60947-4-1 · NEC 430.32"
+ },
+ {
+  "id": "07_rele_8p",
+  "nombre": "Relé de 8 pines (2 conmutados)",
+  "desig": "-KA",
+  "bornes": "Bobina 2-7 · Polo 1: común 1, NA 3, NC 4 · Polo 2: común 8, NA 6, NC 5 (patillaje octal estándar)",
+  "datos": [
+   "Base DIN de 8 pines: arriba 3 4 5 6, abajo 2 1 8 7",
+   "Bobina 240 VAC · contactos 10 A / 250 VAC (carga resistiva)"
+  ],
+  "notas": "Los números de la base son los mismos del relé enchufado. En el esquema se pueden marcar 1-3 / 1-4 tal cual.",
+  "fuente": "Hoja de datos MK2P / base PF083A (ref.)"
+ },
+ {
+  "id": "08_temporizador",
+  "nombre": "Temporizador (retardo a la conexión)",
+  "desig": "-KT",
+  "bornes": "Alimentación 2-7 · Contactos temporizados: común 1, NA 3, NC 4 · común 8, NA 6, NC 5",
+  "datos": [
+   "Misma base de 8 pines",
+   "100–240 VAC · multirrango (s / min / h)",
+   "Contactos 5 A / 250 VAC (carga resistiva)"
+  ],
+  "notas": "Al energizar 2-7 empieza a contar; al terminar el tiempo conmutan los contactos (LED UP).",
+  "fuente": "Hoja de datos H3CR-A8 (ref.)"
+ },
+ {
+  "id": "09_selector",
+  "nombre": "Selector de 2 posiciones",
+  "desig": "-S",
+  "bornes": "Bloque NA: 3-4 (en el esquema 13-14)",
+  "datos": [
+   "Operador de 22 mm · 2 posiciones fijas (0-1)",
+   "Bloque de contacto: Ithe 10 A · AC-15 3 A / 240 V"
+  ],
+  "notas": "Vista trasera = punto de conexión real (bloque atornillado al collarín).",
+  "fuente": "IEC 60947-5-1"
+ },
+ {
+  "id": "10_pulsador_na",
+  "nombre": "Pulsador con contacto NA (marcha)",
+  "desig": "-S",
+  "bornes": "Bloque NA: 3-4 (en el esquema 13-14)",
+  "datos": [
+   "22 mm · verde (o blanco) para ARRANQUE (IEC 60204-1)",
+   "Bloque: Ithe 10 A · AC-15 3 A / 240 V"
+  ],
+  "notas": "Vista 2D de frente, como pidió el usuario.",
+  "fuente": "IEC 60204-1 10.2 · IEC 60947-5-1"
+ },
+ {
+  "id": "11_pulsador_nc",
+  "nombre": "Pulsador con contacto NC (paro)",
+  "desig": "-S",
+  "bornes": "Bloque NC: 1-2 (en el esquema 11-12 o 21-22)",
+  "datos": [
+   "22 mm · rojo (o negro) para PARO (IEC 60204-1)",
+   "Bloque: Ithe 10 A · AC-15 3 A / 240 V"
+  ],
+  "notas": "El paro siempre es NC: si un cable se corta, la máquina se detiene.",
+  "fuente": "IEC 60204-1 9.2.2"
+ },
+ {
+  "id": "12_emergencia",
+  "nombre": "Paro de emergencia",
+  "desig": "-S",
+  "bornes": "Bloque NC de apertura forzada: 1-2 (esquema 11-12; a menudo 2 NC)",
+  "datos": [
+   "Hongo rojo de 40 mm sobre fondo amarillo",
+   "Enclavamiento mecánico; desbloqueo por giro",
+   "Contacto de apertura positiva"
+  ],
+  "notas": "Corta el mando directamente (categoría de paro 0 o 1). No sustituye al paro normal.",
+  "fuente": "ISO 13850 · IEC 60947-5-5 · IEC 60204-1"
+ },
+ {
+  "id": "13_piloto",
+  "nombre": "Luz piloto",
+  "desig": "-H",
+  "bornes": "X1 · X2 (portalámparas LED)",
+  "datos": [
+   "22 mm · LED integrado 240 VAC",
+   "Colores IEC 60204-1: rojo = emergencia · amarillo = anormal · verde = normal · azul = obligatorio · blanco = neutro"
+  ],
+  "notas": "El color cambia según la función; el dibujo es el mismo.",
+  "fuente": "IEC 60204-1 10.3"
+ },
+ {
+  "id": "14_sensor_inductivo",
+  "nombre": "Sensor inductivo M18",
+  "desig": "-B",
+  "bornes": "BN (1) +24 V · BU (3) 0 V · BK (4) salida PNP",
+  "datos": [
+   "M18 · 10–30 VDC · PNP NA",
+   "Distancia nominal típica: 5 mm enrasado / 8 mm no enrasado",
+   "Detecta solo metales"
+  ],
+  "notas": "Colores de hilos según IEC 60947-5-2.",
+  "fuente": "IEC 60947-5-2"
+ },
+ {
+  "id": "15_sensor_capacitivo",
+  "nombre": "Sensor capacitivo M18",
+  "desig": "-B",
+  "bornes": "BN +24 V · BU 0 V · BK salida PNP",
+  "datos": [
+   "M18 · 10–30 VDC · PNP NA · potenciómetro de sensibilidad",
+   "Detecta metales y no metales (agua, granos, plásticos)"
+  ],
+  "notas": "",
+  "fuente": "IEC 60947-5-2"
+ },
+ {
+  "id": "16_sensor_optico",
+  "nombre": "Sensor óptico difuso M18",
+  "desig": "-B",
+  "bornes": "BN +24 V · BU 0 V · BK salida PNP",
+  "datos": [
+   "M18 · 10–30 VDC · PNP · emisor y receptor en la misma cara",
+   "Modo light-on / dark-on"
+  ],
+  "notas": "",
+  "fuente": "IEC 60947-5-2"
+ },
+ {
+  "id": "17_flotador",
+  "nombre": "Interruptor de nivel (flotador)",
+  "desig": "-S",
+  "bornes": "C común · NA (cierra al subir) · NC (cierra al bajar)",
+  "datos": [
+   "Tipo pera con contrapeso · cable de 3 hilos",
+   "Contacto típico 10 A / 250 VAC"
+  ],
+  "notas": "Los colores de los hilos cambian entre fabricantes: siempre se verifica con su hoja antes de cablear.",
+  "fuente": "Hoja del fabricante"
+ },
+ {
+  "id": "18_motor_3f",
+  "nombre": "Motor trifásico",
+  "desig": "-M",
+  "bornes": "9 puntas: T1…T9 (NEMA) · en IEC: U1 V1 W1 / W2 U2 V2",
+  "datos": [
+   "CASO BASE (dato real de catálogo): 10 hp, 230/460 V, 24,3/12,2 A, 1760 rpm",
+   "Corriente de arranque (rotor bloqueado): 162 A a 230 V",
+   "NEC T430.250 (para calcular cable y protección): 28 A a 230 V",
+   "A 240 V: conexión de tensión baja"
+  ],
+  "notas": "De los datos del motor salen la protección, el contactor, el relé térmico y el cable.",
+  "fuente": "Hoja de datos del motor de catálogo · NEC 430.6"
+ },
+ {
+  "id": "19_bornes_motor",
+  "nombre": "Caja de bornes del motor",
+  "desig": "-M (bornes)",
+  "bornes": "NEMA 9 puntas tensión baja: T1-T6-T7 · T2-T4-T8 · T3-T5-T9 · IEC 6 bornes Δ: U1-W2 · V1-U2 · W1-V2",
+  "datos": [
+   "Se muestra al lado del motor con zoom, como en la referencia",
+   "Tensión alta (460 V): T4-T7 · T5-T8 · T6-T9; línea a T1 T2 T3"
+  ],
+  "notas": "Siempre se toma de la placa del motor.",
+  "fuente": "NEMA MG 1 · IEC 60034-8"
+ },
+ {
+  "id": "20_borneras",
+  "nombre": "Borneras de caballete por paquetes",
+  "desig": "-X",
+  "bornes": "-X0 alimentación · -X1 motores · -X2 puerta/mando · -X3 campo (sensores)",
+  "datos": [
+   "Gris = paso · azul = neutro · verde/amarillo = PE",
+   "Potencia 10 AWG → borne de 6 mm² · mando 14 AWG → borne de 2,5 mm²"
+  ],
+  "notas": "Agrupación por función (convención de taller; IEC 81346 deja libre el número del paquete).",
+  "fuente": "IEC 60947-7-1/-2 · IEC 81346-2"
+ },
+ {
+  "id": "21_logo",
+  "nombre": "PLC LOGO! 12/24RCE + fuente LOGO!Power",
+  "desig": "-A / -T",
+  "bornes": "LOGO!: L+ M I1…I8 arriba · Q1…Q4 (1-2) abajo · Fuente: L N arriba · + + − − abajo",
+  "datos": [
+   "LOGO! 8 12/24RCE: 71,5 × 90 × 60 mm · 12/24 VDC · 8 DI (4 analógicas 0–10 V)",
+   "4 salidas a relé: 10 A resistiva / 3 A inductiva · Ethernet",
+   "LOGO!Power 24 V: 100–240 VAC → 24 VDC 1,3 A · 36 mm"
+  ],
+  "notas": "Se conserva la marca (se trabaja sobre ese modelo). La fuente va aparte.",
+  "fuente": "Hoja de datos 6ED1052-1MD08-0BA1"
+ },
+ {
+  "id": "22_s7_1200",
+  "nombre": "PLC S7-1200 CPU 1212C AC/DC/RLY",
+  "desig": "-A",
+  "bornes": "L1 N ⏚ · L+ M (24 VDC sensores) · 1M .0….7 · 2M 0 1 (AI) · salidas 1L .0–.3 · 2L .4 .5",
+  "datos": [
+   "90 × 100 × 75 mm · 85–264 VAC",
+   "8 DI 24 VDC · 6 DQ a relé 2 A · 2 AI 0–10 V",
+   "Fuente de sensores 24 VDC 300 mA"
+  ],
+  "notas": "Se conserva la marca y el modelo.",
+  "fuente": "Manual del sistema S7-1200"
+ },
+ {
+  "id": "23_riel_canaleta",
+  "nombre": "Riel DIN 35 mm y canaleta ranurada",
+  "desig": "—",
+  "bornes": "—",
+  "datos": [
+   "Riel 35 × 7,5 mm (EN 60715)",
+   "Canaleta 40 × 40 mm o 60 × 60 mm; relleno máximo recomendado ~50 %"
+  ],
+  "notas": "",
+  "fuente": "EN 60715"
+ },
+ {
+  "id": "24_conductor",
+  "nombre": "Conductor con puntera y marcador",
+  "desig": "—",
+  "bornes": "Puntera (ferrule) + marcador con el número del hilo en cada punta",
+  "datos": [
+   "Colores: potencia negro · mando AC rojo · mando DC azul · neutro azul claro · PE verde/amarillo (IEC 60204-1)",
+   "Punteras aisladas (DIN 46228-4): 1,5 mm² negra · 2,5 mm² azul · 4 mm² gris · 6 mm² amarilla"
+  ],
+  "notas": "Todo punto de conexión: pineado + etiquetado.",
+  "fuente": "IEC 60204-1 13.2 · DIN 46228-4"
+ },
+ {
+  "id": "25_multimetro",
+  "nombre": "Multímetro y pinza amperimétrica",
+  "desig": "—",
+  "bornes": "COM (negra) · V/Ω (roja)",
+  "datos": [
+   "Categoría CAT III 600 V mínimo para tableros",
+   "Ω: en frío; V~: con tensión; A~: pinza alrededor de UN conductor"
+  ],
+  "notas": "",
+  "fuente": "IEC 61010-1"
+ }
+]
