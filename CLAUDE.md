@@ -9,9 +9,10 @@ Este archivo es la "memoria" del proyecto: cada corrección del usuario se agreg
 - Tres revisiones antes de renderizar (diseño, ingeniería borne por borne, docente) + hojas de contacto; quedan por escrito en `revision_<clave>.md`.
 
 ## Librería de componentes (`lib/`)
-- `estilo.py`: estilo ÚNICO (referencia del usuario: CPU 1212C) = equipos planos gris pizarra con líneas de contorno, bornes con tornillo blanco "+", textos claros pequeños. No mezclar estilos difuminados o 3D.
-- `equipos.py`, `plcs.py`: equipos en mm reales (`k` = unidades por mm). Cada equipo expone `.b[nombre].p` (punto de conexión) para cablear siguiendo el diagrama.
-- `simbolos.py`: símbolos IEC 60617 según el Manual electrotécnico Telesquemario (cap. 6), con un solo trazo.
+- Corrección 21-nov (v2): los equipos son BLANCOS como el esquema de referencia del usuario (cuerpo blanco con degradado suave, franjas oscuras en los auxiliares, tornillos "+" con relieve, línea azul, etiqueta con la referencia). SOLO los PLC (LOGO!, S7-1200) van en gris, con el detalle del CPU 1212C (borneras negras con tornillo de ranura, grupos rotulados, LEDs).
+- `svgeq.py` + `render_svg.py`: los equipos se dibujan en SVG (mm reales, degradados y sombras) y se rasterizan con Chromium a PNG de alta resolución; cada equipo trae sus bornes en mm (JSON) para cablear encima en Manim. Es la herramienta principal para equipos.
+- `simbolos.py`: símbolos dibujados como en el Manual electrotécnico Telesquemario, cap. 7 (marca de función en el contacto fijo: gancho = contactor, × con tope = disyuntor, aro con tope = seccionador; mando manual ⊞; disparadores térmico (escalón) e I> en cajas por polo; pulsador "E" + círculo de función Ⓘ/Ⓞ; números de bornes girados 90° a la izquierda; bornes de campo con círculo). Potencia trazo grueso, mando trazo fino.
+- `equipos.py`, `plcs.py`, `estilo.py`: versión 1 en Manim puro (reemplazada por SVG; se conserva por compatibilidad).
 - `catalogo.py` + `catalogo_docx.js`: generan el catálogo en Word (equipo | símbolo | datos) para que el usuario lo revise.
 - Equipos genéricos (disyuntor, guardamotor, contactor, relés, operadores, sensores, flotador): SIN marca del fabricante; llevan el logo del canal. LOGO!, S7-1200 y variadores: se CONSERVA la marca y el modelo.
 - Pulsadores, selectores y pilotos: frente en 2D + vista trasera con el bloque de contacto (punto de conexión real). No se dibujan los cables conectados en los tornillos de las piezas de catálogo.
