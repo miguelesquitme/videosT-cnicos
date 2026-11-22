@@ -664,7 +664,7 @@ def flotador(ref="S5", alto_mm=150.0):
 
 
 # ============================================================ MOTOR (referencia del usuario: vista lateral con placa plateada al frente)
-def motor(ref="M1", ancho_mm=300.0):
+def motor(ref="M1", ancho_mm=300.0, placa="nema"):
     """Motor trifásico TEFC visto de lado: eje, tapa, carcasa con aletas, ventilador, caja de bornes arriba, patas.
     La placa de características (plateada) va en el costado, con los datos reales del motor del caso base."""
     Wp, Hp = 1000, 660
@@ -697,6 +697,10 @@ def motor(ref="M1", ancho_mm=300.0):
     filas = [("HP 10", "kW 7,5", "60 Hz"), ("V 230/460", "A 24,3/12,2", ""), ("rpm 1760", "F.S. 1,25", "Cód. H"),
              ("Ef. 91,7 %", "FP 0,84", "IP55"), ("Aisl. F", "40 °C", "TEFC"), ("BAJA: T1-T6-T7 · T2-T4-T8 · T3-T5-T9", "", ""),
              ("ALTA: T4-T7 · T5-T8 · T6-T9", "", "")]
+    if placa == "iec":   # misma potencia, caja IEC de 6 bornes (Δ 230 V / Y 400 V)
+        filas = [("HP 10", "kW 7,5", "60 Hz"), ("V 230Δ/400Y", "A 24,3/14,0", ""), ("rpm 1760", "F.S. 1,25", "Cód. H"),
+                 ("Ef. 91,7 %", "FP 0,84", "IP55"), ("Aisl. F", "40 °C", "TEFC"), ("Δ 230 V: U1-W2 · V1-U2 · W1-V2", "", ""),
+                 ("Y 400 V: W2-U2-V2 unidos", "", "")]
     for k, f in enumerate(filas):
         y = 392 + k * 21
         if f[1]:
