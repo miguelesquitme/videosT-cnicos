@@ -18,9 +18,13 @@ subtitle: "Guion para revisión · @miguelesquit · 21-nov-2026"
 | Protección del mando -F1 | **2P 6 A curva C**, conductor 14 AWG | NEC 430.72 |
 | Mando | 240 VAC entre L1 y L2 | Caso base |
 
-> Los diagramas de mando y potencia (secciones 5 y 6) **los entregas tú**. El circuito de abajo es solo el que usé para escribir el guion; si tu diagrama cambia algo (por ejemplo los pilotos), ajusto el texto.
+> **Referencia del usuario (21-nov):** lámina "Arranque directo de un motor trifásico" (Contec). Se usa SOLO como referencia de estructura y estilo: a la izquierda el esquema de conexión con los equipos físicos, a la derecha los diagramas IEC de potencia y mando con cada equipo resaltado en un recuadro de color. **Todos los equipos se dibujan con nuestra biblioteca.**
+>
+> Adaptaciones al caso del canal: en lugar del guardamotor va **breaker -Q1 + contactor -KM1 + relé térmico -F2**; el mando es a **240 VAC entre L1 y L2** con breaker **2P -F1** (la red del caso base no tiene neutro); el contacto **95-96 del térmico** va en serie antes del paro; sin pilotos, igual que la referencia.
 
-Circuito usado en el guion: L1 → -F1 (1-2) → -F2 (95-96) → -S0 paro (11-12) → -S1 marcha (13-14) en paralelo con -KM1 (13-14) → bobina -KM1 (A1-A2) → -F1 (3-4) → L2. Piloto -H1 verde (marcha) en paralelo con la bobina. Piloto -H2 ámbar (disparo del térmico) por -F2 (97-98).
+Circuito de mando: L1 → -F1 (1-2) → -F2 (95-96) → -S1 paro (11-12) → -S2 marcha (13-14) en paralelo con -KM1 (13-14) → bobina -KM1 (A1-A2) → -F1 (4-3) → L2.
+
+Circuito de potencia: -X0 (L1 L2 L3 PE) → -Q1 (1-2, 3-4, 5-6) → -KM1 (1/L1-2/T1, 3/L2-4/T2, 5/L3-6/T3) → -F2 (2/T1, 4/T2, 6/T3) → -X1 (U V W PE) → -M1 (U1 V1 W1, PE a la carcasa; puentes Δ U1-W2, V1-U2, W1-V2).
 
 # Guion (voz) por sección
 
@@ -61,10 +65,8 @@ Y el mando lo protegemos aparte, con un breaker bipolar de seis amperios y cable
 | 1 | Breaker -F1 | 2P, 6 A, curva C | Protege el mando |
 | 1 | Contactor -KM1 | 32 A AC-3, bobina 240 VAC, 1NA+1NC | Maniobra el motor |
 | 1 | Relé térmico -F2 | 23–32 A, clase 10 | Ajuste 24,3 A, reset manual |
-| 1 | Pulsador -S0 | Rojo, contacto NC | Paro |
-| 1 | Pulsador -S1 | Verde, contacto NA | Marcha |
-| 1 | Piloto -H1 | Verde, 240 VAC | Motor en marcha |
-| 1 | Piloto -H2 | Ámbar, 240 VAC | Disparo por sobrecarga |
+| 1 | Pulsador -S1 | Rojo, bloque NC 11-12 | Paro |
+| 1 | Pulsador -S2 | Verde, bloque NA 13-14 | Marcha |
 | 1 | Borneras -X0, -X1, -X2 | Alimentación, motor y puerta | Con PE verde/amarillo |
 | — | Cable | 10 AWG potencia (negro) · 14 AWG mando (rojo) · PE verde/amarillo | Con puntera y marcador |
 | 1 | Motor -M1 | 10 hp, 230 V Δ, 24,3 A | Trituradora |
@@ -72,12 +74,12 @@ Y el mando lo protegemos aparte, con un breaker bipolar de seis amperios y cable
 **Voz:** lectura breve de cada fila (solo nombre, capacidad y para qué sirve).
 
 ## 5. Diagrama de mando IEC (3:45 – 5:00)
-**Pantalla:** tu diagrama de mando, trazado línea por línea con sonido de escritura.
+**Pantalla:** diagrama de mando IEC al estilo de la referencia (vertical, cada equipo en un recuadro de color, nodos marcados), trazado línea por línea con sonido de escritura.
 
-**Voz:** "Empezamos por el mando, que es el cerebro. La fase L1 entra por el breaker de seis amperios, pasa por el contacto cerrado del térmico, noventa y cinco–noventa y seis… si hay sobrecarga, este contacto se abre y todo se detiene. Luego el paro, normalmente cerrado. Luego la marcha, normalmente abierta… y en paralelo, el contacto trece–catorce del contactor: la retención. Al soltar la marcha, ese contacto mantiene la bobina energizada. La bobina, A1–A2, cierra el circuito hacia L2. El piloto verde, en paralelo con la bobina, nos dice que el motor está en marcha; y el ámbar, por el noventa y siete–noventa y ocho, avisa que disparó el térmico."
+**Voz:** "Empezamos por el mando, que es el cerebro. La fase L1 entra por el breaker de seis amperios, pasa por el contacto cerrado del térmico, noventa y cinco–noventa y seis… si hay sobrecarga, este contacto se abre y todo se detiene. Luego el paro, normalmente cerrado. Luego la marcha, normalmente abierta… y en paralelo, el contacto trece–catorce del contactor: la retención. Al soltar la marcha, ese contacto mantiene la bobina energizada. La bobina, A1–A2, cierra el circuito hacia L2, por el segundo polo del breaker de mando."
 
 ## 6. Diagrama de potencia IEC (5:00 – 5:50)
-**Pantalla:** tu diagrama de potencia, trazo grueso.
+**Pantalla:** diagrama de potencia IEC al estilo de la referencia, a la izquierda del de mando, trazo grueso.
 
 **Voz:** "La potencia es más sencilla: las tres fases pasan por el breaker de setenta, por los contactos principales del contactor, por el térmico… y llegan al motor en U1, V1 y W1, con la tierra a la carcasa. En la caja de bornes, los puentes en triángulo: U1 con W2, V1 con U2 y W1 con V2."
 
@@ -95,7 +97,7 @@ Y el mando lo protegemos aparte, con un breaker bipolar de seis amperios y cable
 **Voz:** criterios de armado: potencia arriba-abajo en el mismo sentido que el diagrama, mando separado, todo marcado.
 
 ## 10. Puesta en marcha (10:30 – 11:40)
-**Pantalla:** verificaciones con multímetro como en las referencias: continuidad del mando con -Q1 abierto, aislamiento entre fases, tensión de llegada 240 V entre fases. Luego: -Q1 ON (sonido breaker), -F1 ON, marcha → contactor (sonido) → motor (sonido) → H1 encendida; medición con pinza ≈ corriente de trabajo; paro. Simulación de sobrecarga con TEST del térmico → H2 ámbar (sonido de disparo) → RESET.
+**Pantalla:** verificaciones con multímetro como en las referencias: continuidad del mando con -Q1 abierto, aislamiento entre fases, tensión de llegada 240 V entre fases. Luego: -Q1 ON (sonido breaker), -F1 ON, marcha -S2 → contactor (sonido) → motor (sonido); medición con pinza ≈ corriente de trabajo; paro -S1. Simulación de sobrecarga con TEST del térmico (sonido de disparo): el contactor cae aunque se pulse marcha → RESET y vuelve a arrancar.
 
 ## 11. Cierre (11:40 – 12:00)
 **Voz:** "Si te sirvió, suscríbete. En el siguiente video arrancamos este mismo motor con un variador de frecuencia. Y si quieres repasar rápido, te dejo los shorts de este tema."
