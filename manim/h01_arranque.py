@@ -372,6 +372,52 @@ class H01(ContactorB):
             getattr(self, "h_" + paso)()
 
     # --------------------------------------------------------------- utilidades
+    def portadilla(self, clave):
+        num, titulo = getattr(self, "SECC", SECCIONES)[clave]
+        sale = [m for m in (self.cinta_act, self.paso_act) if m is not None]
+        fondo = Rectangle(width=16.2, height=9.2, stroke_width=0).set_fill("#06102A" if TEMA != "negro" else "#050608", 0.97).set_z_index(40)
+        grande = T(num if len(num) > 1 else f"0{num}", 300, MARCA, "HEAVY").set_opacity(0.14).move_to([4.6, -0.2, 0]).set_z_index(41)
+        sec = T(f"SECCIÓN {num}", 30, AMBAR, "HEAVY")
+        tit = T(titulo, 70, TXT, "HEAVY")
+        if tit.width > 13.0:
+            tit.scale_to_fit_width(13.0)
+        VGroup(sec, tit).arrange(DOWN, buff=0.3, aligned_edge=LEFT).move_to([0, 0.2, 0])
+        barra = RoundedRectangle(width=tit.width, height=0.14, corner_radius=0.07, stroke_width=0).set_fill(MARCA, 1).next_to(tit, DOWN, buff=0.3, aligned_edge=LEFT)
+        cursor = Rectangle(width=0.07, height=tit.height * 0.95, stroke_width=0).set_fill(MARCA, 1)
+        for m_ in (sec, tit, barra, cursor):
+            m_.set_z_index(42)
+        self.play(FadeIn(fondo), FadeIn(grande, scale=1.1), FadeIn(sec, shift=RIGHT * 0.2), *[FadeOut(m) for m in sale], run_time=0.45)
+        self.cinta_act = None
+        self.paso_act = None
+        n = len(tit.submobjects)
+        dt = 0.05
+        wav = DIR / "sfx" / f"tecleo_{n}.wav"
+        if not wav.exists():
+            sonido_tecleo(wav, n, dt, semilla=n)
+        self.add_sound(str(wav), gain=-9)
+        cursor.next_to(tit[0], LEFT, buff=0.05)
+        self.add(cursor)
+        letras = [m for m in tit.submobjects]
+        for m in letras:
+            m.set_opacity(0)
+        self.add(tit)
+
+        def revelar(mob, alpha):
+            k = int(alpha * n + 1e-6)
+            for i, m in enumerate(letras):
+                m.set_opacity(1 if i < k else 0)
+            ultimo = letras[max(0, min(k, n) - 1)]
+            cursor.move_to([ultimo.get_right()[0] + 0.08, tit.get_center()[1], 0]) if k > 0 else None
+        self.play(UpdateFromAlphaFunc(tit, revelar), run_time=n * dt, rate_func=linear)
+        cursor.clear_updaters()
+        self.play(GrowFromEdge(barra, LEFT), run_time=0.35)
+        self.play(cursor.animate.set_opacity(0), run_time=0.15)
+        self.play(cursor.animate.set_opacity(1), run_time=0.15)
+        self.wait(0.35)
+        ci = cinta(num, titulo)
+        self.play(FadeOut(VGroup(fondo, grande, sec, tit, barra, cursor)), FadeIn(ci, shift=RIGHT * 0.3), run_time=0.45)
+        self.cinta_act = ci
+
     def esperar_frac(self, f):
         w = self.resta() * f
         if w > 0.05:
@@ -727,7 +773,7 @@ class H01(ContactorB):
         self.voz("p_intro")
         d, P = diagrama_potencia(x0=-6.6, y_top=3.3, dx=0.7)
         d.scale_to_fit_height(7.3).move_to([-4.6, -0.45, 0])
-        self.play(FadeIn(d), self.cables.animate.set_opacity(0.35), run_time=0.8)
+        self.play(FadeIn(d), self.cables.animate.set_stroke(opacity=0.3), run_time=0.8)
         self.cerrar_voz(0.1)
         R = rutas_potencia(E)
         Q1, KM1, F2 = E["Q1"], E["KM1"], E["F2"]
@@ -769,7 +815,7 @@ class H01(ContactorB):
         self.cerrar_voz(0.2)
         self.play(FadeOut(flecha), FadeOut(lab), run_time=0.3)
         self.zoom_fuera(0.6)
-        self.play(FadeOut(d), self.cables.animate.set_opacity(1), run_time=0.5)
+        self.play(FadeOut(d), self.cables.animate.set_stroke(opacity=1), run_time=0.5)
 
     # =============================================================== 9 · TABLERO
     def h_tablero(self):
@@ -785,7 +831,7 @@ class H01(ContactorB):
         self.voz("tablero")
         eqs = Group(*E.values(), self.cables, self.puerta)
         # todo el conjunto pasa al centro, más grande
-        self.play(eqs.animate.scale(1.18).move_to([0.2, -0.3, 0]), run_time=1.0)
+        self.play(eqs.animate.scale(1.05).move_to([0.2, -0.45, 0]), run_time=1.0)
         izq = min(E[n].cuerpo(LEFT)[0] for n in ("Q1", "KM1", "X0")) - 0.55
         der = E["F1"].cuerpo(RIGHT)[0] + 0.55
         arr, aba = E["Q1"].cuerpo(UP)[1] + 0.55, E["X0"].cuerpo(DOWN)[1] - 0.35
@@ -830,10 +876,14 @@ class H01(ContactorB):
                     cable(mm.p("COM"), mm.p("COM") + DOWN * 0.7, X2.p("3_b") + DOWN * 0.8 + RIGHT * 0.3, X2.p("3_b"), color="#2B2C2E", w=4, suave=True))
         self.play(Create(pr), run_time=1.0)
         lec = etiqueta("MARCHA pulsada → R de la bobina", VERDE_OK, 24).move_to([4.2, 3.4, 0])
-        self.play(Indicate(E["S2"], color=VERDE_OK), FadeIn(lec), run_time=0.8)
+        lcd_c = mm.img.get_corner(UL) + RIGHT * (4 + 210 / 420 * mm.d["W"]) * mm.k + DOWN * (4 + 185 / 820 * mm.d["H"]) * mm.k
+        tapa = VGroup(Rectangle(width=280 / 420 * mm.d["W"] * mm.k, height=150 / 820 * mm.d["H"] * mm.k, stroke_width=0).set_fill("#C9D1C0", 1),
+                      Text("R bobina", font=SANS, font_size=20, weight="BOLD", color="#1B1F24")).move_to(lcd_c)
+        tapa[1].scale_to_fit_width(tapa[0].width * 0.8).move_to(tapa[0])
+        self.play(Indicate(E["S2"], color=VERDE_OK), FadeIn(lec), FadeIn(tapa), run_time=0.8)
         self.esperar_frac(0.5)
         lec2 = etiqueta("PARO pulsado → OL (abierto)", ROJO, 24).move_to([4.2, 3.4, 0])
-        self.play(Indicate(E["S1"], color=ROJO), FadeTransform(lec, lec2), run_time=0.8)
+        self.play(Indicate(E["S1"], color=ROJO), FadeTransform(lec, lec2), FadeOut(tapa), run_time=0.8)
         self.cerrar_voz(0.2)
         self.play(FadeOut(pr), FadeOut(mm), FadeOut(lec2), run_time=0.4)
         # tensión de llegada
@@ -900,6 +950,7 @@ class H01(ContactorB):
         yt = pastilla("SUSCRÍBETE", ROJO, 34, True)
         sig = T(self.PROXIMO, 32, TXT, "HEAVY").move_to([-3.6, 3.0, 0])
         caja = RoundedRectangle(width=6.4, height=3.6, corner_radius=0.15, stroke_color=MARCA, stroke_width=2).set_fill(CARTA, 1).move_to([-3.6, 0.6, 0])
+        caja = VGroup(caja, VGroup(T("ARRANQUE CON", 34, TXT, "HEAVY"), T("VARIADOR DE FRECUENCIA", 34, MARCA, "HEAVY")).arrange(DOWN, buff=0.2).move_to(caja))
         shorts = VGroup(*[VGroup(RoundedRectangle(width=1.9, height=1.6, corner_radius=0.1, stroke_color=AMBAR, stroke_width=2).set_fill(CARTA, 1),
                                  Paragraph(*t, font=SANS, font_size=16, color=TXT, alignment="center")) for t in
                           (["Así funciona", "la retención"], ["Así se calcula", "la protección"], ["Así funciona", "el térmico"])]).arrange(RIGHT, buff=0.2)
