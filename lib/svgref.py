@@ -88,7 +88,8 @@ def marca_canal(x, y, h, *_):
 
 
 # ============================================================ CONTACTOR (referencia KM0, 602 × 972 px)
-def contactor(ref="KM1", px_ancho_mm=45.0):
+def contactor(ref="KM1", px_ancho_mm=45.0, on=False):
+    """on=True: bobina energizada; el indicador mecánico de la ventana baja y muestra la franja amarilla (I)."""
     Wp, Hp = 602, 972
     s_mm = px_ancho_mm / Wp
     b, c = {}, []
@@ -107,6 +108,12 @@ def contactor(ref="KM1", px_ancho_mm=45.0):
     c.append(R(6, 397, Wp - 8, 2, "#D3D6D4") + R(6, 399, Wp - 8, 2, "#FFFFFF") + R(6, 424, Wp - 8, 2, "#D8DBD9"))
     for x0, x1, col in ((188, 237, "#4F4F51"), (237, 283, "#7D7E80"), (283, 343, "#4F4F51"), (343, 386, "#7D7E80"), (386, 443, "#4F4F51")):
         c.append(R(x0, 418, x1 - x0, 86, col))
+    # indicador mecánico: en reposo (O) la paleta queda arriba y oscura; energizado (I) baja y muestra la franja amarilla
+    if on:
+        c.append(R(237, 452, 149, 52, "#F5C400") + R(237, 452, 149, 6, "#FFE27A") + R(237, 418, 149, 34, "#3A3B3D"))
+    else:
+        c.append(R(237, 418, 149, 30, "#3A3B3D"))
+    c.append(T(170, 461, "I" if on else "O", 26, "#E5484D" if on else "#4A4F55", 800, "end"))
     c.append(f'<rect x="188" y="418" width="255" height="86" fill="none" stroke="#3A3B3D" stroke-width="3"/>')
     c.append(R(178, 514, 280, 3, "#C9CCCA") + R(178, 517, 280, 2, "#FFFFFF"))
     c.append(R(178, 517, 3, 50, "#C9CCCA") + R(455, 517, 3, 50, "#C9CCCA"))
@@ -137,7 +144,8 @@ def contactor(ref="KM1", px_ancho_mm=45.0):
 
 
 # ============================================================ DISYUNTOR nP (referencias #1 y #2: 210 px por polo, alto 940 px)
-def disyuntor(n=2, In=20, curva="C", ref="Q1", tension="230/400 VAC", polo_mm=18.0):
+def disyuntor(n=2, In=20, curva="C", ref="Q1", tension="230/400 VAC", polo_mm=18.0, on=False):
+    """on=False: palanca abajo (O-OFF), indicador verde APAGADO · on=True: palanca arriba (I-ON), indicador verde encendido."""
     P, Hp = 210, 940
     Wp = P * n
     s_mm = polo_mm / P
@@ -163,10 +171,12 @@ def disyuntor(n=2, In=20, curva="C", ref="Q1", tension="230/400 VAC", polo_mm=18
     fz = 15 if n > 1 else 13
     for k_, t_ in enumerate((f"Ue: {tension}", "IEC/EN 60898-1", "Icn = 6000 A", "Uimp = 4 kV")):
         c.append(T(8, 326 + k_ * 18, t_, fz, "#555756", 600, "start"))
-    # ventana indicadora por polo: verde = abierto (OFF)
+    # ventana indicadora por polo: verde encendido = cerrado (ON) · apagada = abierto (OFF)
     for i in range(n):
         xv = P * i + 135
-        c.append(f'<g filter="url(#sTorn)">{R(xv - 18, 236, 36, 16, "#2E3138")}</g>' + R(xv - 14, 239, 28, 10, "#2FA84F"))
+        c.append(f'<g filter="url(#sTorn)">{R(xv - 18, 236, 36, 16, "#2E3138")}</g>' + R(xv - 14, 239, 28, 10, "#39D353" if on else "#3E4A42"))
+        if on:
+            c.append(R(xv - 14, 239, 28, 4, "#B8F5C4", 'opacity="0.8"'))
     # símbolo impreso por polo (× = disyuntor, cuchilla abierta)
     for i in range(n):
         xs = Wp - 30 - (n - 1 - i) * 54
@@ -179,11 +189,15 @@ def disyuntor(n=2, In=20, curva="C", ref="Q1", tension="230/400 VAC", polo_mm=18
     # palanca: barra común + manija por polo
     c.append(f'<g filter="url(#sDura)">{R(3, 405, Wp - 8, 64, "url(#rPalanca)")}</g>')
     c.append(R(3, 418, Wp - 8, 9, "#8E9391") + R(3, 427, Wp - 8, 6, "#5E6361") + R(3, 433, Wp - 8, 9, "#A5AAA8") + R(3, 442, Wp - 8, 5, "#5E6361"))
+    dy = -77 if on else 0          # ON: la manija sube y tapa la barra común
     for i in range(n):
         xm = P * i + 37
-        c.append(f'<g filter="url(#sDura)">{R(xm, 469, 132, 116, "url(#rPalanca)")}</g>')
-        c.append(R(xm, 494, 132, 7, "#9A9C9B") + R(xm, 501, 132, 6, "#5A5D5C") + R(xm, 507, 132, 7, "#B0B3B1"))
-        c.append(f'<circle cx="{xm + 34}" cy="548" r="9" fill="none" stroke="#C9CCCF" stroke-width="3"/>' + T(xm + 50, 548, "-OFF", 20, "#C9CCCF", 700, "start"))
+        c.append(f'<g filter="url(#sDura)">{R(xm, 469 + dy, 132, 116, "url(#rPalanca)")}</g>')
+        c.append(R(xm, 494 + dy, 132, 7, "#9A9C9B") + R(xm, 501 + dy, 132, 6, "#5A5D5C") + R(xm, 507 + dy, 132, 7, "#B0B3B1"))
+        if on:
+            c.append(R(xm + 28, 538 + dy, 4, 20, "#E5484D") + T(xm + 46, 548 + dy, "-ON", 20, "#E5484D", 800, "start"))
+        else:
+            c.append(f'<circle cx="{xm + 34}" cy="548" r="9" fill="none" stroke="#C9CCCF" stroke-width="3"/>' + T(xm + 50, 548, "-OFF", 20, "#C9CCCF", 700, "start"))
     c.append(PL(Wp / 2, 632, ref, s_mm))
     c.append(R(22, 678, Wp - 44, 22, "#0270C0"))
     svg, WH = svg_mm(Wp, Hp, s_mm, "".join(c))
@@ -195,12 +209,12 @@ def disyuntor2(ref="Q1", In=20, curva="C", tension="230/400 VAC"):
 
 
 # ============================================================ GUARDAMOTOR (referencia #3, cuerpo 372 × 735 px, blanco)
-def guardamotor(ref="QM1", rango=(22, 32), ajuste=24.3, ancho_mm=45.0):
+def guardamotor(ref="QM1", rango=(22, 32), ajuste=24.3, ancho_mm=45.0, on=False):
     """Guardamotor con bloque de contactos auxiliares arriba (13-14 NA, 21-22 NC).
     Carátula ordenada como el ejemplo del usuario: clase de disparo, dial con escala, rectángulo para la etiqueta,
     rango, TRIP con su barra curva, disparo magnético I> con su valor, TEST, posición ON, mando giratorio, OFF y símbolo lateral."""
     import math
-    Wp, Hp = 372, 860
+    Wp, Hp = 372, 780          # más corto (corrección v7): carátula compacta, mando más arriba
     s_mm = ancho_mm / Wp
     b, c = {}, []
     K_ = "#2E3138"
@@ -223,10 +237,10 @@ def guardamotor(ref="QM1", rango=(22, 32), ajuste=24.3, ancho_mm=45.0):
     c.append(T(94, 216, "NO", 18, "#FFFFFF", 500) + T(278, 216, "NC", 18, "#FFFFFF", 500))
     # frente elevado
     y0f = 250
-    c.append(f'<g filter="url(#sDura)">{R(8, y0f, Wp - 16, 460, "url(#rFrente)")}</g>' + R(8, y0f, Wp - 16, 3, "#FFFFFF"))
+    c.append(f'<g filter="url(#sDura)">{R(8, y0f, Wp - 16, 380, "url(#rFrente)")}</g>' + R(8, y0f, Wp - 16, 3, "#FFFFFF"))
     k = 0.607
     X = lambda xr: 8 + k * xr
-    ky = 0.78
+    ky = 0.64
     Y = lambda yr: y0f + 8 + ky * yr
     # clase de disparo
     c.append(f'<path d="M{X(48)},{Y(48)} v-12 h10 v-12 h10" stroke="{K_}" stroke-width="2.6" fill="none"/>' + T(X(95), Y(36), "CLASS 10", 16, K_, 800, "start"))
@@ -262,9 +276,9 @@ def guardamotor(ref="QM1", rango=(22, 32), ajuste=24.3, ancho_mm=45.0):
     # posición ON
     c.append(R(X(428), Y(228), 5, 22, K_) + T(X(448), Y(248), "L", 9, K_, 800) + T(X(438), Y(282), "ON", 13, K_, 800))
     # mando giratorio negro con lengüeta clara (posición OFF)
-    kx, kyy, kr = X(410), Y(440), 64
+    kx, kyy, kr = X(392), Y(420), 64
     c.append(f'<g filter="url(#sMando)"><circle cx="{kx}" cy="{kyy}" r="{kr}" fill="url(#rMando)"/></g>')
-    c.append(f'<g transform="rotate(-6 {kx} {kyy})"><g filter="url(#sMando)"><rect x="{kx - 137}" y="{kyy - 22}" width="197" height="44" rx="6" fill="#1A1A1A"/></g>'
+    c.append(f'<g transform="rotate({78 if on else -6} {kx} {kyy})"><g filter="url(#sMando)"><rect x="{kx - 137}" y="{kyy - 22}" width="197" height="44" rx="6" fill="#1A1A1A"/></g>'
              f'<g filter="url(#sTorn)"><path d="M{kx - 128},{kyy - 20} H{kx - 80} V{kyy + 20} H{kx - 128} Q{kx - 137},{kyy + 20} {kx - 137},{kyy + 10} V{kyy - 10} Q{kx - 137},{kyy - 20} {kx - 128},{kyy - 20} Z" fill="#ECEDEE"/></g>'
              f'<path d="M{kx - 116},{kyy - 12} V{kyy + 12} M{kx - 106},{kyy - 12} V{kyy + 12} M{kx - 96},{kyy - 12} V{kyy + 12}" stroke="#B9BDC1" stroke-width="2.5"/></g>')
     # símbolo lateral impreso (contacto con marca de disyuntor)
@@ -273,13 +287,16 @@ def guardamotor(ref="QM1", rango=(22, 32), ajuste=24.3, ancho_mm=45.0):
              f'<path d="M{sx - 6},{Y(372)} l12,12 M{sx + 6},{Y(372)} l-12,12" stroke="{K_}" stroke-width="2.4"/>')
     c.append(logo(X(28), Y(470), 30))
     c.append(f'<circle cx="{X(205)}" cy="{Y(500)}" r="8" fill="none" stroke="{K_}" stroke-width="3"/>' + T(X(222), Y(506), "D", 9, K_, 800) + T(X(205), Y(528), "OFF", 13, K_, 800))
-    c.append(R(20, 690, Wp - 40, 10, "#0270C0"))
+    c.append(R(20, 614, Wp - 40, 10, "#0270C0"))
     svg, WH = svg_mm(Wp, Hp, s_mm, "".join(c))
     return svg, {kk: (x * s_mm, y * s_mm) for kk, (x, y) in b.items()}, WH
 
 
 # ============================================================ RELÉ TÉRMICO (referencia #22, cuerpo 685 × 780 px)
-def rele_termico(ref="F2", rango=(23, 32), ajuste=24.3, ancho_mm=45.0):
+def rele_termico(ref="F2", rango=(23, 32), ajuste=24.3, ancho_mm=45.0, disparado=False, modo="H"):
+    """Dial como el CHNT NR2 de referencia: la escala va impresa EN el dial (gira con él) en pasos iguales
+    (23-26-29-32 A) y la flecha fija ▲ marca el ajuste. RESET azul con H (manual) y A (automático).
+    disparado=True: la bandera de disparo se ve naranja (TRIP) y el RESET sobresale."""
     import math
     Wp, Hp = 685, 780
     s_mm = ancho_mm / Wp
@@ -297,21 +314,42 @@ def rele_termico(ref="F2", rango=(23, 32), ajuste=24.3, ancho_mm=45.0):
     # carátula sencilla como el ejemplo: dial azul, TEST, rectángulo para la etiqueta, STOP y RESET
     c.append(f'<g filter="url(#sTorn)">{R(42, 120, 336, 230, "#F3F4F2")}</g>')
     lo, hi = rango
-    c.append(f'<polygon points="58,150 72,126 86,150" fill="#3A3D42"/>')
-    cx, cy, r = 190, 228, 72
+    cx, cy, r = 196, 222, 74
     c.append(f'<g filter="url(#sDura)"><circle cx="{cx}" cy="{cy}" r="{r}" fill="#1F67C4"/></g><circle cx="{cx}" cy="{cy}" r="{r - 6}" fill="none" stroke="#5B92DD" stroke-width="3"/>')
-    for k, v in enumerate((lo, round((lo + hi) / 2), hi)):
-        ang = math.radians(150 - k * 60)
-        c.append(T(cx + (r - 18) * math.cos(ang), cy - (r - 18) * math.sin(ang), f"{v:g}", 16, "#FFFFFF", 800))
-    c.append(T(cx - 52, cy + 40, "A", 16, "#FFFFFF", 800))
-    c.append(R(cx - 34, cy - 9, 68, 18, "#24237F") + R(cx - 9, cy - 34, 18, 68, "#24237F"))
-    c.append(R(62, 318, 22, 16, "#D92D20") + T(108, 326, "TEST", 18, "#3A3D42", 800, "start"))
+    # escala impresa en el dial: el valor de ajuste queda bajo la flecha ▲ (135°); los valores crecen en sentido antihorario
+    pasos = [lo + (hi - lo) * k / 3 for k in range(4)]
+    kgr = 210 / (hi - lo)
+    th = lambda v: math.radians(135 + (v - ajuste) * kgr)
+    for k in range(13):
+        v = lo + (hi - lo) * k / 12
+        a = th(v)
+        L = 10 if k % 4 == 0 else 5
+        c.append(f'<line x1="{cx + (r - 4) * math.cos(a):.1f}" y1="{cy - (r - 4) * math.sin(a):.1f}" x2="{cx + (r - 4 - L) * math.cos(a):.1f}" y2="{cy - (r - 4 - L) * math.sin(a):.1f}" stroke="#FFFFFF" stroke-width="2.5"/>')
+    for v in pasos:
+        a = th(v)
+        c.append(T(cx + (r - 26) * math.cos(a), cy - (r - 26) * math.sin(a), f"{v:g}", 19, "#FFFFFF", 800))
+    # ranura en cruz y la letra A (amperios) que giran con el dial
+    c.append(f'<g transform="rotate({-(math.degrees(th(ajuste)) - 135):.1f} {cx} {cy})">' + R(cx - 20, cy - 7, 40, 14, "#24237F") + R(cx - 7, cy - 20, 14, 40, "#24237F") + "</g>")
+    c.append(T(cx + 34, cy + 40, "A", 16, "#FFFFFF", 800))
+    ax_, ay_ = cx + (r + 14) * math.cos(math.radians(135)), cy - (r + 14) * math.sin(math.radians(135))
+    c.append(f'<polygon points="{ax_:.1f},{ay_ + 12:.1f} {ax_ - 10:.1f},{ay_ - 6:.1f} {ax_ + 10:.1f},{ay_ - 6:.1f}" fill="#3A3D42" transform="rotate(-45 {ax_:.1f} {ay_:.1f})"/>')
+    # TEST y bandera de disparo
+    c.append(R(62, 318, 22, 16, "#D92D20") + T(94, 326, "TEST", 18, "#3A3D42", 800, "start"))
+    if disparado:
+        c.append(f'<g filter="url(#sTorn)">{R(282, 306, 84, 32, "#FF7A00")}</g>' + T(324, 322, "TRIP", 18, "#FFFFFF", 800))
+    else:
+        c.append(R(282, 306, 84, 32, "#3A3D42") + R(286, 310, 76, 24, "#55595F"))
     # rectángulo donde va la etiqueta
     c.append(R(420, 112, 250, 78, "none", 'stroke="#9AA0A6" stroke-width="3"') + PL(545, 151, ref, s_mm))
     c.append(T(477, 222, "STOP", 26, "#3A3D42", 800) + T(610, 222, "RESET", 26, "#3A3D42", 800))
     c.append(f'<g filter="url(#sDura)"><rect x="410" y="242" width="270" height="130" fill="#3F4042"/></g>')
     c.append(f'<g filter="url(#sTorn)"><circle cx="477" cy="307" r="54" fill="#C7202D"/></g><circle cx="477" cy="307" r="38" fill="#E8331F"/>')
-    c.append(f'<g filter="url(#sTorn)"><circle cx="610" cy="307" r="52" fill="#1F67C4"/></g>' + R(570, 299, 80, 16, "#24237F") + R(602, 267, 16, 80, "#24237F"))
+    # RESET azul con H (manual) y A (automático); la ranura apunta al modo elegido. Disparado: sobresale (sombra más larga)
+    filt = "sMando" if disparado else "sTorn"
+    c.append(f'<g filter="url(#{filt})"><circle cx="610" cy="307" r="52" fill="#1F67C4"/></g><circle cx="610" cy="307" r="44" fill="none" stroke="#5B92DD" stroke-width="3"/>')
+    ang_m = -45 if modo == "H" else 45
+    c.append(f'<g transform="rotate({ang_m} 610 307)">' + R(574, 300, 72, 14, "#24237F") + "</g>")
+    c.append(T(580, 276, "H", 20, "#FFFFFF", 800) + T(640, 276, "A", 20, "#FFFFFF", 800))
     # contactos auxiliares: números ABAJO de los tornillos, como el ejemplo (98 NO 97 · 96 NC 95)
     c.append(R(0, 437, Wp, 150, "url(#rClaro)"))
     for x, n in ((105, "98"), (260, "97"), (425, "96"), (580, "95")):
@@ -344,9 +382,10 @@ def _base_octal(c, b, Wp):
     return xs
 
 
-def rele_8p(ref="KA1", bobina="240 VAC", tipo="rele", ancho_mm=38.0):
+def rele_8p(ref="KA1", bobina="240 VAC", tipo="rele", ancho_mm=38.0, on=False):
+    """on=True: bobina 2-7 energizada → LED encendido y los comunes 1 y 8 pasan a NA (3 y 6)."""
     if tipo == "timer":
-        return temporizador(ref, ancho_mm=ancho_mm)
+        return temporizador(ref, ancho_mm=ancho_mm, on=on)
     Wp = 490
     s_mm = ancho_mm / Wp
     b, c = {}, []
@@ -360,19 +399,25 @@ def rele_8p(ref="KA1", bobina="240 VAC", tipo="rele", ancho_mm=38.0):
     g = '<g stroke="#3B3F46" stroke-width="3" fill="none">'
     g += '<rect x="66" y="430" width="56" height="34"/><path d="M94,410 V430 M94,464 V484"/>'
     for xc, nc, na, com in ((215, "4", "3", "1"), (360, "5", "6", "8")):
-        g += f'<path d="M{xc},500 V470 L{xc - 22},420"/><path d="M{xc - 30},405 V420 H{xc - 18}"/><path d="M{xc + 30},405 V432 H{xc + 6}"/>'
+        g += (f'<path d="M{xc},500 V470 L{xc + 26},430"/>' if on else f'<path d="M{xc},500 V470 L{xc - 22},420"/>') + f'<path d="M{xc - 30},405 V420 H{xc - 18}"/><path d="M{xc + 30},405 V432 H{xc + 6}"/>'
     g += '</g>'
     c.append(g)
     for xc, nc, na, com in ((215, "4", "3", "1"), (360, "5", "6", "8")):
         c.append(T(xc - 30, 390, nc, 20, "#3B3F46", 700) + T(xc + 30, 390, na, 20, "#3B3F46", 700) + T(xc + 18, 505, com, 20, "#3B3F46", 700))
     c.append(T(76, 400, "2", 20, "#3B3F46", 700) + T(76, 494, "7", 20, "#3B3F46", 700))
-    c.append(f'<rect x="388" y="560" width="54" height="30" fill="#2BD14A" stroke="#1E9E35" stroke-width="2"/>' + T(415, 610, "LED", 16, "#4A4F55", 700))
+    if on:
+        c.append(f'<rect x="388" y="560" width="54" height="30" fill="#2BD14A" opacity="0.55" filter="url(#sMando)"/>')
+    c.append(f'<rect x="388" y="560" width="54" height="30" fill="{"#39E15A" if on else "#6E7A70"}" stroke="#1E9E35" stroke-width="2"/>' + T(415, 610, "LED", 16, "#4A4F55", 700))
+    if on:
+        c.append('<rect x="66" y="430" width="56" height="34" fill="#F5C400" opacity="0.55"/>')
     c.append(R(60, 556, 90, 36, "#F28C28", 'stroke="#C4661A" stroke-width="2"') + T(105, 610, "TEST", 16, "#4A4F55", 700))
     svg, WH = svg_mm(Wp, 800, s_mm, "".join(c))
     return svg, {k: (x * s_mm, y * s_mm) for k, (x, y) in b.items()}, WH
 
 
-def temporizador(ref="KT1", escala="MIN", ancho_mm=38.0):
+def temporizador(ref="KT1", escala="MIN", ancho_mm=38.0, on=False, tiempo=0.3):
+    """tiempo: ajuste del dial en fracción de la escala (0…1; con escala de 1 min, 0.3 = 18 s).
+    on=True: POWER verde encendido y UP rojo encendido (tiempo cumplido, contactos conmutados)."""
     import math
     Wp = 490
     s_mm = ancho_mm / Wp
@@ -380,8 +425,8 @@ def temporizador(ref="KT1", escala="MIN", ancho_mm=38.0):
     _base_octal(c, b, Wp)
     c.append(f'<g filter="url(#sDura)">{R(0, 150, Wp, 480, "#E9EAEA", 'stroke="#9EA3A6" stroke-width="3"')}</g>')
     c.append(R(10, 160, Wp - 20, 460, "#F4F5F4"))
-    c.append(T(70, 196, "POWER", 22, "#3B3F46", 600) + f'<circle cx="70" cy="226" r="11" fill="#5D6062"/>')
-    c.append(T(422, 196, "UP", 22, "#3B3F46", 600) + f'<circle cx="440" cy="226" r="11" fill="#5D6062"/>')
+    c.append(T(70, 196, "POWER", 22, "#3B3F46", 600) + f'<circle cx="70" cy="226" r="11" fill="{"#39E15A" if on else "#5D6062"}"/>')
+    c.append(T(422, 196, "UP", 22, "#3B3F46", 600) + f'<circle cx="440" cy="226" r="11" fill="{"#FF3B30" if on else "#5D6062"}"/>')
     c.append(PL(Wp / 2, 198, ref, s_mm))
     cx, cy = 232, 405
     c.append(f'<g filter="url(#sDura)"><circle cx="{cx}" cy="{cy}" r="172" fill="#C9CBCC" stroke="#8E9295" stroke-width="3"/></g>')
@@ -394,7 +439,7 @@ def temporizador(ref="KT1", escala="MIN", ancho_mm=38.0):
         ang = math.radians(225 - 270 * k / 5)
         c.append(T(cx + 112 * math.cos(ang), cy - 112 * math.sin(ang), "0" if k == 0 else f".{k}", 20, "#FFFFFF", 600))
     c.append(f'<circle cx="{cx}" cy="{cy}" r="70" fill="#D8DADB" stroke="#A9ADB0" stroke-width="3"/><circle cx="{cx}" cy="{cy}" r="42" fill="#BFC2C4"/>')
-    ang = math.radians(225 - 270 * 0.3)
+    ang = math.radians(225 - 270 * tiempo)
     c.append(f'<line x1="{cx + 60 * math.cos(ang):.1f}" y1="{cy - 60 * math.sin(ang):.1f}" x2="{cx + 140 * math.cos(ang):.1f}" y2="{cy - 140 * math.sin(ang):.1f}" stroke="#E11D2E" stroke-width="7"/>')
     c.append(R(cx - 36, 538, 72, 30, "#E6E7E8", 'stroke="#8E9295" stroke-width="2"') + T(cx, 553, escala, 18, "#2D2D2F", 700))
     c.append(T(430, 545, "MODE", 22, "#3B3F46", 600) + f'<circle cx="60" cy="568" r="20" fill="#2B2B2D"/>' + R(52, 566, 16, 4, "#777"))
@@ -451,18 +496,20 @@ def bloque(n1="3", n2="4", nc=False, piloto=False, alto_mm=30.0):
     leva semicircular, pestaña gris de enganche con su punto y tornillo de fijación a la izquierda. Cuerpo gris con sombra."""
     tipo = "LED" if piloto else ("NC" if nc else "NO")
     c = ['<defs><linearGradient id="gOpGris" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#B7BCC1"/><stop offset="0.5" stop-color="#9097A0"/><stop offset="1" stop-color="#6E757E"/></linearGradient></defs>']
+    c.append('<defs><linearGradient id="gBisel" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3B3D41"/><stop offset="0.5" stop-color="#1F2023"/><stop offset="1" stop-color="#0D0E0F"/></linearGradient></defs>')
+    c.append(f'<g filter="url(#sMando)">{R(167, 425, 460, 460, "url(#gBisel)")}</g>' + R(167, 425, 460, 5, "#5A5D63") + R(167, 880, 460, 5, "#050506"))
     _bloque_lateral(c, n1, n2, tipo)
-    Wp, Hp = 375, 430
-    s_mm = alto_mm / Hp
-    svg, WH = svg_mm(Wp, Hp, s_mm, '<g transform="translate(-200,-440)">' + "".join(c) + "</g>")
-    return svg, {n1: ((340 - 200) * s_mm, (528 - 440) * s_mm), n2: ((340 - 200) * s_mm, (785 - 440) * s_mm)}, WH
+    Wp, Hp = 470, 470
+    s_mm = alto_mm / 430
+    svg, WH = svg_mm(Wp, Hp, s_mm, '<g transform="translate(-162,-420)">' + "".join(c) + "</g>")
+    return svg, {n1: ((340 - 162) * s_mm, (528 - 420) * s_mm), n2: ((340 - 162) * s_mm, (785 - 420) * s_mm)}, WH
 
 
 def _bisel_puerta(c, Wp=300):
     """Bisel negro de 30 mm con luz arriba-izquierda y sombra proyectada marcada."""
-    c.append('<defs><linearGradient id="gBisel" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#B7BCC1"/><stop offset="0.5" stop-color="#9097A0"/><stop offset="1" stop-color="#6E757E"/></linearGradient>'
+    c.append('<defs><linearGradient id="gBisel" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3B3D41"/><stop offset="0.5" stop-color="#1F2023"/><stop offset="1" stop-color="#0D0E0F"/></linearGradient>'
              '<radialGradient id="gAro" cx="0.35" cy="0.3" r="0.85"><stop offset="0" stop-color="#FFFFFF"/><stop offset="0.55" stop-color="#D3D7DA"/><stop offset="0.85" stop-color="#9EA4AA"/><stop offset="1" stop-color="#7C838A"/></radialGradient></defs>')
-    c.append(f'<g filter="url(#sMando)">{R(0, 0, Wp, Wp, "url(#gBisel)")}</g>' + R(0, 0, Wp, 5, "#D5D9DD") + R(0, 0, 5, Wp, "#C9CED3") + R(0, Wp - 6, Wp, 6, "#5A6068") + R(Wp - 6, 0, 6, Wp, "#626870"))
+    c.append(f'<g filter="url(#sMando)">{R(0, 0, Wp, Wp, "url(#gBisel)")}</g>' + R(0, 0, Wp, 5, "#5A5D63") + R(0, 0, 5, Wp, "#4A4D52") + R(0, Wp - 6, Wp, 6, "#050506") + R(Wp - 6, 0, 6, Wp, "#08090A"))
 
 
 def _cabeza(c, col, cx=150, cy=150, r=98):
@@ -473,69 +520,92 @@ def _cabeza(c, col, cx=150, cy=150, r=98):
     c.append(f'<path d="M{cx - r * 0.62:.1f},{cy - r * 0.45:.1f} A{r * 0.8:.1f},{r * 0.8:.1f} 0 0 1 {cx + r * 0.45:.1f},{cy - r * 0.66:.1f}" stroke="#FFFFFF" stroke-opacity="0.45" stroke-width="{r * 0.1:.1f}" fill="none" stroke-linecap="round"/>')
 
 
+def _portaetiqueta(ref, funcion, Wp=300, s_mm=0.1):
+    """Portaetiquetas negro sobre el operador (como la referencia 'INVERTER ON'): marco de plástico negro con sombra
+    y el espacio AMARILLO con la designación y la función (p. ej. -S1 / ARRANQUE)."""
+    return ('<defs><linearGradient id="gBiselE" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3B3D41"/><stop offset="0.5" stop-color="#1F2023"/><stop offset="1" stop-color="#0D0E0F"/></linearGradient></defs>'
+            f'<g filter="url(#sMando)">{R(10, 0, Wp - 20, 150, "url(#gBiselE)")}</g>' + R(10, 0, Wp - 20, 4, "#5A5D63")
+            + f'<g filter="url(#sTorn)">{R(28, 16, Wp - 56, 118, "#F5C400")}</g>' + R(28, 16, Wp - 56, 5, "#FFE27A")
+            + T(Wp / 2, 52, f"-{ref}", 40, "#111111", 800) + T(Wp / 2, 104, funcion.upper(), 30 if len(funcion) < 11 else 24, "#111111", 800))
+
+
+def _operador_svg(cuerpo_frente, ref, funcion, s_mm, Wp=300, alto_frente=300):
+    """Arma portaetiquetas + frente (dibujado en 0…Wp) y devuelve el svg."""
+    todo = _portaetiqueta(ref, funcion, Wp, s_mm) + f'<g transform="translate(0,165)">{cuerpo_frente}</g>'
+    svg, WH = svg_mm(Wp, 165 + alto_frente, s_mm, todo)
+    return svg, {}, WH
+
+
 COLORES = {"verde": ("#3FAE3A", "#1F6E1C", "#8BE07F"), "rojo": ("#D7262C", "#8E1418", "#FF8A80"), "negro": ("#2B2C2E", "#0B0B0C", "#6A6C70"),
            "amarillo": ("#F2C230", "#A97F0C", "#FFE58A"), "azul": ("#1F67C4", "#0F3F80", "#7FB0F0"), "blanco": ("#F4F4F2", "#B9BBBB", "#FFFFFF")}
 
 
-def pulsador(color="verde", simbolo="I", ref="S1", ancho_mm=30.0):
-    """Frente 2D del pulsador rasante de 22 mm. I = marcha, O = paro (IEC 60417)."""
+def pulsador(color="verde", simbolo="I", ref="S1", ancho_mm=30.0, presionado=False, funcion=None):
+    """Frente 2D del pulsador rasante de 22 mm, en caja negra con portaetiquetas amarillo. I = marcha, O = paro (IEC 60417).
+    presionado=True: la cabeza se hunde (más pequeña, más oscura, casi sin sombra)."""
     Wp = 300
     s_mm = ancho_mm / Wp
+    funcion = funcion or ("ARRANQUE" if simbolo == "I" else "PARO")
     c = []
     _bisel_puerta(c)
     c.append(f'<g filter="url(#sDura)"><circle cx="150" cy="150" r="128" fill="url(#gAro)"/></g>')
-    c.append(f'<circle cx="150" cy="150" r="106" fill="#5E646A"/>')
-    _cabeza(c, COLORES[color])
+    c.append(f'<circle cx="150" cy="150" r="106" fill="#3A3D42"/>')
+    col = COLORES[color]
+    if presionado:
+        col = (col[1], col[1], col[0])
+        c.append(f'<circle cx="150" cy="150" r="104" fill="#111214"/>')
+        _cabeza(c, col, r=90)
+    else:
+        _cabeza(c, col)
     if simbolo == "I":
         c.append(R(143, 112, 14, 76, "#FFFFFF", 'opacity="0.85"'))
     elif simbolo == "O":
         c.append(f'<circle cx="150" cy="150" r="36" fill="none" stroke="#FFFFFF" stroke-width="12" opacity="0.85"/>')
-    c.append(PL(150, 335, ref, s_mm))
-    svg, WH = svg_mm(Wp, 355, s_mm, "".join(c))
-    return svg, {}, WH
+    return _operador_svg("".join(c), ref, funcion, s_mm)
 
 
-def emergencia(ref="S3", ancho_mm=40.0):
-    """Paro de emergencia: placa amarilla con leyenda y hongo rojo de 40 mm con volumen y sombra proyectada sobre la placa."""
+def emergencia(ref="S3", ancho_mm=40.0, presionado=False):
+    """Paro de emergencia: placa amarilla con leyenda y hongo rojo de 40 mm. presionado=True: hongo enclavado abajo
+    (sombra corta, más oscuro) hasta desbloquear girando. Portaetiquetas negro con la designación arriba."""
     Wp = 400
     s_mm = ancho_mm / Wp
     c = ['<defs><radialGradient id="gPlaca" cx="0.4" cy="0.35" r="0.75"><stop offset="0" stop-color="#FFE27A"/><stop offset="0.7" stop-color="#F5C518"/><stop offset="1" stop-color="#C99A12"/></radialGradient>'
          '<radialGradient id="gHongo" cx="0.36" cy="0.3" r="0.85"><stop offset="0" stop-color="#FF8A80"/><stop offset="0.45" stop-color="#E02A2F"/><stop offset="0.85" stop-color="#A3161B"/><stop offset="1" stop-color="#6E0D10"/></radialGradient>'
+         '<radialGradient id="gHongoP" cx="0.4" cy="0.35" r="0.85"><stop offset="0" stop-color="#D9474C"/><stop offset="0.6" stop-color="#A3161B"/><stop offset="1" stop-color="#5E0B0E"/></radialGradient>'
          '<filter id="sHongo" x="-30%" y="-30%" width="170%" height="180%"><feGaussianBlur in="SourceAlpha" stdDeviation="9"/><feOffset dx="10" dy="18"/><feComponentTransfer><feFuncA type="linear" slope="0.6"/></feComponentTransfer><feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge></filter>'
          '<path id="arcoEm" d="M58,200 A142,142 0 0 1 342,200"/></defs>']
     c.append(f'<g filter="url(#sCuerpo)"><circle cx="200" cy="200" r="196" fill="url(#gPlaca)"/></g>')
     c.append(f'<text font-family="{F}" font-size="30" font-weight="800" fill="#1B1F24" letter-spacing="3"><textPath href="#arcoEm" startOffset="50%" text-anchor="middle">EMERGENCIA</textPath></text>')
     c.append(f'<circle cx="200" cy="200" r="92" fill="#3A3B3E"/>')
-    c.append(f'<g filter="url(#sHongo)"><circle cx="200" cy="200" r="122" fill="url(#gHongo)"/></g>')
+    if presionado:
+        c.append(f'<g filter="url(#sTorn)"><circle cx="200" cy="200" r="112" fill="url(#gHongoP)"/></g>')
+    else:
+        c.append(f'<g filter="url(#sHongo)"><circle cx="200" cy="200" r="122" fill="url(#gHongo)"/></g>')
+        c.append(f'<path d="M130,140 A85,85 0 0 1 230,112" stroke="#FFFFFF" stroke-opacity="0.45" stroke-width="12" fill="none" stroke-linecap="round"/>')
     c.append(f'<circle cx="200" cy="200" r="104" fill="none" stroke="#7E1014" stroke-opacity="0.35" stroke-width="3"/>')
-    c.append(f'<path d="M130,140 A85,85 0 0 1 230,112" stroke="#FFFFFF" stroke-opacity="0.45" stroke-width="12" fill="none" stroke-linecap="round"/>')
     # flecha de desbloqueo por giro: arco y punta tangente al final del arco
     c.append('<path d="M160,226 A48,48 0 1 1 242.2,222.7" stroke="#FFFFFF" stroke-width="8" fill="none" opacity="0.9"/>'
              '<polygon points="228.9,242.7 230.8,212.7 255.8,229.3" fill="#FFFFFF" opacity="0.9"/>')
-    c.append(PL(200, 428, ref, s_mm))
-    svg, WH = svg_mm(Wp, 448, s_mm, "".join(c))
-    return svg, {}, WH
+    return _operador_svg("".join(c), ref, "EMERGENCIA", s_mm, Wp=400, alto_frente=410)
 
 
-def selector(ref="S2", pos=0, ancho_mm=30.0):
+def selector(ref="S2", pos=0, ancho_mm=30.0, funcion="MAN - AUT"):
     """Selector de 2 posiciones (referencia #8): perilla negra con maneta; 0 a la izquierda, 1 a la derecha."""
     Wp = 300
     s_mm = ancho_mm / Wp
     c = []
     _bisel_puerta(c)
-    c.append(T(55, 40, "0", 30, "#1B1F24", 800) + T(245, 40, "1", 30, "#1B1F24", 800))
+    c.append(T(55, 40, "0", 30, "#FFFFFF", 800) + T(245, 40, "1", 30, "#FFFFFF", 800))
     ang = -45 if pos == 0 else 45
     c.append(f'<g filter="url(#sDura)"><circle cx="150" cy="160" r="118" fill="url(#gAro)"/></g>')
     c.append(f'<circle cx="150" cy="160" r="104" fill="url(#rMando)"/><circle cx="150" cy="160" r="78" fill="#232425" opacity="0.6"/>')
     c.append(f'<g transform="rotate({ang} 150 160)"><g filter="url(#sMando)"><rect x="118" y="44" width="64" height="232" rx="10" fill="#1A1B1C"/></g>'
              f'<rect x="122" y="50" width="8" height="220" fill="#5E6064"/><rect x="172" y="50" width="4" height="220" fill="#0A0A0B"/>'
              f'<rect x="141" y="56" width="18" height="100" rx="9" fill="#F4F4F2"/></g>')
-    c.append(PL(150, 335, ref, s_mm))
-    svg, WH = svg_mm(Wp, 355, s_mm, "".join(c))
-    return svg, {}, WH
+    return _operador_svg("".join(c), ref, funcion, s_mm)
 
 
-def piloto(color="verde", ref="H1", encendido=False, ancho_mm=30.0):
+def piloto(color="verde", ref="H1", encendido=False, ancho_mm=30.0, funcion="M1 ON"):
     """Piloto de 22 mm: apagado = difusor de color tenue; encendido = color pleno con brillo."""
     Wp = 300
     s_mm = ancho_mm / Wp
@@ -546,16 +616,14 @@ def piloto(color="verde", ref="H1", encendido=False, ancho_mm=30.0):
              f'<stop offset="0.8" stop-color="{col[0]}" stop-opacity="0.75"/><stop offset="1" stop-color="{col[0]}" stop-opacity="0.2"/></radialGradient>'
              f'<filter id="brillo_{gid}" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="10"/></filter></defs>']
     else:
-        c = [f'<defs><radialGradient id="{gid}" cx="0.4" cy="0.35" r="0.75"><stop offset="0" stop-color="#FFFFFF"/><stop offset="0.6" stop-color="{col[1]}"/><stop offset="1" stop-color="#9FB59A"/></radialGradient></defs>']
+        c = [f'<defs><radialGradient id="{gid}" cx="0.4" cy="0.35" r="0.75"><stop offset="0" stop-color="#FFFFFF"/><stop offset="0.6" stop-color="{col[1]}"/><stop offset="1" stop-color="#8E9A8C"/></radialGradient></defs>']
     _bisel_puerta(c)
     c.append(f'<g filter="url(#sDura)"><circle cx="150" cy="150" r="128" fill="url(#gAro)"/></g>')
     if encendido:
         c.append(f'<circle cx="150" cy="150" r="110" fill="{col[0]}" opacity="0.55" filter="url(#brillo_{gid})"/>')
     c.append(f'<circle cx="150" cy="150" r="104" fill="url(#{gid})"/>')
     c.append(f'<path d="M85,105 A80,80 0 0 1 180,72" stroke="#FFFFFF" stroke-opacity="0.6" stroke-width="10" fill="none" stroke-linecap="round"/>')
-    c.append(PL(75, 335, ref, s_mm) + T(150, 335, 'encendido' if encendido else 'apagado', 26, "#1B1F24", 700, "start"))
-    svg, WH = svg_mm(Wp, 355, s_mm, "".join(c))
-    return svg, {}, WH
+    return _operador_svg("".join(c), ref, funcion, s_mm)
 
 
 # ============================================================ SENSORES M18 (referencia #12, vista lateral)
@@ -592,9 +660,9 @@ def sensor(tipo="inductivo", ref="B1", salida="PNP · NO", largo_mm=78.0):
     if tipo == "optico":
         c.append(R(766, 168, 8, 64, "#FF8A80") + R(766, 168, 8, 10, "#FFFFFF", 'opacity="0.7"'))
     c.append(R(560, 132, 3, 3, "none"))
-    c.append(R(330, 36, 230, 54, "#3A3F47", 'rx="8"') + T(445, 63, salida, 28, "#FFFFFF", 700))
-    c.append(f'<circle cx="610" cy="63" r="12" fill="#2BD14A"/>' + T(630, 63, "LED", 18, "#3A3F47", 700, "start"))
-    c.append(PL(330, 300, ref, s_mm) + T(410, 300, "M18 · 10–30 VDC", 24, "#1B1F24", 700, "start"))
+    # datos técnicos impresos en la base (cuerpo trasero, junto a la salida del cable) y etiqueta sobre el prensaestopa
+    c.append(R(372, 176, 226, 48, "#2A2D31", 'opacity="0.88"') + T(485, 190, f"{salida} · M18", 17, "#FFFFFF", 800) + T(485, 211, "10–30 VDC · 3 hilos", 15, "#FFFFFF", 700))
+    c.append(PL(243, 120, ref, s_mm))
     svg, WH = svg_mm(Wp, Hp, s_mm, "".join(c))
     return svg, {k: (x * s_mm, y * s_mm) for k, (x, y) in b.items()}, WH
 
@@ -709,7 +777,7 @@ def motor(ref="M1", ancho_mm=300.0, placa="nema"):
         else:
             c.append(T(448, y, f[0], 12.5, "#1B1F24", 700, "start"))
         c.append(R(442, y + 10, 242, 1, "#9AA0A6"))
-    c.append(PL(920, 200, ref, s_mm, "end"))
+    c.append(PL(522, 262, ref, s_mm))
     svg, WH = svg_mm(Wp, Hp, s_mm, "".join(c))
     return svg, {}, WH
 
@@ -813,10 +881,10 @@ def bornera(nombres=("L1", "L2", "L3", "N", "PE"), tipos=None, ref="X0", paso_mm
         c.append(f'<circle cx="{x0 + P / 2}" cy="200" r="10" fill="#1B1F24"/>')
     # separadores (más altos que los bornes) y etiqueta del paquete en el separador de inicio
     for xs in (0, S + P * n):
-        c.append(f'<g filter="url(#sDura)">{R(xs, -30, S, Hp + 60, "url(#bSep)")}</g>' + R(xs, -30, S, 4, "#B5BAC0"))
+        c.append(f'<g filter="url(#sDura)">{R(xs, 80, S, Hp - 160, "url(#bSep)")}</g>' + R(xs, 80, S, 4, "#B5BAC0"))
     c.append(PL(S / 2, Hp / 2, ref, s_mm, rot=-90))
-    svg, WH = svg_mm(Wp, Hp + 60, s_mm, f'<g transform="translate(0,30)">{"".join(c)}</g>')
-    return svg, {k: (x * s_mm, (y + 30) * s_mm) for k, (x, y) in b.items()}, WH
+    svg, WH = svg_mm(Wp, Hp, s_mm, "".join(c))
+    return svg, {k: (x * s_mm, y * s_mm) for k, (x, y) in b.items()}, WH
 
 
 # ============================================================ LOGO! 8 12/24RCE + LOGO!Power 24 V 1,3 A (referencia del usuario, se conserva la marca)
@@ -842,11 +910,10 @@ def logo_power(ref="T1", alto_mm=90.0):
         c.append(T(x, 14, n[0], 16, "#E3E6EA", 700) + _torn_logo(x, 52, 13))
         b[n] = (x, 52)
     c.append(T(51, 92, "INPUT", 10.5, "#E3E6EA", 700) + T(51, 106, "AC 100-240V", 10, "#E3E6EA", 600) + T(176, 92, "OUTPUT", 10.5, "#E3E6EA", 700) + T(176, 106, "DC 24V/1.3A", 10, "#E3E6EA", 600))
-    c.append(R(112, 118, 128, 26, "none", 'stroke="#C9CDD2" stroke-width="2"'))
+    c.append(PL(176, 128, ref, s_mm))
     c.append(f'<g filter="url(#sTorn)">{R(12, 175, 116, 36, "#F2F3F4")}</g>' + T(70, 193, "SIEMENS", 21, "#3B6E7A", 800))
     c.append(T(250, 190, "LOGO!", 32, "#F2F3F4", 400, "end") + T(250, 222, "Power", 20, "#F2F3F4", 400, "end"))
     c.append(T(200, 275, "O.K.", 14, "#E3E6EA", 700, "end") + R(208, 266, 18, 18, "#2BD14A"))
-    c.append(PL(Wp / 2, 450, ref, s_mm))
     c.append(f'<g filter="url(#sTorn)"><circle cx="190" cy="600" r="22" fill="#0E0F10"/></g><circle cx="190" cy="600" r="16" fill="url(#rPerilla)"/>'
              f'<line x1="180" y1="590" x2="200" y2="610" stroke="#0A0A0B" stroke-width="5"/>' + T(150, 640, "22,2…26,4 V", 12, "#E3E6EA", 600))
     svg, WH = svg_mm(Wp, Hp, s_mm, "".join(c))
@@ -868,7 +935,7 @@ def logo8(ref="A1", alto_mm=90.0):
         c.append(T(x, 16, n, 14, "#E3E6EA", 700) + _torn_logo(x, 54, 16))
         b[n] = (x, 54)
     c.append(T(14, 100, "I1, I2 = AI3, AI4 (0..10V)", 12, "#E3E6EA", 600, "start") + T(14, 120, "I7, I8 = AI1, AI2 (0..10V)", 12, "#E3E6EA", 600, "start"))
-    c.append(T(515, 100, "DC 12/24V INPUT 8xDC", 11, "#E3E6EA", 600, "end") + R(380, 112, 135, 30, "none", 'stroke="#C9CDD2" stroke-width="2"'))
+    c.append(T(515, 100, "DC 12/24V INPUT 8xDC", 11, "#E3E6EA", 600, "end") + PL(447, 128, ref, s_mm))
     # frente: pantalla y teclado
     c.append(f'<g filter="url(#sDura)">{R(5, 172, 310, 330, "#151618")}</g>')
     c.append(R(14, 184, 128, 34, "#3E8C95") + T(78, 201, "SIEMENS", 21, "#F2F3F4", 800) + T(304, 201, "LOGO!", 34, "#F2F3F4", 400, "end"))
@@ -879,7 +946,6 @@ def logo8(ref="A1", alto_mm=90.0):
         c.append(f'<g filter="url(#sTorn)">{R(x - 25, y - 25, 50, 50, "#D7DEE4")}</g>' + T(x, y, t, 14 if len(t) > 1 else 18, "#7A8792", 800))
     c.append(f'<g filter="url(#sTorn)">{R(445, 425, 50, 50, "#3E9E4A")}</g>' + T(470, 450, "OK", 15, "#FFFFFF", 800))
     c.append(T(420, 495, "6ED1052-1MD08-0BA1", 12, "#E3E6EA", 600))
-    c.append(PL(160, 525, ref, s_mm))
     c.append(T(140, 562, "OUTPUT 4xRELAY/10A", 13, "#E3E6EA", 600, "start"))
     for q in range(4):
         x1 = 60 + q * 122

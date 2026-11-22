@@ -42,6 +42,19 @@ Este archivo es la "memoria" del proyecto: cada corrección del usuario se agreg
 - Pinza amperimétrica calcada del original del usuario (sin marca).
 - Pulsadores, selector, emergencia y pilotos: se QUEDA el frente 2D + el bloque trasero por separado (como v5). Lo único que cambió (captura del usuario, 21-nov) es el DIBUJO DEL BLOQUE DE CONTACTO: tornillos EN CRUZ (iguales a los auxiliares del contactor) n1 arriba / n2 abajo con número, ventana NC roja / NO verde / LED blanca, leva semicircular, pestaña con punto y tornillo de fijación a la izquierda; cuerpo gris. (`svgref.bloque`). NO usar la lámina operador-de-lado.
 
+## Correcciones de equipos (v8, 22-nov)
+- Cada equipo con DOS estados, sin borrar el apagado: breakers `on=` (ventana verde encendida + manija arriba "I-ON"; apagado = ventana oscura), guardamotor `on=`, contactor `on=`, relé térmico `disparado=` (bandera TRIP), relé 8p y temporizador `on=` (LED), selector pos 0/1, pulsadores/emergencia `presionado=`, piloto `encendido=`.
+- Guardamotor: frente más corto, mando más arriba (boceto del usuario, WEG MPW40).
+- Relé térmico estilo CHNT NR2: escala de amperios IMPRESA en el dial (números correctos del rango), RESET azul con H (manual) y A (automático).
+- Temporizador: en el video se pone el tiempo correcto que se use (`tiempo=`).
+- Operadores 22 mm: caja de plástico NEGRO con sombra + portaetiquetas negro ARRIBA con espacio AMARILLO (designación y función, p. ej. -S1 ARRANQUE). Reemplaza la etiqueta abajo de v5. Bloque trasero: cuadrado NEGRO con el contacto GRIS (tornillos en cruz).
+- Sensores: etiqueta en la base junto a la salida del cable; datos técnicos impresos en la base.
+- Motor: etiqueta sobre la caja de conexiones. Borneras: topes más bajos que los bornes. LOGO!/LOGO!Power: etiqueta en el rectángulo de arriba.
+
+## Diagramas (regla 22-nov)
+- Los diagramas de mando y potencia los ENTREGA el usuario. Se recrean literal (mismos símbolos); solo puede cambiar el color de los textos; mando con trazo un poco más fino que potencia.
+- En cada video nuevo, ANTES de empezar, se le PIDEN los diagramas al usuario.
+
 ## Designaciones (pedido del usuario)
 -F disyuntor / relé térmico · -Q disyuntor general · -QM guardamotor · -KM contactor · -KA relé · -KT temporizador · -S pulsador, selector, flotador · -H piloto · -B sensor · -M motor · -X borneras · -A PLC · -T fuente/transformador.
 Borneras por paquetes: -X0 alimentación · -X1 motores · -X2 puerta/mando · -X3 campo (sensores).
