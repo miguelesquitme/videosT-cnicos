@@ -60,6 +60,12 @@ Potencia negro · mando AC rojo · mando DC azul · neutro azul claro · PE verd
 - Zoom siempre que se conecte un borne o se ajuste algo. Medición con multímetro como en las referencias.
 - Por cada video horizontal: 3 shorts verticales de la misma calidad, relacionados, que lleven al horizontal.
 
+## H01 Arranque directo (decisiones 21-nov)
+- Protección: breaker -Q1 3P 70 A + contactor -KM1 32 A AC-3 + relé térmico -F2 23–32 A ajustado a 24,3 A. Motor IEC 6 bornes en Δ. Voz clonada ElevenLabs.
+- Referencia de estructura: `referencias/H01_referencia_arranque_directo.jpg` (equipos físicos cableados a la izquierda, diagramas IEC con recuadros de color a la derecha). TODO equipo sale de NUESTRA biblioteca (`svgref.py`), nunca de la imagen de referencia.
+- Mando 240 VAC L1-L2 con -F1 2P 6 A; 95-96 de -F2 en serie antes del paro -S1 (NC 11-12); marcha -S2 (NA 13-14) con retención -KM1 13-14. Sin pilotos.
+- Guion: `guiones/H01_arranque_directo_trituradora.md`.
+
 ## Videos VERTICALES
 Fondo negro con cuadrícula (el de R2). 1:30 a 3:30. Un solo concepto por reel. Título "Así funciona…". Cierre: "Si te sirvió, suscríbete y sígueme."
 
