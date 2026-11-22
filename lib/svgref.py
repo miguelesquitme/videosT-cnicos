@@ -446,26 +446,16 @@ def diagrama_octal(tipo="rele", ancho_mm=40.0):
 
 # ============================================================ OPERADORES DE PUERTA 22 mm (referencias #8 a #11)
 def bloque(n1="3", n2="4", nc=False, piloto=False, alto_mm=30.0):
-    """Vista trasera del bloque de contacto (o portalámparas): punto de conexión real. 300 × 370 px."""
-    Wp, Hp = 300, 370
+    """Bloque de contacto (o portalámparas) visto por detrás, dibujado como la captura del usuario:
+    tornillos de conexión arriba (n1) y abajo (n2) con su número, ventana de color (NC roja / NO verde / LED blanca),
+    leva semicircular, pestaña gris de enganche con su punto y tornillo de fijación a la izquierda. Cuerpo gris con sombra."""
+    tipo = "LED" if piloto else ("NC" if nc else "NO")
+    c = ['<defs><linearGradient id="gOpGris" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#B7BCC1"/><stop offset="0.5" stop-color="#9097A0"/><stop offset="1" stop-color="#6E757E"/></linearGradient></defs>']
+    _bloque_lateral(c, n1, n2, tipo)
+    Wp, Hp = 375, 430
     s_mm = alto_mm / Hp
-    b, c = {}, []
-    c.append(f'<g filter="url(#sMando)">{R(0, 0, Wp, Hp, "url(#gBloque)")}</g>' + R(0, 0, Wp, 5, "#D5D9DD") + R(0, 0, 5, Hp, "#C9CED3") + R(0, Hp - 6, Wp, 6, "#5A6068"))
-    c.append('<defs><linearGradient id="gBloque" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#B7BCC1"/><stop offset="0.5" stop-color="#9097A0"/><stop offset="1" stop-color="#6E757E"/></linearGradient></defs>')
-    c.append(R(0, 160, 30, 50, "#8F9396") + f'<circle cx="34" cy="185" r="22" fill="#B4B8BB" stroke="#6D7174" stroke-width="2"/>'
-             + R(22, 182, 24, 6, "#6D7174") + R(31, 173, 6, 24, "#6D7174"))
-    for y, n in ((72, n1), (290, n2)):
-        c.append(f'<g filter="url(#sTorn)"><circle cx="100" cy="{y}" r="26" fill="url(#rPerilla)"/></g>' + T(150, y, n, 26, "#1B1F24", 800, rot=90))
-        b[n] = (100, y)
-    if piloto:
-        c.append(R(78, 150, 48, 70, "#F2F2F0") + T(150, 185, "LED", 22, "#1B1F24", 800, rot=90))
-    else:
-        col = "#C8202B" if nc else "#1F7A3A"
-        c.append(R(78, 150, 48, 70, col) + T(150, 185, "NC" if nc else "NO", 24, "#1B1F24", 800, rot=90))
-        c.append(f'<path d="M180,105 A80,80 0 0 1 180,265" fill="{col}" stroke="#2A2D31" stroke-width="14"/>')
-    c.append(f'<g filter="url(#sTorn)">{R(258, 115, 38, 130, "#5A6068")}</g>' + f'<circle cx="277" cy="180" r="8" fill="#0E0F10"/>')
-    svg, WH = svg_mm(Wp, Hp, s_mm, "".join(c))
-    return svg, {k: (x * s_mm, y * s_mm) for k, (x, y) in b.items()}, WH
+    svg, WH = svg_mm(Wp, Hp, s_mm, '<g transform="translate(-200,-440)">' + "".join(c) + "</g>")
+    return svg, {n1: ((340 - 200) * s_mm, (528 - 440) * s_mm), n2: ((340 - 200) * s_mm, (785 - 440) * s_mm)}, WH
 
 
 def _bisel_puerta(c, Wp=300):

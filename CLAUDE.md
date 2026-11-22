@@ -40,7 +40,7 @@ Este archivo es la "memoria" del proyecto: cada corrección del usuario se agreg
 - Borneras: sin bordes ni líneas dobles, con sombras, tornillos como el S7-1200, paquete con tierra (verde/amarillo), neutro (azul) y grises, separadores al inicio y final con la etiqueta.
 - LOGO! y LOGO!Power: bornes iguales a los del S7-1200 (regleta negra + tornillo de ranura); ningún tornillo puede tocar a otro en ningún equipo.
 - Pinza amperimétrica calcada del original del usuario (sin marca).
-- Pulsadores, selector, emergencia y pilotos (captura del usuario, 21-nov): lámina con el BLOQUE DE CONTACTO a la izquierda (tornillos n1 arriba / n2 abajo, ventana NC roja / NO verde / LED blanca, leva, pestaña y tornillo de fijación), FLECHA azul de acople y el OPERADOR visto de LADO (cuerpo, aro moleteado y cabeza). Cuerpos grises para contraste. `svgref.operador_y_contacto`.
+- Pulsadores, selector, emergencia y pilotos: se QUEDA el frente 2D + el bloque trasero por separado (como v5). Lo único que cambió (captura del usuario, 21-nov) es el DIBUJO DEL BLOQUE DE CONTACTO: tornillos n1 arriba / n2 abajo con número, ventana NC roja / NO verde / LED blanca, leva semicircular, pestaña con punto y tornillo de fijación a la izquierda; cuerpo gris. (`svgref.bloque`). NO usar la lámina operador-de-lado.
 
 ## Designaciones (pedido del usuario)
 -F disyuntor / relé térmico · -Q disyuntor general · -QM guardamotor · -KM contactor · -KA relé · -KT temporizador · -S pulsador, selector, flotador · -H piloto · -B sensor · -M motor · -X borneras · -A PLC · -T fuente/transformador.
