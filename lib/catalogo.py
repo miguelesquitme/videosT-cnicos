@@ -123,7 +123,7 @@ ITEMS = [
          ["Se muestra al lado del motor con zoom, como en la referencia", "Tensión alta (460 V): T4-T7 · T5-T8 · T6-T9; línea a T1 T2 T3"],
          "Siempre se toma de la placa del motor.", "NEMA MG 1 · IEC 60034-8"),
     item("20_borneras", "Borneras de caballete por paquetes", "-X",
-         lambda: [G.bornera(["L1", "L2", "L3", "PE"], {"PE": "PE"}, "X0"), G.bornera(["U", "V", "W", "PE"], {"PE": "PE"}, "X1"), G.bornera(["1", "2", "3", "4", "5"], {}, "X2")],
+         lambda: [G.bornera(["L1", "L2", "L3", "N", "PE"], {"PE": "PE", "N": "N"}, "X0"), G.bornera(["U", "V", "W", "PE"], {"PE": "PE"}, "X1"), G.bornera(["1", "2", "3", "4", "5"], {}, "X2")],
          lambda: VGroup(S.bornera(["L1", "L2", "L3", "PE"], "X0"), S.bornera(["U", "V", "W", "PE"], "X1"), S.bornera(["1", "2", "3", "4", "5"], "X2")).arrange(DOWN, buff=0.4, aligned_edge=LEFT),
          "-X0 alimentación · -X1 motores · -X2 puerta/mando · -X3 campo (sensores)",
          ["Gris = paso · azul = neutro · verde/amarillo = PE", "Potencia 10 AWG → borne de 6 mm² · mando 14 AWG → borne de 2,5 mm²"],

@@ -14,7 +14,7 @@ Este archivo es la "memoria" del proyecto: cada corrección del usuario se agreg
 - Corrección 21-nov: en la franja de marca de los equipos genéricos va el LOGO ME. (no el texto MIGUEL ESQUIT).
 - Corrección 21-nov (catálogo v4): SÍMBOLOS IEC = solo REFERENCIA (`simsvg.py`); los diagramas definitivos los entrega el usuario. Disyuntor: el símbolo es el que viene impreso en el equipo (× en el contacto, sin cajas). Guardamotor/térmico: cajas de disparo PEGADAS entre polos. Térmico: 95-96/97-98 accionados por el elemento térmico (sin símbolo de reset). Piloto: símbolo sin color. LOGO! y fuente: símbolos separados.
 - Equipos: MÁS sombra en todo (filtros sDura/sCuerpo/sMando); bornes y borneras SIN contorno, se separan por sombra; marcadores de borneras en blanco (se rotulan al conectar). Pines del térmico de COBRE. Dial del guardamotor con aro oscuro (no blanco sobre blanco) y maneta negra con lengüeta clara. Piloto: apagado tenue / encendido verde pleno. Relé y temporizador llevan a la par el diagrama interno del zócalo. Sensor óptico en 3 modos con el haz recto sobre el eje. Cable del flotador con holgura. Motor visto de lado con placa PLATEADA de datos reales en el costado (no textos abajo). Caja de bornes estilo real (placa verde, espárragos, puentes de acero). Pinza/multímetro estilo Fluke sin marca + puntas de prueba.
-- Corrección 21-nov: en los EQUIPOS FÍSICOS la designación (-F1, -QM1, -KM1…) va siempre con guion, en placa del color del logo ME. (#0094B0) con letras blancas (`svgref.PL`). En los SÍMBOLOS la designación queda en texto negro con guion.
+- Corrección 21-nov (v5): ETIQUETA de designación en los EQUIPOS FÍSICOS = placa AMARILLA cuadrada, sin borde, letras negras, con guion (-F1, -QM1…), y del MISMO tamaño real en todos (13 × 4,8 mm, `svgref.PL` + `ETQ_MM`). En pulsadores, selector, emergencia y pilotos va AFUERA (debajo), nunca sobre el botón o la luz. En guardamotor y relé térmico va dentro del rectángulo de la carátula. En borneras va en el separador. En los SÍMBOLOS la designación queda en texto negro.
 - Pulsadores: I = marcha (verde), O = paro (rojo) según IEC 60417, aunque una referencia muestre lo contrario. CPU 1212C: 6 LED de salidas (no 8). LOGO!Power: todos los bornes arriba (L N + + − −).
 - `svgeq.py` + `render_svg.py`: los equipos se dibujan en SVG (mm reales, degradados y sombras) y se rasterizan con Chromium a PNG de alta resolución; cada equipo trae sus bornes en mm (JSON) para cablear encima en Manim. Es la herramienta principal para equipos.
 - `simbolos.py`: símbolos dibujados como en el Manual electrotécnico Telesquemario, cap. 7 (marca de función en el contacto fijo: gancho = contactor, × con tope = disyuntor, aro con tope = seccionador; mando manual ⊞; disparadores térmico (escalón) e I> en cajas por polo; pulsador "E" + círculo de función Ⓘ/Ⓞ; números de bornes girados 90° a la izquierda; bornes de campo con círculo). Potencia trazo grueso, mando trazo fino.
@@ -22,6 +22,24 @@ Este archivo es la "memoria" del proyecto: cada corrección del usuario se agreg
 - `catalogo.py` + `catalogo_docx.js`: generan el catálogo en Word (equipo | símbolo | datos) para que el usuario lo revise.
 - Equipos genéricos (disyuntor, guardamotor, contactor, relés, operadores, sensores, flotador): SIN marca del fabricante; llevan el logo del canal. LOGO!, S7-1200 y variadores: se CONSERVA la marca y el modelo.
 - Pulsadores, selectores y pilotos: frente en 2D + vista trasera con el bloque de contacto (punto de conexión real). No se dibujan los cables conectados en los tornillos de las piezas de catálogo.
+
+## Cómo se trabaja (reglas de oro del usuario)
+- TODO lo que el usuario corrige en el catálogo se refiere a los COMPONENTES FÍSICOS, salvo que diga "símbolo".
+- La SIMBOLOGÍA IEC NO se toca (`simsvg.py` y los PNG `*_simbolo.png` quedan congelados). El usuario entrega los diagramas hechos.
+- Lo que el usuario NO menciona NO se modifica. Antes de entregar se verifica que solo cambiaron los equipos pedidos.
+- Cada corrección se anota aquí el mismo día, con el componente y el porqué.
+
+## Correcciones de equipos (v5, 21-nov)
+- Breakers: datos impresos como el ejemplo del usuario (Ue, norma, Icn, Uimp), ventana indicadora verde y "O-OFF" en cada manija.
+- Guardamotor: bloque de contactos auxiliares arriba (13-14 NO, 21-22 NC); carátula ordenada como el WEG MPW40 de referencia (CLASS 10, dial con escala sin encimarse, rectángulo de etiqueta con rango, TRIP con barra curva sin curva de disparo, I> con valor, TEST, ON con "I", mando negro con lengüeta, OFF con "O", símbolo lateral).
+- Relé térmico: sencillo como la referencia (dial azul, TEST, STOP rojo, RESET azul, 98 NO 97 · 96 NC 95 bajo los tornillos, sin dibujos de contactos).
+- Relé y temporizador: números impresos en el plástico de la base.
+- Operadores 22 mm y bloques traseros: base cuadrada GRIS con sombra (contraste). Flecha del paro de emergencia con punta tangente.
+- Motor: carcasa del mismo alto que tapa y ventilador (sin partes delgadas).
+- Caja de bornes: placa aislante GRIS, puntos de conexión de COBRE, tuercas HEXAGONALES, numeración impresa en la placa (no en marcadores).
+- Borneras: sin bordes ni líneas dobles, con sombras, tornillos como el S7-1200, paquete con tierra (verde/amarillo), neutro (azul) y grises, separadores al inicio y final con la etiqueta.
+- LOGO! y LOGO!Power: bornes iguales a los del S7-1200 (regleta negra + tornillo de ranura); ningún tornillo puede tocar a otro en ningún equipo.
+- Pinza amperimétrica calcada del original del usuario (sin marca).
 
 ## Designaciones (pedido del usuario)
 -F disyuntor / relé térmico · -Q disyuntor general · -QM guardamotor · -KM contactor · -KA relé · -KT temporizador · -S pulsador, selector, flotador · -H piloto · -B sensor · -M motor · -X borneras · -A PLC · -T fuente/transformador.
