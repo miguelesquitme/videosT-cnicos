@@ -73,17 +73,20 @@ Potencia negro · mando AC rojo · mando DC azul · neutro azul claro · PE verd
 - Zoom siempre que se conecte un borne o se ajuste algo. Medición con multímetro como en las referencias.
 - Por cada video horizontal: 3 shorts verticales de la misma calidad, relacionados, que lleven al horizontal.
 
-## H01 Arranque directo (decisiones 21-nov)
-- Protección: breaker -Q1 3P 70 A + contactor -KM1 32 A AC-3 + relé térmico -F2 23–32 A ajustado a 24,3 A. Motor IEC 6 bornes en Δ. Voz clonada ElevenLabs.
-- Referencia de estructura: `referencias/H01_referencia_arranque_directo.jpg` (equipos físicos cableados a la izquierda, diagramas IEC con recuadros de color a la derecha). TODO equipo sale de NUESTRA biblioteca (`svgref.py`), nunca de la imagen de referencia.
-- Mando 240 VAC L1-L2 con -F1 2P 6 A; 95-96 de -F2 en serie antes del paro -S1 (NC 11-12); marcha -S2 (NA 13-14) con retención -KM1 13-14. Sin pilotos.
-- Guion: `guiones/H01_arranque_directo_trituradora.md`.
+## H01 Arranque directo — v2 (decisiones 22-nov, reemplazan las del 21-nov)
+- Diagramas: los del usuario (Correcciones_V6: potencia image5, mando image6), literal. Se adaptan solo los VALORES al motor de 10 hp y -X1 pasa de U1 V1 W1 a T1 T2 T3 (motor NEMA, autorizado por el usuario).
+- Red 208Y/120 V 3~ 60 Hz · mando 120 VAC L-N (L tomada en el borne 1 de ENTRADA de -F2, mismo punto que -X0:1; decisión del usuario).
+- Motor REAL: Nidec US Motors U10P2D · 10 hp · 208-230/460 V · 26,5/23,9/12 A · 1760 rpm · F.S. 1,25 · Ef. 91,7 % · NEMA B · 215T · TEFC · Aisl. F. FP y letra de código NO publicados (no se ponen). 9 puntas; "apto para arranque de devanado parcial en baja tensión" ⇒ estrella (Y) 9 puntas: baja tensión L1-T1·T7, L2-T2·T8, L3-T3·T9, T4-T5-T6 unidos (confirmar con la placa de conexiones).
+- Cálculo NEC 2020 a 208 V: T430.250 = 30,8 A · conductor 125 % = 38,5 A → 8 AWG THHN 75 °C · breaker -F2 3P curva C 80 A (250 % = 77 A → siguiente estándar, 430.52(C)(1) Exc. 1) · relé térmico -F3 23–32 A ajustado a 26,5 A (máx 125 % = 33,1 A, 430.32(A)(1)) · contactor -KM1 38 A AC-3 (UL: 10 hp a 200/208 V; el de 32 A solo da 7,5 hp a 208 V) bobina 120 VAC 1NA+1NC · -F1 1P C2 · mando 14 AWG rojo, neutro azul claro, PE verde/amarillo.
+- Mando: -X0 L → -F1 1-2 → -F3 95-96 → -S0 PARO 11-12 → -S1 ARRANQUE 13-14 ∥ -KM1 13-14 → -KM1 A1-A2 ∥ -H1 (verde, M1 ON) → N. Desde -F1:2 → -KM1 21-22 → -H2 (rojo, M1 OFF) → N. Sin -X2 (no está en el diagrama).
+- Hilos (número IEC por potencial): 1 L→F1:1 · 2 F1:2/95/21 · 3 96-11 · 4 12-13-13 · 5 14-14-A1-X1(H1) · 6 22-X1(H2) · N.
+- Correcciones V6 del video: gancho con dato curioso o pregunta (NUNCA insinuar que otros lo hacen mal) · eje del motor girando (sin arcos) · datos de placa encerrados en rectángulos · nunca decir "menos" por el guion · lista de materiales en tabla Cantidad | Nombre | Características | Observación (tensión del sistema, riel DIN 35 mm, contactor separando mando/potencia, térmico compatible con el contactor, borneras contadas del diagrama por color + separadores por paquete, cable aproximado por ítem color/calibre, riel DIN, canaleta ranurada, gabinete con medida) · diagramas dibujados tramo por tramo (línea, símbolo, línea) explicando · equipos más pequeños, cables CURVOS, cada cable con puntera + marcador IEC entrando bajo el tornillo, marcado simultáneo en el diagrama · tablero real por etapas (gabinete, plancha, canaletas, riel, tornillos, equipos, puerta), más pequeño con el motor y las mediciones a la vista · cierre: "subiré más contenido, suscríbete, sígueme y mira mi siguiente video" (sin decir cuántos shorts ni el tema del siguiente) · sin tarjeta de shorts.
 
 ## Videos VERTICALES
 Fondo negro con cuadrícula (el de R2). 1:30 a 3:30. Un solo concepto por reel. Título "Así funciona…". Cierre: "Si te sirvió, suscríbete y sígueme."
 
 ## Caso base del canal
-Trituradora de piedrín: motor 10 hp, 230/460 V, 24,3/12,2 A, 1760 rpm, F.S. 1,25 (catálogo real), red 240 V 3~; mando 240 VAC.
+Trituradora de piedrín: motor Nidec U10P2D 10 hp, 208-230/460 V, 26,5/23,9/12 A, 1760 rpm, F.S. 1,25; red 208Y/120 V 3~; mando 120 VAC (desde H01 v2).
 
 ## Seguridad
 La clave de ElevenLabs vive solo en `~/.config/eleven/env` (ELEVEN_KEY). Nunca en el repo.

@@ -765,17 +765,22 @@ def motor(ref="M1", ancho_mm=300.0, placa="nema"):
     filas = [("HP 10", "kW 7,5", "60 Hz"), ("V 230/460", "A 24,3/12,2", ""), ("rpm 1760", "F.S. 1,25", "Cód. H"),
              ("Ef. 91,7 %", "FP 0,84", "IP55"), ("Aisl. F", "40 °C", "TEFC"), ("BAJA: T1-T6-T7 · T2-T4-T8 · T3-T5-T9", "", ""),
              ("ALTA: T4-T7 · T5-T8 · T6-T9", "", "")]
+    if placa == "nidec":   # placa real del caso base (H01 v2): solo datos publicados en el catálogo del fabricante
+        filas = [("HP 10", "60 Hz", "3~"), ("V 208-230/460", "", ""), ("A 26,5/23,9/12", "", ""), ("rpm 1760", "F.S. 1,25", "Dis. B"),
+                 ("Ef. 91,7 %", "Aisl. F", "40 °C"), ("215T", "TEFC", "U10P2D"), ("BAJA (Y): T1-T7 · T2-T8 · T3-T9 · T4-T5-T6", "", ""),
+                 ("ALTA: T4-T7 · T5-T8 · T6-T9", "", "")]
     if placa == "iec":   # misma potencia, caja IEC de 6 bornes (Δ 230 V / Y 400 V)
         filas = [("HP 10", "kW 7,5", "60 Hz"), ("V 230Δ/400Y", "A 24,3/14,0", ""), ("rpm 1760", "F.S. 1,25", "Cód. H"),
                  ("Ef. 91,7 %", "FP 0,84", "IP55"), ("Aisl. F", "40 °C", "TEFC"), ("Δ 230 V: U1-W2 · V1-U2 · W1-V2", "", ""),
                  ("Y 400 V: W2-U2-V2 unidos", "", "")]
+    paso_f = 21 if len(filas) <= 7 else 18.5
     for k, f in enumerate(filas):
-        y = 392 + k * 21
+        y = 392 + k * paso_f
         if f[1]:
             for t, x in zip(f, (448, 548, 640)):
                 c.append(T(x, y, t, 14, "#1B1F24", 700, "start"))
         else:
-            c.append(T(448, y, f[0], 12.5, "#1B1F24", 700, "start"))
+            c.append(T(448, y, f[0], 14 if len(f[0]) <= 18 else (12.5 if len(f[0]) <= 32 else 10.5), "#1B1F24", 700, "start"))
         c.append(R(442, y + 10, 242, 1, "#9AA0A6"))
     c.append(PL(522, 262, ref, s_mm))
     svg, WH = svg_mm(Wp, Hp, s_mm, "".join(c))
@@ -815,7 +820,8 @@ def caja_bornes(tipo="6", conexion="delta", ancho_mm=110.0):
     if tipo == "6":
         nombres = [("U1", "V1", "W1"), ("W2", "U2", "V2")]
     else:
-        nombres = [("T1", "T2", "T3"), ("T6", "T4", "T5"), ("T7", "T8", "T9")] if conexion == "bajo" else [("T1", "T2", "T3"), ("T4", "T5", "T6"), ("T7", "T8", "T9")]
+        nombres = {"bajo": [("T1", "T2", "T3"), ("T6", "T4", "T5"), ("T7", "T8", "T9")],
+                   "bajo_y": [("T1", "T2", "T3"), ("T7", "T8", "T9"), ("T4", "T5", "T6")]}.get(conexion, [("T1", "T2", "T3"), ("T4", "T5", "T6"), ("T7", "T8", "T9")])
     # hilos del bobinado con su marcador (entran por arriba y por abajo, como en la foto)
     for fila, y in zip(nombres, ys):
         arriba = y == ys[0] or (tipo == "9" and y != ys[-1])
@@ -832,6 +838,10 @@ def caja_bornes(tipo="6", conexion="delta", ancho_mm=110.0):
                 c.append(puente(x, ys[0], x, ys[1]))
         else:
             c.append(puente(xs[0], ys[1], xs[2], ys[1]))
+    elif conexion == "bajo_y":     # 9 puntas en estrella, tensión baja: T1-T7, T2-T8, T3-T9 y T4-T5-T6 unidos
+        for x in xs:
+            c.append(puente(x, ys[0], x, ys[1]))
+        c.append(puente(xs[0], ys[2], xs[2], ys[2]))
     else:
         for x in xs:
             c.append(puente(x, ys[0] if conexion == "bajo" else ys[1], x, ys[2]))
@@ -843,7 +853,7 @@ def caja_bornes(tipo="6", conexion="delta", ancho_mm=110.0):
     for fila, y in zip(nombres, ys):
         for x, n in zip(xs, fila):
             c.append(T(x - 56, y + 48, n, 20, "#1B1F24", 800, "end"))
-    tit = {"delta": "Conexión triángulo (Δ)", "estrella": "Conexión estrella (Y)", "bajo": "NEMA 9 puntas · tensión baja", "alto": "NEMA 9 puntas · tensión alta"}[conexion]
+    tit = {"delta": "Conexión triángulo (Δ)", "estrella": "Conexión estrella (Y)", "bajo": "NEMA 9 puntas · tensión baja", "alto": "NEMA 9 puntas · tensión alta", "bajo_y": "9 puntas en estrella · tensión baja (208-230 V)"}[conexion]
     svg, WH = svg_mm(Wp, Hp + 50, s_mm, "".join(c) + T(Wp / 2, Hp + 28, tit, 26, "#1B1F24", 800))
     return svg, {k: (x * s_mm, y * s_mm) for k, (x, y) in b.items()}, WH
 
