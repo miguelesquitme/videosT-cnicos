@@ -9,3 +9,4 @@ remotion/public/
 *.env
 __pycache__/
 media/
+manim/*.srt.json
