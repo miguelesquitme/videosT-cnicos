@@ -1,112 +1,139 @@
----
-title: "H01 · Arranque directo de un motor trifásico · Trituradora de piedrín"
-subtitle: "Guion para revisión · @miguelesquit · 21-nov-2026"
----
+# H01 v2 · Arranque directo de un motor trifásico · Trituradora de piedrín
 
-# Datos de diseño (decididos contigo)
+Motor Nidec US Motors U10P2D · 10 hp · 208-230/460 V · 26,5 A a 208 V · F.S. 1,25 · red 208Y/120 V · mando 120 VAC.
 
-| Dato | Valor | Fuente |
-|---|---|---|
-| Motor | 10 hp (7,5 kW), IEC 6 bornes, conexión **triángulo (Δ)** a 230 V | Placa del caso base |
-| Corriente de placa | 24,3 A · F.S. 1,25 · 1760 rpm | Placa |
-| Red | 240 V trifásica, 60 Hz | Caso base |
-| Corriente de tabla | 28 A | NEC T430.250 |
-| Conductor de potencia | 125 % × 28 A = 35 A → **10 AWG THHN 75 °C** | NEC 430.22 / T310.16 |
-| Breaker del motor -Q1 | 250 % × 28 A = 70 A → **3P 70 A** | NEC T430.52 (tiempo inverso) |
-| Relé térmico -F2 | máx. 125 % × 24,3 A = 30,4 A → **23–32 A ajustado a 24,3 A**, clase 10 | NEC 430.32(A)(1) |
-| Contactor -KM1 | **32 A AC-3**, bobina 240 VAC, 1 NA + 1 NC | IEC 60947-4-1 |
-| Protección del mando -F1 | **2P 6 A curva C**, conductor 14 AWG | NEC 430.72 |
-| Mando | 240 VAC entre L1 y L2 | Caso base |
+## Guion (voz)
 
-> **Referencia del usuario (21-nov):** lámina "Arranque directo de un motor trifásico" (Contec). Se usa SOLO como referencia de estructura y estilo: a la izquierda el esquema de conexión con los equipos físicos, a la derecha los diagramas IEC de potencia y mando con cada equipo resaltado en un recuadro de color. **Todos los equipos se dibujan con nuestra biblioteca.**
->
-> Adaptaciones al caso del canal: en lugar del guardamotor va **breaker -Q1 + contactor -KM1 + relé térmico -F2**; el mando es a **240 VAC entre L1 y L2** con breaker **2P -F1** (la red del caso base no tiene neutro); el contacto **95-96 del térmico** va en serie antes del paro; sin pilotos, igual que la referencia.
+**gancho** — ¿Sabías que, en el instante en que arranca, este motor de diez caballos puede pedir casi siete veces su corriente normal? Pasa de veintiséis amperios… a más de ciento setenta, durante unos segundos. Entonces, ¿cómo lo protegemos sin que el breaker se dispare cada vez que arranca?
 
-Circuito de mando: L1 → -F1 (1-2) → -F2 (95-96) → -S1 paro (11-12) → -S2 marcha (13-14) en paralelo con -KM1 (13-14) → bobina -KM1 (A1-A2) → -F1 (4-3) → L2.
+**gancho2** — En este video lo calculamos con la norma, armamos el diagrama de mando y el de potencia, lo conectamos cable por cable, lo pasamos al tablero y lo ponemos en marcha.
 
-Circuito de potencia: -X0 (L1 L2 L3 PE) → -Q1 (1-2, 3-4, 5-6) → -KM1 (1/L1-2/T1, 3/L2-4/T2, 5/L3-6/T3) → -F2 (2/T1, 4/T2, 6/T3) → -X1 (U V W PE) → -M1 (U1 V1 W1, PE a la carcasa; puentes Δ U1-W2, V1-U2, W1-V2).
+**pregunta** — Y aquí viene la pregunta que más confunde: si el motor consume veintiséis punto cinco amperios, ¿por qué el breaker es de ochenta? La respuesta: el breaker no está para cuidar al motor de una sobrecarga. Está para cortar un cortocircuito y proteger el cable. De la sobrecarga se encarga otro equipo, el relé térmico, que sí se ajusta a la corriente del motor.
 
-# Guion (voz) por sección
+**placa** — Todo empieza en la placa. Este es un motor real, de catálogo: diez caballos. Tensión: doscientos ocho a doscientos treinta, o cuatrocientos sesenta voltios. Corriente a doscientos ocho voltios: veintiséis punto cinco amperios. Y factor de servicio: uno punto veinticinco. La red de la planta es de doscientos ocho voltios, trifásica, con neutro: doscientos ocho entre fases y ciento veinte de fase a neutro.
 
-## 1. Gancho (0:00 – 0:20)
-**Pantalla:** la trituradora arranca, el motor gira, se oye el breaker y luego el motor; zoom al breaker de 70 A.
+**tabla** — Para el cable y el breaker, la norma no usa la placa: usa la tabla cuatro treinta punto doscientos cincuenta. Diez caballos, a doscientos ocho voltios: treinta punto ocho amperios.
 
-**Voz:** "Este motor de diez caballos mueve una trituradora de piedrín… y la protección que casi todos ponen aquí está mal. Hoy te enseño a escogerla con números, a armar el mando y la potencia, y a conectarlo borne por borne, hasta ponerlo en marcha."
+**cable** — El cable: ciento veinticinco por ciento de treinta punto ocho, treinta y ocho punto cinco amperios. El calibre diez no alcanza, así que usamos calibre ocho, T H H N, a setenta y cinco grados.
 
-## 2. Justificar: la pregunta técnica (0:20 – 1:00)
-**Pantalla:** pregunta en grande: "¿Si el motor consume 24,3 A, por qué el breaker es de 70 A?"
+**breaker** — El breaker: la tabla cuatro treinta punto cincuenta y dos permite hasta el doscientos cincuenta por ciento en un breaker de tiempo inverso. Eso da setenta y siete amperios, y la norma deja subir al siguiente tamaño estándar: ochenta amperios, tres polos, curva C. Así aguanta el arranque sin dispararse.
 
-**Voz:** "Si el motor consume veinticuatro amperios, ¿por qué el breaker es de setenta? ¿No se quema el motor? La respuesta es no… porque el breaker no protege al motor de la sobrecarga: protege al cable del cortocircuito. Del motor se encarga otro equipo: el relé térmico. Y entender esa diferencia es lo que separa un tablero que dura años de uno que se dispara cada vez que arranca la trituradora."
+**termico** — El relé térmico sí usa la placa. Con factor de servicio uno punto veinticinco, puede ajustarse hasta el ciento veinticinco por ciento: treinta y tres punto uno amperios. Escogemos uno de veintitrés a treinta y dos, y lo ajustamos a la corriente de placa: veintiséis punto cinco.
 
-## 3. Planteamiento del problema real (1:00 – 3:00)
-**Pantalla:** placa del motor con zoom a HP, V, A, F.S.; tablas NEC apareciendo; cada resultado se escribe con sonido de escritura.
+**contactor** — El contactor se escoge por la potencia del motor a la tensión de trabajo, en categoría A C tres. Ojo aquí: uno de treinta y dos amperios solo está listado para siete punto cinco caballos a doscientos ocho voltios. Para diez caballos necesitamos el de treinta y ocho amperios. Y su bobina, de ciento veinte voltios, porque el mando va entre fase y neutro.
 
-**Voz:**
-"Todo empieza en la placa. Diez caballos, doscientos treinta voltios en triángulo, veinticuatro punto tres amperios, factor de servicio uno punto veinticinco.
+**mando_prot** — El mando lo protegemos aparte, con un breaker de un polo de dos amperios, curva C, y cable catorce.
 
-Para el cable y el breaker la norma no usa la placa: usa la tabla cuatro treinta punto doscientos cincuenta. Para diez caballos a doscientos treinta voltios, veintiocho amperios.
+**materiales** — Esta es la lista de materiales. El motor de diez caballos. F dos, breaker de tres polos, ochenta amperios, curva C, para riel DIN de treinta y cinco milímetros. F uno, breaker de un polo, dos amperios, para el mando. K M uno, contactor: en potencia, treinta y ocho amperios A C tres, diez caballos a doscientos ocho voltios; en mando, bobina de ciento veinte voltios y un contacto abierto y uno cerrado. F tres, relé térmico de veintitrés a treinta y dos amperios, compatible con ese contactor. S cero, pulsador rojo de paro, y S uno, pulsador verde de arranque. H uno, luz piloto verde, y H dos, luz piloto roja, de ciento veinte voltios. Las borneras las contamos en el diagrama: seis grises para las líneas, una azul para el neutro, dos verde amarillo para la tierra, y un separador al inicio y al final de cada paquete. El cable, en cantidades aproximadas: negro calibre ocho para la potencia, rojo catorce para el mando, azul claro catorce para el neutro, y verde amarillo calibre ocho para la tierra. Y para armarlo: riel DIN, canaleta ranurada, y un gabinete de quinientos por cuatrocientos por doscientos milímetros.
 
-El cable: ciento veinticinco por ciento de veintiocho… treinta y cinco amperios. Calibre diez AWG, THHN a setenta y cinco grados.
+**m1** — Ahora el diagrama de mando. Se lee de arriba hacia abajo, como si fueras la corriente. Arriba, la fase L, que sale de la bornera X cero.
 
-El breaker: la tabla cuatro treinta punto cincuenta y dos permite hasta doscientos cincuenta por ciento para un breaker de tiempo inverso. Setenta amperios, tripolar. Así aguanta la corriente de arranque, que en este motor llega a ciento sesenta y dos amperios, sin dispararse.
+**m2** — La fase baja al breaker de mando, F uno, borne uno y borne dos.
 
-El térmico sí usa la placa: como el factor de servicio es uno punto veinticinco, el ajuste máximo es ciento veinticinco por ciento de veinticuatro punto tres: treinta punto cuatro amperios. Escogemos uno de veintitrés a treinta y dos y lo ajustamos a la corriente de placa: veinticuatro punto tres.
+**m3** — De ahí, al contacto noventa y cinco, noventa y seis del relé térmico, F tres. Es cerrado: se abre solo si hay una sobrecarga.
 
-El contactor: categoría AC-tres, treinta y dos amperios, bobina a doscientos cuarenta voltios.
+**m4** — Sigue el pulsador de paro, S cero: once doce, normalmente cerrado.
 
-Y el mando lo protegemos aparte, con un breaker bipolar de seis amperios y cable catorce."
+**m5** — Luego el pulsador de arranque, S uno: trece catorce, normalmente abierto.
 
-## 4. Lista de materiales (3:00 – 3:45)
-**Pantalla:** tabla que se llena fila por fila; a la par aparece cada equipo del catálogo con su etiqueta amarilla.
+**m6** — Y en paralelo con el arranque, el trece catorce del propio contactor. Esta es la retención, la que mantiene encendido el motor cuando sueltas el botón.
 
-| Cant. | Equipo | Características | Observación |
+**m7** — Llegamos a la bobina del contactor, A uno, A dos. Y en paralelo, la luz verde, H uno: motor encendido.
+
+**m8** — Abajo, todo regresa al neutro de X cero.
+
+**m9** — Y una rama más: desde la salida de F uno, el contacto veintiuno veintidós del contactor, que es cerrado, enciende la luz roja, H dos: motor apagado.
+
+**retencion** — ¿Cómo funciona? Con el motor apagado, la luz roja está encendida. Pulsas arranque: la bobina se energiza, el contactor cierra, su trece catorce también cierra, la luz verde enciende y la roja se apaga porque se abrió el veintiuno veintidós. Sueltas el botón… y la corriente sigue por la retención. Pulsas paro: la bobina cae y todo regresa.
+
+**p_d1** — Ahora la potencia. Arriba, la bornera X cero: L uno, L dos, L tres, el neutro y la tierra.
+
+**p_d2** — Las tres fases bajan al breaker F dos: uno, tres y cinco entran; dos, cuatro y seis salen.
+
+**p_d3** — Siguen a los contactos principales del contactor K M uno.
+
+**p_d4** — Luego al relé térmico, F tres.
+
+**p_d5** — Y salen por la bornera X uno, bornes uno, dos y tres, hacia el motor: T uno, T dos y T tres. La tierra, del borne cinco de X cero al borne cuatro de X uno, y de ahí a la carcasa.
+
+**c_intro** — Ahora sí, a conectar. Primero el mando, a la par del diagrama. Cable rojo calibre catorce. Cada punta lleva su terminal de puntera, que es lo que entra debajo del tornillo, y su marcador con el número del hilo.
+
+**c1** — Hilo uno: de la entrada uno del breaker F dos, que es la fase L uno, a la entrada uno de F uno.
+
+**c2** — Hilo dos: de la salida dos de F uno al noventa y cinco del relé térmico. Del mismo noventa y cinco, un puente al veintiuno del contactor, para la luz roja.
+
+**c3** — Hilo tres: del noventa y seis del térmico, a la puerta, al once del pulsador de paro.
+
+**c4** — Hilo cuatro: del doce del paro, un puente al trece del arranque. Y del mismo punto, un cable de regreso al trece del contactor.
+
+**c5** — Hilo cinco: del catorce del arranque al catorce del contactor, y de ahí un puente a A uno de la bobina. Del catorce del arranque, también un puente a X uno de la luz verde.
+
+**c6** — Hilo seis: del veintidós del contactor, a X uno de la luz roja.
+
+**c7** — Y el neutro, en azul claro: del borne cuatro de X cero a A dos de la bobina, y a la puerta, a X dos de la luz verde y de la luz roja. El mando está completo.
+
+**p_intro** — Ahora la potencia. Cable negro calibre ocho, con su puntera y su marcador, y el mismo orden de fases en todo el recorrido.
+
+**p1** — L uno, L dos y L tres: de X cero, bornes uno, dos y tres, a la entrada uno, tres y cinco del breaker F dos.
+
+**p2** — De la salida dos, cuatro y seis del breaker, a uno L uno, tres L dos y cinco L tres del contactor.
+
+**p3** — El relé térmico se monta directo debajo del contactor: sus pines de cobre entran en dos T uno, cuatro T dos y seis T tres, y se aprietan esos tornillos.
+
+**p4** — De la salida del térmico a X uno: bornes uno, dos y tres. Y la tierra, verde amarillo, del borne cinco de X cero al borne cuatro de X uno.
+
+**p5** — En la caja del motor, conexión de baja tensión para doscientos ocho voltios: T uno con T siete, T dos con T ocho, T tres con T nueve, y T cuatro, T cinco y T seis unidos. Esa conexión se confirma siempre con la placa del motor.
+
+**p6** — Por último, ajustamos el dial del térmico a la corriente de placa: veintiséis punto cinco amperios.
+
+**t1** — Ahora lo pasamos al tablero. Primero el gabinete, de quinientos por cuatrocientos por doscientos milímetros.
+
+**t2** — Adentro, la plancha de montaje.
+
+**t3** — Sobre la plancha, la canaleta ranurada, que es por donde van a correr los cables.
+
+**t4** — Luego los rieles DIN, y los atornillamos.
+
+**t5** — Montamos los equipos: arriba los breakers, en medio el contactor con el relé térmico, y abajo las borneras.
+
+**t6** — Y en la puerta, el paro, el arranque y las dos luces piloto.
+
+**t7** — Se cablea igual que antes: la potencia baja en el mismo orden que el diagrama, el mando corre por la canaleta, y cada cable con su número.
+
+**prueba_frio** — Antes de energizar, prueba en frío. Todo apagado, multímetro en ohmios entre el hilo dos y el neutro: al pulsar arranque debe marcar la resistencia de la bobina, y al pulsar paro, circuito abierto.
+
+**prueba_tension** — Cerramos el breaker F dos y medimos en X cero: doscientos ocho voltios entre fases, y ciento veinte de fase a neutro.
+
+**marcha** — Cerramos F uno: enciende la luz roja, motor apagado. Pulsamos arranque… el contactor cierra, enciende la luz verde, y el motor arranca.
+
+**corriente** — Con la pinza, en una sola fase, medimos la corriente de trabajo. Debe quedar por debajo de los veintiséis punto cinco amperios de placa.
+
+**disparo** — Y probamos la protección. Con el botón TEST del relé térmico simulamos una sobrecarga: el noventa y cinco noventa y seis se abre, la bobina cae y el motor para. Aunque pulses arranque, no arranca, hasta que se reconoce la falla con RESET.
+
+**cierre** — Si te sirvió, suscríbete y sígueme. Voy a seguir subiendo más contenido como este. Y no te pierdas mi siguiente video.
+
+## Lista de materiales
+
+| Cantidad | Nombre | Características | Observación |
 |---|---|---|---|
-| 1 | Breaker -Q1 | 3P, 70 A, curva C | Protege el cable contra cortocircuito |
-| 1 | Breaker -F1 | 2P, 6 A, curva C | Protege el mando |
-| 1 | Contactor -KM1 | 32 A AC-3, bobina 240 VAC, 1NA+1NC | Maniobra el motor |
-| 1 | Relé térmico -F2 | 23–32 A, clase 10 | Ajuste 24,3 A, reset manual |
-| 1 | Pulsador -S1 | Rojo, bloque NC 11-12 | Paro |
-| 1 | Pulsador -S2 | Verde, bloque NA 13-14 | Marcha |
-| 1 | Borneras -X0, -X1, -X2 | Alimentación, motor y puerta | Con PE verde/amarillo |
-| — | Cable | 10 AWG potencia (negro) · 14 AWG mando (rojo) · PE verde/amarillo | Con puntera y marcador |
-| 1 | Motor -M1 | 10 hp, 230 V Δ, 24,3 A | Trituradora |
-
-**Voz:** lectura breve de cada fila (solo nombre, capacidad y para qué sirve).
-
-## 5. Diagrama de mando IEC (3:45 – 5:00)
-**Pantalla:** diagrama de mando IEC al estilo de la referencia (vertical, cada equipo en un recuadro de color, nodos marcados), trazado línea por línea con sonido de escritura.
-
-**Voz:** "Empezamos por el mando, que es el cerebro. La fase L1 entra por el breaker de seis amperios, pasa por el contacto cerrado del térmico, noventa y cinco–noventa y seis… si hay sobrecarga, este contacto se abre y todo se detiene. Luego el paro, normalmente cerrado. Luego la marcha, normalmente abierta… y en paralelo, el contacto trece–catorce del contactor: la retención. Al soltar la marcha, ese contacto mantiene la bobina energizada. La bobina, A1–A2, cierra el circuito hacia L2, por el segundo polo del breaker de mando."
-
-## 6. Diagrama de potencia IEC (5:00 – 5:50)
-**Pantalla:** diagrama de potencia IEC al estilo de la referencia, a la izquierda del de mando, trazo grueso.
-
-**Voz:** "La potencia es más sencilla: las tres fases pasan por el breaker de setenta, por los contactos principales del contactor, por el térmico… y llegan al motor en U1, V1 y W1, con la tierra a la carcasa. En la caja de bornes, los puentes en triángulo: U1 con W2, V1 con U2 y W1 con V2."
-
-## 7. Esquema de conexión del mando (5:50 – 8:00)
-**Pantalla:** a la izquierda el diagrama de mando con el tramo resaltado; a la derecha los equipos del catálogo. Cada cable rojo se tiende de borne a borne con zoom, puntera y marcador con su número.
-
-**Voz:** tramo por tramo, nombrando origen y destino ("del dos de -F1 al noventa y cinco de -F2…"), siguiendo exactamente tu diagrama.
-
-## 8. Esquema de conexión de potencia (8:00 – 9:20)
-**Pantalla:** igual que el 7, con cable negro 10 AWG y PE verde/amarillo; zoom en cada borne; al final el ajuste del dial del térmico a 24,3 A (zoom + sonido).
-
-## 9. Pasarlo al cuadro eléctrico (9:20 – 10:30)
-**Pantalla:** placa de montaje con riel DIN y canaleta; los equipos se montan en orden (-Q1, -F1, -KM1 con -F2 acoplado, borneras -X0/-X1/-X2); el cableado entra a la canaleta; los pulsadores y pilotos en la puerta.
-
-**Voz:** criterios de armado: potencia arriba-abajo en el mismo sentido que el diagrama, mando separado, todo marcado.
-
-## 10. Puesta en marcha (10:30 – 11:40)
-**Pantalla:** verificaciones con multímetro como en las referencias: continuidad del mando con -Q1 abierto, aislamiento entre fases, tensión de llegada 240 V entre fases. Luego: -Q1 ON (sonido breaker), -F1 ON, marcha -S2 → contactor (sonido) → motor (sonido); medición con pinza ≈ corriente de trabajo; paro -S1. Simulación de sobrecarga con TEST del térmico (sonido de disparo): el contactor cae aunque se pulse marcha → RESET y vuelve a arrancar.
-
-## 11. Cierre (11:40 – 12:00)
-**Voz:** "Si te sirvió, suscríbete. En el siguiente video arrancamos este mismo motor con un variador de frecuencia. Y si quieres repasar rápido, te dejo los shorts de este tema."
-
-> Sí conviene mencionar los shorts, pero en una sola frase y con las tarjetas en pantalla: ayudan a que el espectador siga en el canal sin alargar el cierre.
-
-# Shorts propuestos (verticales, 1:30 – 3:30)
-1. **Así funciona la retención de un contactor** (el 13–14 en paralelo con la marcha).
-2. **Así se calcula la protección de un motor** (por qué 70 A en el breaker y 24,3 A en el térmico).
-3. **Así funciona el relé térmico** (95–96 / 97–98, ajuste, TEST y RESET).
-
-Cada short termina invitando a ver el video completo.
+| 1 | Motor trifásico -M1 | 10 hp · 208-230/460 V · 26,5 A a 208 V · 60 Hz · 1760 rpm · F.S. 1,25 · NEMA B · 215T · TEFC | Nidec U10P2D · 9 puntas |
+| 1 | Breaker -F2 | 3 polos · 80 A · curva C · 240 VAC · riel DIN 35 mm | Cortocircuito del ramal |
+| 1 | Breaker -F1 | 1 polo · 2 A · curva C · 120 VAC · riel DIN 35 mm | Protección del mando |
+| 1 | Contactor -KM1 | Potencia: 38 A AC-3 · 10 hp a 208 VAC · 3 polos · Mando: bobina 120 VAC 60 Hz · 1 NA + 1 NC · riel DIN 35 mm |  |
+| 1 | Relé térmico -F3 | 23–32 A · clase 10 · 95-96 NC · 97-98 NA | Compatible con -KM1 · ajuste 26,5 A |
+| 1 | Pulsador -S0 | Rojo · 22 mm · 1 NC | PARO |
+| 1 | Pulsador -S1 | Verde · 22 mm · 1 NA | ARRANQUE |
+| 1 | Luz piloto -H1 | Verde · 22 mm · LED · 120 VAC 60 Hz | M1 ON |
+| 1 | Luz piloto -H2 | Roja · 22 mm · LED · 120 VAC 60 Hz | M1 OFF |
+| 6 | Bornera gris | Caballete · riel DIN 35 mm · 10 mm² (8 AWG) · línea | -X0: 3 · -X1: 3 |
+| 1 | Bornera azul | Caballete · riel DIN 35 mm · 10 mm² · neutro | -X0 |
+| 2 | Bornera verde/amarilla | Caballete · riel DIN 35 mm · 10 mm² · tierra (PE) | -X0: 1 · -X1: 1 |
+| 4 | Separador de bornera | Inicio y final de cada paquete | -X0 · -X1 |
+| ≈ 6 m | Cable de potencia | THHN 8 AWG · negro | Cantidad aproximada |
+| ≈ 3 m | Cable de tierra | THHN 8 AWG · verde/amarillo | Cantidad aproximada |
+| ≈ 10 m | Cable de mando | THHN 14 AWG · rojo | Cantidad aproximada |
+| ≈ 4 m | Cable de neutro | THHN 14 AWG · azul claro | Cantidad aproximada |
+| 1 lote | Punteras y marcadores | Punteras aisladas DIN 46228-4 · marcadores de hilo | En cada punta |
+| 1,5 m | Riel DIN | 35 × 7,5 mm (EN 60715) |  |
+| 3 m | Canaleta ranurada | 40 × 40 mm con tapa |  |
+| 1 | Gabinete | Metálico · 500 × 400 × 200 mm · con plancha de montaje | Paro, arranque y pilotos en la puerta |
