@@ -1172,7 +1172,7 @@ def _bloque_lateral(c, n1, n2, tipo):
     c.append(f'<g filter="url(#sMando)">{R(230, 450, 335, 410, "url(#gOpGris)")}</g>' + R(230, 450, 335, 5, "#D5D9DD") + R(230, 855, 335, 5, "#5A6068"))
     c.append(R(300, 470, 80, 100, "#7C838B") + R(300, 735, 80, 100, "#7C838B") + R(440, 470, 100, 60, "#7C838B") + R(440, 780, 100, 60, "#7C838B"))
     for y, n in ((528, n1), (785, n2)):
-        c.append(f'<g filter="url(#sTorn)"><circle cx="340" cy="{y}" r="30" fill="url(#rPerilla)"/></g>' + T(402, y, n, 30, "#1B1F24", 800, rot=90))
+        c.append(tornillo_cruz(340, y, 33) + T(402, y, n, 30, "#1B1F24", 800, rot=90))   # mismo tornillo en cruz que los auxiliares del contactor
     c.append(f'<g filter="url(#sTorn)"><circle cx="268" cy="656" r="34" fill="url(#rAcero)" stroke="#6E747B" stroke-width="2"/></g>' + R(248, 653, 40, 7, "#6E747B") + R(265, 636, 7, 40, "#6E747B"))
     c.append(R(322, 618, 48, 76, col, 'stroke="#2A2D31" stroke-width="2"' if tipo == "LED" else ""))
     c.append(T(400, 656, tipo, 30, "#1B1F24", 800, rot=90))
