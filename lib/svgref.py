@@ -1171,3 +1171,91 @@ def a_inkscape(svg, bornes, nombre="equipo"):
     pts = "".join(f'<circle id="borne_{k.replace(".", "_").replace("+", "mas")}" cx="{x:.3f}" cy="{y:.3f}" r="0.6" fill="#E11D48"><title>{k}</title></circle>' for k, (x, y) in bornes.items())
     out = out.replace('</svg>', f'<g inkscape:groupmode="layer" inkscape:label="Bornes (puntos de conexión)" id="capa_bornes" style="display:none">{pts}</g></svg>')
     return out
+
+
+# ============================================================ OPERADOR 22 mm + SU CONTACTO (captura de referencia del usuario)
+def _bloque_lateral(c, n1, n2, tipo):
+    """Bloque de contacto visto de frente como en la referencia: tornillos de conexión arriba (n1) y abajo (n2)
+    con su número impreso, ventana de color (NC rojo / NO verde / LED blanco), leva semicircular, pestaña gris
+    de enganche y tornillo de fijación a la izquierda. Cuerpo GRIS con sombra para que contraste."""
+    col = {"NC": "#C8202B", "NO": "#2E8B3E", "LED": "#F4F4F2"}[tipo]
+    c.append(f'<g filter="url(#sMando)">{R(230, 450, 335, 410, "url(#gOpGris)")}</g>' + R(230, 450, 335, 5, "#D5D9DD") + R(230, 855, 335, 5, "#5A6068"))
+    c.append(R(300, 470, 80, 100, "#7C838B") + R(300, 735, 80, 100, "#7C838B") + R(440, 470, 100, 60, "#7C838B") + R(440, 780, 100, 60, "#7C838B"))
+    for y, n in ((528, n1), (785, n2)):
+        c.append(f'<g filter="url(#sTorn)"><circle cx="340" cy="{y}" r="30" fill="url(#rPerilla)"/></g>' + T(402, y, n, 30, "#1B1F24", 800, rot=90))
+    c.append(f'<g filter="url(#sTorn)"><circle cx="268" cy="656" r="34" fill="url(#rAcero)" stroke="#6E747B" stroke-width="2"/></g>' + R(248, 653, 40, 7, "#6E747B") + R(265, 636, 7, 40, "#6E747B"))
+    c.append(R(322, 618, 48, 76, col, 'stroke="#2A2D31" stroke-width="2"' if tipo == "LED" else ""))
+    c.append(T(400, 656, tipo, 30, "#1B1F24", 800, rot=90))
+    if tipo != "LED":
+        c.append(f'<path d="M428,586 A70,70 0 0 1 428,726" fill="{col}" stroke="#2A2D31" stroke-width="14"/>')
+    c.append(f'<g filter="url(#sTorn)">{R(525, 590, 40, 140, "#B9BEC3")}</g>' + f'<circle cx="546" cy="657" r="10" fill="#0E0F10"/>')
+
+
+def _cuerpo_operador(c):
+    """Cuerpo del operador visto de lado (gris, con la pestaña de enganche del bloque) y el aro moleteado."""
+    c.append(f'<g filter="url(#sMando)">{R(650, 460, 150, 380, "url(#gOpGris)")}</g>' + R(650, 460, 150, 4, "#D5D9DD"))
+    c.append(f'<g filter="url(#sTorn)">{R(636, 580, 22, 50, "url(#rAcero)", 'rx="6"')}</g>')
+    c.append(f'<g filter="url(#sMando)">{R(760, 420, 240, 440, "url(#gOpGris)")}</g>' + R(760, 420, 240, 4, "#D5D9DD") + R(760, 855, 240, 5, "#5A6068"))
+    c.append(R(800, 540, 4, 200, "#5A6068", 'opacity="0.6"') + R(895, 860, 30, 10, "#5A6068"))
+
+
+def _aro(c, cx=1005, cy=650, rx=105, ry=215):
+    import math
+    c.append(f'<g filter="url(#sMando)"><ellipse cx="{cx}" cy="{cy}" rx="{rx}" ry="{ry}" fill="url(#gAroOp)"/></g>')
+    for k in range(40):     # moleteado del aro
+        a = math.radians(100 + k * 4)
+        c.append(f'<line x1="{cx + rx * math.cos(a):.1f}" y1="{cy - ry * math.sin(a):.1f}" x2="{cx + (rx - 12) * math.cos(a):.1f}" y2="{cy - (ry - 12) * math.sin(a):.1f}" stroke="#7E848B" stroke-width="2.5"/>')
+
+
+def operador_y_contacto(tipo="pulsador", color="verde", simbolo="I", ref="S1", contacto="NO", n1="3", n2="4", encendido=False, ancho_mm=95.0):
+    """Lámina como la captura del usuario: a la izquierda el bloque de contacto (punto de conexión real),
+    flecha que indica que se acopla detrás del operador, y a la derecha el operador visto de lado con su cabeza.
+    tipo: pulsador · emergencia · selector · piloto. La etiqueta va DEBAJO del operador."""
+    Wp, Hp = 1190, 720
+    s_mm = ancho_mm / Wp
+    c = ['<defs><linearGradient id="gOpGris" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#B7BCC1"/><stop offset="0.5" stop-color="#9097A0"/><stop offset="1" stop-color="#6E757E"/></linearGradient>'
+         '<linearGradient id="gAroOp" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#9AA0A6"/><stop offset="0.45" stop-color="#F4F5F6"/><stop offset="1" stop-color="#C9CDD1"/></linearGradient></defs>']
+    _bloque_lateral(c, n1, n2, contacto)
+    # flecha azul: el bloque se monta detrás del operador
+    c.append('<path d="M520,380 Q640,250 760,350" stroke="#1E8FB8" stroke-width="22" fill="none" stroke-linecap="round"/>'
+             '<polygon points="792,382 728,372 770,318" fill="#1E8FB8"/>')
+    _cuerpo_operador(c)
+    import math
+    if tipo == "pulsador":
+        col = COLORES[color]
+        _aro(c)
+        gid = "gOp" + col[0].strip("#")
+        c.append(f'<defs><radialGradient id="{gid}" cx="0.45" cy="0.35" r="0.8"><stop offset="0" stop-color="{col[2]}"/><stop offset="0.55" stop-color="{col[0]}"/><stop offset="1" stop-color="{col[1]}"/></radialGradient></defs>')
+        c.append(f'<g filter="url(#sTorn)"><ellipse cx="1030" cy="650" rx="78" ry="172" fill="url(#{gid})"/></g>')
+        if simbolo == "I":
+            c.append(R(1046, 580, 14, 140, "#FFFFFF", 'opacity="0.9"'))
+        else:
+            c.append('<ellipse cx="1052" cy="650" rx="30" ry="62" fill="none" stroke="#FFFFFF" stroke-width="12" opacity="0.9"/>')
+    elif tipo == "emergencia":
+        c.append(R(1000, 560, 60, 180, "#3A3B3E"))
+        c.append('<defs><radialGradient id="gHongoL" cx="0.55" cy="0.35" r="0.8"><stop offset="0" stop-color="#FF8A80"/><stop offset="0.5" stop-color="#E02A2F"/><stop offset="1" stop-color="#7E1014"/></radialGradient></defs>')
+        c.append('<g filter="url(#sMando)"><path d="M1060,400 Q1170,420 1170,650 Q1170,880 1060,900 Z" fill="url(#gHongoL)"/></g>')
+        c.append('<path d="M1080,470 Q1140,520 1140,620" stroke="#FFFFFF" stroke-opacity="0.45" stroke-width="12" fill="none" stroke-linecap="round"/>')
+        c.append('<g filter="url(#sTorn)"><ellipse cx="985" cy="650" rx="22" ry="230" fill="#F5C518"/></g>')
+    elif tipo == "selector":
+        _aro(c)
+        c.append('<g filter="url(#sTorn)"><ellipse cx="1030" cy="650" rx="78" ry="172" fill="url(#rMando)"/></g>')
+        c.append('<g filter="url(#sMando)"><path d="M1040,470 H1130 V830 H1040 Z" fill="#1A1B1C"/></g>' + R(1060, 490, 14, 150, "#F4F4F2", 'rx="7"'))
+    else:   # piloto
+        lum = {"verde": ("#55F000", "#C9E8BE")}.get(color, ("#55F000", "#C9E8BE"))
+        _aro(c)
+        gid = f"gLente{int(encendido)}"
+        if encendido:
+            c.append(f'<defs><radialGradient id="{gid}" cx="0.5" cy="0.45" r="0.6"><stop offset="0" stop-color="#F4FFE8"/><stop offset="0.35" stop-color="{lum[0]}"/><stop offset="1" stop-color="#2E9E10"/></radialGradient>'
+                     f'<filter id="gBr" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="14"/></filter></defs>')
+            c.append(f'<ellipse cx="1060" cy="650" rx="100" ry="190" fill="{lum[0]}" opacity="0.5" filter="url(#gBr)"/>')
+        else:
+            c.append(f'<defs><radialGradient id="{gid}" cx="0.45" cy="0.4" r="0.7"><stop offset="0" stop-color="#FFFFFF"/><stop offset="0.6" stop-color="{lum[1]}"/><stop offset="1" stop-color="#8FA98A"/></radialGradient></defs>')
+        c.append(f'<g filter="url(#sTorn)"><path d="M1010,478 Q1110,500 1110,650 Q1110,800 1010,822 Z" fill="url(#{gid})"/></g>')
+        c.append('<path d="M1030,530 Q1080,560 1088,620" stroke="#FFFFFF" stroke-opacity="0.6" stroke-width="10" fill="none" stroke-linecap="round"/>')
+    c.append(PL(900, 935, ref, s_mm))
+    if tipo == "piloto":
+        c.append(T(990, 935, "encendido" if encendido else "apagado", 34, "#1B1F24", 700, "start"))
+    svg, WH = svg_mm(Wp, Hp, s_mm, '<g transform="translate(0,-260)">' + "".join(c) + "</g>")
+    b = {n1: (340 * s_mm, 268 * s_mm), n2: (340 * s_mm, 525 * s_mm)}
+    return svg, b, WH
