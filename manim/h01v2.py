@@ -449,7 +449,7 @@ class H01v2(H01):
         self.voz("p6")
         dial = F3.mm(196 * 45 / 685, 222 * 45 / 685)
         self.zoom(dial, 1.8, 0.8)
-        lab = etiqueta("26,5 A", AMB, 22).scale(0.22).next_to(dial, UL, buff=0.12)
+        lab = etiqueta("ajuste 26,5 A", AMB, 22).scale(0.22).next_to(dial, UP, buff=0.42)
         self.sfx("tic", -8)
         self.play(FadeIn(lab), Indicate(F3.img, scale_factor=1.0, color=AMB), run_time=0.7)
         self.cerrar_voz(0.2)
