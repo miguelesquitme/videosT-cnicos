@@ -69,6 +69,13 @@ if TEMA == "negro":      # fondo negro con cuadrícula (pedido 19-nov-2026, vert
     TINTA2 = "#B8C0CC"
     CARTA = "#1A1E26"
 
+if TEMA == "gris":       # fondo gris claro con cuadrícula gris suave (pedido 22-nov-2026, H01 v3): resaltan los equipos
+    FONDO = "#E4E7EB"
+    REJILLA = "#D3D7DD"
+    TINTA = "#141821"
+    TINTA2 = "#475467"
+    CARTA = "#FFFFFF"
+
 SANS = "Inter"
 MONO = "JetBrains Mono"
 SEG = "DSEG7 Classic"

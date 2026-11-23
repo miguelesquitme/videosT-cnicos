@@ -51,7 +51,12 @@ Este archivo es la "memoria" del proyecto: cada corrección del usuario se agreg
 - Sensores: etiqueta en la base junto a la salida del cable; datos técnicos impresos en la base.
 - Motor: etiqueta sobre la caja de conexiones. Borneras: topes más bajos que los bornes. LOGO!/LOGO!Power: etiqueta en el rectángulo de arriba.
 
+## Correcciones de equipos (v9, 22-nov noche)
+- Operadores (pulsadores, selector, emergencia, pilotos): el frente y el portaetiquetas son UNA SOLA pieza de plástico negro (arriba el espacio amarillo con designación y función, abajo el operador). `_operador_svg`.
+- Bloque trasero: SIN cuadro negro alrededor; se ve la parte trasera del pulsador: base/adaptador NEGRO y el contacto en GRIS CLARO bien distinto (tornillos en cruz, ventana de color, leva).
+
 ## Diagramas (regla 22-nov)
+- (Correcciones_V7) Se recrean PIXEL POR PIXEL desde la imagen del usuario (`manim/diag_lit.py`: se borran solo los textos, el dibujo se pasa a UN SOLO COLOR negro y se vectoriza con potrace; los textos se reescriben en su lugar). Solo cambian etiquetas, numeraciones, nombres y capacidades según el caso. Originales en `referencias/diagramas_h01/`.
 - Los diagramas de mando y potencia los ENTREGA el usuario. Se recrean literal (mismos símbolos); solo puede cambiar el color de los textos; mando con trazo un poco más fino que potencia.
 - En cada video nuevo, ANTES de empezar, se le PIDEN los diagramas al usuario.
 
@@ -81,6 +86,15 @@ Potencia negro · mando AC rojo · mando DC azul · neutro azul claro · PE verd
 - Mando: -X0 L → -F1 1-2 → -F3 95-96 → -S0 PARO 11-12 → -S1 ARRANQUE 13-14 ∥ -KM1 13-14 → -KM1 A1-A2 ∥ -H1 (verde, M1 ON) → N. Desde -F1:2 → -KM1 21-22 → -H2 (rojo, M1 OFF) → N. Sin -X2 (no está en el diagrama).
 - Hilos (número IEC por potencial): 1 L→F1:1 · 2 F1:2/95/21 · 3 96-11 · 4 12-13-13 · 5 14-14-A1-X1(H1) · 6 22-X1(H2) · N.
 - Correcciones V6 del video: gancho con dato curioso o pregunta (NUNCA insinuar que otros lo hacen mal) · eje del motor girando (sin arcos) · datos de placa encerrados en rectángulos · nunca decir "menos" por el guion · lista de materiales en tabla Cantidad | Nombre | Características | Observación (tensión del sistema, riel DIN 35 mm, contactor separando mando/potencia, térmico compatible con el contactor, borneras contadas del diagrama por color + separadores por paquete, cable aproximado por ítem color/calibre, riel DIN, canaleta ranurada, gabinete con medida) · diagramas dibujados tramo por tramo (línea, símbolo, línea) explicando · equipos más pequeños, cables CURVOS, cada cable con puntera + marcador IEC entrando bajo el tornillo, marcado simultáneo en el diagrama · tablero real por etapas (gabinete, plancha, canaletas, riel, tornillos, equipos, puerta), más pequeño con el motor y las mediciones a la vista · cierre: "subiré más contenido, suscríbete, sígueme y mira mi siguiente video" (sin decir cuántos shorts ni el tema del siguiente) · sin tarjeta de shorts.
+
+## H01 v3 (Correcciones_V7, 22-nov noche)
+- Fondo GRIS CLARO con cuadrícula gris suave (`TEMA=gris`); títulos, cuadros y textos con contraste (texto oscuro, cinta azul marino).
+- Lo que se ve coincide EXACTO con lo que se dice: cada evento se ancla a su palabra (alineación faster-whisper de cada clip en `manim/alin_h01v2/`; `self.en("palabra")`).
+- Conexión = DIDÁCTICA (no como plancha): arriba protecciones y contactor (térmico debajo, como el diagrama), abajo borneras en su riel DIN, puerta en vista trasera a la derecha, sin espacios grandes.
+- Punto de conexión REAL: el cable llega al borde del equipo frente al tornillo y entra por DEBAJO del plástico; solo se ve el collar de la puntera (forma real) y el marcador blanco con el número. Cables SIN borde (solo el blanco lo lleva).
+- Puesta en marcha en el esquema de conexión, ANTES del tablero (sección 9); el tablero es la 10.
+- Tablero: plancha 400 × 300 mm (gabinete 400 × 300 × 200), canaleta ranurada 40 × 60 mm, riel DIN 35 mm dorado con tornillos naranja, estilo de la referencia del usuario; el cableado final va de cada borne a la canaleta.
+- Miniatura: "Mi primer arranque de motor | Análisis de un caso, lista de materiales, diseño de diagramas y conexión" (`manim/miniatura_h01v3.png`).
 
 ## Videos VERTICALES
 Fondo negro con cuadrícula (el de R2). 1:30 a 3:30. Un solo concepto por reel. Título "Así funciona…". Cierre: "Si te sirvió, suscríbete y sígueme."

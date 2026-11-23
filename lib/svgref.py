@@ -497,19 +497,18 @@ def bloque(n1="3", n2="4", nc=False, piloto=False, alto_mm=30.0):
     tipo = "LED" if piloto else ("NC" if nc else "NO")
     c = ['<defs><linearGradient id="gOpGris" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#B7BCC1"/><stop offset="0.5" stop-color="#9097A0"/><stop offset="1" stop-color="#6E757E"/></linearGradient></defs>']
     c.append('<defs><linearGradient id="gBisel" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3B3D41"/><stop offset="0.5" stop-color="#1F2023"/><stop offset="1" stop-color="#0D0E0F"/></linearGradient></defs>')
-    c.append(f'<g filter="url(#sMando)">{R(167, 425, 460, 460, "url(#gBisel)")}</g>' + R(167, 425, 460, 5, "#5A5D63") + R(167, 880, 460, 5, "#050506"))
     _bloque_lateral(c, n1, n2, tipo)
-    Wp, Hp = 470, 470
+    Wp, Hp = 345, 420
     s_mm = alto_mm / 430
-    svg, WH = svg_mm(Wp, Hp, s_mm, '<g transform="translate(-162,-420)">' + "".join(c) + "</g>")
-    return svg, {n1: ((340 - 162) * s_mm, (528 - 420) * s_mm), n2: ((340 - 162) * s_mm, (785 - 420) * s_mm)}, WH
+    svg, WH = svg_mm(Wp, Hp, s_mm, '<g transform="translate(-225,-445)">' + "".join(c) + "</g>")
+    return svg, {n1: ((340 - 225) * s_mm, (528 - 445) * s_mm), n2: ((340 - 225) * s_mm, (785 - 445) * s_mm)}, WH
 
 
 def _bisel_puerta(c, Wp=300):
     """Bisel negro de 30 mm con luz arriba-izquierda y sombra proyectada marcada."""
     c.append('<defs><linearGradient id="gBisel" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3B3D41"/><stop offset="0.5" stop-color="#1F2023"/><stop offset="1" stop-color="#0D0E0F"/></linearGradient>'
              '<radialGradient id="gAro" cx="0.35" cy="0.3" r="0.85"><stop offset="0" stop-color="#FFFFFF"/><stop offset="0.55" stop-color="#D3D7DA"/><stop offset="0.85" stop-color="#9EA4AA"/><stop offset="1" stop-color="#7C838A"/></radialGradient></defs>')
-    c.append(f'<g filter="url(#sMando)">{R(0, 0, Wp, Wp, "url(#gBisel)")}</g>' + R(0, 0, Wp, 5, "#5A5D63") + R(0, 0, 5, Wp, "#4A4D52") + R(0, Wp - 6, Wp, 6, "#050506") + R(Wp - 6, 0, 6, Wp, "#08090A"))
+    # (corrección 22-nov v9) el cuadrado negro ya no se dibuja aquí: frente y portaetiquetas son UNA sola pieza
 
 
 def _cabeza(c, col, cx=150, cy=150, r=98):
@@ -521,18 +520,20 @@ def _cabeza(c, col, cx=150, cy=150, r=98):
 
 
 def _portaetiqueta(ref, funcion, Wp=300, s_mm=0.1):
-    """Portaetiquetas negro sobre el operador (como la referencia 'INVERTER ON'): marco de plástico negro con sombra
-    y el espacio AMARILLO con la designación y la función (p. ej. -S1 / ARRANQUE)."""
-    return ('<defs><linearGradient id="gBiselE" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3B3D41"/><stop offset="0.5" stop-color="#1F2023"/><stop offset="1" stop-color="#0D0E0F"/></linearGradient></defs>'
-            f'<g filter="url(#sMando)">{R(10, 0, Wp - 20, 150, "url(#gBiselE)")}</g>' + R(10, 0, Wp - 20, 4, "#5A5D63")
-            + f'<g filter="url(#sTorn)">{R(28, 16, Wp - 56, 118, "#F5C400")}</g>' + R(28, 16, Wp - 56, 5, "#FFE27A")
-            + T(Wp / 2, 52, f"-{ref}", 40, "#111111", 800) + T(Wp / 2, 104, funcion.upper(), 30 if len(funcion) < 11 else 24, "#111111", 800))
+    """Espacio AMARILLO de la etiqueta en la parte de arriba de la pieza negra (designación y función)."""
+    return (f'<g filter="url(#sTorn)">{R(26, 18, Wp - 52, 118, "#F5C400")}</g>' + R(26, 18, Wp - 52, 5, "#FFE27A")
+            + T(Wp / 2, 54, f"-{ref}", 40, "#111111", 800) + T(Wp / 2, 106, funcion.upper(), 30 if len(funcion) < 11 else 24, "#111111", 800))
 
 
 def _operador_svg(cuerpo_frente, ref, funcion, s_mm, Wp=300, alto_frente=300):
-    """Arma portaetiquetas + frente (dibujado en 0…Wp) y devuelve el svg."""
-    todo = _portaetiqueta(ref, funcion, Wp, s_mm) + f'<g transform="translate(0,165)">{cuerpo_frente}</g>'
-    svg, WH = svg_mm(Wp, 165 + alto_frente, s_mm, todo)
+    """Operador de puerta = UNA sola pieza de plástico negro (corrección 22-nov v9): arriba el espacio de la etiqueta,
+    abajo el frente del pulsador / luz / selector. Sombra de la pieza completa."""
+    H = 155 + alto_frente
+    cuerpo = ('<defs><linearGradient id="gPieza" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3B3D41"/><stop offset="0.5" stop-color="#1F2023"/><stop offset="1" stop-color="#0D0E0F"/></linearGradient></defs>'
+              f'<g filter="url(#sMando)">{R(0, 0, Wp, H, "url(#gPieza)")}</g>' + R(0, 0, Wp, 5, "#5A5D63") + R(0, 0, 5, H, "#4A4D52")
+              + R(0, H - 6, Wp, 6, "#050506") + R(Wp - 6, 0, 6, H, "#08090A") + R(12, 150, Wp - 24, 2, "#0A0A0B") + R(12, 152, Wp - 24, 2, "#3A3C40"))
+    todo = cuerpo + _portaetiqueta(ref, funcion, Wp, s_mm) + f'<g transform="translate(0,155)">{cuerpo_frente}</g>'
+    svg, WH = svg_mm(Wp, H, s_mm, todo)
     return svg, {}, WH
 
 
@@ -1249,8 +1250,12 @@ def _bloque_lateral(c, n1, n2, tipo):
     con su número impreso, ventana de color (NC rojo / NO verde / LED blanco), leva semicircular, pestaña gris
     de enganche y tornillo de fijación a la izquierda. Cuerpo GRIS con sombra para que contraste."""
     col = {"NC": "#C8202B", "NO": "#2E8B3E", "LED": "#F4F4F2"}[tipo]
-    c.append(f'<g filter="url(#sMando)">{R(230, 450, 335, 410, "url(#gOpGris)")}</g>' + R(230, 450, 335, 5, "#D5D9DD") + R(230, 855, 335, 5, "#5A6068"))
-    c.append(R(300, 470, 80, 100, "#7C838B") + R(300, 735, 80, 100, "#7C838B") + R(440, 470, 100, 60, "#7C838B") + R(440, 780, 100, 60, "#7C838B"))
+    # (corrección 22-nov v9) base = adaptador NEGRO de la parte trasera del pulsador; contacto = módulo GRIS CLARO encima
+    c.append('<defs><linearGradient id="gBaseOp" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3B3D41"/><stop offset="0.5" stop-color="#232427"/><stop offset="1" stop-color="#121314"/></linearGradient>'
+             '<linearGradient id="gContacto" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#E6E9EC"/><stop offset="0.6" stop-color="#C9CED3"/><stop offset="1" stop-color="#AEB4BA"/></linearGradient></defs>')
+    c.append(f'<g filter="url(#sMando)">{R(230, 450, 335, 410, "url(#gBaseOp)")}</g>' + R(230, 450, 335, 4, "#5A5D63") + R(230, 856, 335, 4, "#050506"))
+    c.append(f'<g filter="url(#sMando)">{R(292, 460, 226, 390, "url(#gContacto)")}</g>' + R(292, 460, 226, 4, "#F7F8F9") + R(292, 846, 226, 4, "#80878E"))
+    c.append(R(300, 470, 80, 100, "#8A9199") + R(300, 735, 80, 100, "#8A9199") + R(432, 470, 78, 60, "#8A9199") + R(432, 780, 78, 60, "#8A9199"))
     for y, n in ((528, n1), (785, n2)):
         c.append(tornillo_cruz(340, y, 33) + T(402, y, n, 30, "#1B1F24", 800, rot=90))   # mismo tornillo en cruz que los auxiliares del contactor
     c.append(f'<g filter="url(#sTorn)"><circle cx="268" cy="656" r="34" fill="url(#rAcero)" stroke="#6E747B" stroke-width="2"/></g>' + R(248, 653, 40, 7, "#6E747B") + R(265, 636, 7, 40, "#6E747B"))
@@ -1258,7 +1263,7 @@ def _bloque_lateral(c, n1, n2, tipo):
     c.append(T(400, 656, tipo, 30, "#1B1F24", 800, rot=90))
     if tipo != "LED":
         c.append(f'<path d="M428,586 A70,70 0 0 1 428,726" fill="{col}" stroke="#2A2D31" stroke-width="14"/>')
-    c.append(f'<g filter="url(#sTorn)">{R(525, 590, 40, 140, "#B9BEC3")}</g>' + f'<circle cx="546" cy="657" r="10" fill="#0E0F10"/>')
+    c.append(f'<g filter="url(#sTorn)">{R(528, 590, 32, 140, "#55595F")}</g>' + f'<circle cx="544" cy="657" r="9" fill="#0E0F10"/>')
 
 
 def _cuerpo_operador(c):

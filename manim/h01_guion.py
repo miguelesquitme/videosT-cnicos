@@ -67,7 +67,7 @@ GUION = {
         "H uno, luz piloto verde, y H dos, luz piloto roja, de ciento veinte voltios. "
         "Las borneras las contamos en el diagrama: seis grises para las líneas, una azul para el neutro, dos verde amarillo para la tierra, y un separador al inicio y al final de cada paquete. "
         "El cable, en cantidades aproximadas: negro calibre ocho para la potencia, rojo catorce para el mando, azul claro catorce para el neutro, y verde amarillo calibre ocho para la tierra. "
-        "Y para armarlo: riel DIN, canaleta ranurada, y un gabinete de quinientos por cuatrocientos por doscientos milímetros."
+        "Y para armarlo: riel DIN, canaleta ranurada, y un gabinete de cuatrocientos por trescientos por doscientos milímetros."
     ),
     # 5 · diagrama de mando, tramo por tramo
     "m1": "Ahora el diagrama de mando. Se lee de arriba hacia abajo, como si fueras la corriente. Arriba, la fase L, que sale de la bornera X cero.",
@@ -114,11 +114,11 @@ GUION = {
     ),
     "p6": "Por último, ajustamos el dial del térmico a la corriente de placa: veintiséis punto cinco amperios.",
     # 9 · tablero
-    "t1": "Ahora lo pasamos al tablero. Primero el gabinete, de quinientos por cuatrocientos por doscientos milímetros.",
+    "t1": "Ahora lo pasamos al tablero. Primero el gabinete, de cuatrocientos por trescientos por doscientos milímetros.",
     "t2": "Adentro, la plancha de montaje.",
     "t3": "Sobre la plancha, la canaleta ranurada, que es por donde van a correr los cables.",
     "t4": "Luego los rieles DIN, y los atornillamos.",
-    "t5": "Montamos los equipos: arriba los breakers, en medio el contactor con el relé térmico, y abajo las borneras.",
+    "t5": "Montamos los equipos: arriba los breakers y el contactor con su relé térmico, y abajo las borneras.",
     "t6": "Y en la puerta, el paro, el arranque y las dos luces piloto.",
     "t7": "Se cablea igual que antes: la potencia baja en el mismo orden que el diagrama, el mando corre por la canaleta, y cada cable con su número.",
     # 10 · puesta en marcha
@@ -162,13 +162,13 @@ MATERIALES = [
     ("2", "Bornera verde/amarilla", "Caballete · riel DIN 35 mm · 10 mm² · tierra (PE)", "-X0: 1 · -X1: 1"),
     ("4", "Separador de bornera", "Inicio y final de cada paquete", "-X0 · -X1"),
     ("≈ 6 m", "Cable de potencia", "THHN 8 AWG · negro", "Cantidad aproximada"),
-    ("≈ 3 m", "Cable de tierra", "THHN 8 AWG · verde/amarillo", "Cantidad aproximada"),
     ("≈ 10 m", "Cable de mando", "THHN 14 AWG · rojo", "Cantidad aproximada"),
     ("≈ 4 m", "Cable de neutro", "THHN 14 AWG · azul claro", "Cantidad aproximada"),
+    ("≈ 3 m", "Cable de tierra", "THHN 8 AWG · verde/amarillo", "Cantidad aproximada"),
     ("1 lote", "Punteras y marcadores", "Punteras aisladas DIN 46228-4 · marcadores de hilo", "En cada punta"),
-    ("1,5 m", "Riel DIN", "35 × 7,5 mm (EN 60715)", ""),
-    ("3 m", "Canaleta ranurada", "40 × 40 mm con tapa", ""),
-    ("1", "Gabinete", "Metálico · 500 × 400 × 200 mm · con plancha de montaje", "Paro, arranque y pilotos en la puerta"),
+    ("1 m", "Riel DIN", "35 × 7,5 mm (EN 60715)", ""),
+    ("2 m", "Canaleta ranurada", "40 × 60 mm (ancho × alto) con tapa", ""),
+    ("1", "Gabinete", "Metálico · 400 × 300 × 200 mm · con plancha de montaje", "Paro, arranque y pilotos en la puerta"),
 ]
 
 if __name__ == "__main__":
