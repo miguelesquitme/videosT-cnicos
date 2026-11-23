@@ -451,9 +451,10 @@ class H01v2(H01):
         self.zoom(dial, 1.8, 0.8)
         lab = etiqueta("ajuste 26,5 A", AMB, 22).scale(0.22).next_to(dial, UP, buff=0.42)
         self.sfx("tic", -8)
-        self.play(FadeIn(lab), Indicate(F3.img, scale_factor=1.0, color=AMB), run_time=0.7)
+        aro = Circle(radius=0.17, color=AMB, stroke_width=5).move_to(dial)
+        self.play(FadeIn(lab), Create(aro), run_time=0.7)
         self.cerrar_voz(0.2)
-        self.play(FadeOut(lab), run_time=0.3)
+        self.play(FadeOut(lab), FadeOut(aro), run_time=0.3)
         self.zoom_fuera(0.6)
         self.play(FadeOut(H.todo()), *[FadeOut(m) for m in self.marcas], *[c.animate.set_opacity(1) for c in self.cables], run_time=0.6)
         self.marcas = []
