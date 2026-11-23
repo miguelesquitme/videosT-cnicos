@@ -1087,7 +1087,7 @@ def pinza(lectura="24,3", unidad="AC", alto_mm=230.0):
     return svg, {"COM": (330 * s_mm, 1395 * s_mm), "VΩ": (460 * s_mm, 1395 * s_mm)}, WH
 
 
-def multimetro(lectura="144.0", unidad="Ω", alto_mm=190.0):
+def multimetro(lectura="144.0", unidad="Ω", alto_mm=190.0, pos=4):
     """Multímetro digital en el mismo estilo: funda amarilla, cara gris, pantalla, selector amarillo y bornes A, COM, VΩ (CAT III 600 V)."""
     import math
     Wp, Hp = 420, 820
@@ -1104,8 +1104,8 @@ def multimetro(lectura="144.0", unidad="Ω", alto_mm=190.0):
         a = math.radians(210 - k * 40)
         c.append(T(cx + 118 * math.cos(a), cy - 118 * math.sin(a), t, 20, "#FFFFFF", 800))
     c.append(f'<g filter="url(#sMando)"><circle cx="{cx}" cy="{cy}" r="86" fill="url(#mDial)"/></g>')
-    c.append(R(cx - 16, cy - 80, 32, 160, "#E0A800", f'rx="10" transform="rotate({90 - (210 - 4 * 40)} {cx} {cy})"'))
-    ap = math.radians(210 - 4 * 40)
+    c.append(R(cx - 16, cy - 80, 32, 160, "#E0A800", f'rx="10" transform="rotate({90 - (210 - pos * 40)} {cx} {cy})"'))
+    ap = math.radians(210 - pos * 40)   # pos: 0 OFF · 1 V~ · 2 V⎓ · 3 mV · 4 Ω · 5 diodo · 6 A
     c.append(f'<path d="M{cx},{cy} L{cx + 76 * math.cos(ap):.1f},{cy - 76 * math.sin(ap):.1f}" stroke="#7A5600" stroke-width="8" stroke-linecap="round"/>')
     for x, t, col in ((105, "A", "#C8202B"), (210, "COM", "#1B1F24"), (315, "VΩ", "#C8202B")):
         c.append(T(x, 650, t, 16, "#FFFFFF", 800) + f'<g filter="url(#sTorn)"><circle cx="{x}" cy="705" r="32" fill="#0E0F10"/></g><circle cx="{x}" cy="705" r="22" fill="none" stroke="{col}" stroke-width="7"/><circle cx="{x}" cy="705" r="9" fill="#3A3B3E"/>')

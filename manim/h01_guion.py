@@ -15,8 +15,8 @@ GUION = {
         "Entonces, ¿cómo lo protegemos sin que el breaker se dispare cada vez que arranca?"
     ),
     "gancho2": (
-        "En este video lo calculamos con la norma, armamos el diagrama de mando y el de potencia, lo conectamos cable por cable, "
-        "lo pasamos al tablero y lo ponemos en marcha."
+        "En este video lo calculamos con la norma, armamos el diagrama de mando y el de potencia, lo conectamos cable por cable "
+        "y lo ponemos en marcha."
     ),
     # 2 · justificar
     "pregunta": (

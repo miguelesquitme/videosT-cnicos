@@ -10,9 +10,10 @@ import numpy as np
 from comun_e import *          # noqa: F401,F403
 
 EQ3 = DIR / "h01v3_eq"
-K = 0.026                       # tablero didáctico: unidades por mm
-KD = 0.036                      # bloques traseros de la puerta
-KF = 0.019                      # frente de los operadores
+K = 0.027                       # equipos más cerca y más grandes (Correcciones V8, punto 6)
+KB = K * 0.72                   # borneras de caballete más pequeñas, proporcionales (punto 5)
+KD = 0.040                      # bloques traseros de la puerta
+KF = 0.020                      # frente de los operadores
 
 ROJO_M = "#D92D20"
 NEUTRO_C = "#5DB4F0"
@@ -31,7 +32,7 @@ ENTRADAS = {
             "13": (0.45, 16.82, "l"), "21": (28.26, 172 * _S, "u"), "A1": (45.0, 16.82, "r"),
             "14": (0.45, 55.17, "l"), "22": (28.26, 795 * _S, "d"), "A2": (45.0, 55.17, "r")},
     "F3": {"2/T1": (9.2, 51.24, "d"), "4/T2": (22.47, 51.24, "d"), "6/T3": (35.8, 51.24, "d"),
-           "95": (45.0, 32.52, "r"), "96": (27.92, 587 * _T, "d")},
+           "95": (38.10, 587 * _T, "d"), "96": (27.92, 587 * _T, "d")},     # 95 y 96 se conectan POR ABAJO (punto 7)
     "X0": {f"{i}_a": (13.26 + 10.2 * (i - 1), 0, "u") for i in range(1, 6)} | {f"{i}_b": (13.26 + 10.2 * (i - 1), 51.0, "d") for i in range(1, 6)},
     "X1": {f"{i}_a": (13.26 + 10.2 * (i - 1), 0, "u") for i in range(1, 5)} | {f"{i}_b": (13.26 + 10.2 * (i - 1), 51.0, "d") for i in range(1, 5)},
 }
@@ -159,27 +160,27 @@ class Cable3(Group):
 # ------------------------------------------------------------------------------ disposición didáctica
 def disposicion():
     E = {}
-    x0, y0 = -1.05, 3.55
+    x0, y0 = -1.85, 3.72
     F2 = E["F2"] = Eq3("F2").poner(x0, y0)
-    E["F1"] = Eq3("F1").poner(F2.borde("r") + 0.28, y0)
+    E["F1"] = Eq3("F1").poner(F2.borde("r") + 0.30, y0)
     x_km = F2.borde("l") + (27.26 - 22.65) * K          # polos del contactor alineados con los del breaker
-    KM1 = E["KM1"] = Eq3("KM1").poner(x_km, F2.borde("d") - 0.42)
+    KM1 = E["KM1"] = Eq3("KM1").poner(x_km, F2.borde("d") - 0.66)
     F3 = E["F3"] = Eq3("F3").poner(x_km + (22.65 - 22.47) * K, KM1.borde("d"))
     KM1.set_z_index(2)
     F3.set_z_index(1)
-    yx = F3.borde("d") - 0.62
-    E["X0"] = Eq3("X0").poner(-1.25, yx)
-    E["X1"] = Eq3("X1").poner(E["X0"].borde("r") + 0.30, yx)
-    # puerta (vista trasera): frente arriba para reconocerlo y su bloque de contacto abajo, en una sola fila
+    yx = F3.borde("d") - 0.58
+    E["X0"] = Eq3("X0", KB).poner(-1.95, yx)
+    E["X1"] = Eq3("X1", KB).poner(E["X0"].borde("r") + 0.30, yx)
+    # puerta (vista trasera) a la DERECHA del contactor, a su altura (punto 8): frente arriba y su bloque abajo
     for i, n in enumerate(("S0", "S1", "H1", "H2")):
-        x = 4.05 + 1.0 * i
+        x = 1.75 + 1.12 * i
         E[n] = Eq3(n, KF)
-        E[n].img.move_to([x + 0.435, 3.05, 0])
-        E[n + "b"] = Eq3(n + "b", KD).poner(x, 2.20)
+        E[n + "b"] = Eq3(n + "b", KD).poner(x, 0.95)
+        E[n].img.move_to([E[n + "b"].img.get_center()[0], 1.55, 0])
     return E
 
 
-def riel_din(E, k=K):
+def riel_din(E, k=KB):
     """Riel DIN 35 mm (EN 60715) bajo las borneras."""
     X0, X1 = E["X0"], E["X1"]
     yc = (X0.borde("u") + X0.borde("d")) / 2
@@ -208,7 +209,7 @@ def canales(E):
         yB=(F2.borde("d") + KM1.borde("u")) / 2,                # entre breakers y contactor
         yD=F3.borde("d") - 0.16,                                # debajo del térmico
         xL=KM1.borde("l") - 0.22,                               # izquierda del contactor
-        xR=KM1.borde("r") + 0.22,                               # derecha del contactor (debajo de -F1)
+        xR=KM1.borde("r") + 0.20,                               # derecha del contactor (debajo de -F1)
         xP=E["S0b"].borde("l") - 0.25,                          # bajada hacia la puerta
         yS=KM1.borde("d") + 0.04,                               # junta contactor / térmico
         yG=(E["S0"].borde("d") + E["S0b"].borde("u")) / 2,      # entre frentes y bloques (bocas de arriba)
@@ -231,8 +232,11 @@ def hilos_mando(E):
     a, b = F2.boca("1"), F1.boca("1")
     H.append(("c1", [C(a, b, [[a[0][0], yA + 0.02, 0], [b[0][0], yA + 0.02, 0]], R, "1")], ["1"]))
     a, b, e = F1.boca("2"), F3.boca("95"), KM1.boca("21")
-    H.append(("c2", [C(a, b, [[a[0][0], yB - 0.05, 0], [xR, yB - 0.05, 0], [xR, b[0][1], 0]], R, "2"),
-                     C(b, e, [[xR + 0.08, b[0][1] - 0.05, 0], [xR + 0.08, yB + 0.05, 0], [e[0][0], yB + 0.05, 0]], R, "2")], ["2"]))
+    yq = F3.borde("d")
+    b2 = (b[0] + RIGHT * 0.035, b[1])
+    b1 = (b[0] - RIGHT * 0.035, b[1])
+    H.append(("c2", [C(a, b2, [[a[0][0], yB - 0.05, 0], [xR, yB - 0.05, 0], [xR, yq - 0.10, 0], [b2[0][0], yq - 0.10, 0]], R, "2"),
+                     C(b1, e, [[b1[0][0], yq - 0.04, 0], [xR - 0.09, yq - 0.04, 0], [xR - 0.09, yB + 0.05, 0], [e[0][0], yB + 0.05, 0]], R, "2")], ["2"]))
     a, b = F3.boca("96"), S0.boca("1")
     H.append(("c3", [C(a, b, [[a[0][0], yD, 0], [xP, yD, 0], [xP, yG, 0], [b[0][0], yG, 0]], R, "3", K, KD)], ["3"]))
     a, b, e = S0.boca("2"), S1.boca("3"), KM1.boca("13")

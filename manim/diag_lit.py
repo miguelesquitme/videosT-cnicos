@@ -68,7 +68,8 @@ class Literal:
         self.h, self.w = a.shape[:2]
         self.s = alto / self.h
         self.c = np.array([centro[0], centro[1], 0.0])
-        self.fondo = Rectangle(width=(self.w + 2 * pad) * self.s, height=(self.h + 2 * pad) * self.s, stroke_width=0).set_fill("#FFFFFF", 1).move_to(self.c)
+        # (Correcciones V8, puntos 2-3) sin hoja blanca: el diagrama va directo sobre el fondo gris del video
+        self.fondo = Rectangle(width=(self.w + 2 * pad) * self.s, height=(self.h + 2 * pad) * self.s, stroke_width=0).set_fill("#FFFFFF", 0).move_to(self.c)
         cajas = [t[1] for t in textos]
         dibujo, reales = _mascara_dibujo(a, cajas)
         # escala del texto: altura de un dígito del original (9 px)

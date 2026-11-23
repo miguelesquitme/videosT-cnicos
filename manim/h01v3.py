@@ -27,9 +27,9 @@ from h01v2_diag import HILOS_MANDO, HILOS_POT
 
 TXT, TXT2, AMB = OSC, OSC2, "#E8590C"
 MARCA_D = "#F79009"          # resaltado sobre el diagrama
-ORDEN = ["gancho", "pregunta", "problema", "materiales", "mando", "potencia", "c_mando", "c_potencia", "marcha", "tablero", "cierre"]
+ORDEN = ["gancho", "pregunta", "problema", "materiales", "mando", "potencia", "c_mando", "c_potencia", "marcha", "cierre"]   # sin tablero (V8 p.11)
 TITULOS = ["El dato curioso", "La pregunta técnica", "El problema real", "Lista de materiales", "Diagrama de mando IEC",
-           "Diagrama de potencia IEC", "Conexión del mando", "Conexión de potencia", "Puesta en marcha", "Al tablero", "Cierre"]
+           "Diagrama de potencia IEC", "Conexión del mando", "Conexión de potencia", "Puesta en marcha", "Cierre"]
 
 
 def _norm(s):
@@ -205,10 +205,10 @@ class H01v3(H01v2):
         self.cerrar_voz(0.2)
         self.voz("gancho2")
         self.play(FadeOut(a), FadeOut(b), run_time=0.3)
-        for pal, s in (("calculamos", "CÁLCULO"), ("mando", "MANDO"), ("potencia", "POTENCIA"), ("conectamos", "CONEXIÓN"), ("tablero", "TABLERO"), ("marcha", "MARCHA")):
+        for pal, s in (("calculamos", "CÁLCULO"), ("mando", "MANDO"), ("potencia", "POTENCIA"), ("conectamos", "CONEXIÓN"), ("marcha", "MARCHA")):
             self.en(pal, 0.2)
             p = pastilla(s, MARCA, 26, True)
-            p.move_to([-6.0 + 2.4 * ["CÁLCULO", "MANDO", "POTENCIA", "CONEXIÓN", "TABLERO", "MARCHA"].index(s), 3.5, 0])
+            p.move_to([-5.2 + 2.6 * ["CÁLCULO", "MANDO", "POTENCIA", "CONEXIÓN", "MARCHA"].index(s), 3.5, 0])
             self.sfx("pop", -16)
             self.play(FadeIn(p, shift=DOWN * 0.2), run_time=0.3)
         self.cerrar_voz(0.3)
@@ -420,8 +420,6 @@ class H01v3(H01v2):
                 ms = ms_todas if i == 0 else []
                 self.tender([c], ms, 1.4)
                 self.cables.add(c)
-            fin = cs[0]
-            self.lupa(fin.ruta.get_end(), 1.7, 0.5)
             self.cerrar_voz(0.05)
             for m in ms_todas:
                 m.set_stroke(opacity=0.35)
@@ -448,7 +446,7 @@ class H01v3(H01v2):
         xs = []
         for i, (b, col) in enumerate((("1_b", NEGRO_P), ("2_b", NEGRO_P), ("3_b", NEGRO_P), ("4_b", PE_V))):
             (A, d) = E["X1"].boca(b)
-            xv = 3.30 + 0.13 * i
+            xv = 3.10 if i == 0 else 3.55 + 0.13 * (i - 1)      # T1 va SEPARADO: ahí se coloca la pinza
             yb = -4.22 + 0.0 * i - 0.07 * (3 - i)
             yt = cj[1] + 0.22 + 0.08 * (3 - i)
             pu, lp = puntera(A, d, "pot", K)
@@ -460,6 +458,7 @@ class H01v3(H01v2):
             cab.add(VGroup(g, pu))
             xs.append(xv)
         self.x_t1 = xs[0]
+        self.y_t1 = -3.05
         return mo, cab
 
     ANCLAS_POT = {"p1": None, "p2": None}
@@ -499,14 +498,12 @@ class H01v3(H01v2):
                 ms = [H.marca(tr) for key in mk for tr in HILOS_POT[key]]
                 self.tender(cs, ms, 1.8)
                 self.cab_pot.add(*cs)
-            self.lupa(cables[0].ruta.get_end(), 2.0, 0.5)
             self.cerrar_voz(0.05)
         tanda("p1", P["p1"], ["p1"])
         tanda("p2", P["p2"], ["p2"])
         self.voz("p3")
         F3, KM1 = E["F3"], E["KM1"]
         ms = [H.marca(tr) for tr in HILOS_POT["p3"]]
-        self.zoom(KM1.p("4/T2") + DOWN * 0.25, 3.0, 0.6)
         self.play(F3.animate.shift(DOWN * 0.35), run_time=0.4)
         self.play(F3.animate.shift(UP * 0.35), *[Create(m) for m in ms], run_time=0.9)
         self.marcas += ms
@@ -514,7 +511,6 @@ class H01v3(H01v2):
         anillos = VGroup(*[Circle(radius=0.10, color=AMB, stroke_width=5).move_to(KM1.p(t)) for t in ("2/T1", "4/T2", "6/T3")])
         self.play(LaggedStart(*[Create(a) for a in anillos], lag_ratio=0.3), run_time=0.9)
         self.play(FadeOut(anillos), run_time=0.3)
-        self.zoom_fuera(0.5)
         self.cerrar_voz(0.05)
         tanda("p4", P["p4"] + P["pe"], None, anclas=[(None, P["p4"], ["p4"]), ("tierra", P["pe"], ["pe"])])
         # caja del motor
@@ -548,14 +544,12 @@ class H01v3(H01v2):
         # ajuste del dial
         self.voz("p6")
         dial = F3.mm(196 * 45 / 685, 222 * 45 / 685)
-        self.zoom(dial, 1.7, 0.8)
-        lab = etiqueta("ajuste 26,5 A", AMB, 22).scale(0.22).next_to(dial, UP, buff=0.36)
+        lab = etiqueta("ajuste 26,5 A", AMB, 22).scale(0.55).next_to(dial, LEFT, buff=0.35)
         aro = Circle(radius=0.16, color=AMB, stroke_width=5).move_to(dial)
         self.sfx("tic", -8)
         self.play(FadeIn(lab), Create(aro), run_time=0.7)
         self.cerrar_voz(0.2)
         self.play(FadeOut(lab), FadeOut(aro), run_time=0.3)
-        self.zoom_fuera(0.6)
         self.play(FadeOut(H.todo()), *[FadeOut(m) for m in self.marcas], *[c.animate.set_opacity(1) for c in self.cables], run_time=0.6)
         self.marcas = []
 
@@ -581,20 +575,22 @@ class H01v3(H01v2):
         self.en("hilo")
         pr = sondas(E["F1"].p("2"), E["X0"].p("4_a"))
         self.play(Create(pr), run_time=1.0)
-        lcd = mm.mm(48.7, 47.0)
-        tapa = VGroup(Rectangle(width=60 * mm.k, height=30 * mm.k, stroke_width=0).set_fill("#C9D1C0", 1),
-                      Text("R bobina", font=SANS, font_size=20, weight="BOLD", color="#1B1F24")).move_to(lcd)
-        tapa[1].scale_to_fit_width(tapa[0].width * 0.8).move_to(tapa[0])
+
+        def pantalla(nombre):
+            nuevo = Eq3(nombre, mm.k)
+            nuevo.img.move_to(mm.img)
+            return nuevo
         ops = {n: E[n] for n in ("S0", "S1", "H1", "H2")}
         self.en("pulsar")
         s1p = self.cambiar(ops["S1"], "S1p")
         lec = etiqueta("ARRANQUE pulsado → resistencia de la bobina", VERDE_OK, 24).move_to([-4.6, 3.3, 0]).scale(0.8)
-        self.play(FadeIn(tapa), FadeIn(lec), run_time=0.5)
+        mmr = pantalla("MMr")
+        self.play(FadeIn(mmr), FadeIn(lec), run_time=0.5)
         self.en("pulsar")
         ops["S1"] = self.cambiar(s1p, "S1")
         s0p = self.cambiar(ops["S0"], "S0p")
         lec2 = etiqueta("PARO pulsado → OL (circuito abierto)", ROJO, 24).move_to([-4.6, 3.3, 0]).scale(0.8)
-        self.play(FadeOut(tapa), FadeTransform(lec, lec2), run_time=0.5)
+        self.play(FadeOut(mmr), FadeTransform(lec, lec2), run_time=0.5)
         self.cerrar_voz(0.1)
         ops["S0"] = self.cambiar(s0p, "S0")
         self.play(FadeOut(pr), FadeOut(lec2), run_time=0.4)
@@ -607,13 +603,15 @@ class H01v3(H01v2):
         pr = sondas(E["X0"].p("1_b"), E["X0"].p("2_b"))
         self.play(Create(pr), run_time=0.8)
         v = etiqueta("L1-L2 = L2-L3 = L1-L3 = 208 V", AMB, 24).move_to([-4.6, 3.3, 0]).scale(0.8)
-        self.play(FadeIn(v), run_time=0.4)
+        m208 = pantalla("MMv208")       # selector en V~ y la pantalla en VOLTIOS (V8 p.9)
+        self.play(FadeIn(m208), FadeIn(v), run_time=0.4)
         self.en("120")
         pr2 = sondas(E["X0"].p("1_b"), E["X0"].p("4_b"))
         v2 = etiqueta("L-N = 120 V", AMB, 24).move_to([-4.6, 2.7, 0]).scale(0.8)
-        self.play(Transform(pr, pr2), FadeIn(v2), run_time=0.6)
+        m120 = pantalla("MMv120")
+        self.play(Transform(pr, pr2), FadeIn(v2), FadeIn(m120), FadeOut(m208), run_time=0.6)
         self.cerrar_voz(0.2)
-        self.play(FadeOut(pr), FadeOut(v), FadeOut(v2), FadeOut(mm), run_time=0.4)
+        self.play(FadeOut(pr), FadeOut(v), FadeOut(v2), FadeOut(mm), FadeOut(m120), run_time=0.4)
         self.voz("marcha")
         self.en("cerramos")
         self.sfx("breaker", -6)
@@ -639,17 +637,22 @@ class H01v3(H01v2):
         self.voz("corriente")
         pz = Eq3("PZ", 0.0085)
         H_, W_ = pz.img.height, pz.img.width
-        jaw = np.array([self.x_t1, -1.15, 0])
+        jaw = np.array([self.x_t1, self.y_t1, 0])
         pz.img.move_to(jaw + DOWN * (0.29 * H_) + LEFT * (0.007 * W_))
         pz.set_z_index(8)
         self.en("pinza")
-        nota = Paragraph("una sola fase (T1)", "dentro de la pinza", font=SANS, font_size=17, color=TXT2).next_to(pz, LEFT, buff=0.12)
-        self.play(FadeIn(pz, shift=UP * 0.3), FadeIn(nota), run_time=0.6)
+        nota = Paragraph("UN SOLO cable (T1)", "dentro de la mordaza", font=SANS, font_size=17, color=OSC, weight="BOLD").next_to(jaw, LEFT, buff=0.55)
+        resal = Line(jaw + DOWN * 0.55, jaw + UP * 0.55).set_stroke(MARCA_D, 16, opacity=0.55).set_z_index(5)
+        self.play(FadeIn(pz, shift=UP * 0.3), run_time=0.6)
+        self.zoom(jaw + LEFT * 0.35, 3.2, 0.6)
+        self.play(Create(resal), FadeIn(nota), run_time=0.6)
         self.en("debe")
         ok = etiqueta("corriente de trabajo < 26,5 A de placa  ✓", VERDE_OK, 24).move_to([-4.6, 3.3, 0]).scale(0.8)
+        ok.scale(0.45).next_to(nota, DOWN, buff=0.15)
         self.play(FadeIn(ok), run_time=0.4)
         self.cerrar_voz(0.2)
-        self.play(FadeOut(pz), FadeOut(nota), FadeOut(ok), run_time=0.4)
+        self.zoom_fuera(0.5)
+        self.play(FadeOut(pz), FadeOut(nota), FadeOut(ok), FadeOut(resal), run_time=0.4)
         self.voz("disparo")
         F3 = E["F3"]
         self.en("test")
@@ -679,7 +682,24 @@ class H01v3(H01v2):
         self.cerrar_voz(0.3)
         self.salir()
 
-    # =============================================================== 10 · TABLERO (estilo de la referencia del usuario)
+    # =============================================================== CIERRE (sin portadilla: no es parte de la práctica)
+    def h_cierre(self):
+        self.voz("cierre")
+        lg = ImageMobject(str(LOGO)).scale_to_fit_width(2.8).move_to([0, 1.6, 0])
+        us = T("@miguelesquit", 40, MARCA, "HEAVY").next_to(lg, DOWN, buff=0.35)
+        yt = VGroup(pastilla("SUSCRÍBETE", ROJO, 34, True), pastilla("SÍGUEME", MARCA, 34, True)).arrange(RIGHT, buff=0.4).next_to(us, DOWN, buff=0.45)
+        sig = T("Mira mi siguiente video", 34, TXT, "HEAVY").next_to(yt, DOWN, buff=0.55)
+        self.play(FadeIn(lg, scale=0.8), FadeIn(us), run_time=0.7)
+        self.en("suscribete", 0.2)
+        self.play(FadeIn(yt[0], scale=1.15), run_time=0.4)
+        self.en("sigueme", 0.2)
+        self.play(FadeIn(yt[1], scale=1.15), run_time=0.4)
+        self.en("siguiente", 0.3)
+        self.play(FadeIn(sig, shift=UP * 0.2), run_time=0.6)
+        self.cerrar_voz(0.2)
+        self.wait(5.0)
+
+    # =============================================================== (ya no se usa) TABLERO
     def gabinete(self, centro=(-4.35, -0.2), alto=7.6):
         """Plancha de 400 × 300 mm: canaleta ranurada 40 × 60 mm en el perímetro y entre filas, riel DIN 35 mm dorado con tornillos."""
         kt = alto / 400.0

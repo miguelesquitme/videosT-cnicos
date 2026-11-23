@@ -195,6 +195,57 @@ def musica(destino, segundos, sr=48000):
         w.setnchannels(1), w.setsampwidth(2), w.setframerate(sr), w.writeframes(x.tobytes())
 
 
+def musica_motiva(destino, segundos, sr=48000, bpm=104):
+    """Fondo MOTIVADOR libre de derechos (H01 v3, pedido 23-nov): progresión I-V-vi-IV en Do, pad suave, arpegio
+    pulsado en corcheas, bombo blando en cada tiempo y charles en contratiempo. Se mezcla bajo (la voz manda)."""
+    n = int(sr * segundos)
+    t = np.arange(n) / sr
+    x = np.zeros(n)
+    beat = 60.0 / bpm
+    compas = 4 * beat
+    acordes = [(261.6, 329.6, 392.0), (196.0, 246.9, 293.7), (220.0, 261.6, 329.6), (174.6, 220.0, 261.6)]
+    bajos = [65.4, 49.0, 55.0, 43.7]
+    rng = np.random.default_rng(7)
+    k = 0
+    while k * compas < segundos:
+        a, b = acordes[k % 4], bajos[k % 4]
+        t0 = k * compas
+        i0, i1 = int(t0 * sr), min(n, int((t0 + compas + 0.6) * sr))
+        tt = t[i0:i1] - t0
+        env = np.minimum(tt / 0.4, 1) * np.exp(-np.maximum(tt - compas, 0) * 5)
+        pad = sum(np.sin(2 * np.pi * f * tt) + 0.25 * np.sin(2 * np.pi * 2.003 * f * tt) for f in a) / 9
+        x[i0:i1] += env * pad
+        x[i0:i1] += 0.30 * env * np.sin(2 * np.pi * b * tt) * (0.6 + 0.4 * np.sin(2 * np.pi * tt / beat) ** 2)
+        notas = [a[0] * 2, a[1] * 2, a[2] * 2, a[1] * 2]
+        for e in range(8):            # arpegio en corcheas
+            ts = t0 + e * beat / 2
+            j0, j1 = int(ts * sr), min(n, int((ts + 0.35) * sr))
+            if j0 >= n:
+                break
+            u = t[j0:j1] - ts
+            f = notas[e % 4]
+            x[j0:j1] += 0.16 * np.exp(-u * 11) * (np.sin(2 * np.pi * f * u) + 0.3 * np.sin(2 * np.pi * 2 * f * u))
+        for e in range(4):            # bombo blando + charles
+            ts = t0 + e * beat
+            j0, j1 = int(ts * sr), min(n, int((ts + 0.25) * sr))
+            if j0 >= n:
+                break
+            u = t[j0:j1] - ts
+            x[j0:j1] += 0.35 * np.sin(2 * np.pi * (55 + 90 * np.exp(-u * 30)) * u) * np.exp(-u * 14)
+            th = ts + beat / 2
+            h0, h1 = int(th * sr), min(n, int((th + 0.06) * sr))
+            if h0 < n:
+                u = t[h0:h1] - th
+                ruido = rng.normal(size=u.size)
+                ruido = ruido - np.convolve(ruido, np.ones(6) / 6, "same")
+                x[h0:h1] += 0.05 * ruido * np.exp(-u * 70)
+        k += 1
+    x *= np.minimum(t / 3, 1) * np.minimum((segundos - t) / 3, 1)
+    x = (x / np.abs(x).max() * 0.6 * 32767).astype(np.int16)
+    with wave.open(str(destino), "w") as w:
+        w.setnchannels(1), w.setsampwidth(2), w.setframerate(sr), w.writeframes(x.tobytes())
+
+
 # ------------------------------------------------------------------ visuales
 def T(texto, size=40, color=BLANCO, peso="ULTRABOLD", fuente=MONO):
     return Text(texto, font=fuente, font_size=size, color=color, weight=peso)

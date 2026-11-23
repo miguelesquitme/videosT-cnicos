@@ -96,6 +96,18 @@ Potencia negro · mando AC rojo · mando DC azul · neutro azul claro · PE verd
 - Tablero: plancha 400 × 300 mm (gabinete 400 × 300 × 200), canaleta ranurada 40 × 60 mm, riel DIN 35 mm dorado con tornillos naranja, estilo de la referencia del usuario; el cableado final va de cada borne a la canaleta.
 - Miniatura: "Mi primer arranque de motor | Análisis de un caso, lista de materiales, diseño de diagramas y conexión" (`manim/miniatura_h01v3.png`).
 
+## H01 v4 (Revisión V8, 23-nov)
+- La VOZ siempre es la clonada del usuario (ELEVEN_VOZ_ID = VOCES[FORMATO] de comun_e). Al regenerar un clip, importar comun_e primero; nunca llamar comun_v.audio solo (usa otra voz).
+- Diagramas SIN hoja blanca: directo sobre el fondo gris.
+- En conexión del mando y de potencia NO se hace zoom.
+- Borneras de caballete a escala real respecto de los demás equipos (KB = 0,72 K); equipos más cerca y más grandes para ver las conexiones.
+- 95 y 96 del relé térmico se conectan POR ABAJO.
+- Puerta (pulsadores y pilotos) a la derecha del contactor, a su altura, para enseñar a conectar.
+- Medición de tensión: selector en V~ y la pantalla en voltios (208 / 120 V AC); resistencia: selector en Ω.
+- Pinza: UN solo cable (T1 separado de los demás), con acercamiento y resaltado.
+- Sin sección de tablero (se elimina). El cierre NO lleva portadilla de sección.
+- Música de fondo MOTIVADORA (`comun_v.musica_motiva`, MUSICA=motiva) a 0,09 y con ducking bajo la voz (sidechaincompress en final_e.py).
+
 ## Videos VERTICALES
 Fondo negro con cuadrícula (el de R2). 1:30 a 3:30. Un solo concepto por reel. Título "Así funciona…". Cierre: "Si te sirvió, suscríbete y sígueme."
 
