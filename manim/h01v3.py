@@ -541,7 +541,7 @@ class H01v3(H01v2):
         r = Line(cb.p("T4"), cb.p("T6")).set_stroke(MARCA_D, 14, opacity=0.65).set_z_index(34)
         self.play(Create(r), run_time=0.5)
         self.cerrar_voz(0.2)
-        self.play(*[FadeOut(m) for m in self.mobjects if getattr(m, "z_index", 0) >= 30], run_time=0.5)
+        self.play(*[FadeOut(m) for m in self.mobjects if getattr(m, "z_index", 0) >= 30 and m is not self.cinta_act], run_time=0.5)
         mo, cab_m = self.motor_en_esquema()
         self.play(FadeIn(mo), Create(cab_m), run_time=1.0)
         self.mo, self.cab_m = mo, cab_m
