@@ -10,3 +10,4 @@ remotion/public/
 __pycache__/
 media/
 manim/*.srt.json
+manim/fondo_oscuro_*.png
