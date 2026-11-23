@@ -116,3 +116,6 @@ Trituradora de piedrín: motor Nidec U10P2D 10 hp, 208-230/460 V, 26,5/23,9/12 A
 
 ## Seguridad
 La clave de ElevenLabs vive solo en `~/.config/eleven/env` (ELEVEN_KEY). Nunca en el repo.
+
+## Shorts v2 (pedido 23-nov): recrear los reels con dibujo REAL
+- Nada de dibujitos didácticos: cada aparato se dibuja pieza por pieza desde PDFs/hojas de datos (SVG en mm, `lib/svgfoto.py` como modelo) y cada evento se ancla a su palabra (faster-whisper). Primera prueba: F01 fotocelda (`manim/f01_fotocelda.py`, guion nuevo `guion_f01.py`). Los demás shorts, después de que el usuario apruebe esta prueba.
