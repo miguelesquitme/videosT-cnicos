@@ -210,9 +210,9 @@ class H01v2(H01):
             ("tabla", "NEC T430.250", ["10 hp · 208 V · trifásico"], "I tabla = 30,8 A", MARCA, [-0.3, 2.4, 0]),
             ("cable", "NEC 430.22", ["125 % × 30,8 = 38,5 A", "10 AWG no alcanza (35 A)"], "8 AWG THHN 75 °C", VERDE_OK, [5.0, 2.4, 0]),
             ("breaker", "NEC T430.52", ["250 % × 30,8 = 77 A", "→ siguiente estándar"], "-F2 · 3P · C80", AMB, [-5.3, -0.4, 0]),
-            ("termico", "NEC 430.32(A)(1)", ["F.S. 1,25 → 125 %", "125 % × 26,5 = 33,1 A máx", "rango 23–32 A"], "-F3 ajuste 26,5 A", "#9E77ED", [0.0, -0.4, 0]),
-            ("contactor", "AC-3 a 208 V (UL)", ["32 A → 7,5 hp  ✗", "38 A → 10 hp  ✓"], "-KM1 38 A · bobina 120 V", "#22B8CF", [5.3, -0.4, 0]),
-            ("mando_prot", "Mando 120 VAC (L-N)", ["breaker 1 polo, curva C", "cable 14 AWG"], "-F1 · 1P · C2", "#4C8DF6", [0.0, -3.15, 0]),
+            ("termico", "NEC 430.32(A)(1)", ["F.S. 1,25 → máx 125 % = 33,1 A", "rango 23–32 A"], "-F3 ajuste 26,5 A", "#9E77ED", [0.0, -0.4, 0]),
+            ("contactor", "AC-3 a 208 V (UL)", ["32 A → 7,5 hp  ✗   38 A → 10 hp  ✓", "bobina 120 VAC"], "-KM1 · 38 A", "#22B8CF", [5.3, -0.4, 0]),
+            ("mando_prot", "Mando 120 VAC (L-N)", ["breaker 1 polo, curva C", "cable 14 AWG"], "-F1 · 1P · C2", "#4C8DF6", [0.0, -2.95, 0]),
         ]
         hechas = []
         for clave, norma, lineas, res, col, pos in tarjetas:
