@@ -119,3 +119,5 @@ La clave de ElevenLabs vive solo en `~/.config/eleven/env` (ELEVEN_KEY). Nunca e
 
 ## Shorts v2 (pedido 23-nov): recrear los reels con dibujo REAL
 - Nada de dibujitos didácticos: cada aparato se dibuja pieza por pieza desde PDFs/hojas de datos (SVG en mm, `lib/svgfoto.py` como modelo) y cada evento se ancla a su palabra (faster-whisper). Primera prueba: F01 fotocelda (`manim/f01_fotocelda.py`, guion nuevo `guion_f01.py`). Los demás shorts, después de que el usuario apruebe esta prueba.
+- (23-nov, pedido del usuario) Investigación de CADA componente: mínimo 4 fuentes = 2 manuales/hojas de datos PDF + 2 páginas web, de fabricantes distintos; ficha en `referencias/<clave>_fuentes.md`. Modelar por fuera y por dentro desde esas fuentes.
+- Reels v2 hechos (23-nov): V22 toques, V23 giro al revés, V24 corona, V25 fusible, V26 factor de potencia, V28 120→240 V, V29 luces que bajan, V30 kWh, V32 estrella/triángulo, V33 IP65. Se saltaron V27 (lo cubre R1 inductivo) y V31 (lo cubre V31b variador). Base común `manim/reel_v2.py`, piezas `lib/svgv2*.py`/`svgv3*.py`.

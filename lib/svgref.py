@@ -837,6 +837,8 @@ def caja_bornes(tipo="6", conexion="delta", ancho_mm=110.0):
         if conexion == "delta":
             for x in xs:
                 c.append(puente(x, ys[0], x, ys[1]))
+        elif conexion == "libre":   # seis bornes libres (arranque estrella-triángulo)
+            pass
         else:
             c.append(puente(xs[0], ys[1], xs[2], ys[1]))
     elif conexion == "bajo_y":     # 9 puntas en estrella, tensión baja: T1-T7, T2-T8, T3-T9 y T4-T5-T6 unidos
@@ -854,7 +856,7 @@ def caja_bornes(tipo="6", conexion="delta", ancho_mm=110.0):
     for fila, y in zip(nombres, ys):
         for x, n in zip(xs, fila):
             c.append(T(x - 56, y + 48, n, 20, "#1B1F24", 800, "end"))
-    tit = {"delta": "Conexión triángulo (Δ)", "estrella": "Conexión estrella (Y)", "bajo": "NEMA 9 puntas · tensión baja", "alto": "NEMA 9 puntas · tensión alta", "bajo_y": "9 puntas en estrella · tensión baja (208-230 V)"}[conexion]
+    tit = {"libre": "Seis bornes libres (Y-Δ)", "delta": "Conexión triángulo (Δ)", "estrella": "Conexión estrella (Y)", "bajo": "NEMA 9 puntas · tensión baja", "alto": "NEMA 9 puntas · tensión alta", "bajo_y": "9 puntas en estrella · tensión baja (208-230 V)"}[conexion]
     svg, WH = svg_mm(Wp, Hp + 50, s_mm, "".join(c) + T(Wp / 2, Hp + 28, tit, 26, "#1B1F24", 800))
     return svg, {k: (x * s_mm, y * s_mm) for k, (x, y) in b.items()}, WH
 

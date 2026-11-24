@@ -1,0 +1,171 @@
+"""V29 v2 · Luces que bajan al arrancar un motor. Piezas: lib/svgv29.py → v29v2_eq/. Guion: guion_v29v2.py."""
+from reel_v2 import *  # noqa: F401,F403
+
+
+class V29v2(ReelV2):
+    CLAVE = "v29v2"
+    GUION_MOD = "guion_v29v2"
+
+    def cuerpo(self):
+        C, Am, G, Rr, Vi = self.ac(0), self.ac(1), self.ac(2), self.ac(3), self.ac(4)
+        GR = "#5B6472"
+
+        # ------------------------------------------------------------ gancho
+        self.voz("gancho")
+        cp = Pieza("compresor", 5.2).move_to([-1.5, -3.2, 0])
+        fo = Pieza("foco_on", alto=4.6).move_to([2.2, 1.0, 0])
+        self.play(FadeIn(fo), FadeIn(cp), run_time=0.5)
+        self.en("bajan")
+        fb = Pieza("foco_bajo", alto=4.6)
+        self.sfx("motor", -14)
+        self.poner(fb, fo)
+        self.wait(0.6)
+        fo2 = Pieza("foco_on", alto=4.6)
+        self.poner(fo2, fb)
+        self.en("falla")
+        n = self.nota("¿normal o falla?", Am, [-1.6, 2.6, 0], 30)
+        self.play(FadeIn(n, scale=1.2), run_time=0.3)
+        self.cerrar(cp, fo2, n)
+
+        # ------------------------------------------------------------ p1 corriente de arranque
+        self.voz("p1")
+        self.chip("1", "CORRIENTE DE ARRANQUE", Rr)
+        cp = Pieza("compresor", 4.4).move_to([-2.1, 1.9, 0])
+        self.play(FadeIn(cp), run_time=0.35)
+        ax, g = self.ejes([0.3, -2.6, 0], 7.4, 4.2, (0, 3), (0, 65), "tiempo (s)", "A")
+        self.play(Create(ax), FadeIn(g), run_time=0.4)
+        self.en("9")
+        tr = DashedLine(ax.c2p(0, 9.8), ax.c2p(3, 9.8), dash_length=0.1).set_stroke(G, 4)
+        n1 = self.nota("trabajando: 9,8 A", G, [2.3, 2.9, 0], 24)
+        self.play(Create(tr), FadeIn(n1), run_time=0.35)
+        self.en("58")
+        cur = ax.plot(lambda t: 9.8 + 49 * np.exp(-((t - 0.25) / 0.35) ** 2 * (1 if t > 0.25 else 6)) if t > 0.05 else 0,
+                      x_range=[0, 3, 0.01], color=Rr, stroke_width=6)
+        n2 = self.nota("al arrancar: 58,8 A", Rr, [2.3, 1.9, 0], 24)
+        self.play(Create(cur), FadeIn(n2), run_time=0.8)
+        self.en("seis")
+        n3 = self.card("6 VECES MÁS", ["NEC T430.248 y T430.251(A) · ½ hp 115 V"], Am, 7.8, 26).move_to([0, -6.1, 0])
+        self.play(FadeIn(n3, shift=UP * 0.15), run_time=0.35)
+        self.cerrar(cp, ax, g, tr, cur, n1, n2, n3)
+
+        # ------------------------------------------------------------ p2 caída en el cable
+        self.voz("p2")
+        self.chip("2", "LA CAÍDA EN EL CABLE", Am)
+        self.en("resistencia")
+        y1, y2 = 2.4, 1.7
+        c1 = Line([-3.8, y1, 0], [3.8, y1, 0]).set_stroke("#151515", 14)
+        c1b = Line([-3.8, y1, 0], [3.8, y1, 0]).set_stroke("#8D949B", 18).set_z_index(-1)
+        c2 = Line([-3.8, y2, 0], [3.8, y2, 0]).set_stroke("#F4F4F2", 14)
+        tl = T("30 m · 12 AWG · ida y vuelta", 24, self.th["txt2"], "BOLD").move_to([0, 3.2, 0])
+        self.play(Create(c1b), Create(c1), Create(c2), FadeIn(tl), run_time=0.5)
+        self.en("0")
+        r = self.card("R = 6,50 Ω/km × 0,060 km = 0,39 Ω", [], C, 7.8, 26).move_to([0, 0.5, 0])
+        self.play(FadeIn(r, shift=UP * 0.15), run_time=0.35)
+        self.en("9")
+        k1 = self.card("9,8 A × 0,39 Ω = 3,8 V", ["trabajando"], G, 7.8, 28).move_to([0, -1.5, 0])
+        self.play(FadeIn(k1, shift=UP * 0.15), run_time=0.35)
+        self.en("58")
+        k2 = self.card("58,8 A × 0,39 Ω = 23 V", ["al arrancar"], Rr, 7.8, 28).move_to([0, -3.6, 0])
+        self.play(FadeIn(k2, shift=UP * 0.15), run_time=0.35)
+        self.cerrar(c1, c1b, c2, tl, r, k1, k2)
+
+        # ------------------------------------------------------------ p3 lo que ve la lámpara
+        self.voz("p3")
+        self.chip("3", "LO QUE VE LA LÁMPARA", C)
+        fo = Pieza("foco_on", alto=4.0).move_to([0, 1.4, 0])
+        ax, g = self.ejes([0.3, -3.6, 0], 7.4, 3.4, (0, 3), (80, 125), "tiempo (s)", "V")
+        self.play(FadeIn(fo), Create(ax), FadeIn(g), run_time=0.45)
+        self.en("caída")
+        v = ax.plot(lambda t: 120 if t < 0.05 else 120 - 23 * np.exp(-((t - 0.25) / 0.35) ** 2 * (1 if t > 0.25 else 6)) - 3.8 * (t > 0.05) * (1 - np.exp(-t)),
+                    x_range=[0, 3, 0.01], color=Am, stroke_width=6)
+        self.play(Create(v), run_time=0.8)
+        self.en("instante")
+        fb = Pieza("foco_bajo", alto=4.0)
+        self.poner(fb, fo)
+        d = Dot(ax.c2p(0.25, 97), radius=0.1, color=Rr)
+        n1 = self.nota("97 V por un instante", Rr, ax.c2p(1.5, 92), 24)
+        self.play(FadeIn(d), FadeIn(n1), run_time=0.3)
+        self.en("subir")
+        fo2 = Pieza("foco_on", alto=4.0)
+        self.poner(fo2, fb)
+        self.en("normal")
+        n2 = self.nota("breve y leve: normal", G, [0, -6.4, 0], 26)
+        self.play(FadeIn(n2), run_time=0.3)
+        self.cerrar(fo2, ax, g, v, d, n1, n2)
+
+        # ------------------------------------------------------------ p4 la recomendación
+        self.voz("p4")
+        self.chip("4", "NEC 210.19(A)", G)
+        self.en("3|tres")
+        k1 = self.card("≤ 3 % EN UN CIRCUITO", ["120 V → máx. 3,6 V"], C, 7.8, 30).move_to([0, 2.0, 0])
+        self.play(FadeIn(k1, shift=UP * 0.15), run_time=0.35)
+        self.en("5|cinco")
+        k2 = self.card("≤ 5 % EN TOTAL", ["alimentador + circuito"], C, 7.8, 30).move_to([0, -0.2, 0])
+        self.play(FadeIn(k2, shift=UP * 0.15), run_time=0.35)
+        self.en("solución")
+        k3 = self.card("SOLUCIÓN", ["cable más grueso", "o el motor en su propio circuito"], G, 7.8, 30).move_to([0, -2.6, 0])
+        self.play(FadeIn(k3, shift=UP * 0.15), run_time=0.35)
+        self.cerrar(k1, k2, k3)
+
+        # ------------------------------------------------------------ p5 neutro flojo
+        self.voz("p5")
+        self.chip("5", "NEUTRO FLOJO", Rr)
+        tb = Pieza("tablero", alto=8.0).move_to([-2.0, -1.8, 0])
+        f1 = Pieza("foco_on", alto=2.8).move_to([2.6, 1.8, 0])
+        f2 = Pieza("foco_on", alto=2.8).move_to([2.6, -2.6, 0])
+        self.play(FadeIn(tb), FadeIn(f1), FadeIn(f2), run_time=0.45)
+        self.en("suben")
+        fa = Pieza("foco_alto", alto=2.8)
+        fb = Pieza("foco_bajo", alto=2.8)
+        self.poner(fa, f1)
+        self.poner(fb, f2)
+        self.en("neutro")
+        tf = Pieza("tablero_flojo", alto=8.0)
+        self.poner(tf, tb)
+        a = self.aro(tf.p("neutro"), 0.45, Rr)
+        self.play(Create(a), run_time=0.3)
+        self.en("105|ciento")
+        n1 = self.nota("105 V", Am, [2.6, -4.4, 0], 30)
+        self.play(FadeIn(n1), run_time=0.25)
+        self.en("135")
+        n2 = self.nota("135 V", Rr, [2.6, 0.0, 0], 30)
+        self.play(FadeIn(n2), run_time=0.25)
+        self.en("quema")
+        n3 = self.nota("¡quema aparatos!", Rr, [0, 3.2, 0], 30)
+        self.play(FadeIn(n3, scale=1.2), run_time=0.3)
+        self.cerrar(tf, fa, fb, a, n1, n2, n3)
+
+        # ------------------------------------------------------------ p6 en campo
+        self.voz("p6")
+        self.chip("6", "EN CAMPO", C)
+        tb = Pieza("tablero", alto=6.4).move_to([0, 0.0, 0])
+        self.play(FadeIn(tb), run_time=0.35)
+        self.en("fase")
+        m1 = Pieza("mm_120", alto=3.2).move_to([-2.6, -4.6, 0])
+        m2 = Pieza("mm_120", alto=3.2).move_to([2.6, -4.6, 0])
+        self.play(FadeIn(m1), FadeIn(m2), run_time=0.35)
+        self.en("separan")
+        m1b = Pieza("mm_105", alto=3.2)
+        m2b = Pieza("mm_135", alto=3.2)
+        self.poner(m1b, m1)
+        self.poner(m2b, m2)
+        self.sfx("tic", -8)
+        self.en("desenergiza")
+        n1 = self.nota("desenergiza y revisa el neutro", Am, [0, 3.4, 0], 24)
+        self.play(FadeIn(n1), run_time=0.3)
+        self.en("distribuidora")
+        n2 = self.nota("en la acometida: llama a la distribuidora", GR, [0, -6.7, 0], 22)
+        self.play(FadeIn(n2), run_time=0.3)
+        self.cerrar(tb, m1b, m2b, n1, n2)
+        self.quitar_chip()
+        self.final("Bajan todas un instante: arranque · Unas suben y otras bajan: neutro flojo")
+
+
+class PortadaV29v2(Scene):
+    def construct(self):
+        import reel_v2
+        reel_v2.Pieza.CARPETA = DIR / "v29v2_eq"
+        f1 = Pieza("foco_alto", alto=4.6).move_to([-1.9, 0.2, 0])
+        f2 = Pieza("foco_bajo", alto=4.6).move_to([1.9, 0.2, 0])
+        cp = Pieza("compresor", 4.0).move_to([0, -4.3, 0])
+        portada_v(self, ["¿POR QUÉ", "BAJAN LAS", "LUCES?"], Group(f1, f2), "¿NORMAL O NEUTRO FLOJO?", extra=cp)
