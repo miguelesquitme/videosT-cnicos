@@ -92,6 +92,33 @@ class H01v5(H01v3):
         if anims:
             self.play(*anims, run_time=0.35)
 
+    # =============================================================== 4 · MATERIALES (+ fila de la manguera TSJ)
+    def h_materiales(self):
+        self.seccion("materiales")
+        self.voz("materiales")
+        anchos = [1.25, 3.0, 7.6, 3.4]
+        x0 = -sum(anchos) / 2
+        anclas = ["motor", "F2", "F1", "KM1", "F3", "S0", "S1", "H1", "H2", "6", "azul",
+                  "2", "separador", "negro", "rojo", "claro", "verde", "tierra", "rieldin", "canaleta", "gabinete", "gabinete"]
+        M = _V3.MATERIALES
+        paginas = [M[:11], M[11:]]
+        idx = 0
+        for pg, filas in enumerate(paginas):
+            tb = _V3.tabla_clara(filas, anchos, x0, 3.55, 0.5, 17, ["Cantidad", "Nombre", "Características", "Observación"])
+            if pg == 0:
+                self.play(FadeIn(tb[0]), run_time=0.4)
+            for k, fila in enumerate(tb[1:]):
+                self.en(anclas[min(idx, len(anclas) - 1)], 0.2)
+                if pg == 1 and k == 0:
+                    self.play(FadeOut(self.tb_ant[1:]), FadeIn(tb[0]), FadeOut(self.tb_ant[0]), run_time=0.35)
+                self.sfx("pop", -18)
+                self.play(FadeIn(fila, shift=UP * 0.1), run_time=0.3)
+                idx += 1
+            self.tb_ant = tb
+        self.cerrar_voz(0.4)
+        self.wait(1.2)
+        self.salir()
+
     # =============================================================== 7 · CONEXIÓN DEL MANDO
     def h_c_mando(self):
         self.seccion("c_mando")
