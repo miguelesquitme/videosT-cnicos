@@ -490,18 +490,38 @@ def diagrama_octal(tipo="rele", ancho_mm=40.0):
 
 
 # ============================================================ OPERADORES DE PUERTA 22 mm (referencias #8 a #11)
-def bloque(n1="3", n2="4", nc=False, piloto=False, alto_mm=30.0):
-    """Bloque de contacto (o portalámparas) visto por detrás, dibujado como la captura del usuario:
-    tornillos de conexión arriba (n1) y abajo (n2) con su número, ventana de color (NC roja / NO verde / LED blanca),
-    leva semicircular, pestaña gris de enganche con su punto y tornillo de fijación a la izquierda. Cuerpo gris con sombra."""
+def bloque(n1="3", n2="4", nc=False, piloto=False, alto_mm=30.0, estado=None):
+    """Parte trasera del operador de 22 mm (Correcciones del usuario, 23-nov noche): UN cuadrado negro (el adaptador),
+    sin franjas negras sueltas, y encima el BLOQUE DE CONTACTO en GRIS para que no se pierda en lo negro.
+    Tornillos en cruz (los originales) arriba (n1) y abajo (n2) con su número, ventana de color (NC roja / NO verde /
+    LED blanca), leva semicircular, pestaña gris con su punto y tornillo de fijación a la izquierda.
+    estado: None · "on_verde" / "on_rojo" (portalámparas encendido: la ventana brilla)."""
     tipo = "LED" if piloto else ("NC" if nc else "NO")
-    c = ['<defs><linearGradient id="gOpGris" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#B7BCC1"/><stop offset="0.5" stop-color="#9097A0"/><stop offset="1" stop-color="#6E757E"/></linearGradient></defs>']
-    c.append('<defs><linearGradient id="gBisel" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3B3D41"/><stop offset="0.5" stop-color="#1F2023"/><stop offset="1" stop-color="#0D0E0F"/></linearGradient></defs>')
-    _bloque_lateral(c, n1, n2, tipo)
-    Wp, Hp = 345, 420
-    s_mm = alto_mm / 430
-    svg, WH = svg_mm(Wp, Hp, s_mm, '<g transform="translate(-225,-445)">' + "".join(c) + "</g>")
-    return svg, {n1: ((340 - 225) * s_mm, (528 - 445) * s_mm), n2: ((340 - 225) * s_mm, (785 - 445) * s_mm)}, WH
+    col = {"NC": "#C8202B", "NO": "#2E8B3E", "LED": "#F4F4F2"}[tipo]
+    W = 400
+    c = ['<defs><linearGradient id="gAdap" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3B3D41"/><stop offset="0.5" stop-color="#222326"/><stop offset="1" stop-color="#111214"/></linearGradient>'
+         '<linearGradient id="gCont5" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#E8EBEE"/><stop offset="0.6" stop-color="#CDD2D7"/><stop offset="1" stop-color="#B2B8BE"/></linearGradient></defs>']
+    # adaptador negro cuadrado, con la muesca de la esquina inferior derecha
+    c.append(f'<g filter="url(#sMando)"><path d="M0,0 H{W} V{W - 46} A46,46 0 0 0 {W - 46},{W} H0 Z" fill="url(#gAdap)"/></g>'
+             + R(0, 0, W, 5, "#5A5D63") + R(0, 0, 5, W, "#4A4D52"))
+    # bloque de contacto GRIS (columna central con los dos tornillos y la ventana)
+    c.append(f'<g filter="url(#sMando)">{R(70, 18, 190, 364, "url(#gCont5)")}</g>' + R(70, 18, 190, 5, "#F7F8F9") + R(70, 377, 190, 5, "#80878E"))
+    for y, n in ((92, n1), (308, n2)):
+        c.append(R(98, y - 52, 104, 104, "#9AA1A9") + tornillo_cruz(150, y, 40) + T(232, y, n, 38, "#1B1F24", 800, rot=90))
+    if estado and estado.startswith("on"):
+        lc = "#55F000" if estado == "on_verde" else "#FF2A1F"
+        c.append(f'<defs><filter id="gloW5" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="14"/></filter></defs>'
+                 f'<rect x="112" y="150" width="76" height="100" fill="{lc}" filter="url(#gloW5)" opacity="0.9"/>' + R(120, 158, 60, 84, lc))
+    else:
+        c.append(R(120, 158, 60, 84, col, 'stroke="#2A2D31" stroke-width="3"' if tipo == "LED" else ""))
+    c.append(T(232, 200, tipo, 34, "#1B1F24", 800, rot=90))
+    if tipo != "LED":     # leva semicircular sobre el negro
+        c.append(f'<path d="M262,128 A72,72 0 0 1 262,272 Z" fill="{col}" stroke="#2A2D31" stroke-width="10"/>')
+    c.append(f'<g filter="url(#sTorn)">{R(356, 132, 34, 136, "#8A9199")}</g>' + '<circle cx="373" cy="200" r="10" fill="#0E0F10"/>')
+    c.append(f'<g filter="url(#sTorn)"><circle cx="30" cy="200" r="30" fill="url(#rAcero)" stroke="#6E747B" stroke-width="2"/></g>' + R(12, 197, 36, 6, "#6E747B") + R(27, 182, 6, 36, "#6E747B"))
+    s_mm = alto_mm / W
+    svg, WH = svg_mm(W, W, s_mm, "".join(c))
+    return svg, {n1: (150 * s_mm, 92 * s_mm), n2: (150 * s_mm, 308 * s_mm)}, WH
 
 
 def _bisel_puerta(c, Wp=300):
@@ -862,42 +882,57 @@ def caja_bornes(tipo="6", conexion="delta", ancho_mm=110.0):
 
 
 # ============================================================ BORNERAS DE CABALLETE (referencias #23 a #25)
-def bornera(nombres=("L1", "L2", "L3", "N", "PE"), tipos=None, ref="X0", paso_mm=6.2):
-    """Paquete de bornes de paso en riel, sin contornos (se separan por sombra).
-    Gris = paso · azul = neutro (N) · verde/amarillo = tierra (PE). Tornillos de ranura como los del S7-1200.
-    Separador al inicio y al final del paquete; la etiqueta (-X0…) va en el separador."""
+def bornera(nombres=("L1", "L2", "L3", "N", "PE"), tipos=None, ref="X0", paso_mm=6.2, pasos=None, numeros=None):
+    """Paquete de bornes de paso sobre riel DIN (rediseño 23-nov noche, estilo de la referencia del usuario):
+    cada borne con labio arriba y abajo, dos tornillos de ranura (mismos color y forma) y el cajetín central con el
+    número; SIN contornos, se separan por sombra. Ancho por calibre (IEC 60947-7-1): pasos = {nombre: mm},
+    p. ej. 10,2 mm para 10 mm² (calibre 8) y 5,2 mm para 2,5 mm² (calibre 14).
+    Gris = paso · azul = neutro · verde/amarillo = tierra. Topes de fijación al inicio y al final; la etiqueta va en el tope."""
     tipos = tipos or {}
-    P, Hp = 80, 400
-    n = len(nombres)
-    S = 64                     # separador (ancho = alto de la etiqueta)
-    Wp = S + P * n + S
-    s_mm = paso_mm / P
-    b, c = {}, ['<defs><linearGradient id="bGris" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#C9CBCE"/><stop offset="0.75" stop-color="#A9ABAE"/><stop offset="1" stop-color="#8A8D91"/></linearGradient>'
-                '<linearGradient id="bAzul" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#6E93CC"/><stop offset="0.75" stop-color="#4A6FA5"/><stop offset="1" stop-color="#36588C"/></linearGradient>'
-                '<linearGradient id="bSep" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#8E9399"/><stop offset="0.5" stop-color="#6E747B"/><stop offset="1" stop-color="#565B61"/></linearGradient></defs>']
+    pasos = pasos or {}
+    k = 80 / paso_mm                  # px por mm (paso de referencia = 80 px)
+    Hp = 400
+    S = 64
+    anchos = [pasos.get(nm, paso_mm) * k for nm in nombres]
+    Wp = S + sum(anchos) + S
+    s_mm = 1 / k
+    b = {}
+    c = ['<defs><linearGradient id="bGris5" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#D3D5D8"/><stop offset="0.7" stop-color="#BFC2C6"/><stop offset="1" stop-color="#A3A7AC"/></linearGradient>'
+         '<linearGradient id="bAzul5" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#2E62C2"/><stop offset="0.7" stop-color="#2553A8"/><stop offset="1" stop-color="#1C4288"/></linearGradient>'
+         '<linearGradient id="bTope5" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#5E6268"/><stop offset="0.5" stop-color="#4A4E54"/><stop offset="1" stop-color="#3A3D42"/></linearGradient></defs>']
+    x0 = S
     for i, nm in enumerate(nombres):
-        x0 = S + P * i
+        P = anchos[i]
         t = tipos.get(nm, "PE" if nm == "PE" else ("N" if nm == "N" else ""))
         if t == "PE":
-            cuerpo = (f'<rect x="{x0}" y="0" width="{P}" height="{Hp}" fill="#2E9E44"/><rect x="{x0 + P / 2}" y="0" width="{P / 2}" height="{Hp}" fill="#F2D21B"/>'
-                      f'<rect x="{x0 + P - 10}" y="0" width="10" height="{Hp}" fill="#000" opacity="0.16"/>')
+            cuerpo = R(x0, 0, P / 2, Hp, "#F2D21B") + R(x0 + P / 2, 0, P / 2, Hp, "#2E9E44")
+            labio, caj = "#000000", "#B39A10"
         elif t == "N":
-            cuerpo = R(x0, 0, P, Hp, "url(#bAzul)")
+            cuerpo, labio, caj = R(x0, 0, P, Hp, "url(#bAzul5)"), "#000000", "#1B3A78"
         else:
-            cuerpo = R(x0, 0, P, Hp, "url(#bGris)")
-        c.append(f'<g filter="url(#sDura)">{cuerpo}</g>' + R(x0, 0, P, 4, "#FFFFFF", 'opacity="0.45"'))
-        for y in (80, 320):            # marcador en blanco (se rotula al conectar)
-            c.append(f'<g filter="url(#sTorn)">{R(x0 + 8, y - 15, P - 16, 30, "#FFFFFF")}</g>')
-        for y in (140, 260):
-            c.append(_torn_ranura(x0 + P / 2, y, 24))
-            b[f"{nm}_{'a' if y == 140 else 'b'}"] = (x0 + P / 2, y)
-        c.append(f'<circle cx="{x0 + P / 2}" cy="200" r="10" fill="#1B1F24"/>')
-    # separadores (más altos que los bornes) y etiqueta del paquete en el separador de inicio
-    for xs in (0, S + P * n):
-        c.append(f'<g filter="url(#sDura)">{R(xs, 80, S, Hp - 160, "url(#bSep)")}</g>' + R(xs, 80, S, 4, "#B5BAC0"))
-    c.append(PL(S / 2, Hp / 2, ref, s_mm, rot=-90))
+            cuerpo, labio, caj = R(x0, 0, P, Hp, "url(#bGris5)"), "#000000", "#5A5E64"
+        c.append(f'<g filter="url(#sDura)">{cuerpo}</g>')
+        # labios de arriba y abajo (franja más clara / más oscura), separación por sombra
+        c.append(R(x0, 0, P, 52, "#FFFFFF", 'opacity="0.22"') + R(x0, 52, P, 4, labio, 'opacity="0.18"')
+                 + R(x0, Hp - 52, P, 52, labio, 'opacity="0.10"') + R(x0, Hp - 56, P, 4, "#FFFFFF", 'opacity="0.25"')
+                 + R(x0 + P - 5, 0, 5, Hp, "#000000", 'opacity="0.22"'))
+        r = min(24, P * 0.32)
+        for y, lado in ((112, "a"), (288, "b")):
+            c.append(_torn_ranura(x0 + P / 2, y, r))
+            b[f"{nm}_{lado}"] = (x0 + P / 2, y)
+        # cajetín central con bisel y el número del borne
+        q = min(56, P - 16)
+        c.append(R(x0 + P / 2 - q / 2 - 4, 200 - q / 2 - 4, q + 8, q + 8, "#000000", 'opacity="0.25"')
+                 + R(x0 + P / 2 - q / 2, 200 - q / 2, q, q, "#FFFFFF"))
+        if numeros:
+            c.append(T(x0 + P / 2, 202, str(numeros[i]), min(38, q * 0.75), "#111111", 800))
+        x0 += P
+    for xs in (0, Wp - S):            # topes de fijación con su tornillo
+        c.append(f'<g filter="url(#sDura)">{R(xs, 60, S, Hp - 120, "url(#bTope5)")}</g>' + R(xs, 60, S, 4, "#7C8188"))
+        c.append(_torn_ranura(xs + S / 2, Hp - 100, 18))
+    c.append(PL(S / 2, 165, ref, s_mm, rot=-90))
     svg, WH = svg_mm(Wp, Hp, s_mm, "".join(c))
-    return svg, {k: (x * s_mm, y * s_mm) for k, (x, y) in b.items()}, WH
+    return svg, {kk: (x * s_mm, y * s_mm) for kk, (x, y) in b.items()}, WH
 
 
 # ============================================================ LOGO! 8 12/24RCE + LOGO!Power 24 V 1,3 A (referencia del usuario, se conserva la marca)

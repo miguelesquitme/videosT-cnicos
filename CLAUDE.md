@@ -129,3 +129,15 @@ La clave de ElevenLabs vive solo en `~/.config/eleven/env` (ELEVEN_KEY). Nunca e
 - Armado (`manim/canva_capas.py` → `canva/capas/`): fondo PNG, cada equipo PNG suelto (insert_fill con el mediaId que devuelve la subida), cables en 2 capas PNG transparentes, diagrama como formas (insert_shape), marcas naranjas como formas, textos con add_text + format_text.
 - Reglas de Canva aprendidas: un trazo de UN solo segmento (M…L…) NO se dibuja → las líneas rectas van como rectángulos RELLENOS (1,9 px); formas de alto < 12 px se estiran → viewBox de 12 px; replace_shape solo acepta trazos cerrados y ≤ 2048 bytes; cada edit-design devuelve todo el documento (caro): agrupar operaciones.
 - Detección de cambios: `canva/h01_c8_canva_base.json` (locator → nombre de símbolo/equipo/texto). Se lee el diseño con read-design y se compara; o el usuario deja comentarios.
+
+## H01 v5 (Correcciones_V, 23-nov) — `manim/h01v5.py`, `h01v5_lay.py`, `h01v5_guion.py`, `h01v5_eq/`
+- Bloques traseros de pulsadores/pilotos (`svgref.bloque`): adaptador NEGRO cuadrado (sin franjas laterales que le quiten forma) y el CONTACTO en GRIS para que se vea dónde está; tornillos en cruz originales. El cuadro del FRENTE (botón/luz) = MISMO tamaño que el cuadro trasero (KF = KD); la etiqueta sigue ese tamaño.
+- El frente de la puerta SOLO al inicio de la conexión del mando, diciendo que por temas didácticos se verá por detrás.
+- Borneras (`svgref.bornera`): estilo de la referencia (labios arriba/abajo, tornillo redondo de ranura, cuadro central con número, topes oscuros con tornillo), SIN bordes; ancho según calibre (10 mm² potencia, N 2,5 mm²). Riel DIN metálico con ranuras, sin bordes.
+- Los cables entran a cada borne SOLO por ARRIBA o por ABAJO, nunca de lado (contactor: 13/21/A1 arriba, 14/22/A2 abajo; A1/A2 a la derecha del tornillo de 5/L3-6/T3).
+- Curvas ABIERTAS (no cerradas): siempre un tramo recto donde quepa el marcador. Más espacio entre equipos.
+- Seguir el diagrama UN HILO A LA VEZ, despacio (≈ 2,8 s por cable), opacando los hilos ya conectados.
+- Del tablero al motor va MANGUERA TSJ 4 × 8 AWG (3 negros + verde/amarillo), no cables sueltos.
+- Puesta en marcha: continuidad bajo -F2 SIN energía y con -F2 cerrado: 2-4, 4-6, 2-6 y cada fase contra PE (sin continuidad). Luego energía, y la corriente se mide en la CAJA DEL MOTOR con zoom, UN solo conductor (T1).
+- Diagrama de potencia literal del usuario: L1 (X0:1) → entrada 5 de -F2, L2 → 3, L3 → 1. La L del mando (hilo 1) se toma en la entrada 5 de -F2 (= X0:1, L1).
+- Miniatura dinámica (fondo azul con rayos, "¡POR FIN!", equipos reales): `manim/miniatura_h01v5/mini.html` → `miniatura_h01v5.png`.
