@@ -1,0 +1,17 @@
+fondo.png {"mediaId":"MAHby0pemCM"}
+cables_mando.png {"mediaId":"MAHby3Yxgi8"}
+cables_potencia.png {"mediaId":"MAHby-Xlees"}
+eq_F2.png {"mediaId":"MAHby6qr5MM"}
+eq_F1.png {"mediaId":"MAHby6rfWOw"}
+eq_X0.png {"mediaId":"MAHby36f9Vo"}
+eq_X1.png {"mediaId":"MAHby7Sz1ac"}
+eq_S0.png {"mediaId":"MAHbyw9yt60"}
+eq_S0b.png {"mediaId":"MAHby8F_riw"}
+eq_S1.png {"mediaId":"MAHbyy5JI3k"}
+eq_S1b.png {"mediaId":"MAHby-9LOz4"}
+eq_H1.png {"mediaId":"MAHby7Iaq18"}
+eq_H1b.png {"mediaId":"MAHby8jplS4"}
+eq_H2.png {"mediaId":"MAHby9RO25k"}
+eq_H2b.png {"mediaId":"MAHby6hNTKE"}
+eq_KM1.png {"mediaId":"MAHbyzguPfo"}
+eq_F3.png {"mediaId":"MAHby7wonM8"}
