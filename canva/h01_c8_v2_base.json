@@ -1,0 +1,6960 @@
+{
+"transform_diagrama": "x=1.25*x0+44.75, y=1.25*y0+95.75",
+"simbolos": [
+{
+"tipo": "g",
+"id": "diagrama_potencia"
+},
+{
+"tipo": "g",
+"id": "sim_X0_barras"
+},
+{
+"tipo": "g",
+"id": "X0_PE"
+},
+{
+"tipo": "circle",
+"id": "X0_PE_borne_ent"
+},
+{
+"tipo": "circle",
+"id": "X0_PE_borne_sal"
+},
+{
+"tipo": "path",
+"id": "X0_PE_puente"
+},
+{
+"tipo": "path",
+"id": "barra_PE"
+},
+{
+"tipo": "g",
+"id": "X0_N"
+},
+{
+"tipo": "circle",
+"id": "X0_N_borne_ent"
+},
+{
+"tipo": "circle",
+"id": "X0_N_borne_sal"
+},
+{
+"tipo": "path",
+"id": "X0_N_puente"
+},
+{
+"tipo": "path",
+"id": "barra_N"
+},
+{
+"tipo": "g",
+"id": "X0_L3"
+},
+{
+"tipo": "circle",
+"id": "X0_L3_borne_ent"
+},
+{
+"tipo": "circle",
+"id": "X0_L3_borne_sal"
+},
+{
+"tipo": "path",
+"id": "X0_L3_puente"
+},
+{
+"tipo": "path",
+"id": "barra_L3"
+},
+{
+"tipo": "g",
+"id": "X0_L2"
+},
+{
+"tipo": "circle",
+"id": "X0_L2_borne_ent"
+},
+{
+"tipo": "circle",
+"id": "X0_L2_borne_sal"
+},
+{
+"tipo": "path",
+"id": "X0_L2_puente"
+},
+{
+"tipo": "path",
+"id": "barra_L2"
+},
+{
+"tipo": "g",
+"id": "X0_L1"
+},
+{
+"tipo": "circle",
+"id": "X0_L1_borne_ent"
+},
+{
+"tipo": "circle",
+"id": "X0_L1_borne_sal"
+},
+{
+"tipo": "path",
+"id": "X0_L1_puente"
+},
+{
+"tipo": "path",
+"id": "barra_L1"
+},
+{
+"tipo": "g",
+"id": "conductores_X0-F2"
+},
+{
+"tipo": "g",
+"id": "cond_L3_X0-F2"
+},
+{
+"tipo": "circle",
+"id": "pto_L3"
+},
+{
+"tipo": "path",
+"id": "lin_L3_X0-F2"
+},
+{
+"tipo": "g",
+"id": "cond_L2_X0-F2"
+},
+{
+"tipo": "circle",
+"id": "pto_L2"
+},
+{
+"tipo": "path",
+"id": "lin_L2_X0-F2"
+},
+{
+"tipo": "g",
+"id": "cond_L1_X0-F2"
+},
+{
+"tipo": "circle",
+"id": "pto_L1"
+},
+{
+"tipo": "path",
+"id": "lin_L1_X0-F2"
+},
+{
+"tipo": "g",
+"id": "sim_F2_disyuntor"
+},
+{
+"tipo": "g",
+"id": "F2_polo1"
+},
+{
+"tipo": "path",
+"id": "F2_p1_brazo"
+},
+{
+"tipo": "path",
+"id": "F2_p1_tope"
+},
+{
+"tipo": "rect",
+"id": "F2_p1_disparo"
+},
+{
+"tipo": "g",
+"id": "F2_polo2"
+},
+{
+"tipo": "path",
+"id": "F2_p2_brazo"
+},
+{
+"tipo": "path",
+"id": "F2_p2_tope"
+},
+{
+"tipo": "rect",
+"id": "F2_p2_disparo"
+},
+{
+"tipo": "g",
+"id": "F2_polo3"
+},
+{
+"tipo": "path",
+"id": "F2_p3_brazo"
+},
+{
+"tipo": "path",
+"id": "F2_p3_tope"
+},
+{
+"tipo": "rect",
+"id": "F2_p3_disparo"
+},
+{
+"tipo": "g",
+"id": "conductores_F2-KM1"
+},
+{
+"tipo": "path",
+"id": "lin_F2-KM1_1"
+},
+{
+"tipo": "path",
+"id": "lin_F2-KM1_2"
+},
+{
+"tipo": "path",
+"id": "lin_F2-KM1_3"
+},
+{
+"tipo": "g",
+"id": "sim_KM1_contactor"
+},
+{
+"tipo": "g",
+"id": "KM1_polo1"
+},
+{
+"tipo": "path",
+"id": "KM1_p1_brazo"
+},
+{
+"tipo": "path",
+"id": "KM1_p1_tope"
+},
+{
+"tipo": "g",
+"id": "KM1_polo2"
+},
+{
+"tipo": "path",
+"id": "KM1_p2_brazo"
+},
+{
+"tipo": "path",
+"id": "KM1_p2_tope"
+},
+{
+"tipo": "g",
+"id": "KM1_polo3"
+},
+{
+"tipo": "path",
+"id": "KM1_p3_brazo"
+},
+{
+"tipo": "path",
+"id": "KM1_p3_tope"
+},
+{
+"tipo": "g",
+"id": "conductores_KM1-F3"
+},
+{
+"tipo": "path",
+"id": "lin_KM1-F3_1"
+},
+{
+"tipo": "path",
+"id": "lin_KM1-F3_2"
+},
+{
+"tipo": "path",
+"id": "lin_KM1-F3_3"
+},
+{
+"tipo": "g",
+"id": "sim_F3_rele_termico"
+},
+{
+"tipo": "path",
+"id": "F3_caja"
+},
+{
+"tipo": "path",
+"id": "F3_p1_elemento"
+},
+{
+"tipo": "path",
+"id": "F3_p2_elemento"
+},
+{
+"tipo": "path",
+"id": "F3_p3_elemento"
+},
+{
+"tipo": "g",
+"id": "conductores_F3-X1"
+},
+{
+"tipo": "path",
+"id": "lin_F3-X1_1"
+},
+{
+"tipo": "path",
+"id": "lin_F3-X1_2"
+},
+{
+"tipo": "path",
+"id": "lin_F3-X1_3"
+},
+{
+"tipo": "g",
+"id": "sim_X1_bornes"
+},
+{
+"tipo": "circle",
+"id": "X1_borne1"
+},
+{
+"tipo": "circle",
+"id": "X1_borne2"
+},
+{
+"tipo": "circle",
+"id": "X1_borne3"
+},
+{
+"tipo": "circle",
+"id": "X1_borne4"
+},
+{
+"tipo": "g",
+"id": "sim_M1_motor"
+},
+{
+"tipo": "circle",
+"id": "M1_circulo"
+},
+{
+"tipo": "path",
+"id": "M1_tilde"
+},
+{
+"tipo": "path",
+"id": "M1_masa"
+},
+{
+"tipo": "g",
+"id": "conductores_X1-M1"
+},
+{
+"tipo": "path",
+"id": "lin_X1-M1_T1"
+},
+{
+"tipo": "path",
+"id": "lin_X1-M1_T2"
+},
+{
+"tipo": "path",
+"id": "lin_X1-M1_T3"
+},
+{
+"tipo": "g",
+"id": "cond_PE"
+},
+{
+"tipo": "circle",
+"id": "pto_PE_1"
+},
+{
+"tipo": "circle",
+"id": "pto_PE_2"
+},
+{
+"tipo": "path",
+"id": "lin_PE_barra-X1"
+},
+{
+"tipo": "path",
+"id": "lin_PE_X1-motor"
+},
+{
+"tipo": "path",
+"id": "lin_PE_motor"
+},
+{
+"tipo": "circle",
+"id": "pto_PE_3"
+},
+{
+"tipo": "path",
+"id": "lin_PE_a_tierra2"
+},
+{
+"tipo": "path",
+"id": "lin_PE_tierra2"
+},
+{
+"tipo": "path",
+"id": "lin_PE_a_tierra1"
+},
+{
+"tipo": "path",
+"id": "lin_PE_tierra1"
+},
+{
+"tipo": "g",
+"id": "sim_tierras"
+},
+{
+"tipo": "path",
+"id": "tierra_1"
+},
+{
+"tipo": "path",
+"id": "tierra_2"
+}
+],
+"resto": [
+{
+"id": "P0153",
+"tipo": "trazo",
+"grupo": "Group_001",
+"caja": [
+696,
+924,
+1082,
+1005
+],
+"relleno": "#C9CED4",
+"linea": null
+},
+{
+"id": "P0154",
+"tipo": "trazo",
+"grupo": "Group_001",
+"caja": [
+696,
+924,
+1082,
+941
+],
+"relleno": "#E7EAED",
+"linea": null
+},
+{
+"id": "P0155",
+"tipo": "trazo",
+"grupo": "Group_001",
+"caja": [
+696,
+988,
+1082,
+1005
+],
+"relleno": "#A9B0B8",
+"linea": null
+},
+{
+"id": "P0156",
+"tipo": "trazo",
+"grupo": "Group_001",
+"caja": [
+709,
+958,
+743,
+970
+],
+"relleno": "#7E858C",
+"linea": null
+},
+{
+"id": "P0157",
+"tipo": "trazo",
+"grupo": "Group_001",
+"caja": [
+767,
+958,
+802,
+970
+],
+"relleno": "#7E858C",
+"linea": null
+},
+{
+"id": "P0158",
+"tipo": "trazo",
+"grupo": "Group_001",
+"caja": [
+825,
+958,
+860,
+970
+],
+"relleno": "#7E858C",
+"linea": null
+},
+{
+"id": "P0159",
+"tipo": "trazo",
+"grupo": "Group_001",
+"caja": [
+883,
+958,
+918,
+970
+],
+"relleno": "#7E858C",
+"linea": null
+},
+{
+"id": "P0160",
+"tipo": "trazo",
+"grupo": "Group_001",
+"caja": [
+942,
+958,
+977,
+970
+],
+"relleno": "#7E858C",
+"linea": null
+},
+{
+"id": "P0161",
+"tipo": "trazo",
+"grupo": "Group_001",
+"caja": [
+1000,
+958,
+1035,
+970
+],
+"relleno": "#7E858C",
+"linea": null
+},
+{
+"id": "P0162",
+"tipo": "trazo",
+"grupo": "Group_001",
+"caja": [
+1698,
+276,
+1713,
+276
+],
+"relleno": null,
+"linea": "#667085"
+},
+{
+"id": "P0163",
+"tipo": "trazo",
+"grupo": "Group_001",
+"caja": [
+1668,
+276,
+1683,
+276
+],
+"relleno": null,
+"linea": "#667085"
+},
+{
+"id": "P0164",
+"tipo": "trazo",
+"grupo": "Group_001",
+"caja": [
+1638,
+276,
+1653,
+276
+],
+"relleno": null,
+"linea": "#667085"
+},
+{
+"id": "P0165",
+"tipo": "trazo",
+"grupo": "Group_001",
+"caja": [
+1608,
+276,
+1623,
+276
+],
+"relleno": null,
+"linea": "#667085"
+},
+{
+"id": "P0166",
+"tipo": "trazo",
+"grupo": "Group_001",
+"caja": [
+1578,
+276,
+1593,
+276
+],
+"relleno": null,
+"linea": "#667085"
+},
+{
+"id": "P0167",
+"tipo": "trazo",
+"grupo": "Group_001",
+"caja": [
+1548,
+276,
+1563,
+276
+],
+"relleno": null,
+"linea": "#667085"
+},
+{
+"id": "P0168",
+"tipo": "trazo",
+"grupo": "Group_001",
+"caja": [
+1518,
+276,
+1533,
+276
+],
+"relleno": null,
+"linea": "#667085"
+},
+{
+"id": "P0169",
+"tipo": "trazo",
+"grupo": "Group_001",
+"caja": [
+1488,
+276,
+1503,
+276
+],
+"relleno": null,
+"linea": "#667085"
+},
+{
+"id": "P0170",
+"tipo": "trazo",
+"grupo": "Group_001",
+"caja": [
+1458,
+276,
+1473,
+276
+],
+"relleno": null,
+"linea": "#667085"
+},
+{
+"id": "P0171",
+"tipo": "trazo",
+"grupo": "Group_001",
+"caja": [
+1428,
+276,
+1443,
+276
+],
+"relleno": null,
+"linea": "#667085"
+},
+{
+"id": "P0172",
+"tipo": "trazo",
+"grupo": "Group_001",
+"caja": [
+1398,
+276,
+1413,
+276
+],
+"relleno": null,
+"linea": "#667085"
+},
+{
+"id": "P0173",
+"tipo": "trazo",
+"grupo": "Group_001",
+"caja": [
+1368,
+276,
+1383,
+276
+],
+"relleno": null,
+"linea": "#667085"
+},
+{
+"id": "P0174",
+"tipo": "trazo",
+"grupo": "Group_001",
+"caja": [
+1338,
+276,
+1353,
+276
+],
+"relleno": null,
+"linea": "#667085"
+},
+{
+"id": "P0175",
+"tipo": "trazo",
+"grupo": "Group_001",
+"caja": [
+1308,
+276,
+1323,
+276
+],
+"relleno": null,
+"linea": "#667085"
+},
+{
+"id": "P0176",
+"tipo": "trazo",
+"grupo": "Group_001",
+"caja": [
+1278,
+276,
+1293,
+276
+],
+"relleno": null,
+"linea": "#667085"
+},
+{
+"id": "P0177",
+"tipo": "trazo",
+"grupo": "Group_001",
+"caja": [
+1248,
+276,
+1263,
+276
+],
+"relleno": null,
+"linea": "#667085"
+},
+{
+"id": "P0178",
+"tipo": "trazo",
+"grupo": "Group_001",
+"caja": [
+1218,
+276,
+1233,
+276
+],
+"relleno": null,
+"linea": "#667085"
+},
+{
+"id": "P0179",
+"tipo": "trazo",
+"grupo": "Group_001",
+"caja": [
+1188,
+276,
+1203,
+276
+],
+"relleno": null,
+"linea": "#667085"
+},
+{
+"id": "P0180",
+"tipo": "trazo",
+"grupo": "Group_001",
+"caja": [
+1158,
+276,
+1173,
+276
+],
+"relleno": null,
+"linea": "#667085"
+},
+{
+"id": "P0181",
+"tipo": "trazo",
+"grupo": "Group_001",
+"caja": [
+1146,
+279,
+1146,
+294
+],
+"relleno": null,
+"linea": "#667085"
+},
+{
+"id": "P0182",
+"tipo": "trazo",
+"grupo": "Group_001",
+"caja": [
+1146,
+309,
+1146,
+324
+],
+"relleno": null,
+"linea": "#667085"
+},
+{
+"id": "P0183",
+"tipo": "trazo",
+"grupo": "Group_001",
+"caja": [
+1146,
+339,
+1146,
+354
+],
+"relleno": null,
+"linea": "#667085"
+},
+{
+"id": "P0184",
+"tipo": "trazo",
+"grupo": "Group_001",
+"caja": [
+1146,
+369,
+1146,
+384
+],
+"relleno": null,
+"linea": "#667085"
+},
+{
+"id": "P0185",
+"tipo": "trazo",
+"grupo": "Group_001",
+"caja": [
+1146,
+399,
+1146,
+414
+],
+"relleno": null,
+"linea": "#667085"
+},
+{
+"id": "P0186",
+"tipo": "trazo",
+"grupo": "Group_001",
+"caja": [
+1146,
+429,
+1146,
+444
+],
+"relleno": null,
+"linea": "#667085"
+},
+{
+"id": "P0187",
+"tipo": "trazo",
+"grupo": "Group_001",
+"caja": [
+1146,
+459,
+1146,
+474
+],
+"relleno": null,
+"linea": "#667085"
+},
+{
+"id": "P0188",
+"tipo": "trazo",
+"grupo": "Group_001",
+"caja": [
+1146,
+489,
+1146,
+504
+],
+"relleno": null,
+"linea": "#667085"
+},
+{
+"id": "P0189",
+"tipo": "trazo",
+"grupo": "Group_001",
+"caja": [
+1146,
+519,
+1146,
+534
+],
+"relleno": null,
+"linea": "#667085"
+},
+{
+"id": "P0190",
+"tipo": "trazo",
+"grupo": "Group_001",
+"caja": [
+1146,
+549,
+1146,
+564
+],
+"relleno": null,
+"linea": "#667085"
+},
+{
+"id": "P0191",
+"tipo": "trazo",
+"grupo": "Group_001",
+"caja": [
+1146,
+579,
+1146,
+594
+],
+"relleno": null,
+"linea": "#667085"
+},
+{
+"id": "P0192",
+"tipo": "trazo",
+"grupo": "Group_001",
+"caja": [
+1146,
+609,
+1161,
+609
+],
+"relleno": null,
+"linea": "#667085"
+},
+{
+"id": "P0193",
+"tipo": "trazo",
+"grupo": "Group_001",
+"caja": [
+1176,
+609,
+1191,
+609
+],
+"relleno": null,
+"linea": "#667085"
+},
+{
+"id": "P0194",
+"tipo": "trazo",
+"grupo": "Group_001",
+"caja": [
+1206,
+609,
+1221,
+609
+],
+"relleno": null,
+"linea": "#667085"
+},
+{
+"id": "P0195",
+"tipo": "trazo",
+"grupo": "Group_001",
+"caja": [
+1236,
+609,
+1251,
+609
+],
+"relleno": null,
+"linea": "#667085"
+},
+{
+"id": "P0196",
+"tipo": "trazo",
+"grupo": "Group_001",
+"caja": [
+1266,
+609,
+1281,
+609
+],
+"relleno": null,
+"linea": "#667085"
+},
+{
+"id": "P0197",
+"tipo": "trazo",
+"grupo": "Group_001",
+"caja": [
+1296,
+609,
+1311,
+609
+],
+"relleno": null,
+"linea": "#667085"
+},
+{
+"id": "P0198",
+"tipo": "trazo",
+"grupo": "Group_001",
+"caja": [
+1326,
+609,
+1341,
+609
+],
+"relleno": null,
+"linea": "#667085"
+},
+{
+"id": "P0199",
+"tipo": "trazo",
+"grupo": "Group_001",
+"caja": [
+1356,
+609,
+1371,
+609
+],
+"relleno": null,
+"linea": "#667085"
+},
+{
+"id": "P0200",
+"tipo": "trazo",
+"grupo": "Group_001",
+"caja": [
+1386,
+609,
+1401,
+609
+],
+"relleno": null,
+"linea": "#667085"
+},
+{
+"id": "P0201",
+"tipo": "trazo",
+"grupo": "Group_001",
+"caja": [
+1416,
+609,
+1431,
+609
+],
+"relleno": null,
+"linea": "#667085"
+},
+{
+"id": "P0202",
+"tipo": "trazo",
+"grupo": "Group_001",
+"caja": [
+1446,
+609,
+1461,
+609
+],
+"relleno": null,
+"linea": "#667085"
+},
+{
+"id": "P0203",
+"tipo": "trazo",
+"grupo": "Group_001",
+"caja": [
+1476,
+609,
+1491,
+609
+],
+"relleno": null,
+"linea": "#667085"
+},
+{
+"id": "P0204",
+"tipo": "trazo",
+"grupo": "Group_001",
+"caja": [
+1506,
+609,
+1521,
+609
+],
+"relleno": null,
+"linea": "#667085"
+},
+{
+"id": "P0205",
+"tipo": "trazo",
+"grupo": "Group_001",
+"caja": [
+1536,
+609,
+1551,
+609
+],
+"relleno": null,
+"linea": "#667085"
+},
+{
+"id": "P0206",
+"tipo": "trazo",
+"grupo": "Group_001",
+"caja": [
+1566,
+609,
+1581,
+609
+],
+"relleno": null,
+"linea": "#667085"
+},
+{
+"id": "P0207",
+"tipo": "trazo",
+"grupo": "Group_001",
+"caja": [
+1596,
+609,
+1611,
+609
+],
+"relleno": null,
+"linea": "#667085"
+},
+{
+"id": "P0208",
+"tipo": "trazo",
+"grupo": "Group_001",
+"caja": [
+1626,
+609,
+1641,
+609
+],
+"relleno": null,
+"linea": "#667085"
+},
+{
+"id": "P0209",
+"tipo": "trazo",
+"grupo": "Group_001",
+"caja": [
+1656,
+609,
+1671,
+609
+],
+"relleno": null,
+"linea": "#667085"
+},
+{
+"id": "P0210",
+"tipo": "trazo",
+"grupo": "Group_001",
+"caja": [
+1686,
+609,
+1701,
+609
+],
+"relleno": null,
+"linea": "#667085"
+},
+{
+"id": "P0211",
+"tipo": "trazo",
+"grupo": "Group_001",
+"caja": [
+1713,
+591,
+1713,
+606
+],
+"relleno": null,
+"linea": "#667085"
+},
+{
+"id": "P0212",
+"tipo": "trazo",
+"grupo": "Group_001",
+"caja": [
+1713,
+561,
+1713,
+576
+],
+"relleno": null,
+"linea": "#667085"
+},
+{
+"id": "P0213",
+"tipo": "trazo",
+"grupo": "Group_001",
+"caja": [
+1713,
+531,
+1713,
+546
+],
+"relleno": null,
+"linea": "#667085"
+},
+{
+"id": "P0214",
+"tipo": "trazo",
+"grupo": "Group_001",
+"caja": [
+1713,
+501,
+1713,
+516
+],
+"relleno": null,
+"linea": "#667085"
+},
+{
+"id": "P0215",
+"tipo": "trazo",
+"grupo": "Group_001",
+"caja": [
+1713,
+471,
+1713,
+486
+],
+"relleno": null,
+"linea": "#667085"
+},
+{
+"id": "P0216",
+"tipo": "trazo",
+"grupo": "Group_001",
+"caja": [
+1713,
+441,
+1713,
+456
+],
+"relleno": null,
+"linea": "#667085"
+},
+{
+"id": "P0217",
+"tipo": "trazo",
+"grupo": "Group_001",
+"caja": [
+1713,
+411,
+1713,
+426
+],
+"relleno": null,
+"linea": "#667085"
+},
+{
+"id": "P0218",
+"tipo": "trazo",
+"grupo": "Group_001",
+"caja": [
+1713,
+381,
+1713,
+396
+],
+"relleno": null,
+"linea": "#667085"
+},
+{
+"id": "P0219",
+"tipo": "trazo",
+"grupo": "Group_001",
+"caja": [
+1713,
+351,
+1713,
+366
+],
+"relleno": null,
+"linea": "#667085"
+},
+{
+"id": "P0220",
+"tipo": "trazo",
+"grupo": "Group_001",
+"caja": [
+1713,
+321,
+1713,
+336
+],
+"relleno": null,
+"linea": "#667085"
+},
+{
+"id": "P0221",
+"tipo": "trazo",
+"grupo": "Group_001",
+"caja": [
+1713,
+291,
+1713,
+306
+],
+"relleno": null,
+"linea": "#667085"
+},
+{
+"id": "T0222",
+"tipo": "texto",
+"grupo": "Group_001",
+"texto": "PUERTA · vista trasera",
+"caja": [
+1146,
+245,
+1477,
+269
+],
+"color": "#000000"
+},
+{
+"id": "I0223",
+"tipo": "imagen",
+"grupo": "F2",
+"caja": [
+725,
+81,
+926,
+368
+]
+},
+{
+"id": "I0224",
+"tipo": "imagen",
+"grupo": "F1",
+"caja": [
+936,
+81,
+1020,
+368
+]
+},
+{
+"id": "I0225",
+"tipo": "imagen",
+"grupo": "X0",
+"caja": [
+717,
+896,
+892,
+1033
+]
+},
+{
+"id": "I0226",
+"tipo": "imagen",
+"grupo": "X1",
+"caja": [
+910,
+896,
+1062,
+1033
+]
+},
+{
+"id": "I0227",
+"tipo": "imagen",
+"grupo": "S0",
+"caja": [
+1182,
+290,
+1273,
+418
+]
+},
+{
+"id": "I0228",
+"tipo": "imagen",
+"grupo": "S0b",
+"caja": [
+1151,
+407,
+1305,
+586
+]
+},
+{
+"id": "I0229",
+"tipo": "imagen",
+"grupo": "S1",
+"caja": [
+1317,
+290,
+1408,
+418
+]
+},
+{
+"id": "I0230",
+"tipo": "imagen",
+"grupo": "S1b",
+"caja": [
+1285,
+407,
+1439,
+586
+]
+},
+{
+"id": "I0231",
+"tipo": "imagen",
+"grupo": "H1",
+"caja": [
+1451,
+290,
+1542,
+418
+]
+},
+{
+"id": "I0232",
+"tipo": "imagen",
+"grupo": "H1b",
+"caja": [
+1420,
+407,
+1573,
+586
+]
+},
+{
+"id": "I0233",
+"tipo": "imagen",
+"grupo": "H2",
+"caja": [
+1585,
+290,
+1677,
+418
+]
+},
+{
+"id": "I0234",
+"tipo": "imagen",
+"grupo": "H2b",
+"caja": [
+1554,
+407,
+1708,
+586
+]
+},
+{
+"id": "P0235",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+768,
+62,
+979,
+83
+],
+"relleno": null,
+"linea": "#D92D20"
+},
+{
+"id": "P0236",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+765,
+86,
+771,
+94
+],
+"relleno": "#2F6FD0",
+"linea": null
+},
+{
+"id": "P0237",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+764,
+83,
+772,
+86
+],
+"relleno": "#2F6FD0",
+"linea": null
+},
+{
+"id": "P0238",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+769,
+86,
+770,
+94
+],
+"relleno": "#FFFFFF",
+"linea": null
+},
+{
+"id": "P0239",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+764,
+83,
+766,
+94
+],
+"relleno": "#000000",
+"linea": null
+},
+{
+"id": "P0240",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+762,
+70,
+774,
+80
+],
+"relleno": "#FFFFFF",
+"linea": "#9AA0A6"
+},
+{
+"id": "T0241",
+"tipo": "texto",
+"grupo": "cables_mando",
+"texto": "1",
+"caja": [
+765,
+74,
+771,
+76
+],
+"color": "#000000"
+},
+{
+"id": "P0242",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+976,
+86,
+982,
+94
+],
+"relleno": "#2F6FD0",
+"linea": null
+},
+{
+"id": "P0243",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+975,
+83,
+983,
+86
+],
+"relleno": "#2F6FD0",
+"linea": null
+},
+{
+"id": "P0244",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+980,
+86,
+981,
+94
+],
+"relleno": "#FFFFFF",
+"linea": null
+},
+{
+"id": "P0245",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+975,
+83,
+977,
+94
+],
+"relleno": "#000000",
+"linea": null
+},
+{
+"id": "P0246",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+973,
+70,
+985,
+80
+],
+"relleno": "#FFFFFF",
+"linea": "#9AA0A6"
+},
+{
+"id": "T0247",
+"tipo": "texto",
+"grupo": "cables_mando",
+"texto": "1",
+"caja": [
+976,
+74,
+982,
+76
+],
+"color": "#000000"
+},
+{
+"id": "P0248",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+881,
+365,
+979,
+847
+],
+"relleno": null,
+"linea": "#D92D20"
+},
+{
+"id": "P0249",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+976,
+354,
+982,
+362
+],
+"relleno": "#2F6FD0",
+"linea": null
+},
+{
+"id": "P0250",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+975,
+362,
+983,
+365
+],
+"relleno": "#2F6FD0",
+"linea": null
+},
+{
+"id": "P0251",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+977,
+354,
+978,
+362
+],
+"relleno": "#FFFFFF",
+"linea": null
+},
+{
+"id": "P0252",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+981,
+354,
+983,
+365
+],
+"relleno": "#000000",
+"linea": null
+},
+{
+"id": "P0253",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+973,
+368,
+985,
+379
+],
+"relleno": "#FFFFFF",
+"linea": "#9AA0A6"
+},
+{
+"id": "T0254",
+"tipo": "texto",
+"grupo": "cables_mando",
+"texto": "2",
+"caja": [
+976,
+371,
+982,
+375
+],
+"color": "#000000"
+},
+{
+"id": "P0255",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+878,
+794,
+884,
+802
+],
+"relleno": "#2F6FD0",
+"linea": null
+},
+{
+"id": "P0256",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+877,
+802,
+885,
+804
+],
+"relleno": "#2F6FD0",
+"linea": null
+},
+{
+"id": "P0257",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+880,
+794,
+880,
+802
+],
+"relleno": "#FFFFFF",
+"linea": null
+},
+{
+"id": "P0258",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+883,
+794,
+885,
+804
+],
+"relleno": "#000000",
+"linea": null
+},
+{
+"id": "P0259",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+875,
+807,
+887,
+818
+],
+"relleno": "#FFFFFF",
+"linea": "#9AA0A6"
+},
+{
+"id": "T0260",
+"tipo": "texto",
+"grupo": "cables_mando",
+"texto": "2",
+"caja": [
+878,
+811,
+884,
+815
+],
+"color": "#000000"
+},
+{
+"id": "P0261",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+844,
+388,
+912,
+840
+],
+"relleno": null,
+"linea": "#D92D20"
+},
+{
+"id": "P0262",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+870,
+794,
+876,
+802
+],
+"relleno": "#2F6FD0",
+"linea": null
+},
+{
+"id": "P0263",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+869,
+802,
+877,
+804
+],
+"relleno": "#2F6FD0",
+"linea": null
+},
+{
+"id": "P0264",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+871,
+794,
+872,
+802
+],
+"relleno": "#FFFFFF",
+"linea": null
+},
+{
+"id": "P0265",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+874,
+794,
+877,
+804
+],
+"relleno": "#000000",
+"linea": null
+},
+{
+"id": "P0266",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+867,
+807,
+879,
+818
+],
+"relleno": "#FFFFFF",
+"linea": "#9AA0A6"
+},
+{
+"id": "T0267",
+"tipo": "texto",
+"grupo": "cables_mando",
+"texto": "2",
+"caja": [
+870,
+811,
+875,
+815
+],
+"color": "#000000"
+},
+{
+"id": "P0268",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+842,
+468,
+847,
+476
+],
+"relleno": "#2F6FD0",
+"linea": null
+},
+{
+"id": "P0269",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+841,
+465,
+848,
+468
+],
+"relleno": "#2F6FD0",
+"linea": null
+},
+{
+"id": "P0270",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+845,
+468,
+846,
+476
+],
+"relleno": "#FFFFFF",
+"linea": null
+},
+{
+"id": "P0271",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+841,
+465,
+843,
+476
+],
+"relleno": "#000000",
+"linea": null
+},
+{
+"id": "P0272",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+838,
+452,
+850,
+462
+],
+"relleno": "#FFFFFF",
+"linea": "#9AA0A6"
+},
+{
+"id": "T0273",
+"tipo": "texto",
+"grupo": "cables_mando",
+"texto": "2",
+"caja": [
+842,
+455,
+847,
+459
+],
+"color": "#000000"
+},
+{
+"id": "P0274",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+844,
+406,
+1208,
+854
+],
+"relleno": null,
+"linea": "#D92D20"
+},
+{
+"id": "P0275",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+841,
+794,
+847,
+802
+],
+"relleno": "#2F6FD0",
+"linea": null
+},
+{
+"id": "P0276",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+840,
+802,
+848,
+804
+],
+"relleno": "#2F6FD0",
+"linea": null
+},
+{
+"id": "P0277",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+842,
+794,
+843,
+802
+],
+"relleno": "#FFFFFF",
+"linea": null
+},
+{
+"id": "P0278",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+846,
+794,
+848,
+804
+],
+"relleno": "#000000",
+"linea": null
+},
+{
+"id": "P0279",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+837,
+807,
+851,
+818
+],
+"relleno": "#FFFFFF",
+"linea": "#9AA0A6"
+},
+{
+"id": "T0280",
+"tipo": "texto",
+"grupo": "cables_mando",
+"texto": "3",
+"caja": [
+841,
+811,
+847,
+815
+],
+"color": "#000000"
+},
+{
+"id": "P0281",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+1205,
+422,
+1212,
+432
+],
+"relleno": "#2F6FD0",
+"linea": null
+},
+{
+"id": "P0282",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+1204,
+419,
+1213,
+422
+],
+"relleno": "#2F6FD0",
+"linea": null
+},
+{
+"id": "P0283",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+1209,
+422,
+1210,
+432
+],
+"relleno": "#FFFFFF",
+"linea": null
+},
+{
+"id": "P0284",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+1204,
+419,
+1206,
+432
+],
+"relleno": "#000000",
+"linea": null
+},
+{
+"id": "P0285",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+1202,
+405,
+1215,
+416
+],
+"relleno": "#FFFFFF",
+"linea": "#9AA0A6"
+},
+{
+"id": "T0286",
+"tipo": "texto",
+"grupo": "cables_mando",
+"texto": "3",
+"caja": [
+1206,
+408,
+1211,
+412
+],
+"color": "#000000"
+},
+{
+"id": "P0287",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+1208,
+406,
+1343,
+596
+],
+"relleno": null,
+"linea": "#D92D20"
+},
+{
+"id": "P0288",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+1205,
+561,
+1212,
+571
+],
+"relleno": "#2F6FD0",
+"linea": null
+},
+{
+"id": "P0289",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+1204,
+571,
+1213,
+574
+],
+"relleno": "#2F6FD0",
+"linea": null
+},
+{
+"id": "P0290",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+1207,
+561,
+1208,
+571
+],
+"relleno": "#FFFFFF",
+"linea": null
+},
+{
+"id": "P0291",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+1211,
+561,
+1213,
+574
+],
+"relleno": "#000000",
+"linea": null
+},
+{
+"id": "P0292",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+1201,
+577,
+1216,
+588
+],
+"relleno": "#FFFFFF",
+"linea": "#9AA0A6"
+},
+{
+"id": "T0293",
+"tipo": "texto",
+"grupo": "cables_mando",
+"texto": "4",
+"caja": [
+1206,
+580,
+1211,
+585
+],
+"color": "#000000"
+},
+{
+"id": "P0294",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+1339,
+422,
+1346,
+432
+],
+"relleno": "#2F6FD0",
+"linea": null
+},
+{
+"id": "P0295",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+1338,
+419,
+1348,
+422
+],
+"relleno": "#2F6FD0",
+"linea": null
+},
+{
+"id": "P0296",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+1344,
+422,
+1345,
+432
+],
+"relleno": "#FFFFFF",
+"linea": null
+},
+{
+"id": "P0297",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+1338,
+419,
+1341,
+432
+],
+"relleno": "#000000",
+"linea": null
+},
+{
+"id": "P0298",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+1336,
+405,
+1350,
+416
+],
+"relleno": "#FFFFFF",
+"linea": "#9AA0A6"
+},
+{
+"id": "T0299",
+"tipo": "texto",
+"grupo": "cables_mando",
+"texto": "4",
+"caja": [
+1340,
+408,
+1346,
+412
+],
+"color": "#000000"
+},
+{
+"id": "P0300",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+723,
+380,
+1208,
+600
+],
+"relleno": null,
+"linea": "#D92D20"
+},
+{
+"id": "P0301",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+1205,
+561,
+1212,
+571
+],
+"relleno": "#2F6FD0",
+"linea": null
+},
+{
+"id": "P0302",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+1204,
+571,
+1213,
+574
+],
+"relleno": "#2F6FD0",
+"linea": null
+},
+{
+"id": "P0303",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+1207,
+561,
+1208,
+571
+],
+"relleno": "#FFFFFF",
+"linea": null
+},
+{
+"id": "P0304",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+1211,
+561,
+1213,
+574
+],
+"relleno": "#000000",
+"linea": null
+},
+{
+"id": "P0305",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+1202,
+577,
+1215,
+588
+],
+"relleno": "#FFFFFF",
+"linea": "#9AA0A6"
+},
+{
+"id": "T0306",
+"tipo": "texto",
+"grupo": "cables_mando",
+"texto": "4",
+"caja": [
+1206,
+580,
+1211,
+585
+],
+"color": "#000000"
+},
+{
+"id": "P0307",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+747,
+485,
+755,
+491
+],
+"relleno": "#2F6FD0",
+"linea": null
+},
+{
+"id": "P0308",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+744,
+485,
+747,
+492
+],
+"relleno": "#2F6FD0",
+"linea": null
+},
+{
+"id": "P0309",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+747,
+487,
+755,
+488
+],
+"relleno": "#FFFFFF",
+"linea": null
+},
+{
+"id": "P0310",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+744,
+490,
+755,
+492
+],
+"relleno": "#000000",
+"linea": null
+},
+{
+"id": "P0311",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+730,
+482,
+741,
+495
+],
+"relleno": "#FFFFFF",
+"linea": "#9AA0A6"
+},
+{
+"id": "T0312",
+"tipo": "texto",
+"grupo": "cables_mando",
+"texto": "4",
+"caja": [
+734,
+486,
+738,
+491
+],
+"color": "#000000"
+},
+{
+"id": "P0313",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+718,
+371,
+1343,
+613
+],
+"relleno": null,
+"linea": "#D92D20"
+},
+{
+"id": "P0314",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+1339,
+561,
+1346,
+571
+],
+"relleno": "#2F6FD0",
+"linea": null
+},
+{
+"id": "P0315",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+1338,
+571,
+1348,
+574
+],
+"relleno": "#2F6FD0",
+"linea": null
+},
+{
+"id": "P0316",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+1341,
+561,
+1342,
+571
+],
+"relleno": "#FFFFFF",
+"linea": null
+},
+{
+"id": "P0317",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+1345,
+561,
+1348,
+574
+],
+"relleno": "#000000",
+"linea": null
+},
+{
+"id": "P0318",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+1336,
+577,
+1350,
+588
+],
+"relleno": "#FFFFFF",
+"linea": "#9AA0A6"
+},
+{
+"id": "T0319",
+"tipo": "texto",
+"grupo": "cables_mando",
+"texto": "5",
+"caja": [
+1340,
+581,
+1346,
+584
+],
+"color": "#000000"
+},
+{
+"id": "P0320",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+747,
+610,
+755,
+615
+],
+"relleno": "#2F6FD0",
+"linea": null
+},
+{
+"id": "P0321",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+744,
+609,
+747,
+616
+],
+"relleno": "#2F6FD0",
+"linea": null
+},
+{
+"id": "P0322",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+747,
+611,
+755,
+612
+],
+"relleno": "#FFFFFF",
+"linea": null
+},
+{
+"id": "P0323",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+744,
+614,
+755,
+616
+],
+"relleno": "#000000",
+"linea": null
+},
+{
+"id": "P0324",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+730,
+606,
+741,
+619
+],
+"relleno": "#FFFFFF",
+"linea": "#9AA0A6"
+},
+{
+"id": "T0325",
+"tipo": "texto",
+"grupo": "cables_mando",
+"texto": "5",
+"caja": [
+734,
+610,
+738,
+615
+],
+"color": "#000000"
+},
+{
+"id": "P0326",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+710,
+363,
+942,
+616
+],
+"relleno": null,
+"linea": "#D92D20"
+},
+{
+"id": "P0327",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+747,
+610,
+755,
+615
+],
+"relleno": "#2F6FD0",
+"linea": null
+},
+{
+"id": "P0328",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+744,
+609,
+747,
+616
+],
+"relleno": "#2F6FD0",
+"linea": null
+},
+{
+"id": "P0329",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+747,
+611,
+755,
+612
+],
+"relleno": "#FFFFFF",
+"linea": null
+},
+{
+"id": "P0330",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+744,
+614,
+755,
+616
+],
+"relleno": "#000000",
+"linea": null
+},
+{
+"id": "P0331",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+730,
+607,
+741,
+619
+],
+"relleno": "#FFFFFF",
+"linea": "#9AA0A6"
+},
+{
+"id": "T0332",
+"tipo": "texto",
+"grupo": "cables_mando",
+"texto": "5",
+"caja": [
+734,
+610,
+738,
+615
+],
+"color": "#000000"
+},
+{
+"id": "P0333",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+898,
+485,
+906,
+491
+],
+"relleno": "#2F6FD0",
+"linea": null
+},
+{
+"id": "P0334",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+906,
+485,
+909,
+492
+],
+"relleno": "#2F6FD0",
+"linea": null
+},
+{
+"id": "P0335",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+898,
+489,
+906,
+490
+],
+"relleno": "#FFFFFF",
+"linea": null
+},
+{
+"id": "P0336",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+898,
+485,
+909,
+487
+],
+"relleno": "#000000",
+"linea": null
+},
+{
+"id": "P0337",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+912,
+482,
+923,
+494
+],
+"relleno": "#FFFFFF",
+"linea": "#9AA0A6"
+},
+{
+"id": "T0338",
+"tipo": "texto",
+"grupo": "cables_mando",
+"texto": "5",
+"caja": [
+915,
+486,
+919,
+491
+],
+"color": "#000000"
+},
+{
+"id": "P0339",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+1343,
+406,
+1477,
+596
+],
+"relleno": null,
+"linea": "#D92D20"
+},
+{
+"id": "P0340",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+1339,
+561,
+1346,
+571
+],
+"relleno": "#2F6FD0",
+"linea": null
+},
+{
+"id": "P0341",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+1338,
+571,
+1348,
+574
+],
+"relleno": "#2F6FD0",
+"linea": null
+},
+{
+"id": "P0342",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+1341,
+561,
+1342,
+571
+],
+"relleno": "#FFFFFF",
+"linea": null
+},
+{
+"id": "P0343",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+1345,
+561,
+1348,
+574
+],
+"relleno": "#000000",
+"linea": null
+},
+{
+"id": "P0344",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+1336,
+577,
+1350,
+588
+],
+"relleno": "#FFFFFF",
+"linea": "#9AA0A6"
+},
+{
+"id": "T0345",
+"tipo": "texto",
+"grupo": "cables_mando",
+"texto": "5",
+"caja": [
+1340,
+581,
+1346,
+584
+],
+"color": "#000000"
+},
+{
+"id": "P0346",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+1474,
+422,
+1481,
+432
+],
+"relleno": "#2F6FD0",
+"linea": null
+},
+{
+"id": "P0347",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+1473,
+419,
+1482,
+422
+],
+"relleno": "#2F6FD0",
+"linea": null
+},
+{
+"id": "P0348",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+1478,
+422,
+1479,
+432
+],
+"relleno": "#FFFFFF",
+"linea": null
+},
+{
+"id": "P0349",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+1473,
+419,
+1475,
+432
+],
+"relleno": "#000000",
+"linea": null
+},
+{
+"id": "P0350",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+1470,
+405,
+1485,
+416
+],
+"relleno": "#FFFFFF",
+"linea": "#9AA0A6"
+},
+{
+"id": "T0351",
+"tipo": "texto",
+"grupo": "cables_mando",
+"texto": "5",
+"caja": [
+1475,
+408,
+1480,
+412
+],
+"color": "#000000"
+},
+{
+"id": "P0352",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+844,
+402,
+1612,
+664
+],
+"relleno": null,
+"linea": "#D92D20"
+},
+{
+"id": "P0353",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+842,
+626,
+847,
+634
+],
+"relleno": "#2F6FD0",
+"linea": null
+},
+{
+"id": "P0354",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+841,
+634,
+848,
+637
+],
+"relleno": "#2F6FD0",
+"linea": null
+},
+{
+"id": "P0355",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+843,
+626,
+844,
+634
+],
+"relleno": "#FFFFFF",
+"linea": null
+},
+{
+"id": "P0356",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+846,
+626,
+848,
+637
+],
+"relleno": "#000000",
+"linea": null
+},
+{
+"id": "P0357",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+838,
+640,
+851,
+650
+],
+"relleno": "#FFFFFF",
+"linea": "#9AA0A6"
+},
+{
+"id": "T0358",
+"tipo": "texto",
+"grupo": "cables_mando",
+"texto": "6",
+"caja": [
+842,
+643,
+847,
+647
+],
+"color": "#000000"
+},
+{
+"id": "P0359",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+1608,
+422,
+1615,
+432
+],
+"relleno": "#2F6FD0",
+"linea": null
+},
+{
+"id": "P0360",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+1607,
+419,
+1616,
+422
+],
+"relleno": "#2F6FD0",
+"linea": null
+},
+{
+"id": "P0361",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+1613,
+422,
+1614,
+432
+],
+"relleno": "#FFFFFF",
+"linea": null
+},
+{
+"id": "P0362",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+1607,
+419,
+1610,
+432
+],
+"relleno": "#000000",
+"linea": null
+},
+{
+"id": "P0363",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+1605,
+405,
+1618,
+416
+],
+"relleno": "#FFFFFF",
+"linea": "#9AA0A6"
+},
+{
+"id": "T0364",
+"tipo": "texto",
+"grupo": "cables_mando",
+"texto": "6",
+"caja": [
+1609,
+408,
+1614,
+412
+],
+"color": "#000000"
+},
+{
+"id": "P0365",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+828,
+613,
+961,
+895
+],
+"relleno": null,
+"linea": "#5DB4F0"
+},
+{
+"id": "P0366",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+825,
+898,
+831,
+905
+],
+"relleno": "#2F6FD0",
+"linea": null
+},
+{
+"id": "P0367",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+825,
+895,
+832,
+898
+],
+"relleno": "#2F6FD0",
+"linea": null
+},
+{
+"id": "P0368",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+829,
+898,
+830,
+905
+],
+"relleno": "#FFFFFF",
+"linea": null
+},
+{
+"id": "P0369",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+825,
+895,
+827,
+905
+],
+"relleno": "#000000",
+"linea": null
+},
+{
+"id": "P0370",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+822,
+881,
+834,
+892
+],
+"relleno": "#FFFFFF",
+"linea": "#9AA0A6"
+},
+{
+"id": "T0371",
+"tipo": "texto",
+"grupo": "cables_mando",
+"texto": "N",
+"caja": [
+826,
+884,
+831,
+889
+],
+"color": "#000000"
+},
+{
+"id": "P0372",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+898,
+610,
+906,
+615
+],
+"relleno": "#2F6FD0",
+"linea": null
+},
+{
+"id": "P0373",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+906,
+609,
+909,
+616
+],
+"relleno": "#2F6FD0",
+"linea": null
+},
+{
+"id": "P0374",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+898,
+613,
+906,
+614
+],
+"relleno": "#FFFFFF",
+"linea": null
+},
+{
+"id": "P0375",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+898,
+609,
+909,
+611
+],
+"relleno": "#000000",
+"linea": null
+},
+{
+"id": "P0376",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+912,
+607,
+923,
+619
+],
+"relleno": "#FFFFFF",
+"linea": "#9AA0A6"
+},
+{
+"id": "T0377",
+"tipo": "texto",
+"grupo": "cables_mando",
+"texto": "N",
+"caja": [
+915,
+610,
+920,
+615
+],
+"color": "#000000"
+},
+{
+"id": "P0378",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+909,
+418,
+1477,
+617
+],
+"relleno": null,
+"linea": "#5DB4F0"
+},
+{
+"id": "P0379",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+898,
+610,
+906,
+615
+],
+"relleno": "#2F6FD0",
+"linea": null
+},
+{
+"id": "P0380",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+906,
+609,
+909,
+616
+],
+"relleno": "#2F6FD0",
+"linea": null
+},
+{
+"id": "P0381",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+898,
+613,
+906,
+614
+],
+"relleno": "#FFFFFF",
+"linea": null
+},
+{
+"id": "P0382",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+898,
+609,
+909,
+611
+],
+"relleno": "#000000",
+"linea": null
+},
+{
+"id": "P0383",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+912,
+606,
+923,
+619
+],
+"relleno": "#FFFFFF",
+"linea": "#9AA0A6"
+},
+{
+"id": "T0384",
+"tipo": "texto",
+"grupo": "cables_mando",
+"texto": "N",
+"caja": [
+915,
+610,
+920,
+615
+],
+"color": "#000000"
+},
+{
+"id": "P0385",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+1474,
+561,
+1481,
+571
+],
+"relleno": "#2F6FD0",
+"linea": null
+},
+{
+"id": "P0386",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+1473,
+571,
+1482,
+574
+],
+"relleno": "#2F6FD0",
+"linea": null
+},
+{
+"id": "P0387",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+1475,
+561,
+1476,
+571
+],
+"relleno": "#FFFFFF",
+"linea": null
+},
+{
+"id": "P0388",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+1479,
+561,
+1482,
+574
+],
+"relleno": "#000000",
+"linea": null
+},
+{
+"id": "P0389",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+1471,
+577,
+1484,
+588
+],
+"relleno": "#FFFFFF",
+"linea": "#9AA0A6"
+},
+{
+"id": "T0390",
+"tipo": "texto",
+"grupo": "cables_mando",
+"texto": "N",
+"caja": [
+1475,
+580,
+1480,
+585
+],
+"color": "#000000"
+},
+{
+"id": "P0391",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+1477,
+574,
+1612,
+625
+],
+"relleno": null,
+"linea": "#5DB4F0"
+},
+{
+"id": "P0392",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+1474,
+561,
+1481,
+571
+],
+"relleno": "#2F6FD0",
+"linea": null
+},
+{
+"id": "P0393",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+1473,
+571,
+1482,
+574
+],
+"relleno": "#2F6FD0",
+"linea": null
+},
+{
+"id": "P0394",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+1475,
+561,
+1476,
+571
+],
+"relleno": "#FFFFFF",
+"linea": null
+},
+{
+"id": "P0395",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+1479,
+561,
+1482,
+574
+],
+"relleno": "#000000",
+"linea": null
+},
+{
+"id": "P0396",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+1470,
+577,
+1485,
+588
+],
+"relleno": "#FFFFFF",
+"linea": "#9AA0A6"
+},
+{
+"id": "T0397",
+"tipo": "texto",
+"grupo": "cables_mando",
+"texto": "N",
+"caja": [
+1475,
+580,
+1480,
+585
+],
+"color": "#000000"
+},
+{
+"id": "P0398",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+1608,
+561,
+1615,
+571
+],
+"relleno": "#2F6FD0",
+"linea": null
+},
+{
+"id": "P0399",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+1607,
+571,
+1616,
+574
+],
+"relleno": "#2F6FD0",
+"linea": null
+},
+{
+"id": "P0400",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+1610,
+561,
+1611,
+571
+],
+"relleno": "#FFFFFF",
+"linea": null
+},
+{
+"id": "P0401",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+1614,
+561,
+1616,
+574
+],
+"relleno": "#000000",
+"linea": null
+},
+{
+"id": "P0402",
+"tipo": "trazo",
+"grupo": "cables_mando",
+"caja": [
+1604,
+577,
+1619,
+588
+],
+"relleno": "#FFFFFF",
+"linea": "#9AA0A6"
+},
+{
+"id": "T0403",
+"tipo": "texto",
+"grupo": "cables_mando",
+"texto": "N",
+"caja": [
+1609,
+580,
+1614,
+585
+],
+"color": "#000000"
+},
+{
+"id": "T0405",
+"tipo": "texto",
+"grupo": "VGroup_016",
+"texto": "PE",
+"caja": [
+68,
+111,
+79,
+131
+],
+"color": "#000000"
+},
+{
+"id": "T0406",
+"tipo": "texto",
+"grupo": "VGroup_016",
+"texto": "N",
+"caja": [
+68,
+155,
+79,
+164
+],
+"color": "#000000"
+},
+{
+"id": "T0407",
+"tipo": "texto",
+"grupo": "VGroup_016",
+"texto": "L3",
+"caja": [
+68,
+191,
+79,
+206
+],
+"color": "#000000"
+},
+{
+"id": "T0408",
+"tipo": "texto",
+"grupo": "VGroup_016",
+"texto": "L2",
+"caja": [
+68,
+228,
+79,
+244
+],
+"color": "#000000"
+},
+{
+"id": "T0409",
+"tipo": "texto",
+"grupo": "VGroup_016",
+"texto": "L1",
+"caja": [
+68,
+267,
+79,
+282
+],
+"color": "#000000"
+},
+{
+"id": "T0410",
+"tipo": "texto",
+"grupo": "VGroup_016",
+"texto": "5",
+"caja": [
+136,
+126,
+144,
+137
+],
+"color": "#000000"
+},
+{
+"id": "T0411",
+"tipo": "texto",
+"grupo": "VGroup_016",
+"texto": "4",
+"caja": [
+136,
+164,
+144,
+175
+],
+"color": "#000000"
+},
+{
+"id": "T0412",
+"tipo": "texto",
+"grupo": "VGroup_016",
+"texto": "3",
+"caja": [
+136,
+201,
+144,
+212
+],
+"color": "#000000"
+},
+{
+"id": "T0413",
+"tipo": "texto",
+"grupo": "VGroup_016",
+"texto": "2",
+"caja": [
+137,
+238,
+144,
+250
+],
+"color": "#000000"
+},
+{
+"id": "T0414",
+"tipo": "texto",
+"grupo": "VGroup_016",
+"texto": "-X0",
+"caja": [
+128,
+257,
+151,
+268
+],
+"color": "#000000"
+},
+{
+"id": "T0415",
+"tipo": "texto",
+"grupo": "VGroup_016",
+"texto": "1",
+"caja": [
+136,
+276,
+143,
+287
+],
+"color": "#000000"
+},
+{
+"id": "T0417",
+"tipo": "texto",
+"grupo": "VGroup_016",
+"texto": "1",
+"caja": [
+357,
+388,
+364,
+399
+],
+"color": "#000000"
+},
+{
+"id": "T0418",
+"tipo": "texto",
+"grupo": "VGroup_016",
+"texto": "3",
+"caja": [
+395,
+388,
+403,
+400
+],
+"color": "#000000"
+},
+{
+"id": "T0419",
+"tipo": "texto",
+"grupo": "VGroup_016",
+"texto": "5",
+"caja": [
+432,
+388,
+440,
+399
+],
+"color": "#000000"
+},
+{
+"id": "T0420",
+"tipo": "texto",
+"grupo": "VGroup_016",
+"texto": "2",
+"caja": [
+358,
+445,
+365,
+456
+],
+"color": "#000000"
+},
+{
+"id": "T0421",
+"tipo": "texto",
+"grupo": "VGroup_016",
+"texto": "4",
+"caja": [
+395,
+445,
+403,
+456
+],
+"color": "#000000"
+},
+{
+"id": "T0422",
+"tipo": "texto",
+"grupo": "VGroup_016",
+"texto": "6",
+"caja": [
+433,
+444,
+440,
+456
+],
+"color": "#000000"
+},
+{
+"id": "T0423",
+"tipo": "texto",
+"grupo": "VGroup_016",
+"texto": "-F2",
+"caja": [
+291,
+416,
+313,
+427
+],
+"color": "#000000"
+},
+{
+"id": "T0424",
+"tipo": "texto",
+"grupo": "VGroup_016",
+"texto": "C80",
+"caja": [
+285,
+434,
+313,
+446
+],
+"color": "#000000"
+},
+{
+"id": "T0426",
+"tipo": "texto",
+"grupo": "VGroup_016",
+"texto": "1",
+"caja": [
+357,
+538,
+364,
+549
+],
+"color": "#000000"
+},
+{
+"id": "T0427",
+"tipo": "texto",
+"grupo": "VGroup_016",
+"texto": "3",
+"caja": [
+395,
+538,
+403,
+549
+],
+"color": "#000000"
+},
+{
+"id": "T0428",
+"tipo": "texto",
+"grupo": "VGroup_016",
+"texto": "5",
+"caja": [
+432,
+538,
+440,
+549
+],
+"color": "#000000"
+},
+{
+"id": "T0429",
+"tipo": "texto",
+"grupo": "VGroup_016",
+"texto": "2",
+"caja": [
+358,
+594,
+365,
+606
+],
+"color": "#000000"
+},
+{
+"id": "T0430",
+"tipo": "texto",
+"grupo": "VGroup_016",
+"texto": "4",
+"caja": [
+395,
+595,
+403,
+605
+],
+"color": "#000000"
+},
+{
+"id": "T0431",
+"tipo": "texto",
+"grupo": "VGroup_016",
+"texto": "6",
+"caja": [
+433,
+594,
+440,
+606
+],
+"color": "#000000"
+},
+{
+"id": "T0432",
+"tipo": "texto",
+"grupo": "VGroup_016",
+"texto": "-KM1",
+"caja": [
+287,
+566,
+323,
+577
+],
+"color": "#000000"
+},
+{
+"id": "T0433",
+"tipo": "texto",
+"grupo": "VGroup_016",
+"texto": "10hp",
+"caja": [
+292,
+584,
+326,
+599
+],
+"color": "#000000"
+},
+{
+"id": "T0435",
+"tipo": "texto",
+"grupo": "VGroup_016",
+"texto": "1",
+"caja": [
+357,
+669,
+364,
+680
+],
+"color": "#000000"
+},
+{
+"id": "T0436",
+"tipo": "texto",
+"grupo": "VGroup_016",
+"texto": "3",
+"caja": [
+395,
+669,
+403,
+681
+],
+"color": "#000000"
+},
+{
+"id": "T0437",
+"tipo": "texto",
+"grupo": "VGroup_016",
+"texto": "5",
+"caja": [
+432,
+669,
+440,
+680
+],
+"color": "#000000"
+},
+{
+"id": "T0438",
+"tipo": "texto",
+"grupo": "VGroup_016",
+"texto": "2",
+"caja": [
+358,
+726,
+365,
+737
+],
+"color": "#000000"
+},
+{
+"id": "T0439",
+"tipo": "texto",
+"grupo": "VGroup_016",
+"texto": "4",
+"caja": [
+395,
+726,
+403,
+737
+],
+"color": "#000000"
+},
+{
+"id": "T0440",
+"tipo": "texto",
+"grupo": "VGroup_016",
+"texto": "6",
+"caja": [
+433,
+726,
+440,
+737
+],
+"color": "#000000"
+},
+{
+"id": "T0441",
+"tipo": "texto",
+"grupo": "VGroup_016",
+"texto": "-F3",
+"caja": [
+291,
+697,
+313,
+708
+],
+"color": "#000000"
+},
+{
+"id": "T0442",
+"tipo": "texto",
+"grupo": "VGroup_016",
+"texto": "23-32A",
+"caja": [
+264,
+716,
+314,
+727
+],
+"color": "#000000"
+},
+{
+"id": "T0444",
+"tipo": "texto",
+"grupo": "VGroup_016",
+"texto": "-X1",
+"caja": [
+314,
+782,
+337,
+793
+],
+"color": "#000000"
+},
+{
+"id": "T0445",
+"tipo": "texto",
+"grupo": "VGroup_016",
+"texto": "1",
+"caja": [
+324,
+801,
+330,
+812
+],
+"color": "#000000"
+},
+{
+"id": "T0446",
+"tipo": "texto",
+"grupo": "VGroup_016",
+"texto": "2",
+"caja": [
+361,
+801,
+369,
+812
+],
+"color": "#000000"
+},
+{
+"id": "T0447",
+"tipo": "texto",
+"grupo": "VGroup_016",
+"texto": "3",
+"caja": [
+399,
+800,
+406,
+812
+],
+"color": "#000000"
+},
+{
+"id": "T0448",
+"tipo": "texto",
+"grupo": "VGroup_016",
+"texto": "4",
+"caja": [
+436,
+801,
+444,
+812
+],
+"color": "#000000"
+},
+{
+"id": "T0449",
+"tipo": "texto",
+"grupo": "VGroup_016",
+"texto": "T1",
+"caja": [
+357,
+857,
+374,
+868
+],
+"color": "#000000"
+},
+{
+"id": "T0450",
+"tipo": "texto",
+"grupo": "VGroup_016",
+"texto": "T2",
+"caja": [
+394,
+857,
+412,
+868
+],
+"color": "#000000"
+},
+{
+"id": "T0451",
+"tipo": "texto",
+"grupo": "VGroup_016",
+"texto": "T3",
+"caja": [
+432,
+857,
+449,
+868
+],
+"color": "#000000"
+},
+{
+"id": "T0452",
+"tipo": "texto",
+"grupo": "VGroup_016",
+"texto": "PE",
+"caja": [
+469,
+857,
+489,
+868
+],
+"color": "#000000"
+},
+{
+"id": "T0453",
+"tipo": "texto",
+"grupo": "VGroup_016",
+"texto": "M",
+"caja": [
+383,
+907,
+393,
+918
+],
+"color": "#000000"
+},
+{
+"id": "T0454",
+"tipo": "texto",
+"grupo": "VGroup_016",
+"texto": "3",
+"caja": [
+366,
+934,
+374,
+945
+],
+"color": "#000000"
+},
+{
+"id": "T0455",
+"tipo": "texto",
+"grupo": "VGroup_016",
+"texto": "-M1",
+"caja": [
+297,
+926,
+323,
+936
+],
+"color": "#000000"
+},
+{
+"id": "T0456",
+"tipo": "texto",
+"grupo": "VGroup_016",
+"texto": "NIDEC US MOTORS PH:3",
+"caja": [
+483,
+895,
+672,
+906
+],
+"color": "#000000"
+},
+{
+"id": "T0457",
+"tipo": "texto",
+"grupo": "VGroup_016",
+"texto": "MOD. U10P2D",
+"caja": [
+483,
+913,
+587,
+925
+],
+"color": "#000000"
+},
+{
+"id": "T0458",
+"tipo": "texto",
+"grupo": "VGroup_016",
+"texto": "10 HP",
+"caja": [
+482,
+932,
+524,
+943
+],
+"color": "#000000"
+},
+{
+"id": "T0459",
+"tipo": "texto",
+"grupo": "VGroup_016",
+"texto": "208-230/460VAC 26.5A 60Hz",
+"caja": [
+482,
+951,
+687,
+962
+],
+"color": "#000000"
+},
+{
+"id": "T0460",
+"tipo": "texto",
+"grupo": "VGroup_016",
+"texto": "SER.F:1.25 DES:B",
+"caja": [
+483,
+970,
+616,
+981
+],
+"color": "#000000"
+},
+{
+"id": "T0461",
+"tipo": "texto",
+"grupo": "VGroup_016",
+"texto": "RPM: 1760 EFF: 91.7%",
+"caja": [
+483,
+988,
+649,
+1000
+],
+"color": "#000000"
+},
+{
+"id": "T0462",
+"tipo": "texto",
+"grupo": "VGroup_016",
+"texto": "FRAME 215T",
+"caja": [
+483,
+1007,
+578,
+1018
+],
+"color": "#000000"
+},
+{
+"id": "P0463",
+"tipo": "trazo",
+"grupo": "VGroup_017",
+"caja": [
+757,
+1039,
+757,
+1092
+],
+"relleno": null,
+"linea": "#161616"
+},
+{
+"id": "P0464",
+"tipo": "trazo",
+"grupo": "VGroup_017",
+"caja": [
+752,
+1023,
+762,
+1035
+],
+"relleno": "#C8202B",
+"linea": null
+},
+{
+"id": "P0465",
+"tipo": "trazo",
+"grupo": "VGroup_017",
+"caja": [
+750,
+1035,
+764,
+1039
+],
+"relleno": "#C8202B",
+"linea": null
+},
+{
+"id": "P0466",
+"tipo": "trazo",
+"grupo": "VGroup_017",
+"caja": [
+754,
+1023,
+756,
+1035
+],
+"relleno": "#FFFFFF",
+"linea": null
+},
+{
+"id": "P0467",
+"tipo": "trazo",
+"grupo": "VGroup_017",
+"caja": [
+760,
+1023,
+764,
+1039
+],
+"relleno": "#000000",
+"linea": null
+},
+{
+"id": "P0468",
+"tipo": "trazo",
+"grupo": "VGroup_017",
+"caja": [
+781,
+1039,
+781,
+1092
+],
+"relleno": null,
+"linea": "#161616"
+},
+{
+"id": "P0469",
+"tipo": "trazo",
+"grupo": "VGroup_017",
+"caja": [
+776,
+1023,
+786,
+1035
+],
+"relleno": "#C8202B",
+"linea": null
+},
+{
+"id": "P0470",
+"tipo": "trazo",
+"grupo": "VGroup_017",
+"caja": [
+774,
+1035,
+787,
+1039
+],
+"relleno": "#C8202B",
+"linea": null
+},
+{
+"id": "P0471",
+"tipo": "trazo",
+"grupo": "VGroup_017",
+"caja": [
+778,
+1023,
+780,
+1035
+],
+"relleno": "#FFFFFF",
+"linea": null
+},
+{
+"id": "P0472",
+"tipo": "trazo",
+"grupo": "VGroup_017",
+"caja": [
+784,
+1023,
+787,
+1039
+],
+"relleno": "#000000",
+"linea": null
+},
+{
+"id": "P0473",
+"tipo": "trazo",
+"grupo": "VGroup_017",
+"caja": [
+805,
+1039,
+805,
+1092
+],
+"relleno": null,
+"linea": "#161616"
+},
+{
+"id": "P0474",
+"tipo": "trazo",
+"grupo": "VGroup_017",
+"caja": [
+799,
+1023,
+810,
+1035
+],
+"relleno": "#C8202B",
+"linea": null
+},
+{
+"id": "P0475",
+"tipo": "trazo",
+"grupo": "VGroup_017",
+"caja": [
+798,
+1035,
+811,
+1039
+],
+"relleno": "#C8202B",
+"linea": null
+},
+{
+"id": "P0476",
+"tipo": "trazo",
+"grupo": "VGroup_017",
+"caja": [
+802,
+1023,
+803,
+1035
+],
+"relleno": "#FFFFFF",
+"linea": null
+},
+{
+"id": "P0477",
+"tipo": "trazo",
+"grupo": "VGroup_017",
+"caja": [
+808,
+1023,
+811,
+1039
+],
+"relleno": "#000000",
+"linea": null
+},
+{
+"id": "P0478",
+"tipo": "trazo",
+"grupo": "VGroup_017",
+"caja": [
+828,
+1039,
+828,
+1092
+],
+"relleno": null,
+"linea": "#5DB4F0"
+},
+{
+"id": "P0479",
+"tipo": "trazo",
+"grupo": "VGroup_017",
+"caja": [
+823,
+1023,
+833,
+1035
+],
+"relleno": "#C8202B",
+"linea": null
+},
+{
+"id": "P0480",
+"tipo": "trazo",
+"grupo": "VGroup_017",
+"caja": [
+822,
+1035,
+835,
+1039
+],
+"relleno": "#C8202B",
+"linea": null
+},
+{
+"id": "P0481",
+"tipo": "trazo",
+"grupo": "VGroup_017",
+"caja": [
+825,
+1023,
+827,
+1035
+],
+"relleno": "#FFFFFF",
+"linea": null
+},
+{
+"id": "P0482",
+"tipo": "trazo",
+"grupo": "VGroup_017",
+"caja": [
+831,
+1023,
+835,
+1039
+],
+"relleno": "#000000",
+"linea": null
+},
+{
+"id": "P0483",
+"tipo": "trazo",
+"grupo": "VGroup_017",
+"caja": [
+852,
+1039,
+852,
+1092
+],
+"relleno": null,
+"linea": "#1E9E3E"
+},
+{
+"id": "P0484",
+"tipo": "trazo",
+"grupo": "VGroup_017",
+"caja": [
+847,
+1023,
+857,
+1035
+],
+"relleno": "#C8202B",
+"linea": null
+},
+{
+"id": "P0485",
+"tipo": "trazo",
+"grupo": "VGroup_017",
+"caja": [
+845,
+1035,
+859,
+1039
+],
+"relleno": "#C8202B",
+"linea": null
+},
+{
+"id": "P0486",
+"tipo": "trazo",
+"grupo": "VGroup_017",
+"caja": [
+849,
+1023,
+851,
+1035
+],
+"relleno": "#FFFFFF",
+"linea": null
+},
+{
+"id": "P0487",
+"tipo": "trazo",
+"grupo": "VGroup_017",
+"caja": [
+855,
+1023,
+859,
+1039
+],
+"relleno": "#000000",
+"linea": null
+},
+{
+"id": "P0488",
+"tipo": "trazo",
+"grupo": "VGroup_017",
+"caja": [
+852,
+1039,
+852,
+1045
+],
+"relleno": null,
+"linea": "#F2D21B"
+},
+{
+"id": "P0489",
+"tipo": "trazo",
+"grupo": "VGroup_017",
+"caja": [
+852,
+1051,
+852,
+1057
+],
+"relleno": null,
+"linea": "#F2D21B"
+},
+{
+"id": "P0490",
+"tipo": "trazo",
+"grupo": "VGroup_017",
+"caja": [
+852,
+1063,
+852,
+1068
+],
+"relleno": null,
+"linea": "#F2D21B"
+},
+{
+"id": "P0491",
+"tipo": "trazo",
+"grupo": "VGroup_017",
+"caja": [
+852,
+1075,
+852,
+1080
+],
+"relleno": null,
+"linea": "#F2D21B"
+},
+{
+"id": "P0492",
+"tipo": "trazo",
+"grupo": "VGroup_017",
+"caja": [
+852,
+1087,
+852,
+1092
+],
+"relleno": null,
+"linea": "#F2D21B"
+},
+{
+"id": "T0493",
+"tipo": "texto",
+"grupo": "Text_018",
+"texto": "Red 208Y/120 V",
+"caja": [
+502,
+1019,
+711,
+1042
+],
+"color": "#000000"
+},
+{
+"id": "P0494",
+"tipo": "trazo",
+"grupo": "VMobject_020",
+"caja": [
+168,
+272,
+426,
+383
+],
+"relleno": null,
+"linea": "#F79009"
+},
+{
+"id": "P0495",
+"tipo": "trazo",
+"grupo": "VMobject_021",
+"caja": [
+168,
+235,
+388,
+383
+],
+"relleno": null,
+"linea": "#F79009"
+},
+{
+"id": "P0496",
+"tipo": "trazo",
+"grupo": "VMobject_022",
+"caja": [
+168,
+197,
+351,
+383
+],
+"relleno": null,
+"linea": "#F79009"
+},
+{
+"id": "P0497",
+"tipo": "trazo",
+"grupo": "Group_023",
+"caja": [
+752,
+894,
+762,
+905
+],
+"relleno": "#C8202B",
+"linea": null
+},
+{
+"id": "P0498",
+"tipo": "trazo",
+"grupo": "Group_023",
+"caja": [
+750,
+889,
+764,
+894
+],
+"relleno": "#C8202B",
+"linea": null
+},
+{
+"id": "P0499",
+"tipo": "trazo",
+"grupo": "Group_023",
+"caja": [
+758,
+894,
+760,
+905
+],
+"relleno": "#FFFFFF",
+"linea": null
+},
+{
+"id": "P0500",
+"tipo": "trazo",
+"grupo": "Group_023",
+"caja": [
+750,
+889,
+754,
+905
+],
+"relleno": "#000000",
+"linea": null
+},
+{
+"id": "P0501",
+"tipo": "trazo",
+"grupo": "Group_023",
+"caja": [
+746,
+875,
+768,
+886
+],
+"relleno": "#FFFFFF",
+"linea": "#9AA0A6"
+},
+{
+"id": "T0502",
+"tipo": "texto",
+"grupo": "Group_023",
+"texto": "L1",
+"caja": [
+753,
+876,
+761,
+884
+],
+"color": "#000000"
+},
+{
+"id": "P0503",
+"tipo": "trazo",
+"grupo": "Group_023",
+"caja": [
+763,
+82,
+773,
+94
+],
+"relleno": "#C8202B",
+"linea": null
+},
+{
+"id": "P0504",
+"tipo": "trazo",
+"grupo": "Group_023",
+"caja": [
+761,
+78,
+775,
+82
+],
+"relleno": "#C8202B",
+"linea": null
+},
+{
+"id": "P0505",
+"tipo": "trazo",
+"grupo": "Group_023",
+"caja": [
+769,
+82,
+771,
+94
+],
+"relleno": "#FFFFFF",
+"linea": null
+},
+{
+"id": "P0506",
+"tipo": "trazo",
+"grupo": "Group_023",
+"caja": [
+761,
+78,
+765,
+94
+],
+"relleno": "#000000",
+"linea": null
+},
+{
+"id": "P0507",
+"tipo": "trazo",
+"grupo": "Group_023",
+"caja": [
+757,
+63,
+779,
+75
+],
+"relleno": "#FFFFFF",
+"linea": "#9AA0A6"
+},
+{
+"id": "T0508",
+"tipo": "texto",
+"grupo": "Group_023",
+"texto": "L1",
+"caja": [
+764,
+65,
+772,
+73
+],
+"color": "#000000"
+},
+{
+"id": "P0509",
+"tipo": "trazo",
+"grupo": "Group_024",
+"caja": [
+776,
+894,
+786,
+905
+],
+"relleno": "#C8202B",
+"linea": null
+},
+{
+"id": "P0510",
+"tipo": "trazo",
+"grupo": "Group_024",
+"caja": [
+774,
+889,
+787,
+894
+],
+"relleno": "#C8202B",
+"linea": null
+},
+{
+"id": "P0511",
+"tipo": "trazo",
+"grupo": "Group_024",
+"caja": [
+782,
+894,
+784,
+905
+],
+"relleno": "#FFFFFF",
+"linea": null
+},
+{
+"id": "P0512",
+"tipo": "trazo",
+"grupo": "Group_024",
+"caja": [
+774,
+889,
+778,
+905
+],
+"relleno": "#000000",
+"linea": null
+},
+{
+"id": "P0513",
+"tipo": "trazo",
+"grupo": "Group_024",
+"caja": [
+770,
+872,
+792,
+886
+],
+"relleno": "#FFFFFF",
+"linea": "#9AA0A6"
+},
+{
+"id": "T0514",
+"tipo": "texto",
+"grupo": "Group_024",
+"texto": "L2",
+"caja": [
+777,
+874,
+784,
+884
+],
+"color": "#000000"
+},
+{
+"id": "P0515",
+"tipo": "trazo",
+"grupo": "Group_024",
+"caja": [
+821,
+82,
+831,
+94
+],
+"relleno": "#C8202B",
+"linea": null
+},
+{
+"id": "P0516",
+"tipo": "trazo",
+"grupo": "Group_024",
+"caja": [
+820,
+78,
+833,
+82
+],
+"relleno": "#C8202B",
+"linea": null
+},
+{
+"id": "P0517",
+"tipo": "trazo",
+"grupo": "Group_024",
+"caja": [
+828,
+82,
+829,
+94
+],
+"relleno": "#FFFFFF",
+"linea": null
+},
+{
+"id": "P0518",
+"tipo": "trazo",
+"grupo": "Group_024",
+"caja": [
+820,
+78,
+823,
+94
+],
+"relleno": "#000000",
+"linea": null
+},
+{
+"id": "P0519",
+"tipo": "trazo",
+"grupo": "Group_024",
+"caja": [
+816,
+61,
+837,
+75
+],
+"relleno": "#FFFFFF",
+"linea": "#9AA0A6"
+},
+{
+"id": "T0520",
+"tipo": "texto",
+"grupo": "Group_024",
+"texto": "L2",
+"caja": [
+823,
+63,
+830,
+73
+],
+"color": "#000000"
+},
+{
+"id": "P0521",
+"tipo": "trazo",
+"grupo": "Group_025",
+"caja": [
+799,
+894,
+810,
+905
+],
+"relleno": "#C8202B",
+"linea": null
+},
+{
+"id": "P0522",
+"tipo": "trazo",
+"grupo": "Group_025",
+"caja": [
+798,
+889,
+811,
+894
+],
+"relleno": "#C8202B",
+"linea": null
+},
+{
+"id": "P0523",
+"tipo": "trazo",
+"grupo": "Group_025",
+"caja": [
+806,
+894,
+807,
+905
+],
+"relleno": "#FFFFFF",
+"linea": null
+},
+{
+"id": "P0524",
+"tipo": "trazo",
+"grupo": "Group_025",
+"caja": [
+798,
+889,
+801,
+905
+],
+"relleno": "#000000",
+"linea": null
+},
+{
+"id": "P0525",
+"tipo": "trazo",
+"grupo": "Group_025",
+"caja": [
+794,
+872,
+815,
+886
+],
+"relleno": "#FFFFFF",
+"linea": "#9AA0A6"
+},
+{
+"id": "T0526",
+"tipo": "texto",
+"grupo": "Group_025",
+"texto": "L3",
+"caja": [
+801,
+874,
+808,
+884
+],
+"color": "#000000"
+},
+{
+"id": "P0527",
+"tipo": "trazo",
+"grupo": "Group_025",
+"caja": [
+880,
+82,
+890,
+94
+],
+"relleno": "#C8202B",
+"linea": null
+},
+{
+"id": "P0528",
+"tipo": "trazo",
+"grupo": "Group_025",
+"caja": [
+878,
+78,
+891,
+82
+],
+"relleno": "#C8202B",
+"linea": null
+},
+{
+"id": "P0529",
+"tipo": "trazo",
+"grupo": "Group_025",
+"caja": [
+886,
+82,
+887,
+94
+],
+"relleno": "#FFFFFF",
+"linea": null
+},
+{
+"id": "P0530",
+"tipo": "trazo",
+"grupo": "Group_025",
+"caja": [
+878,
+78,
+882,
+94
+],
+"relleno": "#000000",
+"linea": null
+},
+{
+"id": "P0531",
+"tipo": "trazo",
+"grupo": "Group_025",
+"caja": [
+874,
+61,
+895,
+75
+],
+"relleno": "#FFFFFF",
+"linea": "#9AA0A6"
+},
+{
+"id": "T0532",
+"tipo": "texto",
+"grupo": "Group_025",
+"texto": "L3",
+"caja": [
+881,
+63,
+888,
+73
+],
+"color": "#000000"
+},
+{
+"id": "P0533",
+"tipo": "trazo",
+"grupo": "VMobject_027",
+"caja": [
+351,
+458,
+351,
+536
+],
+"relleno": null,
+"linea": "#F79009"
+},
+{
+"id": "P0534",
+"tipo": "trazo",
+"grupo": "VMobject_028",
+"caja": [
+388,
+458,
+388,
+536
+],
+"relleno": null,
+"linea": "#F79009"
+},
+{
+"id": "P0535",
+"tipo": "trazo",
+"grupo": "VMobject_029",
+"caja": [
+426,
+458,
+426,
+536
+],
+"relleno": null,
+"linea": "#F79009"
+},
+{
+"id": "P0536",
+"tipo": "trazo",
+"grupo": "Group_030",
+"caja": [
+763,
+354,
+773,
+366
+],
+"relleno": "#C8202B",
+"linea": null
+},
+{
+"id": "P0537",
+"tipo": "trazo",
+"grupo": "Group_030",
+"caja": [
+761,
+366,
+775,
+370
+],
+"relleno": "#C8202B",
+"linea": null
+},
+{
+"id": "P0538",
+"tipo": "trazo",
+"grupo": "Group_030",
+"caja": [
+765,
+354,
+767,
+366
+],
+"relleno": "#FFFFFF",
+"linea": null
+},
+{
+"id": "P0539",
+"tipo": "trazo",
+"grupo": "Group_030",
+"caja": [
+771,
+354,
+775,
+370
+],
+"relleno": "#000000",
+"linea": null
+},
+{
+"id": "P0540",
+"tipo": "trazo",
+"grupo": "Group_030",
+"caja": [
+757,
+373,
+779,
+385
+],
+"relleno": "#FFFFFF",
+"linea": "#9AA0A6"
+},
+{
+"id": "T0541",
+"tipo": "texto",
+"grupo": "Group_030",
+"texto": "L1",
+"caja": [
+764,
+375,
+772,
+383
+],
+"color": "#000000"
+},
+{
+"id": "P0542",
+"tipo": "trazo",
+"grupo": "Group_030",
+"caja": [
+775,
+423,
+785,
+434
+],
+"relleno": "#C8202B",
+"linea": null
+},
+{
+"id": "P0543",
+"tipo": "trazo",
+"grupo": "Group_030",
+"caja": [
+774,
+418,
+787,
+423
+],
+"relleno": "#C8202B",
+"linea": null
+},
+{
+"id": "P0544",
+"tipo": "trazo",
+"grupo": "Group_030",
+"caja": [
+782,
+423,
+783,
+434
+],
+"relleno": "#FFFFFF",
+"linea": null
+},
+{
+"id": "P0545",
+"tipo": "trazo",
+"grupo": "Group_030",
+"caja": [
+774,
+418,
+777,
+434
+],
+"relleno": "#000000",
+"linea": null
+},
+{
+"id": "P0546",
+"tipo": "trazo",
+"grupo": "Group_030",
+"caja": [
+770,
+404,
+791,
+415
+],
+"relleno": "#FFFFFF",
+"linea": "#9AA0A6"
+},
+{
+"id": "T0547",
+"tipo": "texto",
+"grupo": "Group_030",
+"texto": "L1",
+"caja": [
+777,
+405,
+784,
+413
+],
+"color": "#000000"
+},
+{
+"id": "P0548",
+"tipo": "trazo",
+"grupo": "Group_031",
+"caja": [
+821,
+354,
+831,
+366
+],
+"relleno": "#C8202B",
+"linea": null
+},
+{
+"id": "P0549",
+"tipo": "trazo",
+"grupo": "Group_031",
+"caja": [
+820,
+366,
+833,
+370
+],
+"relleno": "#C8202B",
+"linea": null
+},
+{
+"id": "P0550",
+"tipo": "trazo",
+"grupo": "Group_031",
+"caja": [
+823,
+354,
+825,
+366
+],
+"relleno": "#FFFFFF",
+"linea": null
+},
+{
+"id": "P0551",
+"tipo": "trazo",
+"grupo": "Group_031",
+"caja": [
+829,
+354,
+833,
+370
+],
+"relleno": "#000000",
+"linea": null
+},
+{
+"id": "P0552",
+"tipo": "trazo",
+"grupo": "Group_031",
+"caja": [
+816,
+373,
+837,
+387
+],
+"relleno": "#FFFFFF",
+"linea": "#9AA0A6"
+},
+{
+"id": "T0553",
+"tipo": "texto",
+"grupo": "Group_031",
+"texto": "L2",
+"caja": [
+823,
+375,
+830,
+386
+],
+"color": "#000000"
+},
+{
+"id": "P0554",
+"tipo": "trazo",
+"grupo": "Group_031",
+"caja": [
+821,
+423,
+831,
+434
+],
+"relleno": "#C8202B",
+"linea": null
+},
+{
+"id": "P0555",
+"tipo": "trazo",
+"grupo": "Group_031",
+"caja": [
+820,
+418,
+833,
+423
+],
+"relleno": "#C8202B",
+"linea": null
+},
+{
+"id": "P0556",
+"tipo": "trazo",
+"grupo": "Group_031",
+"caja": [
+828,
+423,
+829,
+434
+],
+"relleno": "#FFFFFF",
+"linea": null
+},
+{
+"id": "P0557",
+"tipo": "trazo",
+"grupo": "Group_031",
+"caja": [
+820,
+418,
+823,
+434
+],
+"relleno": "#000000",
+"linea": null
+},
+{
+"id": "P0558",
+"tipo": "trazo",
+"grupo": "Group_031",
+"caja": [
+816,
+401,
+837,
+415
+],
+"relleno": "#FFFFFF",
+"linea": "#9AA0A6"
+},
+{
+"id": "T0559",
+"tipo": "texto",
+"grupo": "Group_031",
+"texto": "L2",
+"caja": [
+823,
+403,
+830,
+413
+],
+"color": "#000000"
+},
+{
+"id": "P0560",
+"tipo": "trazo",
+"grupo": "Group_032",
+"caja": [
+880,
+354,
+890,
+366
+],
+"relleno": "#C8202B",
+"linea": null
+},
+{
+"id": "P0561",
+"tipo": "trazo",
+"grupo": "Group_032",
+"caja": [
+878,
+366,
+891,
+370
+],
+"relleno": "#C8202B",
+"linea": null
+},
+{
+"id": "P0562",
+"tipo": "trazo",
+"grupo": "Group_032",
+"caja": [
+882,
+354,
+883,
+366
+],
+"relleno": "#FFFFFF",
+"linea": null
+},
+{
+"id": "P0563",
+"tipo": "trazo",
+"grupo": "Group_032",
+"caja": [
+888,
+354,
+891,
+370
+],
+"relleno": "#000000",
+"linea": null
+},
+{
+"id": "P0564",
+"tipo": "trazo",
+"grupo": "Group_032",
+"caja": [
+874,
+373,
+895,
+387
+],
+"relleno": "#FFFFFF",
+"linea": "#9AA0A6"
+},
+{
+"id": "T0565",
+"tipo": "texto",
+"grupo": "Group_032",
+"texto": "L3",
+"caja": [
+881,
+375,
+888,
+386
+],
+"color": "#000000"
+},
+{
+"id": "P0566",
+"tipo": "trazo",
+"grupo": "Group_032",
+"caja": [
+868,
+423,
+878,
+434
+],
+"relleno": "#C8202B",
+"linea": null
+},
+{
+"id": "P0567",
+"tipo": "trazo",
+"grupo": "Group_032",
+"caja": [
+867,
+418,
+880,
+423
+],
+"relleno": "#C8202B",
+"linea": null
+},
+{
+"id": "P0568",
+"tipo": "trazo",
+"grupo": "Group_032",
+"caja": [
+875,
+423,
+876,
+434
+],
+"relleno": "#FFFFFF",
+"linea": null
+},
+{
+"id": "P0569",
+"tipo": "trazo",
+"grupo": "Group_032",
+"caja": [
+867,
+418,
+870,
+434
+],
+"relleno": "#000000",
+"linea": null
+},
+{
+"id": "P0570",
+"tipo": "trazo",
+"grupo": "Group_032",
+"caja": [
+863,
+401,
+884,
+415
+],
+"relleno": "#FFFFFF",
+"linea": "#9AA0A6"
+},
+{
+"id": "T0571",
+"tipo": "texto",
+"grupo": "Group_032",
+"texto": "L3",
+"caja": [
+870,
+403,
+877,
+413
+],
+"color": "#000000"
+},
+{
+"id": "P0572",
+"tipo": "trazo",
+"grupo": "VMobject_034",
+"caja": [
+351,
+608,
+351,
+684
+],
+"relleno": null,
+"linea": "#F79009"
+},
+{
+"id": "P0573",
+"tipo": "trazo",
+"grupo": "VMobject_035",
+"caja": [
+388,
+608,
+388,
+684
+],
+"relleno": null,
+"linea": "#F79009"
+},
+{
+"id": "P0574",
+"tipo": "trazo",
+"grupo": "VMobject_036",
+"caja": [
+426,
+608,
+426,
+684
+],
+"relleno": null,
+"linea": "#F79009"
+},
+{
+"id": "P0575",
+"tipo": "trazo",
+"grupo": "VMobject_039",
+"caja": [
+351,
+730,
+351,
+792
+],
+"relleno": null,
+"linea": "#F79009"
+},
+{
+"id": "P0576",
+"tipo": "trazo",
+"grupo": "VMobject_040",
+"caja": [
+388,
+730,
+388,
+792
+],
+"relleno": null,
+"linea": "#F79009"
+},
+{
+"id": "P0577",
+"tipo": "trazo",
+"grupo": "VMobject_041",
+"caja": [
+426,
+730,
+426,
+792
+],
+"relleno": null,
+"linea": "#F79009"
+},
+{
+"id": "P0578",
+"tipo": "trazo",
+"grupo": "Group_042",
+"caja": [
+778,
+835,
+788,
+847
+],
+"relleno": "#C8202B",
+"linea": null
+},
+{
+"id": "P0579",
+"tipo": "trazo",
+"grupo": "Group_042",
+"caja": [
+777,
+847,
+790,
+851
+],
+"relleno": "#C8202B",
+"linea": null
+},
+{
+"id": "P0580",
+"tipo": "trazo",
+"grupo": "Group_042",
+"caja": [
+780,
+835,
+782,
+847
+],
+"relleno": "#FFFFFF",
+"linea": null
+},
+{
+"id": "P0581",
+"tipo": "trazo",
+"grupo": "Group_042",
+"caja": [
+786,
+835,
+790,
+851
+],
+"relleno": "#000000",
+"linea": null
+},
+{
+"id": "P0582",
+"tipo": "trazo",
+"grupo": "Group_042",
+"caja": [
+773,
+854,
+794,
+867
+],
+"relleno": "#FFFFFF",
+"linea": "#9AA0A6"
+},
+{
+"id": "T0583",
+"tipo": "texto",
+"grupo": "Group_042",
+"texto": "T1",
+"caja": [
+780,
+856,
+787,
+866
+],
+"color": "#000000"
+},
+{
+"id": "P0584",
+"tipo": "trazo",
+"grupo": "Group_042",
+"caja": [
+945,
+894,
+955,
+905
+],
+"relleno": "#C8202B",
+"linea": null
+},
+{
+"id": "P0585",
+"tipo": "trazo",
+"grupo": "Group_042",
+"caja": [
+943,
+889,
+957,
+894
+],
+"relleno": "#C8202B",
+"linea": null
+},
+{
+"id": "P0586",
+"tipo": "trazo",
+"grupo": "Group_042",
+"caja": [
+951,
+894,
+953,
+905
+],
+"relleno": "#FFFFFF",
+"linea": null
+},
+{
+"id": "P0587",
+"tipo": "trazo",
+"grupo": "Group_042",
+"caja": [
+943,
+889,
+947,
+905
+],
+"relleno": "#000000",
+"linea": null
+},
+{
+"id": "P0588",
+"tipo": "trazo",
+"grupo": "Group_042",
+"caja": [
+939,
+873,
+961,
+886
+],
+"relleno": "#FFFFFF",
+"linea": "#9AA0A6"
+},
+{
+"id": "T0589",
+"tipo": "texto",
+"grupo": "Group_042",
+"texto": "T1",
+"caja": [
+946,
+875,
+954,
+884
+],
+"color": "#000000"
+},
+{
+"id": "P0590",
+"tipo": "trazo",
+"grupo": "Group_043",
+"caja": [
+821,
+835,
+831,
+847
+],
+"relleno": "#C8202B",
+"linea": null
+},
+{
+"id": "P0591",
+"tipo": "trazo",
+"grupo": "Group_043",
+"caja": [
+820,
+847,
+833,
+851
+],
+"relleno": "#C8202B",
+"linea": null
+},
+{
+"id": "P0592",
+"tipo": "trazo",
+"grupo": "Group_043",
+"caja": [
+823,
+835,
+825,
+847
+],
+"relleno": "#FFFFFF",
+"linea": null
+},
+{
+"id": "P0593",
+"tipo": "trazo",
+"grupo": "Group_043",
+"caja": [
+829,
+835,
+833,
+851
+],
+"relleno": "#000000",
+"linea": null
+},
+{
+"id": "P0594",
+"tipo": "trazo",
+"grupo": "Group_043",
+"caja": [
+816,
+854,
+837,
+869
+],
+"relleno": "#FFFFFF",
+"linea": "#9AA0A6"
+},
+{
+"id": "T0595",
+"tipo": "texto",
+"grupo": "Group_043",
+"texto": "T2",
+"caja": [
+823,
+856,
+830,
+867
+],
+"color": "#000000"
+},
+{
+"id": "P0596",
+"tipo": "trazo",
+"grupo": "Group_043",
+"caja": [
+969,
+894,
+979,
+905
+],
+"relleno": "#C8202B",
+"linea": null
+},
+{
+"id": "P0597",
+"tipo": "trazo",
+"grupo": "Group_043",
+"caja": [
+967,
+889,
+980,
+894
+],
+"relleno": "#C8202B",
+"linea": null
+},
+{
+"id": "P0598",
+"tipo": "trazo",
+"grupo": "Group_043",
+"caja": [
+975,
+894,
+977,
+905
+],
+"relleno": "#FFFFFF",
+"linea": null
+},
+{
+"id": "P0599",
+"tipo": "trazo",
+"grupo": "Group_043",
+"caja": [
+967,
+889,
+971,
+905
+],
+"relleno": "#000000",
+"linea": null
+},
+{
+"id": "P0600",
+"tipo": "trazo",
+"grupo": "Group_043",
+"caja": [
+963,
+871,
+985,
+886
+],
+"relleno": "#FFFFFF",
+"linea": "#9AA0A6"
+},
+{
+"id": "T0601",
+"tipo": "texto",
+"grupo": "Group_043",
+"texto": "T2",
+"caja": [
+970,
+873,
+977,
+884
+],
+"color": "#000000"
+},
+{
+"id": "P0602",
+"tipo": "trazo",
+"grupo": "Group_044",
+"caja": [
+864,
+835,
+875,
+847
+],
+"relleno": "#C8202B",
+"linea": null
+},
+{
+"id": "P0603",
+"tipo": "trazo",
+"grupo": "Group_044",
+"caja": [
+863,
+847,
+876,
+851
+],
+"relleno": "#C8202B",
+"linea": null
+},
+{
+"id": "P0604",
+"tipo": "trazo",
+"grupo": "Group_044",
+"caja": [
+867,
+835,
+868,
+847
+],
+"relleno": "#FFFFFF",
+"linea": null
+},
+{
+"id": "P0605",
+"tipo": "trazo",
+"grupo": "Group_044",
+"caja": [
+873,
+835,
+876,
+851
+],
+"relleno": "#000000",
+"linea": null
+},
+{
+"id": "P0606",
+"tipo": "trazo",
+"grupo": "Group_044",
+"caja": [
+859,
+854,
+880,
+869
+],
+"relleno": "#FFFFFF",
+"linea": "#9AA0A6"
+},
+{
+"id": "T0607",
+"tipo": "texto",
+"grupo": "Group_044",
+"texto": "T3",
+"caja": [
+866,
+856,
+873,
+868
+],
+"color": "#000000"
+},
+{
+"id": "P0608",
+"tipo": "trazo",
+"grupo": "Group_044",
+"caja": [
+992,
+894,
+1003,
+905
+],
+"relleno": "#C8202B",
+"linea": null
+},
+{
+"id": "P0609",
+"tipo": "trazo",
+"grupo": "Group_044",
+"caja": [
+991,
+889,
+1004,
+894
+],
+"relleno": "#C8202B",
+"linea": null
+},
+{
+"id": "P0610",
+"tipo": "trazo",
+"grupo": "Group_044",
+"caja": [
+999,
+894,
+1000,
+905
+],
+"relleno": "#FFFFFF",
+"linea": null
+},
+{
+"id": "P0611",
+"tipo": "trazo",
+"grupo": "Group_044",
+"caja": [
+991,
+889,
+994,
+905
+],
+"relleno": "#000000",
+"linea": null
+},
+{
+"id": "P0612",
+"tipo": "trazo",
+"grupo": "Group_044",
+"caja": [
+987,
+871,
+1008,
+886
+],
+"relleno": "#FFFFFF",
+"linea": "#9AA0A6"
+},
+{
+"id": "T0613",
+"tipo": "texto",
+"grupo": "Group_044",
+"texto": "T3",
+"caja": [
+994,
+873,
+1001,
+884
+],
+"color": "#000000"
+},
+{
+"id": "P0614",
+"tipo": "trazo",
+"grupo": "VMobject_046",
+"caja": [
+168,
+122,
+463,
+792
+],
+"relleno": null,
+"linea": "#F79009"
+},
+{
+"id": "P0615",
+"tipo": "trazo",
+"grupo": "Group_047",
+"caja": [
+847,
+894,
+857,
+905
+],
+"relleno": "#C8202B",
+"linea": null
+},
+{
+"id": "P0616",
+"tipo": "trazo",
+"grupo": "Group_047",
+"caja": [
+845,
+889,
+859,
+894
+],
+"relleno": "#C8202B",
+"linea": null
+},
+{
+"id": "P0617",
+"tipo": "trazo",
+"grupo": "Group_047",
+"caja": [
+853,
+894,
+855,
+905
+],
+"relleno": "#FFFFFF",
+"linea": null
+},
+{
+"id": "P0618",
+"tipo": "trazo",
+"grupo": "Group_047",
+"caja": [
+845,
+889,
+849,
+905
+],
+"relleno": "#000000",
+"linea": null
+},
+{
+"id": "P0619",
+"tipo": "trazo",
+"grupo": "Group_047",
+"caja": [
+841,
+871,
+863,
+886
+],
+"relleno": "#FFFFFF",
+"linea": "#9AA0A6"
+},
+{
+"id": "T0620",
+"tipo": "texto",
+"grupo": "Group_047",
+"texto": "PE",
+"caja": [
+849,
+873,
+856,
+884
+],
+"color": "#000000"
+},
+{
+"id": "P0621",
+"tipo": "trazo",
+"grupo": "Group_047",
+"caja": [
+1016,
+894,
+1026,
+905
+],
+"relleno": "#C8202B",
+"linea": null
+},
+{
+"id": "P0622",
+"tipo": "trazo",
+"grupo": "Group_047",
+"caja": [
+1015,
+889,
+1028,
+894
+],
+"relleno": "#C8202B",
+"linea": null
+},
+{
+"id": "P0623",
+"tipo": "trazo",
+"grupo": "Group_047",
+"caja": [
+1023,
+894,
+1024,
+905
+],
+"relleno": "#FFFFFF",
+"linea": null
+},
+{
+"id": "P0624",
+"tipo": "trazo",
+"grupo": "Group_047",
+"caja": [
+1015,
+889,
+1018,
+905
+],
+"relleno": "#000000",
+"linea": null
+},
+{
+"id": "P0625",
+"tipo": "trazo",
+"grupo": "Group_047",
+"caja": [
+1011,
+871,
+1032,
+886
+],
+"relleno": "#FFFFFF",
+"linea": "#9AA0A6"
+},
+{
+"id": "T0626",
+"tipo": "texto",
+"grupo": "Group_047",
+"texto": "PE",
+"caja": [
+1018,
+873,
+1025,
+884
+],
+"color": "#000000"
+},
+{
+"id": "I0627",
+"tipo": "imagen",
+"grupo": "F3",
+"caja": [
+741,
+656,
+912,
+848
+]
+},
+{
+"id": "I0628",
+"tipo": "imagen",
+"grupo": "KM1",
+"caja": [
+740,
+421,
+912,
+682
+]
+},
+{
+"id": "P0629",
+"tipo": "trazo",
+"grupo": "VGroup_051",
+"caja": [
+680,
+46,
+768,
+889
+],
+"relleno": null,
+"linea": "#161616"
+},
+{
+"id": "P0630",
+"tipo": "trazo",
+"grupo": "VGroup_052",
+"caja": [
+696,
+31,
+826,
+889
+],
+"relleno": null,
+"linea": "#161616"
+},
+{
+"id": "P0631",
+"tipo": "trazo",
+"grupo": "VGroup_053",
+"caja": [
+712,
+17,
+885,
+889
+],
+"relleno": null,
+"linea": "#161616"
+},
+{
+"id": "P0632",
+"tipo": "trazo",
+"grupo": "VGroup_054",
+"caja": [
+768,
+370,
+780,
+418
+],
+"relleno": null,
+"linea": "#161616"
+},
+{
+"id": "P0633",
+"tipo": "trazo",
+"grupo": "VGroup_055",
+"caja": [
+826,
+370,
+826,
+418
+],
+"relleno": null,
+"linea": "#161616"
+},
+{
+"id": "P0634",
+"tipo": "trazo",
+"grupo": "VGroup_056",
+"caja": [
+873,
+370,
+885,
+418
+],
+"relleno": null,
+"linea": "#161616"
+},
+{
+"id": "P0635",
+"tipo": "trazo",
+"grupo": "VGroup_057",
+"caja": [
+783,
+851,
+950,
+889
+],
+"relleno": null,
+"linea": "#161616"
+},
+{
+"id": "P0636",
+"tipo": "trazo",
+"grupo": "VGroup_058",
+"caja": [
+826,
+851,
+974,
+889
+],
+"relleno": null,
+"linea": "#161616"
+},
+{
+"id": "P0637",
+"tipo": "trazo",
+"grupo": "VGroup_059",
+"caja": [
+870,
+851,
+998,
+889
+],
+"relleno": null,
+"linea": "#161616"
+},
+{
+"id": "P0638",
+"tipo": "trazo",
+"grupo": "VGroup_060",
+"caja": [
+852,
+880,
+1021,
+889
+],
+"relleno": null,
+"linea": "#1E9E3E"
+},
+{
+"id": "P0639",
+"tipo": "trazo",
+"grupo": "VGroup_060",
+"caja": [
+852,
+884,
+852,
+889
+],
+"relleno": null,
+"linea": "#F2D21B"
+},
+{
+"id": "P0640",
+"tipo": "trazo",
+"grupo": "VGroup_060",
+"caja": [
+852,
+881,
+857,
+881
+],
+"relleno": null,
+"linea": "#F2D21B"
+},
+{
+"id": "P0641",
+"tipo": "trazo",
+"grupo": "VGroup_060",
+"caja": [
+863,
+881,
+868,
+881
+],
+"relleno": null,
+"linea": "#F2D21B"
+},
+{
+"id": "P0642",
+"tipo": "trazo",
+"grupo": "VGroup_060",
+"caja": [
+873,
+881,
+878,
+881
+],
+"relleno": null,
+"linea": "#F2D21B"
+},
+{
+"id": "P0643",
+"tipo": "trazo",
+"grupo": "VGroup_060",
+"caja": [
+883,
+881,
+888,
+881
+],
+"relleno": null,
+"linea": "#F2D21B"
+},
+{
+"id": "P0644",
+"tipo": "trazo",
+"grupo": "VGroup_060",
+"caja": [
+893,
+881,
+898,
+881
+],
+"relleno": null,
+"linea": "#F2D21B"
+},
+{
+"id": "P0645",
+"tipo": "trazo",
+"grupo": "VGroup_060",
+"caja": [
+904,
+881,
+909,
+881
+],
+"relleno": null,
+"linea": "#F2D21B"
+},
+{
+"id": "P0646",
+"tipo": "trazo",
+"grupo": "VGroup_060",
+"caja": [
+914,
+881,
+919,
+881
+],
+"relleno": null,
+"linea": "#F2D21B"
+},
+{
+"id": "P0647",
+"tipo": "trazo",
+"grupo": "VGroup_060",
+"caja": [
+924,
+881,
+929,
+881
+],
+"relleno": null,
+"linea": "#F2D21B"
+},
+{
+"id": "P0648",
+"tipo": "trazo",
+"grupo": "VGroup_060",
+"caja": [
+934,
+881,
+939,
+881
+],
+"relleno": null,
+"linea": "#F2D21B"
+},
+{
+"id": "P0649",
+"tipo": "trazo",
+"grupo": "VGroup_060",
+"caja": [
+944,
+881,
+949,
+881
+],
+"relleno": null,
+"linea": "#F2D21B"
+},
+{
+"id": "P0650",
+"tipo": "trazo",
+"grupo": "VGroup_060",
+"caja": [
+955,
+881,
+960,
+881
+],
+"relleno": null,
+"linea": "#F2D21B"
+},
+{
+"id": "P0651",
+"tipo": "trazo",
+"grupo": "VGroup_060",
+"caja": [
+965,
+881,
+970,
+881
+],
+"relleno": null,
+"linea": "#F2D21B"
+},
+{
+"id": "P0652",
+"tipo": "trazo",
+"grupo": "VGroup_060",
+"caja": [
+975,
+881,
+980,
+881
+],
+"relleno": null,
+"linea": "#F2D21B"
+},
+{
+"id": "P0653",
+"tipo": "trazo",
+"grupo": "VGroup_060",
+"caja": [
+985,
+881,
+990,
+881
+],
+"relleno": null,
+"linea": "#F2D21B"
+},
+{
+"id": "P0654",
+"tipo": "trazo",
+"grupo": "VGroup_060",
+"caja": [
+996,
+881,
+1001,
+881
+],
+"relleno": null,
+"linea": "#F2D21B"
+},
+{
+"id": "P0655",
+"tipo": "trazo",
+"grupo": "VGroup_060",
+"caja": [
+1006,
+881,
+1011,
+881
+],
+"relleno": null,
+"linea": "#F2D21B"
+},
+{
+"id": "P0656",
+"tipo": "trazo",
+"grupo": "VGroup_060",
+"caja": [
+1016,
+881,
+1021,
+881
+],
+"relleno": null,
+"linea": "#F2D21B"
+},
+{
+"id": "P0657",
+"tipo": "trazo",
+"grupo": "VGroup_060",
+"caja": [
+1021,
+884,
+1021,
+889
+],
+"relleno": null,
+"linea": "#F2D21B"
+},
+{
+"id": "P0658",
+"tipo": "trazo",
+"grupo": "VGroup_061",
+"caja": [
+30,
+17,
+104,
+84
+],
+"relleno": "#0E9BB5",
+"linea": null
+},
+{
+"id": "P0659",
+"tipo": "trazo",
+"grupo": "VGroup_061",
+"caja": [
+114,
+17,
+653,
+84
+],
+"relleno": "#13265A",
+"linea": null
+},
+{
+"id": "P0660",
+"tipo": "trazo",
+"grupo": "VGroup_061",
+"caja": [
+114,
+17,
+653,
+84
+],
+"relleno": null,
+"linea": "#0E9BB5"
+},
+{
+"id": "T0661",
+"tipo": "texto",
+"grupo": "VGroup_061",
+"texto": "8",
+"caja": [
+54,
+34,
+80,
+67
+],
+"color": "#000000"
+},
+{
+"id": "T0662",
+"tipo": "texto",
+"grupo": "VGroup_061",
+"texto": "Conexión de potencia",
+"caja": [
+150,
+29,
+617,
+72
+],
+"color": "#000000"
+}
+]
+}
