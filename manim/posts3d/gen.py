@@ -77,7 +77,7 @@ html = (f"<div class='h1b'><div style='font-size:58px;color:{AZ}'>Partes del</di
         f"<svg class='ov' width='1080' height='1350' viewBox='0 0 1080 1350'>{''.join(svg)}</svg>" + "".join(li) +
         "<div class='spec'>" + "".join(f"<div><b>{a}</b>{b}</div>" for a, b in spec) + "</div>")
 P = {"NR2_25_partes_3d": p6.page(CSS, html, "CHINT, ficha NR2 · LARSSYSTEM Guatemala, NR2-25 2,5-4 A · IEC/EN 60947-4-1",
-                                 "modelo 3D propio (three.js) basado en el producto")}
+                                 "modelo 3D propio (three.js, PBR) basado en el producto")}
 
 if __name__ == "__main__":
     (AQ / "html").mkdir(exist_ok=True)
