@@ -60,3 +60,10 @@ Reglas vigentes. Cada corrección nueva del usuario se agrega aquí el mismo dí
 ## Canva (cuadros editables para corregir)
 - Diseño del cuadro 8 de H01: DAHby9XlvlY. `create-design` inventa contenido: solo para obtener un lienzo vacío; se arma con `edit-design` (`manim/canva_capas.py`, `canva_diag.py`, base de cambios `canva/h01_c8_canva_base.json`).
 - Límites: línea de un solo segmento no se dibuja (usar rectángulo relleno), formas < 12 px se estiran, `replace_shape` solo trazos cerrados ≤ 2048 bytes, agrupar operaciones.
+
+## Publicaciones (FB · IG · comunidad YT), 24-nov — `manim/posts/gen_posts2.py`
+- 1080 × 1350, FONDO BLANCO (se ven los detalles), estilo de las referencias del usuario: banda superior con la pregunta, título en dos líneas (texto de color + cinta inclinada), párrafo explicativo, equipo del catálogo grande con FLECHAS punteadas que señalan y nombran sus partes, fuente al pie, logo ME. abajo a la izquierda y sello "¿Sabías esto?…" abajo a la derecha. Letra de títulos Oswald (`posts/fonts`, OFL).
+- Siempre con la referencia (norma, hoja de datos o placa) de donde sale el dato.
+
+## Serie de arranques (reels A01–A15 = V39–V53), 24-nov — `manim/reels_arr.py`, `guiones_arr.py`, `gen_arr_eq.py`, `lib/svgarr.py`
+- Cortes nuevos en `svgarr`: relé térmico (bimetal, calefactor, regleta, 95-96/97-98), bobina del contactor (núcleo E, armadura, espira de sombra), puntera DIN 46228-4.
