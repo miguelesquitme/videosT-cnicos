@@ -1,0 +1,45 @@
+<!doctype html><html><head><meta charset='utf-8'><style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{width:1080px;height:1350px;position:relative;overflow:hidden;font-family:Montserrat,sans-serif;color:#111827;
+ background:linear-gradient(165deg,#F9FAFC 0%,#EEF2F7 55%,#E6ECF4 100%)}
+.dec{position:absolute;border-radius:18px;background:#C9D8F2;opacity:.35}
+.wave{position:absolute;left:-200px;width:1500px;height:420px;border-radius:50%;border:2px solid rgba(255,255,255,.9)}
+.tit{position:absolute;left:30px;right:30px;text-align:center;text-transform:uppercase;line-height:1.02}
+.t1{font-weight:900;color:#0B1F4D;letter-spacing:-.5px}
+.t3{font-weight:900;color:#fff;-webkit-text-stroke:3px #1565C0;paint-order:stroke fill;letter-spacing:-.5px;
+ text-shadow:0 3px 0 #1565C0,0 6px 0 #0D47A1,0 9px 0 #0B3C8C,0 14px 18px rgba(11,31,77,.35)}
+.pill{display:inline-block;background:linear-gradient(180deg,#1E88E5,#1565C0);color:#fff;font-weight:900;border-radius:22px;padding:6px 34px 10px;
+ box-shadow:0 8px 18px rgba(21,101,192,.35)}
+.sub{position:absolute;left:60px;right:60px;background:rgba(255,255,255,.85);border:2px solid #D3DCEA;border-radius:24px;padding:16px 26px;
+ font-size:25px;line-height:1.32;text-align:center;font-weight:500;box-shadow:0 6px 16px rgba(11,31,77,.08)}
+.sub b{font-weight:800}
+.card{position:absolute;border-radius:24px;overflow:hidden;background:#fff;border:6px solid #fff;box-shadow:0 14px 34px rgba(11,31,77,.22)}
+.card img{width:100%;height:100%;object-fit:cover;display:block}
+svg.ov{position:absolute;left:0;top:0;width:1080px;height:1350px;pointer-events:none}
+.lab{position:absolute;transform:translate(-50%,-50%);background:#fff;border:3.5px solid;border-radius:14px;padding:8px 12px;
+ font-size:21px;font-weight:700;text-align:center;line-height:1.18;box-shadow:0 4px 10px rgba(0,0,0,.12)}
+.lab small{display:block;font-size:16px;font-weight:500;color:#475467;margin-top:2px}
+.pie{position:absolute;left:40px;right:40px;bottom:14px;text-align:center}
+.pie .m{display:flex;justify-content:center;align-items:center;gap:12px;font-weight:800;font-size:28px;color:#0B1F4D;letter-spacing:1px}
+.pie .m img{height:46px}
+.pie .f{font-size:13.5px;color:#667085;line-height:1.3;margin-top:6px}
+.box{position:absolute;border-radius:20px;background:rgba(255,255,255,.9);border:2px solid #D3DCEA;box-shadow:0 6px 16px rgba(11,31,77,.08)}
+.chip{position:absolute;transform:translate(-50%,-50%);background:#1E88E5;color:#fff;font-weight:800;border-radius:14px;padding:8px 18px;font-size:22px}
+.bar{position:absolute;left:40px;right:40px;background:#0B1F4D;color:#fff;border-radius:18px;text-align:center;font-weight:700;font-size:25px;padding:14px 20px}
+.bar b{color:#FFC94D}
+@font-face{font-family:'Barlow C';src:url('../fonts/barlow-condensed-latin-800-normal.woff2');font-weight:800;font-style:normal}@font-face{font-family:'Barlow C';src:url('../fonts/barlow-condensed-latin-900-normal.woff2');font-weight:900;font-style:normal}@font-face{font-family:'Barlow C';src:url('../fonts/barlow-condensed-latin-900-italic.woff2');font-weight:900;font-style:italic}@font-face{font-family:'Archivo Black';src:url('../fonts/archivo-black-latin-400-normal.woff2');font-weight:400;font-style:normal}@font-face{font-family:'Bebas';src:url('../fonts/bebas-neue-latin-400-normal.woff2');font-weight:400;font-style:normal}
+.abs{position:absolute}
+.tag{position:absolute;font-family:'Barlow C';font-weight:800;font-size:28px;letter-spacing:3px;padding:6px 18px;border-radius:8px}
+.pie2{position:absolute;left:40px;right:40px;bottom:16px;display:flex;align-items:flex-end;gap:18px}
+.pie2 .f{flex:1;font-size:13.5px;line-height:1.3}
+.pie2 .m{display:flex;align-items:center;gap:10px;font-weight:800;font-size:24px;white-space:nowrap}
+.pie2 .m img{height:40px;background:#fff;border-radius:8px;padding:3px 6px}
+body{background:radial-gradient(circle at 50% 58%,#1d3f94 0%,#0b1636 52%,#04060d 100%)!important;color:#fff}
+.lab{background:#0B1220!important;color:#fff;border-width:3px!important}.lab small{color:#AFC3E8!important}
+.card{border-color:#FFD400!important;box-shadow:0 0 0 4px #FFD400,0 0 60px rgba(255,212,0,.45)!important}
+.h{position:absolute;left:40px;right:40px;top:96px;text-align:center;font-family:Montserrat;font-weight:900;font-size:84px;line-height:.98;letter-spacing:-2px;text-transform:uppercase}
+.h em{font-style:normal;color:#FFD400;text-shadow:0 0 30px rgba(255,212,0,.55)}
+.pills{position:absolute;left:0;right:0;display:flex;justify-content:center;gap:18px;font-family:'Barlow C';font-weight:800;font-size:31px}
+.pills div{padding:6px 20px;border-radius:10px}.row{position:absolute;left:50px;right:50px;height:190px;display:flex;align-items:center;gap:26px;background:rgba(11,18,32,.75);
+ border:2px solid #2A3C66;border-radius:22px;padding:0 26px}.row .l{font:900 110px 'Barlow C';color:#FFD400;width:110px;text-align:center}
+.row .ic{background:#0B1220;border-radius:14px;padding:8px}.row b{display:block;font:800 30px Montserrat}.row span{font:500 21px Montserrat;color:#AFC3E8}</style></head><body><div class='tag' style='left:50%;transform:translateX(-50%);top:34px;background:#FFD400;color:#0B1220'>DIFERENCIALES</div><div class='h'>¿Qué tipo<br>de <em>diferencial</em> usar?</div><div class='row' style='top:330px'><div class='l'>AC</div><div class='ic'><svg width='150' height='70' viewBox='0 0 150 70'><path d='M0,35 L0,35.0 L5,24.8 L10,16.4 L15,11.2 L20,10.1 L25,13.3 L30,20.3 L35,29.8 L40,40.2 L45,49.7 L50,56.7 L55,59.9 L60,58.8 L65,53.6 L70,45.2 L75,35.0 L80,24.8 L85,16.4 L90,11.2 L95,10.1 L100,13.3 L105,20.3 L110,29.8 L115,40.2 L120,49.7 L125,56.7 L130,59.9 L135,58.8 L140,53.6 L145,45.2 L150,35.0' fill='none' stroke='#FFD400' stroke-width='5' stroke-linejoin='round'/></svg></div><div><b>Solo fuga alterna senoidal</b><span>cargas simples: resistencias, alumbrado</span></div></div><div class='row' style='top:535px'><div class='l'>A</div><div class='ic'><svg width='150' height='70' viewBox='0 0 150 70'><path d='M0,60 L0,60.0 L3,48.8 L6,38.3 L9,29.2 L12,22.0 L15,17.2 L18,15.1 L21,15.8 L24,19.3 L27,25.3 L30,33.5 L33,43.4 L36,54.4 L39,60.0 L42,60.0 L45,60.0 L48,60.0 L51,60.0 L54,60.0 L57,60.0 L60,60.0 L63,60.0 L66,60.0 L69,60.0 L72,60.0 L75,60.0 L78,48.8 L81,38.3 L84,29.2 L87,22.0 L90,17.2 L93,15.1 L96,15.8 L99,19.3 L102,25.3 L105,33.5 L108,43.4 L111,54.4 L114,60.0 L117,60.0 L120,60.0 L123,60.0 L126,60.0 L129,60.0 L132,60.0 L135,60.0 L138,60.0 L141,60.0 L144,60.0 L147,60.0 L150,60.0' fill='none' stroke='#FFD400' stroke-width='5' stroke-linejoin='round'/></svg></div><div><b>AC + continua pulsante</b><span>electrónica monofásica, cargadores</span></div></div><div class='row' style='top:740px'><div class='l'>F</div><div class='ic'><svg width='150' height='70' viewBox='0 0 150 70'><path d='M0,35 L0,35.0 L2,24.0 L4,21.7 L6,27.5 L8,32.3 L10,28.3 L12,17.6 L14,9.6 L16,11.6 L18,20.3 L20,26.0 L22,22.6 L24,14.4 L26,11.2 L28,18.1 L30,29.7 L32,35.9 L34,32.8 L36,26.6 L38,27.1 L40,36.9 L42,48.6 L44,52.6 L46,47.5 L48,41.3 L50,42.8 L52,52.2 L54,60.8 L56,60.2 L58,51.3 L60,43.6 L62,44.5 L64,51.9 L66,56.2 L68,50.6 L70,38.7 L72,30.5 L74,31.8 L76,38.2 L78,39.5 L80,31.3 L82,19.4 L84,13.8 L86,18.1 L88,25.5 L90,26.4 L92,18.7 L94,9.8 L96,9.2 L98,17.8 L100,27.2 L102,28.7 L104,22.5 L106,17.4 L108,21.4 L110,33.1 L112,42.9 L114,43.4 L116,37.2 L118,34.1 L120,40.3 L122,51.9 L124,58.8 L126,55.6 L128,47.4 L130,44.0 L132,49.7 L134,58.4 L136,60.4 L138,52.4 L140,41.7 L142,37.7 L144,42.5 L146,48.3 L148,46.0 L150,35.0' fill='none' stroke='#FFD400' stroke-width='5' stroke-linejoin='round'/></svg></div><div><b>A + mezcla de frecuencias</b><span>variadores monofásicos, lavadoras inverter</span></div></div><div class='row' style='top:945px'><div class='l'>B</div><div class='ic'><svg width='150' height='70' viewBox='0 0 150 70'><path d='M0,20 L150,20 M0,48 L0,48.0 L3,45.0 L6,42.2 L9,39.8 L12,37.9 L15,36.6 L18,36.0 L21,36.2 L24,37.1 L27,38.8 L30,40.9 L33,43.6 L36,46.5 L39,48.0 L42,48.0 L45,48.0 L48,48.0 L51,48.0 L54,48.0 L57,48.0 L60,48.0 L63,48.0 L66,48.0 L69,48.0 L72,48.0 L75,48.0 L78,45.0 L81,42.2 L84,39.8 L87,37.9 L90,36.6 L93,36.0 L96,36.2 L99,37.1 L102,38.8 L105,40.9 L108,43.6 L111,46.5 L114,48.0 L117,48.0 L120,48.0 L123,48.0 L126,48.0 L129,48.0 L132,48.0 L135,48.0 L138,48.0 L141,48.0 L144,48.0 L147,48.0 L150,48.0' fill='none' stroke='#FFD400' stroke-width='5' stroke-linejoin='round'/></svg></div><div><b>F + continua lisa</b><span>variadores trifásicos, cargadores de VE, FV</span></div></div><div class='pills' style='top:1170px'><div style='background:#FFD400;color:#0B1220'>CADA TIPO CUBRE AL ANTERIOR</div></div><div class='pie2'><div class='f' style='color:#C9D2E3'><b>Fuentes:</b> IEC 61008-1 / 61009-1 (tipos AC y A) · IEC 62423 (tipos F y B) · Schneider Electric, guía de selección de diferenciales · <b>Foto:</b> iconos propios</div><div class='m' style='color:#fff'><img src='../../logo_oficial.png'>@miguelesquit</div></div></body></html>

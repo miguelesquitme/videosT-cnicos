@@ -84,3 +84,8 @@ Reglas vigentes. Cada corrección nueva del usuario se agrega aquí el mismo dí
 ## Publicaciones v6 (25-nov) — `manim/posts6/gen.py`: 10 ESTILOS para que el usuario escoja
 - v5 le pareció plana y repetitiva; el título Anton se veía anticuado. Quiere impacto tipo miniatura, "Así es… por dentro" SOLO cuando aplique, y SOLO electricidad industrial (nada automotriz ni de otros temas: sin alternador, foco LED ni motor DC de servo).
 - Estilos: 01 miniatura oscura+amarillo · 02 partes numeradas (Barlow itálica) · 03 VS diagonal azul/naranja · 04 dato número gigante · 05 tip de tablerista amarillo · 06 cómo se lee (acero) · 07 ¿sabías que? naranja · 08 paso a paso · 09 ficha técnica oscura · 10 editorial foto a sangre. Pendiente: que elija y luego crear la skill de imágenes.
+
+## Publicaciones v7 (25-nov, VIGENTE) — `manim/posts7/gen.py`
+- Estilos ELEGIDOS por el usuario (de v6/v5): E01 miniatura oscura+amarillo · E02 partes numeradas CON línea punteada del número al punto de la foto · E04 dato número gigante · E09 ficha técnica CON líneas de cada tarjeta a la pieza · "por dentro" blanco con título resaltado (marcador amarillo + chip azul).
+- Le gustan las fotos tipo catálogo (producto recortado, fondo blanco) y los esquemas didácticos tipo Energy Matic (estados normal/activado, componentes internos). Esas referencias son de un libro: usarlas solo como información/estilo, nunca copiar sus imágenes.
+- Datos verificados para corregir referencias: curva D = 10–20 × In (IEC 60898-1); clase 30 = 9–30 s a 7,2 Ie (IEC 60947-4-1).
