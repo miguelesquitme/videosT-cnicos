@@ -98,3 +98,9 @@ Reglas vigentes. Cada corrección nueva del usuario se agrega aquí el mismo dí
 - Regla nueva: un tema MUY específico por imagen y CADA dato cruzado con 2 PDF + 2 páginas web (norma o fabricante). Discrepancias anotadas (p. ej. Rapid llama "German" a un código de punteras que no es DIN 46228-4).
 - En publicaciones NO dibujar símbolos IEC a mano: usar gráficos simples (barras, escalas, perfiles acotados), tablas, tarjetas de color y fotos reales.
 - Entregado en `Imágenes/2026-11-25_loteC_normas` (PC ce1-labele3-155; ahí también se copiaron lote A y lote B).
+
+## Lote D componentes (25-nov) — `manim/posts10/gen.py`, fuentes en `referencias/loteD_fuentes.md`
+- Al usuario le gustó el lote C. Pidió mezclar fotos reales (Commons) con ilustraciones detalladas del catálogo (`posts10/img`) y títulos MÁS VISTOSOS: kicker de color + línea 1 navy + palabra clave en CINTA INCLINADA de color con sombra (`T()` en gen.py).
+- Discrepancia: la placa/`items.json` del motor del catálogo dibuja 9 puntas baja tensión en TRIÁNGULO (T1-T6-T7); el caso base es estrella. En publicaciones usar foto real + tabla en estrella hasta corregirlo.
+- Datos de hoja de datos por encima de la ilustración (3RV2021-4EA10 = 400 A, no 13 × 32). D20 resalta la placa con rectángulos de color, no líneas sobre el texto.
+- Entregado en `Imágenes/2026-11-25_loteD_componentes`.
