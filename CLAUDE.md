@@ -72,3 +72,7 @@ Reglas vigentes. Cada corrección nueva del usuario se agrega aquí el mismo dí
 - NO usar el banco de equipos propio: fotos REALES de Wikimedia Commons (crédito y licencia CC impresos al pie). Se traen con el navegador integrado (JS → canvas → base64) porque el contenedor no llega a Commons.
 - 4 estilos: Partes de componentes (foto real + rectángulos numerados + leyenda técnica concisa) · ¿Sabías qué? · Datos interesantes · Comparaciones (dos fotos, VS, columnas, barra de conclusión). Marco metálico con remaches, panel blanco, chip de categoría de color.
 - ≥ 3 fuentes por tema (norma, fabricante, organismo). Sin preguntas tipo trivia (aún no hay audiencia).
+
+## Publicaciones v4 (25-nov, VIGENTE) — `manim/posts4/gen.py` (fotos en posts3/fotos)
+- Estilo de las referencias Suiler: SIN cuadrícula, fondo claro con ondas/cuadros suaves, título Montserrat 900 en dos líneas (navy + texto blanco con contorno azul y relieve 3D) que dice lo que enseña, caja blanca con la explicación.
+- Partes: "PARTES DE UN X" = vista FRONTAL real; "ASÍ ES UN X POR DENTRO" = corte/desarmado. Rótulos SEÑALADOS (recuadro blanco con borde rojo/azul alternado + línea en codo + punto), NO leyenda numerada aparte. Sin saturar: 6–8 rótulos cortos.
