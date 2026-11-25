@@ -92,3 +92,9 @@ Reglas vigentes. Cada corrección nueva del usuario se agrega aquí el mismo dí
 
 ## Lote B didácticas (25-nov) — `manim/posts8/gen.py`
 - 20 esquemas propios en SVG estilo libro técnico ordenado (estados normal/activado, partes internas, simbología IEC desde simsvg, curvas, colores IEC 60204-1, PNP/NPN, M12). Entrega por carpetas `Imágenes/<fecha>_<lote>_<tema>` en la PC del usuario (C:\Users\Esquit\Documents\Personal\Videos RRSS\miguel esquit\Imágenes). Skill propuesta: `imagenes-miguelesquit`.
+
+## Lote C normas (25-nov) — `manim/posts9/gen.py`, fuentes en `referencias/loteC_fuentes.md`
+- El usuario RECHAZÓ el lote B por símbolos IEC incorrectos/incompletos dibujados a mano (ej. térmico sin recuadro, 95-96/97-98 mal); solo le gustaron los colores de pilotos y pulsadores. Le gustó el diseño.
+- Regla nueva: un tema MUY específico por imagen y CADA dato cruzado con 2 PDF + 2 páginas web (norma o fabricante). Discrepancias anotadas (p. ej. Rapid llama "German" a un código de punteras que no es DIN 46228-4).
+- En publicaciones NO dibujar símbolos IEC a mano: usar gráficos simples (barras, escalas, perfiles acotados), tablas, tarjetas de color y fotos reales.
+- Entregado en `Imágenes/2026-11-25_loteC_normas` (PC ce1-labele3-155; ahí también se copiaron lote A y lote B).
