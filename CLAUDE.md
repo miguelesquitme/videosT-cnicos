@@ -67,3 +67,8 @@ Reglas vigentes. Cada corrección nueva del usuario se agrega aquí el mismo dí
 
 ## Serie de arranques (reels A01–A15 = V39–V53), 24-nov — `manim/reels_arr.py`, `guiones_arr.py`, `gen_arr_eq.py`, `lib/svgarr.py`
 - Cortes nuevos en `svgarr`: relé térmico (bimetal, calefactor, regleta, 95-96/97-98), bobina del contactor (núcleo E, armadura, espira de sombra), puntera DIN 46228-4.
+
+## Publicaciones v3 (25-nov) — `manim/posts3/gen.py` (reemplaza a posts/ v1-v2)
+- NO usar el banco de equipos propio: fotos REALES de Wikimedia Commons (crédito y licencia CC impresos al pie). Se traen con el navegador integrado (JS → canvas → base64) porque el contenedor no llega a Commons.
+- 4 estilos: Partes de componentes (foto real + rectángulos numerados + leyenda técnica concisa) · ¿Sabías qué? · Datos interesantes · Comparaciones (dos fotos, VS, columnas, barra de conclusión). Marco metálico con remaches, panel blanco, chip de categoría de color.
+- ≥ 3 fuentes por tema (norma, fabricante, organismo). Sin preguntas tipo trivia (aún no hay audiencia).

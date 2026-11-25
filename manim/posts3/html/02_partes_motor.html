@@ -1,0 +1,48 @@
+<!doctype html><html><head><meta charset='utf-8'><style>
+@font-face{font-family:Osw;src:url(../../posts/fonts/oswald-latin-600-normal.woff2);font-weight:600}
+@font-face{font-family:Osw;src:url(../../posts/fonts/oswald-latin-700-normal.woff2);font-weight:700}
+@font-face{font-family:Osw;src:url(../../posts/fonts/oswald-latin-500-normal.woff2);font-weight:500}
+*{margin:0;padding:0;box-sizing:border-box}
+body{width:1080px;height:1350px;overflow:hidden;font-family:Inter;color:#101828;position:relative;
+ background:linear-gradient(135deg,#c9cfd6 0%,#f1f3f5 22%,#aab2bb 48%,#eef0f2 70%,#9da6b0 100%)}
+.riv{position:absolute;width:22px;height:22px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#fff,#9aa3ad 55%,#5b636c)}
+.pan{position:absolute;left:30px;top:30px;width:1020px;height:1290px;background:#fff;border:5px solid #1565C0;border-radius:10px;
+ box-shadow:inset 0 0 0 3px #fff,0 6px 18px rgba(0,0,0,.35);overflow:hidden}
+.grid{position:absolute;inset:0;background-image:linear-gradient(#EEF2F6 1px,transparent 1px),linear-gradient(90deg,#EEF2F6 1px,transparent 1px);background-size:30px 30px}
+.cat{position:absolute;left:28px;top:24px;background:#1565C0;color:#fff;font-family:Osw;font-weight:600;font-size:26px;letter-spacing:1.5px;padding:4px 18px 6px;border-radius:6px}
+.h1{position:absolute;left:28px;right:28px;top:76px;font-family:Osw;font-weight:700;font-size:62px;line-height:1.02;color:#0B2545;text-transform:uppercase}
+.h1 b{color:#1565C0}
+.sub{position:absolute;left:30px;right:30px;font-size:25px;line-height:1.32;color:#344054}
+.sub b{color:#101828}
+.foto{position:absolute;border-radius:10px;overflow:hidden;box-shadow:0 6px 16px rgba(16,24,40,.25)}
+.foto img{display:block;width:100%;height:100%;object-fit:cover}
+.bx{position:absolute;border:4px solid;border-radius:6px;box-shadow:0 0 0 2px rgba(255,255,255,.85)}
+.bx i{position:absolute;left:-4px;top:-4px;transform:translate(-45%,-45%);width:38px;height:38px;border-radius:50%;color:#fff;font-style:normal;
+ font-family:Osw;font-weight:700;font-size:23px;display:flex;align-items:center;justify-content:center;border:3px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.4)}
+.leg{position:absolute;left:28px;right:28px;display:grid;grid-template-columns:1fr 1fr;gap:10px 14px}
+.it{display:flex;gap:12px;align-items:flex-start;background:#F8FAFC;border:1.5px solid #E4E7EC;border-radius:10px;padding:9px 12px}
+.it i{flex:0 0 34px;height:34px;border-radius:50%;color:#fff;font-style:normal;font-family:Osw;font-weight:700;font-size:20px;display:flex;align-items:center;justify-content:center}
+.it div{font-size:19px;line-height:1.25;color:#475467}
+.it div b{display:block;font-size:21px;color:#101828}
+.pie{position:absolute;left:28px;right:28px;bottom:16px;display:flex;align-items:flex-end;gap:16px;border-top:2px solid #EAECF0;padding-top:10px}
+.pie .f{flex:1;font-size:14.5px;line-height:1.3;color:#667085}
+.pie .f b{color:#475467}
+.pie .m{display:flex;align-items:center;gap:8px;font-family:Osw;font-weight:600;font-size:24px;color:#0B2545}
+.pie .m img{height:46px}
+.big{font-family:Osw;font-weight:700;color:#1565C0;line-height:.9}
+.card{position:absolute;border-radius:12px;padding:14px 18px;font-size:22px;line-height:1.3}
+.card b{color:#101828}
+.vs{position:absolute;width:92px;height:92px;border-radius:50%;background:linear-gradient(135deg,#7C3AED,#4C1D95);color:#fff;font-family:Osw;font-weight:700;font-size:40px;
+ display:flex;align-items:center;justify-content:center;border:5px solid #fff;box-shadow:0 4px 14px rgba(0,0,0,.35)}
+.col{position:absolute;width:458px}
+.col h3{font-family:Osw;font-weight:600;font-size:34px;text-align:center;color:#fff;border-radius:8px 8px 0 0;padding:4px}
+.col ul{list-style:none;background:#F8FAFC;border:1.5px solid #E4E7EC;border-top:0;border-radius:0 0 10px 10px;padding:10px 14px}
+.col li{font-size:19.5px;line-height:1.3;padding:6px 0 6px 30px;position:relative;border-bottom:1px dashed #E4E7EC}
+.col li:last-child{border:0}
+.col li:before{content:'';position:absolute;left:4px;top:11px;width:14px;height:14px;border-radius:3px;background:var(--c)}
+.flow{position:absolute;left:28px;right:28px;top:76px;bottom:96px;display:flex;flex-direction:column;gap:14px}
+.flow .h1,.flow .sub,.flow .leg,.flow .card{position:relative!important;left:auto!important;right:auto!important;top:auto!important;width:auto!important}
+.flow .foto{position:relative!important;left:auto!important;top:auto!important;margin:0 auto;flex:none}
+.bar{position:absolute;left:0;right:0;bottom:92px;background:#0B2545;color:#fff;text-align:center;font-family:Osw;font-weight:600;font-size:30px;padding:10px 20px;letter-spacing:.5px}
+.bar b{color:#FFC94D}
+</style></head><body><div class='riv' style='left:6px;top:6px'></div><div class='riv' style='left:6px;top:1322px'></div><div class='riv' style='left:1052px;top:6px'></div><div class='riv' style='left:1052px;top:1322px'></div><div class='pan'><div class='grid'></div><div class='cat'>PARTES DE UN COMPONENTE</div><div class='flow'><div class='h1' style='top:76px;font-size:62px'>Partes del <b>motor de inducción</b> trifásico</div><div class='sub' style='top:216px'>Modelo en corte de un motor de jaula de ardilla con carcasa de aluminio aleteada (TEFC). El estator crea el campo giratorio y el rotor lo sigue con un pequeño <b>deslizamiento</b>.</div><div class='foto' style='left:225px;top:318px;width:570px;height:470px'><img src='../fotos/p02_motor.jpg'><div class='bx' style='left:14.0%;top:5.0%;width:36.0%;height:18.0%;border-color:#E53935'><i style='background:#E53935'>1</i></div><div class='bx' style='left:1.0%;top:40.0%;width:15.0%;height:11.0%;border-color:#1E88E5'><i style='background:#1E88E5'>2</i></div><div class='bx' style='left:16.0%;top:38.0%;width:7.0%;height:19.0%;border-color:#F9A825'><i style='background:#F9A825'>3</i></div><div class='bx' style='left:20.0%;top:32.0%;width:11.0%;height:7.0%;border-color:#43A047'><i style='background:#43A047'>4</i></div><div class='bx' style='left:30.0%;top:60.0%;width:26.0%;height:11.0%;border-color:#8E24AA'><i style='background:#8E24AA'>5</i></div><div class='bx' style='left:30.0%;top:39.0%;width:28.0%;height:21.0%;border-color:#FB8C00'><i style='background:#FB8C00'>6</i></div><div class='bx' style='left:80.0%;top:38.0%;width:16.0%;height:33.0%;border-color:#00897B'><i style='background:#00897B'>7</i></div><div class='bx' style='left:20.0%;top:71.0%;width:50.0%;height:9.0%;border-color:#D81B60'><i style='background:#D81B60'>8</i></div></div><div class='leg' style='top:874px;grid-template-columns:1fr 1fr'><div class='it'><i style='background:#E53935'>1</i><div><b>Caja de bornes</b>aquí se conecta la línea (estrella o triángulo)</div></div><div class='it'><i style='background:#1E88E5'>2</i><div><b>Eje</b>transmite el par a la carga</div></div><div class='it'><i style='background:#F9A825'>3</i><div><b>Rodamiento</b>sostiene el eje en el escudo (tapa)</div></div><div class='it'><i style='background:#43A047'>4</i><div><b>Devanado del estator</b>bobinas de cobre: crean el campo giratorio</div></div><div class='it'><i style='background:#8E24AA'>5</i><div><b>Núcleo del estator</b>chapa de acero laminada al silicio</div></div><div class='it'><i style='background:#FB8C00'>6</i><div><b>Rotor de jaula</b>barras en cortocircuito, sin escobillas</div></div><div class='it'><i style='background:#00897B'>7</i><div><b>Ventilador</b>enfría la carcasa por fuera (TEFC)</div></div><div class='it'><i style='background:#D81B60'>8</i><div><b>Carcasa con aletas</b>disipa el calor de las pérdidas</div></div></div></div><div class='pie'><div class='f'><b>Fuentes:</b> IEC 60034-1 (máquinas rotativas) · ABB, catálogo de motores de baja tensión · Technisches Museum Wien (modelo en corte)<br><b>Foto:</b> “TMW 50906 Schnittmodell einer Drehstrommaschine”, dominio público, Wikimedia Commons</div><div class='m'><img src='../../logo_oficial.png'>@miguelesquit</div></div></div></body></html>
