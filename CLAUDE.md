@@ -107,3 +107,9 @@ Reglas vigentes. Cada corrección nueva del usuario se agrega aquí el mismo dí
 
 ## 3D (25-nov) — `manim/posts3d/` (three.js `modelo.html` + `render3d.js` con servidor local 127.0.0.1:8765, luego `gen.py`)
 - Relé térmico CHINT NR2-25 2,5–4 A modelado en 3D (cuerpo negro, placa blanca, dial azul con escala, STOP rojo, RESET azul H/A, TEST, indicador, 98 NO 97 · 96 NC 95, 2/T1 4/T2 6/T3, pines de cobre, gancho, placa lateral). Datos de la ficha LARSSYSTEM/CHINT (Clase 10A, Ue 690 V, 1NA+1NC, falta de fase). Señalado estilo E02 con líneas punteadas y vista lateral. Entregado en `Imágenes/2026-11-25_loteE_3d`.
+
+## Lote F · serie de UN dispositivo (25-nov) — `manim/posts11/gen.py`, fuentes en `referencias/loteE_fuentes.md`
+- Nuevo formato pedido por el usuario: el usuario pasa un producto (link de tienda) y se hacen 6 infografías: 1 partes señaladas · 2 funcionamiento · 3 criterios de selección · 4 aplicación real · 5 versus con un equivalente de otra marca · 6 símbolo IEC con sus partes marcadas en el equipo (cajas de color con letra en ambos, no líneas largas: se ven sucias).
+- Primero: relé térmico CHINT NR2-25 9–13 A (larssystemgt.com/1347). `svgref.rele_termico` ahora acepta `n_pasos` (escala 9-10-11-12-13).
+- Las fotos de tiendas no se bajan desde el contenedor; si la PC no está conectada, pedir que adjunte la foto.
+- Pendiente copiar a `Imágenes/2026-11-25_loteF_rele_termico_NR2` (PC desconectada al entregar).

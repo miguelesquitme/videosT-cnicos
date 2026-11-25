@@ -293,7 +293,7 @@ def guardamotor(ref="QM1", rango=(22, 32), ajuste=24.3, ancho_mm=45.0, on=False)
 
 
 # ============================================================ RELÉ TÉRMICO (referencia #22, cuerpo 685 × 780 px)
-def rele_termico(ref="F2", rango=(23, 32), ajuste=24.3, ancho_mm=45.0, disparado=False, modo="H"):
+def rele_termico(ref="F2", rango=(23, 32), ajuste=24.3, ancho_mm=45.0, disparado=False, modo="H", n_pasos=3):
     """Dial como el CHNT NR2 de referencia: la escala va impresa EN el dial (gira con él) en pasos iguales
     (23-26-29-32 A) y la flecha fija ▲ marca el ajuste. RESET azul con H (manual) y A (automático).
     disparado=True: la bandera de disparo se ve naranja (TRIP) y el RESET sobresale."""
@@ -317,7 +317,7 @@ def rele_termico(ref="F2", rango=(23, 32), ajuste=24.3, ancho_mm=45.0, disparado
     cx, cy, r = 196, 222, 74
     c.append(f'<g filter="url(#sDura)"><circle cx="{cx}" cy="{cy}" r="{r}" fill="#1F67C4"/></g><circle cx="{cx}" cy="{cy}" r="{r - 6}" fill="none" stroke="#5B92DD" stroke-width="3"/>')
     # escala impresa en el dial: el valor de ajuste queda bajo la flecha ▲ (135°); los valores crecen en sentido antihorario
-    pasos = [lo + (hi - lo) * k / 3 for k in range(4)]
+    pasos = [lo + (hi - lo) * k / n_pasos for k in range(n_pasos + 1)]
     kgr = 210 / (hi - lo)
     th = lambda v: math.radians(135 + (v - ajuste) * kgr)
     for k in range(13):
