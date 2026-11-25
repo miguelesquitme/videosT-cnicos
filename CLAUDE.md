@@ -80,3 +80,7 @@ Reglas vigentes. Cada corrección nueva del usuario se agrega aquí el mismo dí
 ## Publicaciones v5 (25-nov, VIGENTE) — `manim/posts5/gen.py` (reusa Foto/rotulos de posts4; fotos en posts3/fotos)
 - Aprobado por el usuario: SOLO el formato "ASÍ ES UN X POR DENTRO" (foto real en corte/abierta + rótulos señalados). Las de partes frontales, ¿sabías?, placa y comparaciones v4 NO le gustaron (confusas).
 - FONDO BLANCO liso. Título: "ASÍ ES UN" pequeño azul marino + nombre en Anton NARANJA #FF6A00 con sombra azul marino + cinta azul marino "POR DENTRO". Caja de explicación gris claro con borde naranja.
+
+## Publicaciones v6 (25-nov) — `manim/posts6/gen.py`: 10 ESTILOS para que el usuario escoja
+- v5 le pareció plana y repetitiva; el título Anton se veía anticuado. Quiere impacto tipo miniatura, "Así es… por dentro" SOLO cuando aplique, y SOLO electricidad industrial (nada automotriz ni de otros temas: sin alternador, foco LED ni motor DC de servo).
+- Estilos: 01 miniatura oscura+amarillo · 02 partes numeradas (Barlow itálica) · 03 VS diagonal azul/naranja · 04 dato número gigante · 05 tip de tablerista amarillo · 06 cómo se lee (acero) · 07 ¿sabías que? naranja · 08 paso a paso · 09 ficha técnica oscura · 10 editorial foto a sangre. Pendiente: que elija y luego crear la skill de imágenes.
