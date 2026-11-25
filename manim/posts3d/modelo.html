@@ -1,0 +1,91 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>html,body{margin:0;background:transparent}canvas{display:block}</style>
+<script type="importmap">{"imports":{"three":"./node_modules/three/build/three.module.js"}}</script>
+</head><body>
+<script type="module">
+import * as THREE from 'three';
+// Modelo aproximado del relé térmico CHINT NR2-25 (2,5–4 A). Unidades: mm. x derecha, y arriba, z hacia el frente.
+const P = new URLSearchParams(location.search);
+const VIEW = P.get('v') || 'iso', W = +(P.get('w') || 1400), H = +(P.get('h') || 1400);
+const r = new THREE.WebGLRenderer({antialias: true, alpha: true, preserveDrawingBuffer: true});
+r.setPixelRatio(1); r.setSize(W, H); r.outputColorSpace = THREE.SRGBColorSpace;
+r.shadowMap.enabled = true; r.shadowMap.type = THREE.PCFSoftShadowMap;
+document.body.appendChild(r.domElement);
+const sc = new THREE.Scene();
+const cam = new THREE.PerspectiveCamera(22, W / H, 1, 2000);
+const V = {iso: [175, 140, 280], izq: [-270, 150, -110], frente: [0, 46, 330]}[VIEW];
+cam.position.set(...V); cam.lookAt(0, 46, -10);
+sc.add(new THREE.HemisphereLight(0xffffff, 0x8899aa, 1.3));
+const sun = new THREE.DirectionalLight(0xffffff, 2.2); sun.position.set(80, 160, 140); sun.castShadow = true;
+sun.shadow.mapSize.set(4096, 4096); sun.shadow.bias = -0.0004; sun.shadow.normalBias = 0.4; Object.assign(sun.shadow.camera, {left: -120, right: 120, top: 120, bottom: -120}); sc.add(sun);
+const fill = new THREE.DirectionalLight(0xdde8ff, 0.9); fill.position.set(-120, 60, 40); sc.add(fill);
+const rim = new THREE.DirectionalLight(0xffffff, 0.7); rim.position.set(-40, 80, -160); sc.add(rim);
+
+const M = (c, o = {}) => new THREE.MeshStandardMaterial(Object.assign({color: c, roughness: .55, metalness: 0}, o));
+const negro = M(0x1d1f23, {roughness: .5}), blanco = M(0xf1f2f4, {roughness: .45}), gris = M(0xd6dbe2, {roughness: .5});
+const cobre = M(0xe39253, {metalness: .55, roughness: .32}), metal = M(0xc8ccd2, {metalness: .9, roughness: .25});
+const azul = M(0x1f5bd6, {roughness: .35}), rojo = M(0xd8232a, {roughness: .35}), oscuro = M(0x0d0e10);
+function box(w, h, d, m, x, y, z) {const g = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), m); g.position.set(x, y, z); g.castShadow = g.receiveShadow = true; sc.add(g); return g}
+function cyl(r1, h, m, x, y, z, rx = Math.PI / 2, seg = 48) {const g = new THREE.Mesh(new THREE.CylinderGeometry(r1, r1, h, seg), m); g.rotation.x = rx; g.position.set(x, y, z); g.castShadow = g.receiveShadow = true; sc.add(g); return g}
+function texto(lines, w, h, x, y, z, ry = 0, color = '#1b1f24', size = 64, bg = null) {
+  const c = document.createElement('canvas'); c.width = w * 20; c.height = h * 20; const k = c.getContext('2d');
+  if (bg) {k.fillStyle = bg; k.fillRect(0, 0, c.width, c.height)}
+  k.fillStyle = color; k.textAlign = 'center'; k.textBaseline = 'middle';
+  lines.forEach(([t, px, py, s, wgt]) => {k.font = `${wgt || 700} ${s || size}px Arial`; k.fillText(t, px * 20, py * 20)});
+  const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 8;
+  const m = new THREE.Mesh(new THREE.PlaneGeometry(w, h), new THREE.MeshStandardMaterial({map: t, transparent: !bg, roughness: .6}));
+  m.position.set(x, y, z); m.rotation.y = ry; sc.add(m); return m;
+}
+function tornillo(x, y, z, r0 = 3.2) {
+  cyl(r0, 1.6, metal, x, y, z + .8);
+  box(r0 * 1.7, .7, .6, oscuro, x, y, z + 1.65); box(.7, r0 * 1.7, .6, oscuro, x, y, z + 1.65);
+}
+// cuerpo
+box(45, 62, 42, negro, 0, 31, -21);          // bloque trasero (va bajo el contactor)
+box(45, 28, 20, negro, 0, 14, 10);           // bloque frontal inferior (bornes)
+box(45, 34, 16, negro, 0, 45, 8);            // bloque frontal superior
+box(43, 33, .6, blanco, 0, 45, 16.3);        // placa frontal blanca
+// bornes de salida 2/T1 4/T2 6/T3
+for (const x of [-14.5, 0, 14.5]) {box(10.5, 10.5, .6, oscuro, x, 9.5, 20.2); tornillo(x, 9.5, 20.5, 3.6)}
+texto([['2/T1', 7.5, 1.6, 34], ['4/T2', 22.5, 1.6, 34], ['6/T3', 37.5, 1.6, 34]], 45, 3.2, 0, 2.6, 20.6, 0, '#e8eaee');
+// regleta de auxiliares 98 97 | 96 95
+box(43, 10, 4, gris, 0, 23, 18);
+const xa = [-16, -6, 6, 16];
+for (const x of xa) {box(7.5, 6.4, .6, oscuro, x, 22.4, 20.2); tornillo(x, 22.4, 20.5, 2.6)}
+texto([['98', 5.5, 1.2, 30], ['NO', 11, 1.2, 24], ['97', 16.5, 1.2, 30], ['96', 28.5, 1.2, 30], ['NC', 34, 1.2, 24], ['95', 39.5, 1.2, 30]], 43, 10, 0, 23, 20.15, 0, '#1b1f24', 40, '#d6dbe2');
+// dial azul con escala impresa (gira con el dial)
+cyl(9.2, 1.2, oscuro, -9, 46, 16.8);
+const dial = cyl(7.6, 3.2, azul, -9, 46, 18.4);
+texto([['2.5', 2.6, 6.2, 46], ['3', 5, 2.6, 46], ['3.5', 10.8, 2.6, 46], ['4', 13.6, 6.2, 46]], 16.2, 9, -9, 48.6, 20.06, 0, '#ffffff');
+box(1.6, 9, .8, M(0xffffff), -9, 45.2, 20.2); box(9, 1.6, .8, M(0xffffff), -9, 45.2, 20.2);
+texto([['▲', 1, 1, 40]], 2, 2, -9, 36.7, 16.65, 0, '#1b1f24');
+// TEST
+box(5, 2.6, 1.2, rojo, -13.5, 33.2, 17.1); texto([['TEST', 3, 1, 28]], 6, 2, -6.5, 33.2, 16.65);
+// indicador de disparo
+box(5.5, 3, .6, M(0x8a8f98, {roughness: .2, metalness: .1}), 5, 56.5, 16.7); box(3.5, 1.6, .7, M(0x2f9d55), 5, 56.5, 16.9);
+// STOP rojo y RESET azul (H/A)
+cyl(4.6, 2.4, oscuro, 7, 43, 17.2); cyl(3.8, 3.4, rojo, 7, 43, 18.6);
+cyl(4.6, 2.4, oscuro, 17, 43, 17.2); cyl(3.8, 3.4, azul, 17, 43, 18.6);
+box(5.6, 1, .6, M(0xffffff), 17, 43, 20.4); box(1, 5.6, .6, M(0xffffff), 17, 43, 20.4);
+texto([['STOP', 3, 1, 30], ['RESET', 13, 1, 30]], 16, 2, 12, 49.2, 16.65);
+texto([['H', .8, 1, 26], ['A', 7.2, 1, 26]], 8, 2, 17, 37.6, 16.65, 0, '#1f5bd6');
+texto([['CHINT', 6, 1.4, 40, 900], ['NR2-25', 6, 3.4, 28]], 12, 4.6, -12, 58.6, 16.65, 0, '#1b1f24');
+texto([['2.5-4A', 2.5, 1, 26]], 5, 2, 15, 58.6, 16.65, 0, '#1b1f24');
+// pines de cobre (entrada) y gancho de fijación
+for (const x of [-15, 0, 15]) {box(6, 4, 7, negro, x, 64, -28); box(4.2, 30, 1.6, cobre, x, 79, -28)}
+box(5, 16, 3, negro, -7.5, 70, -37); box(5, 3, 6, negro, -7.5, 77, -35);
+// placa de características en el costado izquierdo
+const pl = texto([['NR2-25  2.5-4A', 14, 2.5, 42], ['Ue 690V  Ui 690V', 14, 5.5, 32], ['IEC/EN 60947-4-1', 14, 8.2, 32], ['Class 10A', 14, 10.9, 32], ['95 ─┐ 96   97 ─┐ 98', 14, 14.2, 30]], 28, 17, -22.55, 34, -14, -Math.PI / 2, '#1b1f24', 40, '#e9ecf0');
+// piso con sombra suave
+const piso = new THREE.Mesh(new THREE.PlaneGeometry(600, 600), new THREE.ShadowMaterial({opacity: .12}));
+piso.rotation.x = -Math.PI / 2; piso.receiveShadow = true; sc.add(piso);
+r.render(sc, cam);
+const pts = {
+  pines: [0, 88, -28], gancho: [-7.5, 78, -35], dial: [-9, 46, 20], test: [-13.5, 33.2, 17.7], stop: [7, 43, 20.3], reset: [17, 43, 20.3],
+  indicador: [5, 56.5, 17.2], aux: [0, 23, 21], salida: [14.5, 9.5, 19.5], placa: [-22.6, 34, -14], cuerpo: [22.5, 30, -20]
+};
+window.pts = {};
+for (const [k, v] of Object.entries(pts)) {const p = new THREE.Vector3(...v).project(cam); window.pts[k] = [(p.x + 1) / 2, (1 - p.y) / 2]}
+window.done = true;
+</script></body></html>

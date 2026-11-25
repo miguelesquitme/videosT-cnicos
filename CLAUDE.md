@@ -104,3 +104,6 @@ Reglas vigentes. Cada corrección nueva del usuario se agrega aquí el mismo dí
 - Discrepancia: la placa/`items.json` del motor del catálogo dibuja 9 puntas baja tensión en TRIÁNGULO (T1-T6-T7); el caso base es estrella. En publicaciones usar foto real + tabla en estrella hasta corregirlo.
 - Datos de hoja de datos por encima de la ilustración (3RV2021-4EA10 = 400 A, no 13 × 32). D20 resalta la placa con rectángulos de color, no líneas sobre el texto.
 - Entregado en `Imágenes/2026-11-25_loteD_componentes`.
+
+## 3D (25-nov) — `manim/posts3d/` (three.js `modelo.html` + `render3d.js` con servidor local 127.0.0.1:8765, luego `gen.py`)
+- Relé térmico CHINT NR2-25 2,5–4 A modelado en 3D (cuerpo negro, placa blanca, dial azul con escala, STOP rojo, RESET azul H/A, TEST, indicador, 98 NO 97 · 96 NC 95, 2/T1 4/T2 6/T3, pines de cobre, gancho, placa lateral). Datos de la ficha LARSSYSTEM/CHINT (Clase 10A, Ue 690 V, 1NA+1NC, falta de fase). Señalado estilo E02 con líneas punteadas y vista lateral. Entregado en `Imágenes/2026-11-25_loteE_3d`.
