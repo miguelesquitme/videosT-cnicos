@@ -76,3 +76,7 @@ Reglas vigentes. Cada corrección nueva del usuario se agrega aquí el mismo dí
 ## Publicaciones v4 (25-nov, VIGENTE) — `manim/posts4/gen.py` (fotos en posts3/fotos)
 - Estilo de las referencias Suiler: SIN cuadrícula, fondo claro con ondas/cuadros suaves, título Montserrat 900 en dos líneas (navy + texto blanco con contorno azul y relieve 3D) que dice lo que enseña, caja blanca con la explicación.
 - Partes: "PARTES DE UN X" = vista FRONTAL real; "ASÍ ES UN X POR DENTRO" = corte/desarmado. Rótulos SEÑALADOS (recuadro blanco con borde rojo/azul alternado + línea en codo + punto), NO leyenda numerada aparte. Sin saturar: 6–8 rótulos cortos.
+
+## Publicaciones v5 (25-nov, VIGENTE) — `manim/posts5/gen.py` (reusa Foto/rotulos de posts4; fotos en posts3/fotos)
+- Aprobado por el usuario: SOLO el formato "ASÍ ES UN X POR DENTRO" (foto real en corte/abierta + rótulos señalados). Las de partes frontales, ¿sabías?, placa y comparaciones v4 NO le gustaron (confusas).
+- FONDO BLANCO liso. Título: "ASÍ ES UN" pequeño azul marino + nombre en Anton NARANJA #FF6A00 con sombra azul marino + cinta azul marino "POR DENTRO". Caja de explicación gris claro con borde naranja.
