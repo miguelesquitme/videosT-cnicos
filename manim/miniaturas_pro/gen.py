@@ -44,6 +44,11 @@ CSS_PROC = """
 .flecha{position:absolute;color:#FFC400;font-weight:900;font-size:150px;line-height:1;text-shadow:0 0 24px rgba(255,196,0,.7)}
 """
 
+CSS_MORADO = """
+body{background:radial-gradient(ellipse 60% 75% at 73% 50%,#8B3FE0 0%,#4B1C8F 38%,#220B4A 75%,#14062E 100%)}
+.halo{background:radial-gradient(circle,rgba(205,150,255,.55),rgba(150,90,255,.15) 45%,transparent 70%)}
+"""
+
 
 def pagina(cuerpo, css=""):
     return f"<!doctype html><html><head><meta charset='utf-8'><style>{CSS}{css}</style></head><body>" \
@@ -78,7 +83,7 @@ MINIS = {
 <img class='eq' src='{EQ}/H1on.png' style='left:1670px;top:230px;height:320px'>
 <div class='kicker'><span>¡POR FIN!</span><i></i></div>
 <div class='titulo' style='font-size:112px;width:1120px'>Arranco mi <b>primer motor</b> con <em>contactor</em></div>
-<div class='chips'><div class='chip'><div class='ico'></div><div class='t'>PASO A PASO<small>del diagrama al arranque</small></div></div>{chip("10", "HP", "208 V · real")}</div>"""),
+<div class='chips'><div class='chip'><div class='ico'></div><div class='t'>PASO A PASO<small>del diagrama al arranque</small></div></div>{chip("10", "HP", "208 V · real")}</div>""", CSS_MORADO),
     "H01_arranque_proceso": pagina(f"""
 <div class='halo' style='left:560px;top:260px;width:1200px;height:900px;opacity:.75'></div>
 <img class='eq' src='{EQ}/F2on.png' style='left:110px;top:420px;height:480px'>
