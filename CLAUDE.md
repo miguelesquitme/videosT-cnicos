@@ -89,3 +89,6 @@ Reglas vigentes. Cada corrección nueva del usuario se agrega aquí el mismo dí
 - Estilos ELEGIDOS por el usuario (de v6/v5): E01 miniatura oscura+amarillo · E02 partes numeradas CON línea punteada del número al punto de la foto · E04 dato número gigante · E09 ficha técnica CON líneas de cada tarjeta a la pieza · "por dentro" blanco con título resaltado (marcador amarillo + chip azul).
 - Le gustan las fotos tipo catálogo (producto recortado, fondo blanco) y los esquemas didácticos tipo Energy Matic (estados normal/activado, componentes internos). Esas referencias son de un libro: usarlas solo como información/estilo, nunca copiar sus imágenes.
 - Datos verificados para corregir referencias: curva D = 10–20 × In (IEC 60898-1); clase 30 = 9–30 s a 7,2 Ie (IEC 60947-4-1).
+
+## Lote B didácticas (25-nov) — `manim/posts8/gen.py`
+- 20 esquemas propios en SVG estilo libro técnico ordenado (estados normal/activado, partes internas, simbología IEC desde simsvg, curvas, colores IEC 60204-1, PNP/NPN, M12). Entrega por carpetas `Imágenes/<fecha>_<lote>_<tema>` en la PC del usuario (C:\Users\Esquit\Documents\Personal\Videos RRSS\miguel esquit\Imágenes). Skill propuesta: `imagenes-miguelesquit`.

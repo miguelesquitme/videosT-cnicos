@@ -1,0 +1,46 @@
+<!doctype html><html><head><meta charset='utf-8'><style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{width:1080px;height:1350px;position:relative;overflow:hidden;font-family:Montserrat,sans-serif;color:#111827;
+ background:linear-gradient(165deg,#F9FAFC 0%,#EEF2F7 55%,#E6ECF4 100%)}
+.dec{position:absolute;border-radius:18px;background:#C9D8F2;opacity:.35}
+.wave{position:absolute;left:-200px;width:1500px;height:420px;border-radius:50%;border:2px solid rgba(255,255,255,.9)}
+.tit{position:absolute;left:30px;right:30px;text-align:center;text-transform:uppercase;line-height:1.02}
+.t1{font-weight:900;color:#0B1F4D;letter-spacing:-.5px}
+.t3{font-weight:900;color:#fff;-webkit-text-stroke:3px #1565C0;paint-order:stroke fill;letter-spacing:-.5px;
+ text-shadow:0 3px 0 #1565C0,0 6px 0 #0D47A1,0 9px 0 #0B3C8C,0 14px 18px rgba(11,31,77,.35)}
+.pill{display:inline-block;background:linear-gradient(180deg,#1E88E5,#1565C0);color:#fff;font-weight:900;border-radius:22px;padding:6px 34px 10px;
+ box-shadow:0 8px 18px rgba(21,101,192,.35)}
+.sub{position:absolute;left:60px;right:60px;background:rgba(255,255,255,.85);border:2px solid #D3DCEA;border-radius:24px;padding:16px 26px;
+ font-size:25px;line-height:1.32;text-align:center;font-weight:500;box-shadow:0 6px 16px rgba(11,31,77,.08)}
+.sub b{font-weight:800}
+.card{position:absolute;border-radius:24px;overflow:hidden;background:#fff;border:6px solid #fff;box-shadow:0 14px 34px rgba(11,31,77,.22)}
+.card img{width:100%;height:100%;object-fit:cover;display:block}
+svg.ov{position:absolute;left:0;top:0;width:1080px;height:1350px;pointer-events:none}
+.lab{position:absolute;transform:translate(-50%,-50%);background:#fff;border:3.5px solid;border-radius:14px;padding:8px 12px;
+ font-size:21px;font-weight:700;text-align:center;line-height:1.18;box-shadow:0 4px 10px rgba(0,0,0,.12)}
+.lab small{display:block;font-size:16px;font-weight:500;color:#475467;margin-top:2px}
+.pie{position:absolute;left:40px;right:40px;bottom:14px;text-align:center}
+.pie .m{display:flex;justify-content:center;align-items:center;gap:12px;font-weight:800;font-size:28px;color:#0B1F4D;letter-spacing:1px}
+.pie .m img{height:46px}
+.pie .f{font-size:13.5px;color:#667085;line-height:1.3;margin-top:6px}
+.box{position:absolute;border-radius:20px;background:rgba(255,255,255,.9);border:2px solid #D3DCEA;box-shadow:0 6px 16px rgba(11,31,77,.08)}
+.chip{position:absolute;transform:translate(-50%,-50%);background:#1E88E5;color:#fff;font-weight:800;border-radius:14px;padding:8px 18px;font-size:22px}
+.bar{position:absolute;left:40px;right:40px;background:#0B1F4D;color:#fff;border-radius:18px;text-align:center;font-weight:700;font-size:25px;padding:14px 20px}
+.bar b{color:#FFC94D}
+@font-face{font-family:'Barlow C';src:url('../fonts/barlow-condensed-latin-800-normal.woff2');font-weight:800;font-style:normal}@font-face{font-family:'Barlow C';src:url('../fonts/barlow-condensed-latin-900-normal.woff2');font-weight:900;font-style:normal}@font-face{font-family:'Barlow C';src:url('../fonts/barlow-condensed-latin-900-italic.woff2');font-weight:900;font-style:italic}@font-face{font-family:'Archivo Black';src:url('../fonts/archivo-black-latin-400-normal.woff2');font-weight:400;font-style:normal}@font-face{font-family:'Bebas';src:url('../fonts/bebas-neue-latin-400-normal.woff2');font-weight:400;font-style:normal}
+.abs{position:absolute}
+.tag{position:absolute;font-family:'Barlow C';font-weight:800;font-size:28px;letter-spacing:3px;padding:6px 18px;border-radius:8px}
+.pie2{position:absolute;left:40px;right:40px;bottom:16px;display:flex;align-items:flex-end;gap:18px}
+.pie2 .f{flex:1;font-size:13.5px;line-height:1.3}
+.pie2 .m{display:flex;align-items:center;gap:10px;font-weight:800;font-size:24px;white-space:nowrap}
+.pie2 .m img{height:40px;background:#fff;border-radius:8px;padding:3px 6px}
+body{background:#fff!important}
+.kk{position:absolute;left:50px;top:40px;font:800 22px Montserrat;letter-spacing:3px;color:#fff;padding:6px 16px;border-radius:8px}
+.tt{position:absolute;left:46px;right:40px;top:86px;font:900 66px/1.02 Montserrat;color:#0B1F4D;letter-spacing:-1.8px}
+.tt em{font-style:normal;background:linear-gradient(transparent 56%,#FFD400 56%);padding:0 6px}
+.pn{position:absolute;left:40px;right:40px;border-radius:26px;border:3px solid #CFE0F5;background:#F6FAFF}
+.ch{position:absolute;font:800 22px Montserrat;color:#fff;border-radius:12px;padding:8px 16px;line-height:1.15;text-align:center}
+.ch small{display:block;font-weight:500;font-size:17px}
+.tx{position:absolute;left:50px;right:50px;font:500 24px/1.38 Montserrat;color:#1d2939}.tx b{font-weight:800;color:#0B1F4D}
+.cd{position:absolute;border-radius:20px;padding:16px 20px;color:#fff;font:500 20px/1.3 Montserrat}.cd b{display:block;font:900 34px 'Barlow C'}
+svg{position:absolute;overflow:visible}</style></head><body><div class='kk' style='background:#0B1F4D'>SENSORES · CABLEADO</div><div class='tt'>Qué significa cada<br><em>color</em> del sensor</div><div class='pn' style='top:280px;height:450px;right:560px'></div><svg style='left:80px;top:300px' width='400' height='400' viewBox='0 0 400 400'><circle cx='200' cy='200' r='150' fill='#2F3540' stroke='#0B1F4D' stroke-width='4'/><circle cx='200' cy='200' r='112' fill='#4A4F59' stroke='#222' stroke-width='3'/><rect x='188' y='40' width='24' height='30' rx='3' fill='#2F3540' stroke='#2F3540' stroke-width='0'/><circle cx='249.49747468305833' cy='150.50252531694167' r='18' fill='#E0B04A' stroke='#8B6A1F' stroke-width='3'/><text x='249.49747468305833' y='150.50252531694167' font-family='Montserrat' font-size='20' font-weight='900' fill='#0B1F4D' text-anchor='middle' dominant-baseline='central'>1</text><circle cx='150.50252531694167' cy='150.50252531694167' r='18' fill='#E0B04A' stroke='#8B6A1F' stroke-width='3'/><text x='150.50252531694167' y='150.50252531694167' font-family='Montserrat' font-size='20' font-weight='900' fill='#0B1F4D' text-anchor='middle' dominant-baseline='central'>2</text><circle cx='150.50252531694167' cy='249.49747468305833' r='18' fill='#E0B04A' stroke='#8B6A1F' stroke-width='3'/><text x='150.50252531694167' y='249.49747468305833' font-family='Montserrat' font-size='20' font-weight='900' fill='#0B1F4D' text-anchor='middle' dominant-baseline='central'>3</text><circle cx='249.49747468305833' cy='249.49747468305833' r='18' fill='#E0B04A' stroke='#8B6A1F' stroke-width='3'/><text x='249.49747468305833' y='249.49747468305833' font-family='Montserrat' font-size='20' font-weight='900' fill='#0B1F4D' text-anchor='middle' dominant-baseline='central'>4</text><circle cx='200' cy='200' r='10' fill='#E0B04A' stroke='#8B6A1F' stroke-width='3'/></svg><div class='tx' style='top:690px;left:60px;right:560px;text-align:center;font-size:19px'>Conector M12 macho, vista de frente</div><div class='cd' style='left:560px;right:40px;top:280px;height:100px;background:#8B4513;color:#fff;border:3px solid #CFE0F5;display:flex;align-items:center;gap:20px'><b style='width:70px'>BN</b><div><div style='font-weight:800;font-size:22px'>Pin 1</div>+ alimentación</div></div><div class='cd' style='left:560px;right:40px;top:393px;height:100px;background:#F5F5F5;color:#0B1F4D;border:3px solid #CFE0F5;display:flex;align-items:center;gap:20px'><b style='width:70px'>WH</b><div><div style='font-weight:800;font-size:22px'>Pin 2</div>2.ª salida (4 hilos)</div></div><div class='cd' style='left:560px;right:40px;top:506px;height:100px;background:#0057FF;color:#fff;border:3px solid #CFE0F5;display:flex;align-items:center;gap:20px'><b style='width:70px'>BU</b><div><div style='font-weight:800;font-size:22px'>Pin 3</div>− alimentación (0 V)</div></div><div class='cd' style='left:560px;right:40px;top:619px;height:100px;background:#111;color:#fff;border:3px solid #CFE0F5;display:flex;align-items:center;gap:20px'><b style='width:70px'>BK</b><div><div style='font-weight:800;font-size:22px'>Pin 4</div>salida (NA en 3 hilos)</div></div><div class='pn' style='top:760px;height:400px;background:#fff'></div><div class='tx' style='top:790px'>Es el código de <b>IEC 60947-5-2</b> para sensores de 3 y 4 hilos: <b>marrón +, azul −, negro salida</b>. En el diagrama se escribe <b>BN, BU, BK, WH</b>. Revisa siempre la hoja del sensor: algunos de 2 hilos o de tipo NAMUR usan otro esquema.</div><div class='pie2'><div class='f' style='color:#667085'><b>Fuentes:</b> IEC 60947-5-2 · IEC 61076-2-101 (conector M12) · Pepperl+Fuchs y SICK, hojas de datos · <b>Foto:</b> ilustración propia</div><div class='m' style='color:#0B1F4D'><img src='../../logo_oficial.png'>@miguelesquit</div></div></body></html>
