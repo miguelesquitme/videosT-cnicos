@@ -63,6 +63,13 @@ def cuerpo(k):
     raise FileNotFoundError(k)
 
 
+def fin(k, tot):
+    """Fin real del cuerpo: cierre + su voz + 0,8 s (quita la espera de relleno hasta 93 s de reel_base)."""
+    t = tiempos(k)
+    w = next(iter(sorted(M.glob(f"voz_{k}_*/cierre.wav"))), None)
+    return min(tot, t["cierre"] + dur(w) + 0.8) if w else tot
+
+
 def tiempos(k):
     f = TMP / (f"vt_{k}.jsonl" if k[0] in "fv" else f"voz_{k}.jsonl")
     return {c: t for _, c, t in (json.loads(x) for x in open(f))}
@@ -107,7 +114,7 @@ def placa(texto, ruta):
     im.save(ruta)
 
 
-def construir(k, drop):
+def construir(k, drop, ext=0.0):
     car, nom, voz_txt, pant, _ = S[k]
     t = tiempos(k)
     src = cuerpo(k)
@@ -120,6 +127,7 @@ def construir(k, drop):
     w = TMP / f"w3_{k}"; w.mkdir(parents=True, exist_ok=True)
     placa(pant, w / "placa.png")
     # cortes del cuerpo: [0, p6) + [cierre, fin]  ó  [0, fin]
+    tot = fin(k, tot)
     segs = [(0.0, t[drop[0]]), (t["cierre"], tot)] if drop else [(0.0, tot)]
     ins = ["-ss", f"{a0}", "-to", f"{g}", "-i", str(src), "-i", str(wav), "-i", str(w / "placa.png")]
     fc = [f"[0:v]setpts=(PTS-STARTPTS)/{sp},trim=0:{hl},setpts=PTS-STARTPTS[gv0];[gv0][2:v]overlay=0:0[gv];"
@@ -130,7 +138,8 @@ def construir(k, drop):
         ins += ["-ss", f"{a}", "-to", f"{b}", "-i", str(src)]
         fc.append(f"[{i}:v]setpts=PTS-STARTPTS[v{n}];[{i}:a]aresample=48000,asetpts=PTS-STARTPTS[a{n}]")
         lab += f"[v{n}][a{n}]"; n += 1
-    fc.append(f"{lab}concat=n={n + 1}:v=1:a=1[v][a]")
+    fc.append(f"{lab}concat=n={n + 1}:v=1:a=1[vc][ac]")
+    fc.append(f"[vc]tpad=stop_mode=clone:stop_duration={ext}[v];[ac]apad=pad_dur={ext}[a]")
     c3 = w / f"cuerpo3_{k}.mov"
     subprocess.run(["ffmpeg", "-y", "-loglevel", "error", *ins,
                     "-filter_complex", ";".join(fc), "-map", "[v]", "-map", "[a]", "-r", "30", "-c:v", "libx264", "-crf", "16",
@@ -148,15 +157,21 @@ def plan(ks, usados=None):
     repetir duraciones (±1,5 s) ni caer en 1:32–1:34."""
     usados, res = list(usados or []), {}
     for k in ks:
-        t = tiempos(k); tot = dur(cuerpo(k)); obj = S[k][4]
+        t = tiempos(k); tot = fin(k, dur(cuerpo(k))); obj = S[k][4]
+        ps = sorted(c for c in t if re.fullmatch(r"p\d", c))
         opc = [((), tot + 3.6)]
-        if "p6" in t:
-            opc.append((("p6",), tot + 3.6 - (t["cierre"] - t["p6"])))
-            if obj < 80 and "p5" in t:
-                opc.append((("p5", "p6"), tot + 3.6 - (t["cierre"] - t["p5"])))
-        ok = [o for o in opc if not (91.5 <= o[1] <= 94.5) and o[1] >= 60 and all(abs(o[1] - u) > 1.5 for u in usados)]
+        last = ps[-1]
+        if len(ps) >= 5:
+            opc.append(((last,), tot + 3.6 - (t["cierre"] - t[last])))
+            if obj < 80 and k[0] != "a":
+                opc.append(((ps[-2], last), tot + 3.6 - (t["cierre"] - t[ps[-2]])))
+        ok = [o for o in opc if not (91.5 <= o[1] <= 94.5) and o[1] >= 60 and all(abs(o[1] - u) > 0.7 for u in usados)]
         drop, d = min(ok or opc, key=lambda o: abs(o[1] - obj))
-        res[k] = drop; usados.append(d)
+        ext = 0.0
+        while ext < 3.0 and ((91.5 <= d + ext <= 94.5) or any(abs(d + ext - u) <= 0.7 for u in usados)):
+            ext += 0.5                                     # se alarga el cuadro final (sin texto nuevo)
+        d += ext
+        res[k] = (drop, ext); usados.append(d)
         print(k, "quita " + "+".join(drop) if drop else "completo", round(d, 1))
     return res
 
@@ -166,5 +181,5 @@ if __name__ == "__main__":
     prev = [dur(f) for f in OUT.glob("*/*.mp4") if not any(S[k][1] == f.stem for k in ks)]
     p = plan(ks, prev)
     for k in ks:
-        s, d = construir(k, p[k])
+        s, d = construir(k, *p[k])
         print("OK", s.name, round(d, 1))
