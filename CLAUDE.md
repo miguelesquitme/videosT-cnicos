@@ -35,7 +35,7 @@ Reglas vigentes. Cada corrección nueva del usuario se agrega aquí el mismo dí
 - Caja de bornes del motor: placa gris, puntos de cobre, tuercas hexagonales, numeración impresa. Motor de lado con placa plateada de datos reales. Pinza y multímetro estilo Fluke sin marca, con puntas.
 - Relé y temporizador con números impresos en la base y su diagrama interno a la par. Sensores con datos impresos en la base. Ningún tornillo toca a otro.
 
-## Video HORIZONTAL (modelo: H01 v5, `manim/h01v5*.py`)
+## Video HORIZONTAL (modelo: H01 v5 = el entregado como "mi primer arranque de motor", `manim/h01v5*.py`; es la referencia vigente)
 - Estructura: 1 Gancho (dato curioso o pregunta, nunca insinuar que otros lo hacen mal) · 2 Pregunta técnica · 3 Problema real (placa del motor y tensión → protecciones) · 4 Materiales en tabla Cantidad | Nombre | Características | Observación · 5 Diagrama de mando · 6 Diagrama de potencia · 7 Conexión del mando · 8 Conexión de potencia · 9 Puesta en marcha · cierre "subiré más contenido, suscríbete, sígueme y mira mi siguiente video" (sin portadilla, sin tarjeta de shorts).
 - Fondo `TEMA=gris` con cuadrícula; cinta azul marino; textos oscuros. Diagramas recreados píxel a píxel (`diag_lit.py`), sin hoja blanca, dibujados tramo por tramo.
 - Conexión didáctica (sin zoom en 7 y 8): diagrama a la izquierda; arriba -F2 y -F1, debajo -KM1 con -F3 pegado, borneras bajo el térmico en su riel; puerta a la derecha en vista TRASERA (el frente solo al inicio, diciendo que por temas didácticos se ve por detrás). Equipos separados, escala real (KB = 0,72 K).
@@ -48,6 +48,7 @@ Reglas vigentes. Cada corrección nueva del usuario se agrega aquí el mismo dí
 - H01: el diagrama de potencia del usuario lleva L1 (X0:1) → entrada 5 de -F2, L2 → 3, L3 → 1 (seguido literal); la L del mando se toma en la entrada 5 (= X0:1). Pendiente de confirmar por el usuario.
 
 ## Reels verticales (modelo: F01 fotocelda, `manim/f01_fotocelda.py` + `reel_v2.py`)
+- REFERENCIA VIGENTE: lote V22–V33 v2 (`manim/vNNv2.py` + `guion_vNNv2.py`, de "¿Estática o una fuga que mata?" V22 a "¿Qué significa IP65?" V33) y la serie de arranques A01–A15 ligada a H01 (`reels_arr.py`, `guiones_arr.py`, `guion_aNN.py`).
 - 1:30 a 3:30, UN solo concepto. Fondo negro con cuadrícula (`TEMA=negro`), título "ASÍ FUNCIONA…" o pregunta, chip numerado por sección, zona útil y +3,6 a −7,2.
 - Cada aparato dibujado pieza por pieza desde 4 fuentes (2 PDF de fabricante + 2 páginas web, fabricantes distintos), ficha en `referencias/<clave>_fuentes.md`; por fuera y por dentro.
 - Cierre: "Si te sirvió, suscríbete y sígueme." Portada `Portada<clave>` en los 2 primeros cuadros (`final_e.py ... v ...`).
@@ -60,10 +61,6 @@ Reglas vigentes. Cada corrección nueva del usuario se agrega aquí el mismo dí
 ## Canva (cuadros editables para corregir)
 - Diseño del cuadro 8 de H01: DAHby9XlvlY. `create-design` inventa contenido: solo para obtener un lienzo vacío; se arma con `edit-design` (`manim/canva_capas.py`, `canva_diag.py`, base de cambios `canva/h01_c8_canva_base.json`).
 - Límites: línea de un solo segmento no se dibuja (usar rectángulo relleno), formas < 12 px se estiran, `replace_shape` solo trazos cerrados ≤ 2048 bytes, agrupar operaciones.
-
-## Publicaciones (FB · IG · comunidad YT), 24-nov — `manim/posts/gen_posts2.py`
-- 1080 × 1350, FONDO BLANCO (se ven los detalles), estilo de las referencias del usuario: banda superior con la pregunta, título en dos líneas (texto de color + cinta inclinada), párrafo explicativo, equipo del catálogo grande con FLECHAS punteadas que señalan y nombran sus partes, fuente al pie, logo ME. abajo a la izquierda y sello "¿Sabías esto?…" abajo a la derecha. Letra de títulos Oswald (`posts/fonts`, OFL).
-- Siempre con la referencia (norma, hoja de datos o placa) de donde sale el dato.
 
 ## Serie de arranques (reels A01–A15 = V39–V53), 24-nov — `manim/reels_arr.py`, `guiones_arr.py`, `gen_arr_eq.py`, `lib/svgarr.py`
 - Cortes nuevos en `svgarr`: relé térmico (bimetal, calefactor, regleta, 95-96/97-98), bobina del contactor (núcleo E, armadura, espira de sombra), puntera DIN 46228-4.
@@ -130,3 +127,6 @@ Reglas vigentes. Cada corrección nueva del usuario se agrega aquí el mismo dí
 - Referencias aprobadas por el usuario: G01 (LAY37 FreeCAD en 3D) y G06 (render + dibujo acotado Siemens). G05 (sensor genérico FreeCAD) = MALO, no usar modelos genéricos.
 - Fuentes verificadas: Siemens Industry Bilddatenbank (42; búsqueda por MLFB con `multiobjecttypes` 60 = 3D-Modell, 70 = 3D-Rendering, 12 = Maßzeichnung, 4 = Produktfoto; POST a `search.aspx`), ifm (7; `restservices/us/en/productdetail/cadZips/<código>` da STEP/DXF), FreeCAD LAY37.
 - Sin 3D en Bilddatenbank: motores SIMOTICS, SINAMICS V20/G120C (solo 2D), transformadores 4AM.
+## Marca del canal (26-nov)
+- Logo ME. turquesa SIEMPRE (`manim/logo_oficial.png`: M #94D3DF, E. #0095B0). El usuario ya NO aparece en foto en perfil/portadas. Banners modernos, gráficos limpios (nada que parezca IA), que muestren lo que hace: tableros, arranque de motores, PLC, normas. Generador: `manim/marca/gen.py`.
+- Publicaciones de imágenes: se hacen en OTRO chat (skill `imagenes-miguelesquit`); notas en `referencias/publicaciones_notas.md`. No leerlas aquí.
