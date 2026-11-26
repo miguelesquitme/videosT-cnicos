@@ -20,3 +20,19 @@ Fotos: larssystemgt.com (usadas a pedido del autor, con crédito): NS2-25X /6160
 - El NS2-25X no indica en la hoja si está listado como "Tipo E" (NEC): se advierte.
 - Datos de bobina VA y vida eléctrica del Ex9C50 no se usaron: la tabla del PDF tiene columnas ambiguas.
 - Las curvas de H02/H08 y la amplitud de H20 son FORMA ILUSTRATIVA; los puntos marcados son los de la norma/fabricante.
+
+
+## v2 (25-nov, noche) — correcciones del usuario
+- Fotos de tienda reemplazadas por IMÁGENES OFICIALES del fabricante (sin marca de agua; no se borró ninguna marca de agua):
+  guardamotor CHINT NS2-25 9-14A (chintglobal.com, frente y placa lateral) · breaker CHINT NXB-63 2P C63 (chintglobal.com) ·
+  relé Relpol R2N-2012-23-5230-WTL y zócalo GZM2 (relpol.pl) · sensor inductivo ifm IFS204 (ifm.com) · sensor capacitivo ifm KI5083 (ifm.com) ·
+  contactor Schneider LC1D50AM7 (download.se.com rendition_1500) · fusible Siemens 3NA3822 NH000 gG 63 A (bilddb Siemens, PNG).
+- Cambios de equipo y datos nuevos:
+  - Guardamotor NS2-25 (pulsadores) 9–14 A: placa = Ie 9–14 A AC-3, Ue 690 V, Uimp 8 kV, Icu 100 kA 230/240 V, 15 kA 400/415 V, 6 kA 500 V, 3 kA 690 V; 3 kW 230 V, 5,5 kW 400 V; Ii 170 A, clase 10A (catálogo NS2).
+  - Breaker NXB-63 2P C63: frente 400 V~, 6000; curva C 315–630 A; 1,13/1,45 In en 1 h; 2,55 In 1–120 s (In > 32 A).
+  - Sensor ifm IFS204: PNP NA, Sn 4 mm, Sr 4 ±10 %, trabajo 0–3,24 mm, 10–30 VDC, < 10 mA, 100 mA, caída 2,5 V, 700 Hz, histéresis 3–15 %, factores acero 1 / inox 0,7 / latón 0,5 / aluminio 0,4 / cobre 0,3, 4 LED amarillos, IP67, M12 3 contactos dorados, enrasable.
+  - Sensor ifm KI5083: capacitivo M30 plástico, 20 mm, no enrasable, PNP NA/NC, 10–36 VDC, 200 mA, 10 Hz, IO-Link y botones, IP65/IP67.
+  - Contactor LC1D50AM7 (PDF del fabricante): 50 A AC-3, 80 A AC-1, 15 kW 220/230 V, 22 kW 380/400 V, 15 hp 200/208 y 230/240 V; bobina 220 V: 0,85–1,1 Uc a 60 Hz, caída 0,3–0,6 Uc, 140 VA / 13 VA a 60 Hz; cierre 12–26 ms, apertura 4–19 ms; 6 Mciclos mecánica; 1NA+1NC; fusible asociado 100 A gG; par 5 N·m (1–25 mm²), mando 1,7 N·m.
+  - Fusible 3NA3822 (SiePortal): NH000, 63 A gG, 500 V AC / 250 V DC, 120 kA AC (IEC 60269), 5 W.
+- Versus por tipo: guardamotor vs breaker · breaker vs fusible · relé vs contactor · inductivo vs capacitivo. Se eliminó el versus del contactor (repetido).
+- La NOARK Ex9C50 y el Autonics PR12-2DP ya no se usan (fotos de baja definición).
