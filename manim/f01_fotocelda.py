@@ -1,3 +1,4 @@
+import os
 """F01 · Así funciona una FOTOCELDA (reel vertical v2, 23-nov): dibujo real pieza por pieza (lib/svgfoto.py → f01_eq/),
 voz clonada y cada evento anclado a su palabra (alin_f01/, faster-whisper). Guion y fuentes: guion_f01.py.
 Render: FORMATO=v VOZ=eleven manim -qh --disable_caching -o cuerpo_f01 f01_fotocelda.py F01"""
@@ -45,6 +46,9 @@ class F01(ReelTec):
     # ------------------------------------------------ voz anclada a palabras
     def voz(self, clave):
         self.ini_voz = self.renderer.time
+        if os.environ.get("LOG_VOZ"):
+            with open(os.environ["LOG_VOZ"], "a") as fh:
+                fh.write(json.dumps([self.CLAVE, clave, round(self.renderer.time, 3)]) + "\n")
         ruta = ALIN / f"{clave}.json"
         self.palabras = json.loads(ruta.read_text()) if ruta.exists() else []
         self.cursor = 0

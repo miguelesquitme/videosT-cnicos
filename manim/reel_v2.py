@@ -1,3 +1,4 @@
+import os
 """Base de los reels v2 (dibujo real + voz anclada a palabras). Modelo: f01_fotocelda.py.
 Uso:
     from reel_v2 import *
@@ -65,6 +66,9 @@ class ReelV2(ReelTec):
     # ------------------------------------------------ voz anclada a palabras
     def voz(self, clave):
         self.ini_voz = self.renderer.time
+        if os.environ.get("LOG_VOZ"):
+            with open(os.environ["LOG_VOZ"], "a") as fh:
+                fh.write(json.dumps([self.CLAVE, clave, round(self.renderer.time, 3)]) + "\n")
         ruta = self.ALIN / f"{clave}.json"
         self.palabras = json.loads(ruta.read_text()) if ruta.exists() else []
         self.cursor = 0
