@@ -11,3 +11,4 @@ __pycache__/
 media/
 manim/*.srt.json
 manim/fondo_oscuro_*.png
+manim/voz3_*/
