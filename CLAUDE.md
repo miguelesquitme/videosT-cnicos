@@ -113,3 +113,9 @@ Reglas vigentes. Cada corrección nueva del usuario se agrega aquí el mismo dí
 - Primero: relé térmico CHINT NR2-25 9–13 A (larssystemgt.com/1347). `svgref.rele_termico` ahora acepta `n_pasos` (escala 9-10-11-12-13).
 - Las fotos de tiendas no se bajan desde el contenedor; si la PC no está conectada, pedir que adjunte la foto.
 - Pendiente copiar a `Imágenes/2026-11-25_loteF_rele_termico_NR2` (PC desconectada al entregar).
+
+## Lote G · 3D y foto real (25-nov) — `manim/posts12/gen.py`, fuentes en `referencias/loteG_fuentes.md`
+- Fotos de tiendas: con el navegador integrado se bajan por `fetch` → base64 (salen en webp). Archivos grandes: en trozos de ≤ 600 000 caracteres (más grande se trunca a ~262 k).
+- Siemens CAx sin cuenta: `www.automation.siemens.com/bilddb/cax_de.aspx?mlfb=<MLFB>` → cada motivo tiene `download.aspx?reqInsID=…` (STEP, DXF, SVG, PNG, render). Uso gratuito con crédito "Siemens AG".
+- Render 3D de calidad: `posts12/modelos/hq.html` (PBR, sombra, luz de relleno desde la cámara, `mat` por nombre de malla, `hide`, devuelve posición de cada pieza). Etiquetas libres con `marc()` (posición manual) — más limpias que `lados()` cuando la pieza es ancha.
+- Al usuario le importa usar SU foto cuando la da (NR2) y que las explicaciones no sean "básicas".
