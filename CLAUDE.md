@@ -136,3 +136,8 @@ Reglas vigentes. Cada corrección nueva del usuario se agrega aquí el mismo dí
 ## Marca del canal (26-nov)
 - Logo ME. turquesa SIEMPRE (`manim/logo_oficial.png`: M #94D3DF, E. #0095B0). El usuario ya NO aparece en foto en perfil/portadas. Banners modernos, gráficos limpios (nada que parezca IA), que muestren lo que hace: tableros, arranque de motores, PLC, normas. Generador: `manim/marca/gen.py`.
 - Publicaciones de imágenes: se hacen en OTRO chat (skill `imagenes-miguelesquit`); notas en `referencias/publicaciones_notas.md`. No leerlas aquí.
+
+## Shorts 3.0 (26-nov) — ganchos y títulos en el doc "Shorts 3.0 · nuevos ganchos y títulos"
+- Facebook castigó el formato: todos de 1:33 y arrancando con definición técnica. REGLA: segundo 0 = acción visible (nada de título estático), frase 0–3 s de ≤ 8 palabras que contradice o intriga, definición después. Duración VARIABLE desde 1:00 según el tema (quitar/dejar p6, acortar el párrafo largo); nunca dos seguidos iguales ni 1:33.
+- Carpetas en la PC: `Verticales/05 Instalaciones generales 2.0` (V19–V38) → crear `05 Instalaciones generales 3.0`; `Verticales/06 Refedencias de arranques con contactor - Mejora 2.0` (A01–A15) → crear `06 ... 3.0`. Pendiente: PC desconectada el 26-nov.
+- Medir a 48 h: vistas de 3 s en FB (> 20) y "vistos vs deslizados" en YouTube.
