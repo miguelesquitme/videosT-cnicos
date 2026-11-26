@@ -139,5 +139,5 @@ Reglas vigentes. Cada corrección nueva del usuario se agrega aquí el mismo dí
 
 ## Shorts 3.0 (26-nov) — ganchos y títulos en el doc "Shorts 3.0 · nuevos ganchos y títulos"
 - Facebook castigó el formato: todos de 1:33 y arrancando con definición técnica. REGLA: segundo 0 = acción visible (nada de título estático), frase 0–3 s de ≤ 8 palabras que contradice o intriga, definición después. Duración VARIABLE desde 1:00 según el tema (quitar/dejar p6, acortar el párrafo largo); nunca dos seguidos iguales ni 1:33.
-- Carpetas en la PC: `Verticales/05 Instalaciones generales 2.0` (V19–V38) → crear `05 Instalaciones generales 3.0`; `Verticales/06 Refedencias de arranques con contactor - Mejora 2.0` (A01–A15) → crear `06 ... 3.0`. Pendiente: PC desconectada el 26-nov.
+- Carpetas en la PC (`miguel esquit/02. Verticales/`): `05 Instalaciones generales 2.0` = F01 + V22–V26, V28–V30, V32, V33 (11) → `05 Instalaciones generales 3.0`; `06 Refedencias de arranques con contactor - Mejora 2.0` = A01–A15 (V39–V53) → `06 Refedencias de arranques con contactor - Mejora 3.0`. Ambas 3.0 creadas el 26-nov con un LEEME_3.0.md. Ganchos de V19–V21, V27, V31, V34–V38 listos pero esos videos no están en esas carpetas.
 - Medir a 48 h: vistas de 3 s en FB (> 20) y "vistos vs deslizados" en YouTube.
