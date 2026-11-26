@@ -1,0 +1,177 @@
+{
+ "ATV320U15M2C": {
+  "t": "ATV320U15M2C - variable speed drive, Altivar Machine ATV320, 1.5kW, 200 to 240V, 1 phase, compact | Schneider Electric USA",
+  "ld": [
+   "This Altivar 320 variable speed drive can feed three-phase synchronous and asynchronous motors.",
+   "Its compact form factor allows vertical stacking of drives inside machine frames.",
+   "It works at a rated power up to 1.5kW / 2hp and a rated voltage from 200V to 240V AC.",
+   "Its robust design with IEC 60721-3-3 class 3C3 coated printed circuit boards allows to extend machine availability in harsh environmental conditions, for example at ambient temperatures of up to 60°C without the need of additional cooling.",
+   "It incorporates functions suitable for the most common applications, including torque and speed accuracy at very low speed, high dynamic performance with flux vector control without sensor and extended frequency range for high-speed motors.",
+   "It also incorporates parallel connection of motors and special drives using the voltage/frequency ratio and static speed accuracy and energy saving for open-loop synchronous motors.",
+   "The drive software includes 5 safety functions that help machines meet safety requirements, whether or not they are used in conjunction with a Preventa safety module. These safety functions are configured using SoMove software.",
+   "Altivar Machine ATV320 was designed for Original Equipment Manufacturers (OEMs) that meets simple and advanced application requirements covered for packaging, material handling, textile, material working, mechanical actuators and hoisting.",
+   "It conforms to international standards IEC/EN 61800-5-1 and IEC/EN 61800-3 (immunity and conducted and radiated EMC emissions). It is also CE, UL, CSA, NOM, EAC and RCM certified.",
+   "Mounting accessories and external options (braking resistors, line chokes, motor chokes, additional EMC filters) are available with Altivar Machine ATV320 drives. The type of external accessories and options depends on the drive rating.",
+   "It is designed to be mounted in vertical position (+/- 10 °) on a panel, thanks to 4 fixing holes.",
+   "It is fully integrated inside Schneider Electric’s EcoStruxure Machine through DTM. It is possible to configure, control, and diagnose ATV320 drives directly in SoMachine and SoMove software by means of the same software brick (DTM)."
+  ],
+  "pairs": [
+   "Product availability: Stock - Normally stocked in distribution facility"
+  ],
+  "imgs": [
+   "ATV320_63440_CPF16015",
+   "63440_Dimensions_130_TI",
+   "ATV320U1xM2C_right",
+   "ATV320U1xM2C_front",
+   "ATV320U1xM2C_left",
+   "ATV320U1xM2C_rear",
+   "ATV320U22M2C_top_45x4",
+   "ATV320U11M2C_bottom_45x4"
+  ]
+ },
+ "NSYS3D4320": {
+  "t": "NSYS3D4320 - Monobloc enclosure, PanelSeT S3D, 400x300x200 mm, IP66, standard application, wall mounted, 1 plain door, steel, RAL 7035 | Schneider Electric USA",
+  "ld": [
+   "Spacial S3D wall mounted steel enclosure with plain door.",
+   "400 x 300 x 200 mm.",
+   "Single piece body, without mounting plate. Robust construction based on a new design.",
+   "3-point closure system with handle and 3 mm double bar lock insert.",
+   "Steel made, epoxy-polyester powder finish.",
+   "Gutter shaped front rail double sheet thickness.",
+   "Protection IP 66, IK10, Grey RAL 7035.",
+   "1 cable gland plate included, standard.",
+   "Extensive range of accessories. Packaging is reusable after assembly."
+  ],
+  "pairs": [
+   "Product availability: Non-Stock - Not normally stocked in distribution facility"
+  ],
+  "imgs": [
+   "NSYS3D4320_IoPmain-ODA20",
+   "NSYS3D4320-TI-Dimensions",
+   "Spacial-S3D_MI_Benefits_EN",
+   "PB503607",
+   "PB504099_IoP-Default"
+  ]
+ },
+ "ABL6TS10U": {
+  "t": "ABL6TS10U - voltage transformer - 230..400 V - 1 x 230 V - 100 VA | Schneider Electric UK",
+  "ld": [
+   "This ABL6 transformer supplies alternating current to control circuits while isolating them from mains power.",
+   "It has a rated input voltage of 230V to 400V AC, a rated output voltage of 230V AC and a rated power of 100VA.",
+   "It offers an economic way to supply each consuming load individually, or by groups of loads, in applications such as mining, refining.",
+   "It is ideal for systems accepting low voltage AC power, such as motor protection relays, contactors."
+  ],
+  "pairs": [
+   "EAN Code: 3389110880304"
+  ],
+  "imgs": [
+   "ABL6TS10U_PG114012",
+   "ABL6TS10U_1537_230V_100VA-left",
+   "ABL6TS10U_1537_230V_100VA-rear",
+   "ABL6TS10U_1537_230V_100VA-bott",
+   "ABL6TS10U_1537_230V_100VA-righ",
+   "ABL6TS10U_1537_230V_100VA-fron",
+   "ABL6TS10U_1537_230V_100VA-top"
+  ]
+ },
+ "BLRCH104A125B48": {
+  "t": "BLRCH104A125B48 - VarPlus Can HDuty Capacitor - 10.4/12.5 kvar - 480 V - 50/60Hz | Schneider Electric UK",
+  "ld": [
+   "VarPlus Can capacitor are a reliable and flexible solution for power factor correction in stringent operating conditions.",
+   "These capacitors are particularly used for higher voltage disturbances or when a few non-linear loads are present.",
+   "The rated current of the capacitors must be in increased in order to cope with the circulation of the harmonic current.",
+   "This capacitor provides a rated output power of 10.4 kVar at 480V AC, 50 Hz.",
+   "Fastening assured by a ClampTite terminal.",
+   "This component meet the standards IEC 60831-1 and IEC 60831-2.",
+   "The case product weight is 1.2 kg."
+  ],
+  "pairs": [
+   "EAN Code: 3606485255774"
+  ],
+  "imgs": [
+   "BLRCH104A125B48_Image"
+  ]
+ },
+ "VPL12N": {
+  "t": "VPL12N - Power Factor controller, PowerLogic PFC Controller, VPL 12 | Schneider Electric USA",
+  "ld": [
+   "VarPlus logic is a simple and efficient Power Controller for a automatic power factor correction equipment to maintain the power factor.",
+   "It is a simple and intelligent relay which measures,monitor and Controls the reactive energy.",
+   "It comes with Easy Commisioning , Step Size detection and monitoring along with the variour alarms.",
+   "VPL12 can be used for 12 steps in a PFC equippment."
+  ],
+  "pairs": [
+   "Product availability: Stock - Normally stocked in distribution facility"
+  ],
+  "imgs": [
+   "VPL12N_Image"
+  ]
+ },
+ "PKF16M434": {
+  "t": "PKF16M434 - Wander socket outlet, Mureva PK, 16A, 3P+E, 400V, IP44 | Schneider Electric UK",
+  "ld": [
+   "This Pratika industrial wander socket with captive screws connection is straight.",
+   "It has 3P+E poles, rated current is 16A and the operating voltage is 380VAC to 415VAC.",
+   "The dimensions of the base plate are (W) 88mm x (H) 88mm.",
+   "The degree of protection is IP44 and IK08. The fire resistance is 850°C.",
+   "The cable entries are for flexible or rigid cables.",
+   "The size of the cable entries in 16A is 8mm to 15mm for 1mm² to 4mm² cables.",
+   "The color of the socket is light grey (RAL 7035) with red easy identification of the operating voltage.",
+   "The frequency is 50Hz or 60Hz.",
+   "The clock position of contact is 6h."
+  ],
+  "pairs": [
+   "EAN Code: 3303432032661"
+  ],
+  "imgs": [
+   "PKF16M434_Image",
+   "PKF16M434_TI-Exploded",
+   "PKF16M423_TI-Exploded",
+   "PKF16M435_TI-Exploded"
+  ]
+ },
+ "BMH0701T06A2A": {
+  "t": "BMH0701T06A2A - servo motor BMH, Lexium 32, 1.4Nm, 8000rpm, untapped shaft, without brake, IP54, 16bit encoder | Schneider Electric USA",
+  "ld": [
+   "This product is part of the Lexium 32 range, an offer of servo motors from 0.15kW to 11kW.",
+   "The 10-pole servo motor features maximum mechanical speed of 8000RPM and smooth shaft end without holding brake.",
+   "It is an equipped with a single-turn SinCos Hiperface® feedback with 32,768 points/turn speed feedback resolution.",
+   "It is a servo motor with a rated supply voltage of 240V, a continuous stall current of 2.85A and a continuous power of 1.05W.",
+   "The shaft dimensions are 11mm (diameter) x 23mm (length).",
+   "It is furnished with rotatable right angled connectors for electrical connection. It is an IP54 rated product.",
+   "The length of this product is 122mm and the centering collar dimensions are 2.5mm (depth) x 60mm (diameter) with 82mm mounting hole. It weighs 1.6kg.",
+   "This range is compatible with Lexium 32 servo drives. This product is compatible with LXM32.D18M2 at 115V single phase and LXM32.U90M2 at 230V single phase.",
+   "It supports 70mm international standard flange mount with a natural convection cooling system.",
+   "Lexium 32 is a servo drive range provides drive and motor combination that has exactly the right power, performance and functionality.",
+   "The Lexium 32 range of servo drives includes four servo drive models with power ratings from 0.15kW to 11kW and the servo motor ranges BMH and BSH series."
+  ],
+  "pairs": [
+   "Product availability: Non-Stock - Not normally stocked in distribution facility"
+  ],
+  "imgs": [
+   "BMH0701P01F2A"
+  ]
+ },
+ "LV847123": {
+  "t": "LV847123 - Circuit breaker frame, MasterPact MTZ1 08H2 fixed for MicroLogic X, 800A, 50kA/415VAC  (Icu), 3P | Schneider Electric USA",
+  "ld": [
+   "This is a basic frame for 3 poles MasterPact MTZ1 08H2 fixed circuit breaker.",
+   "MasterPact MTZ is the last generation of high current air circuit breakers up to 6300A embedding advanced digital technologies.",
+   "MasterPact MTZ is designed to protect electrical systems from damage caused by overloads, short circuits and equipment ground faults.",
+   "The rated current is 800A.",
+   "The maximum operational voltage is 690VAC 50/60Hz.",
+   "The breaking capacity (Icu) is 50kA rms at 415VAC 50/60Hz.",
+   "This basic frame is compatible with MicroLogic X control unit which has to be ordered separately.",
+   "With MicroLogic X control unit, MasterPact MTZ contributes to safety and energy efficiency.",
+   "It can be equipped with a variety of optional functions and accessories.",
+   "The dimensions are 276mm (W) x 301mm (H) x 209mm (D).",
+   "MasterPact MTZ circuit breaker is compliant with international standards IEC/EN 60947-1 and IEC/EN 60947-2.",
+   "MasterPact MTZ and MicroLogic X can be used in EcoStruxure architecture system.",
+   "MasterPact MTZ is part of  the global Schneider environmental data program."
+  ],
+  "pairs": [],
+  "imgs": [
+   "LV847123_Image"
+  ]
+ }
+}

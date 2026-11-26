@@ -127,6 +127,12 @@ Reglas vigentes. Cada corrección nueva del usuario se agrega aquí el mismo dí
 - Referencias aprobadas por el usuario: G01 (LAY37 FreeCAD en 3D) y G06 (render + dibujo acotado Siemens). G05 (sensor genérico FreeCAD) = MALO, no usar modelos genéricos.
 - Fuentes verificadas: Siemens Industry Bilddatenbank (42; búsqueda por MLFB con `multiobjecttypes` 60 = 3D-Modell, 70 = 3D-Rendering, 12 = Maßzeichnung, 4 = Produktfoto; POST a `search.aspx`), ifm (7; `restservices/us/en/productdetail/cadZips/<código>` da STEP/DXF), FreeCAD LAY37.
 - Sin 3D en Bilddatenbank: motores SIMOTICS, SINAMICS V20/G120C (solo 2D), transformadores 4AM.
+- Lote 2 (26-nov, `referencias/equipos_2d3d_lote2/`): el usuario pidió 50 de TIPOS DISTINTOS (el lote 1 repetía contactores, temporizadores, relés). Ningún tipo se repite con el lote 1.
+- Vistas propias desde el STEP oficial: `step2glb.py` (OCP/cadquery-ocp → GLB) + `hq.html`/`batch.js` (three.js 0.160, Playwright). Así se ve el equipo desde cualquier ángulo.
+- Bilddatenbank: `search.aspx?mlfb=X&multipleObjectTypes=T` (GET directo) · `download_csv.aspx` da títulos de motivos · descarga: POST `WSWebControls.asmx/RenderMotivDetail` → `download.aspx?reqInsID` (P.png 1000 px, .stp). Pasar STEP grandes con gzip (CompressionStream) en trozos de 600 000 caracteres.
+- Verificar cada código en SiePortal (iframe en sieportal.siemens.com): 5ST3010 es contacto auxiliar, 3RF2320 descontinuado → 3RF3320.
+- Schneider: imágenes multi-vista `download.se.com/files?p_Doc_Ref=…&p_File_Type=rendition_1500_jpg` (pedir desde una pestaña en download.se.com por CORS). WEG: biblioteca CAD libre `ecatalog.weg.net/drawings_2d_3d` (motores NEMA W22 215T, CFW500, CPTW, capacitores, tomas).
+
 ## Marca del canal (26-nov)
 - Logo ME. turquesa SIEMPRE (`manim/logo_oficial.png`: M #94D3DF, E. #0095B0). El usuario ya NO aparece en foto en perfil/portadas. Banners modernos, gráficos limpios (nada que parezca IA), que muestren lo que hace: tableros, arranque de motores, PLC, normas. Generador: `manim/marca/gen.py`.
 - Publicaciones de imágenes: se hacen en OTRO chat (skill `imagenes-miguelesquit`); notas en `referencias/publicaciones_notas.md`. No leerlas aquí.
