@@ -119,3 +119,8 @@ Reglas vigentes. Cada corrección nueva del usuario se agrega aquí el mismo dí
 - Siemens CAx sin cuenta: `www.automation.siemens.com/bilddb/cax_de.aspx?mlfb=<MLFB>` → cada motivo tiene `download.aspx?reqInsID=…` (STEP, DXF, SVG, PNG, render). Uso gratuito con crédito "Siemens AG".
 - Render 3D de calidad: `posts12/modelos/hq.html` (PBR, sombra, luz de relleno desde la cámara, `mat` por nombre de malla, `hide`, devuelve posición de cada pieza). Etiquetas libres con `marc()` (posición manual) — más limpias que `lados()` cuando la pieza es ancha.
 - Al usuario le importa usar SU foto cuando la da (NR2) y que las explicaciones no sean "básicas".
+
+## Lote H · 5 equipos × 6 (25-nov) — `manim/posts13/gen.py`, fuentes en `referencias/loteH_fuentes.md`
+- Al usuario le gustó G07 (foto real nítida de tienda). ESTILO VIGENTE: título kicker + cinta inclinada (sin la palabra "real"); rótulos con LÍNEA CONTINUA y RECUADRO de color semitransparente sobre la pieza (`cajas()`), `marcas()` solo recuadro con número, `letras()` para símbolo↔foto.
+- Serie por equipo: 1 partes · 2 funcionamiento · 3 criterios · 4 aplicación real · 5 versus (rival en tarjeta oscura, sin foto ajena) · 6 símbolo con letras en símbolo y foto.
+- Relpol R2N: bornes 11-12-14 / 41-42-44 / A1-A2 (impresos), no octal. Entregado en `Imágenes/2026-11-25_loteH_5equipos`.

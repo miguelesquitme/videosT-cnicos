@@ -1,0 +1,78 @@
+<!doctype html><html><head><meta charset='utf-8'><style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{width:1080px;height:1350px;position:relative;overflow:hidden;font-family:Montserrat,sans-serif;color:#111827;
+ background:linear-gradient(165deg,#F9FAFC 0%,#EEF2F7 55%,#E6ECF4 100%)}
+.dec{position:absolute;border-radius:18px;background:#C9D8F2;opacity:.35}
+.wave{position:absolute;left:-200px;width:1500px;height:420px;border-radius:50%;border:2px solid rgba(255,255,255,.9)}
+.tit{position:absolute;left:30px;right:30px;text-align:center;text-transform:uppercase;line-height:1.02}
+.t1{font-weight:900;color:#0B1F4D;letter-spacing:-.5px}
+.t3{font-weight:900;color:#fff;-webkit-text-stroke:3px #1565C0;paint-order:stroke fill;letter-spacing:-.5px;
+ text-shadow:0 3px 0 #1565C0,0 6px 0 #0D47A1,0 9px 0 #0B3C8C,0 14px 18px rgba(11,31,77,.35)}
+.pill{display:inline-block;background:linear-gradient(180deg,#1E88E5,#1565C0);color:#fff;font-weight:900;border-radius:22px;padding:6px 34px 10px;
+ box-shadow:0 8px 18px rgba(21,101,192,.35)}
+.sub{position:absolute;left:60px;right:60px;background:rgba(255,255,255,.85);border:2px solid #D3DCEA;border-radius:24px;padding:16px 26px;
+ font-size:25px;line-height:1.32;text-align:center;font-weight:500;box-shadow:0 6px 16px rgba(11,31,77,.08)}
+.sub b{font-weight:800}
+.card{position:absolute;border-radius:24px;overflow:hidden;background:#fff;border:6px solid #fff;box-shadow:0 14px 34px rgba(11,31,77,.22)}
+.card img{width:100%;height:100%;object-fit:cover;display:block}
+svg.ov{position:absolute;left:0;top:0;width:1080px;height:1350px;pointer-events:none}
+.lab{position:absolute;transform:translate(-50%,-50%);background:#fff;border:3.5px solid;border-radius:14px;padding:8px 12px;
+ font-size:21px;font-weight:700;text-align:center;line-height:1.18;box-shadow:0 4px 10px rgba(0,0,0,.12)}
+.lab small{display:block;font-size:16px;font-weight:500;color:#475467;margin-top:2px}
+.pie{position:absolute;left:40px;right:40px;bottom:14px;text-align:center}
+.pie .m{display:flex;justify-content:center;align-items:center;gap:12px;font-weight:800;font-size:28px;color:#0B1F4D;letter-spacing:1px}
+.pie .m img{height:46px}
+.pie .f{font-size:13.5px;color:#667085;line-height:1.3;margin-top:6px}
+.box{position:absolute;border-radius:20px;background:rgba(255,255,255,.9);border:2px solid #D3DCEA;box-shadow:0 6px 16px rgba(11,31,77,.08)}
+.chip{position:absolute;transform:translate(-50%,-50%);background:#1E88E5;color:#fff;font-weight:800;border-radius:14px;padding:8px 18px;font-size:22px}
+.bar{position:absolute;left:40px;right:40px;background:#0B1F4D;color:#fff;border-radius:18px;text-align:center;font-weight:700;font-size:25px;padding:14px 20px}
+.bar b{color:#FFC94D}
+@font-face{font-family:'Barlow C';src:url('../fonts/barlow-condensed-latin-800-normal.woff2');font-weight:800;font-style:normal}@font-face{font-family:'Barlow C';src:url('../fonts/barlow-condensed-latin-900-normal.woff2');font-weight:900;font-style:normal}@font-face{font-family:'Barlow C';src:url('../fonts/barlow-condensed-latin-900-italic.woff2');font-weight:900;font-style:italic}@font-face{font-family:'Archivo Black';src:url('../fonts/archivo-black-latin-400-normal.woff2');font-weight:400;font-style:normal}@font-face{font-family:'Bebas';src:url('../fonts/bebas-neue-latin-400-normal.woff2');font-weight:400;font-style:normal}
+.abs{position:absolute}
+.tag{position:absolute;font-family:'Barlow C';font-weight:800;font-size:28px;letter-spacing:3px;padding:6px 18px;border-radius:8px}
+.pie2{position:absolute;left:40px;right:40px;bottom:16px;display:flex;align-items:flex-end;gap:18px}
+.pie2 .f{flex:1;font-size:13.5px;line-height:1.3}
+.pie2 .m{display:flex;align-items:center;gap:10px;font-weight:800;font-size:24px;white-space:nowrap}
+.pie2 .m img{height:40px;background:#fff;border-radius:8px;padding:3px 6px}
+
+svg{position:absolute;overflow:visible}
+.kk{position:absolute;left:50px;top:36px;font:800 22px Montserrat;letter-spacing:3px;color:#fff;padding:7px 18px;border-radius:8px}
+.T{position:absolute;left:44px;right:36px;top:84px;font:900 70px/1.02 Montserrat;color:#0B1F4D;letter-spacing:-2px;text-transform:uppercase;
+ text-shadow:0 3px 0 rgba(11,31,77,.10)}
+.T em{font-style:normal;color:#fff;display:inline-block;padding:2px 16px 4px;transform:skew(-9deg) rotate(-1.5deg);margin:6px 4px 0 0;
+ text-shadow:0 3px 0 rgba(0,0,0,.25)}
+.T small{display:block;font-size:30px;letter-spacing:0;text-transform:none;color:#475467;font-weight:700;margin-top:18px;text-shadow:none}
+body{background:#fff!important}
+.pn{position:absolute;left:40px;right:40px;border-radius:26px;border:3px solid #CFE0F5;background:#F6FAFF}
+.tx{position:absolute;left:56px;right:56px;font:500 24px/1.38 Montserrat;color:#1d2939}.tx b{font-weight:800;color:#0B1F4D}
+.cd{position:absolute;border-radius:20px;padding:16px 20px;color:#fff;font:500 21px/1.32 Montserrat}
+.cd b{display:block;font:900 34px/1 'Barlow C';margin-bottom:6px}
+.wc{position:absolute;background:#fff;border:3px solid #CFE0F5;border-radius:20px;padding:16px 20px;font:500 21px/1.32 Montserrat;color:#1d2939}
+.wc b{font-weight:800;color:#0B1F4D}
+.nota{position:absolute;left:40px;right:40px;border-radius:18px;background:#0B1F4D;color:#fff;font:600 23px/1.32 Montserrat;padding:16px 24px}
+.nota b{color:#FFD400}
+.tbl{position:absolute;left:40px;right:40px;border-radius:18px;overflow:hidden;border:3px solid #0B1F4D;font:600 22px Montserrat}
+.tbl div{display:flex;align-items:center;padding:10px 20px;border-top:2px solid #E4E7EC;gap:12px}.tbl div:first-child{border-top:0}
+.tbl div.h{background:#0B1F4D;color:#fff;font:800 20px Montserrat}
+.tbl span{flex:1}.tbl b{font:900 30px 'Barlow C';color:#0B1F4D}
+svg{position:absolute;overflow:visible}
+.lb{position:absolute;display:flex;gap:10px;align-items:center;background:#fff;border-radius:14px;padding:5px 10px 5px 6px;
+ box-shadow:0 6px 16px rgba(11,31,77,.16)}
+.lb .n{flex:none;width:40px;height:40px;border-radius:50%;color:#fff;font:800 20px Montserrat;display:flex;align-items:center;justify-content:center}
+.lb b{display:block;font:800 19px/1.1 Montserrat;color:#0B1F4D}.lb span{display:block;font:500 15px/1.2 Montserrat;color:#475467;margin-top:2px}
+.ph{position:absolute;background:#fff;border-radius:22px;border:3px solid #E4E7EC;box-shadow:0 10px 26px rgba(11,31,77,.10)}
+.cap{position:absolute;font:700 15px Montserrat;color:#667085;text-align:center}
+.crit{position:absolute;left:40px;right:40px;display:flex;gap:16px;align-items:stretch;background:#F6FAFF;border-radius:16px;overflow:hidden}
+.crit .k{flex:none;width:64px;display:flex;align-items:center;justify-content:center;color:#fff;font:900 40px 'Barlow C'}
+.crit .c{flex:1;padding:9px 14px 10px 4px;font:500 17px/1.3 Montserrat;color:#1d2939}.crit .c b{display:block;font:800 21px/1.15 Montserrat;color:#0B1F4D;margin-bottom:2px}
+.crit .v{flex:none;padding:5px 12px;border-radius:9px;color:#fff;font:900 24px/1 'Barlow C';white-space:nowrap}
+.vs{position:absolute;left:40px;right:40px;border-radius:18px;overflow:hidden;border:3px solid #0B1F4D;font:600 19px Montserrat;background:#fff}
+.vs div{display:grid;grid-template-columns:1.15fr 1fr 1fr;align-items:center;border-top:2px solid #E4E7EC}.vs div:first-child{border-top:0}
+.vs span{padding:8px 14px}.vs span+span{text-align:center;font:800 24px 'Barlow C';color:#0B1F4D;border-left:2px solid #E4E7EC}
+.vs div.h span{background:#0B1F4D;color:#fff;font:800 18px Montserrat}.vs div.d{background:#FFF4E5}
+.blk{position:absolute;border-radius:16px;padding:10px 14px;font:500 16px/1.28 Montserrat;color:#1d2939;background:#fff;border:3px solid #0B1F4D;text-align:center}
+.blk b{display:block;font:900 26px/1.05 'Barlow C';color:#0B1F4D;margin-bottom:3px}
+.leg{position:absolute;left:40px;right:40px;display:grid;gap:10px}
+.leg div{display:flex;gap:10px;align-items:center;background:#F6FAFF;border-radius:12px;padding:6px 10px;font:500 15px/1.25 Montserrat;color:#1d2939}
+.leg i{flex:none;font-style:normal;width:36px;height:36px;border-radius:9px;color:#fff;font:900 24px 'Barlow C';display:flex;align-items:center;justify-content:center}
+.leg b{font-weight:800;color:#0B1F4D}</style></head><body><div class='kk' style='background:#E5383B'>RELÉ · RELPOL R2N-2012-23-5230-WTL</div><div class='T' style='font-size:62px;top:84px;'>Las partes del <em style='background:#E5383B;box-shadow:7px 7px 0 #FFD400'>relé</em> <small>Relé enchufable de 2 contactos conmutados, bobina 230 VAC</small></div><img src='../img/re2.png' style='position:absolute;left:190px;top:280px;width:700px;height:659px;filter:drop-shadow(0 12px 20px rgba(11,31,77,.20));'><svg style='left:0px;top:0px' width='1080' height='1350' viewBox='0 0 1080 1350'><rect x='239' y='451' width='91' height='112' rx='8' fill='none' stroke='#fff' stroke-width='7' opacity='.85'/><rect x='239' y='451' width='91' height='112' rx='8' fill='rgba(0,87,255,0.17)' stroke='#0057FF' stroke-width='3.5'/><line x1='284' y1='370' x2='284' y2='451' stroke='#fff' stroke-width='8' stroke-linecap='round'/><line x1='284' y1='370' x2='284' y2='451' stroke='#0057FF' stroke-width='3.5' stroke-linecap='round'/><circle cx='284' cy='451' r='6' fill='#0057FF' stroke='#fff' stroke-width='2.5'/><rect x='386' y='497' width='168' height='86' rx='8' fill='none' stroke='#fff' stroke-width='7' opacity='.85'/><rect x='386' y='497' width='168' height='86' rx='8' fill='rgba(229,56,59,0.17)' stroke='#E5383B' stroke-width='3.5'/><line x1='300' y1='500' x2='386' y2='500' stroke='#fff' stroke-width='8' stroke-linecap='round'/><line x1='300' y1='500' x2='386' y2='500' stroke='#E5383B' stroke-width='3.5' stroke-linecap='round'/><circle cx='386' cy='500' r='6' fill='#E5383B' stroke='#fff' stroke-width='2.5'/><rect x='288' y='715' width='49' height='92' rx='8' fill='none' stroke='#fff' stroke-width='7' opacity='.85'/><rect x='288' y='715' width='49' height='92' rx='8' fill='rgba(255,138,0,0.17)' stroke='#FF8A00' stroke-width='3.5'/><line x1='300' y1='700' x2='300' y2='715' stroke='#fff' stroke-width='8' stroke-linecap='round'/><line x1='300' y1='700' x2='300' y2='715' stroke='#FF8A00' stroke-width='3.5' stroke-linecap='round'/><circle cx='300' cy='715' r='6' fill='#FF8A00' stroke='#fff' stroke-width='2.5'/><rect x='561' y='478' width='77' height='99' rx='8' fill='none' stroke='#fff' stroke-width='7' opacity='.85'/><rect x='561' y='478' width='77' height='99' rx='8' fill='rgba(34,165,89,0.17)' stroke='#22A559' stroke-width='3.5'/><line x1='780' y1='330' x2='638' y2='478' stroke='#fff' stroke-width='8' stroke-linecap='round'/><line x1='780' y1='330' x2='638' y2='478' stroke='#22A559' stroke-width='3.5' stroke-linecap='round'/><circle cx='638' cy='478' r='6' fill='#22A559' stroke='#fff' stroke-width='2.5'/><rect x='638' y='458' width='112' height='99' rx='8' fill='none' stroke='#fff' stroke-width='7' opacity='.85'/><rect x='638' y='458' width='112' height='99' rx='8' fill='rgba(124,58,237,0.17)' stroke='#7C3AED' stroke-width='3.5'/><line x1='780' y1='460' x2='750' y2='460' stroke='#fff' stroke-width='8' stroke-linecap='round'/><line x1='780' y1='460' x2='750' y2='460' stroke='#7C3AED' stroke-width='3.5' stroke-linecap='round'/><circle cx='750' cy='460' r='6' fill='#7C3AED' stroke='#fff' stroke-width='2.5'/><rect x='449' y='583' width='231' height='171' rx='8' fill='none' stroke='#fff' stroke-width='7' opacity='.85'/><rect x='449' y='583' width='231' height='171' rx='8' fill='rgba(15,163,163,0.17)' stroke='#0FA3A3' stroke-width='3.5'/><line x1='780' y1='620' x2='680' y2='620' stroke='#fff' stroke-width='8' stroke-linecap='round'/><line x1='780' y1='620' x2='680' y2='620' stroke='#0FA3A3' stroke-width='3.5' stroke-linecap='round'/><circle cx='680' cy='620' r='6' fill='#0FA3A3' stroke='#fff' stroke-width='2.5'/><rect x='750' y='445' width='77' height='263' rx='8' fill='none' stroke='#fff' stroke-width='7' opacity='.85'/><rect x='750' y='445' width='77' height='263' rx='8' fill='rgba(214,51,108,0.17)' stroke='#D6336C' stroke-width='3.5'/><line x1='788' y1='750' x2='788' y2='708' stroke='#fff' stroke-width='8' stroke-linecap='round'/><line x1='788' y1='750' x2='788' y2='708' stroke='#D6336C' stroke-width='3.5' stroke-linecap='round'/><circle cx='788' cy='708' r='6' fill='#D6336C' stroke='#fff' stroke-width='2.5'/></svg><div class='lb' style='left:20px;top:310px;width:280px;border:3px solid #0057FF;box-sizing:border-box'><div class='n' style='background:#0057FF'>1</div><div><b>Botón de prueba</b><span>bloqueable · naranja = AC</span></div></div><div class='lb' style='left:20px;top:470px;width:280px;border:3px solid #E5383B;box-sizing:border-box'><div class='n' style='background:#E5383B'>2</div><div><b>Armadura</b><span>la atrae la bobina</span></div></div><div class='lb' style='left:20px;top:670px;width:280px;border:3px solid #FF8A00;box-sizing:border-box'><div class='n' style='background:#FF8A00'>3</div><div><b>LED</b><span>bobina energizada</span></div></div><div class='lb' style='left:780px;top:300px;width:280px;border:3px solid #22A559;box-sizing:border-box'><div class='n' style='background:#22A559'>4</div><div><b>Indicador mecánico</b><span>se mueve con el contacto</span></div></div><div class='lb' style='left:780px;top:430px;width:280px;border:3px solid #7C3AED;box-sizing:border-box'><div class='n' style='background:#7C3AED'>5</div><div><b>Contactos 2 CO</b><span>AgNi · 12 A 250 VAC</span></div></div><div class='lb' style='left:780px;top:590px;width:280px;border:3px solid #0FA3A3;box-sizing:border-box'><div class='n' style='background:#0FA3A3'>6</div><div><b>Bobina 230 VAC</b><span>1,6 VA a 50 Hz</span></div></div><div class='lb' style='left:780px;top:750px;width:280px;border:3px solid #D6336C;box-sizing:border-box'><div class='n' style='background:#D6336C'>7</div><div><b>Pines faston</b><span>al zócalo GZT2/GZM2</span></div></div><div style='position:absolute;left:40px;right:40px;top:985px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px'><div style='background:#F6FAFF;border-top:6px solid #E5383B;border-radius:14px;padding:10px 14px;font:500 17px/1.3 Montserrat;color:#1d2939'><b style='display:block;font:900 30px/1.05 "Barlow C";color:#E5383B'>2 CO</b>Dos conmutados: 11-12-14 y 41-42-44.</div><div style='background:#F6FAFF;border-top:6px solid #0057FF;border-radius:14px;padding:10px 14px;font:500 17px/1.3 Montserrat;color:#1d2939'><b style='display:block;font:900 30px/1.05 "Barlow C";color:#0057FF'>12 A · 250 VAC</b>Carga resistiva AC1 (3000 VA).</div><div style='background:#F6FAFF;border-top:6px solid #FF8A00;border-radius:14px;padding:10px 14px;font:500 17px/1.3 Montserrat;color:#1d2939'><b style='display:block;font:900 30px/1.05 "Barlow C";color:#FF8A00'>WTL</b>W indicador · T botón de prueba · L LED.</div></div><div class='nota' style='top:1125px;padding:12px 22px;font-size:20px;background:#0B1F4D'>Mide <b>27,4 × 21 × 35,5 mm</b> y se enchufa en zócalo de riel DIN 35 mm; se cambia sin desconectar cables.</div><div class='pie2'><div class='f' style='color:#667085'><b>Fuentes:</b> Relpol, hoja de datos R2N (2CO) · marcado del relé · <b>Foto:</b> LARSSYSTEM Guatemala (larssystemgt.com/50900), usadas a pedido del autor</div><div class='m' style='color:#0B1F4D'><img src='../../logo_oficial.png'>@miguelesquit</div></div></body></html>
