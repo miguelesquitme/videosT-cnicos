@@ -1,0 +1,452 @@
+[
+[
+"A",
+"Pulsador plano verde (marcha)",
+"3SU1100-0AB40-1BA0",
+"Siemens",
+"SIRIUS ACT, plástico, sin iluminar, botón plano, 22 mm, 1NA",
+"Botón · aro frontal · soporte de fijación · bloque de contacto 1NA · bornes 3-4",
+"Partes + vista trasera con el bloque NA; colores IEC 60204-1"
+],
+[
+"A",
+"Pulsador plano rojo (paro)",
+"3SU1100-0AB20-1CA0",
+"Siemens",
+"SIRIUS ACT, plástico, sin iluminar, botón plano, 22 mm, 1NC",
+"Botón · aro · soporte · bloque 1NC · bornes 1-2",
+"Marcha vs paro: NA contra NC"
+],
+[
+"A",
+"Pulsador luminoso",
+"3SU1106-0AB40-1BA0",
+"Siemens",
+"SIRIUS ACT, plástico, iluminado, botón plano, 22 mm",
+"Botón translúcido · módulo LED · bloque de contacto · soporte",
+"Por dentro: dónde va el LED y dónde el contacto"
+],
+[
+"A",
+"Piloto (lámpara de señalización) rojo",
+"3SU1103-6AA20-1AA0",
+"Siemens",
+"SIRIUS ACT, plástico, iluminado, 110 V AC",
+"Lente · portalámparas/LED integrado · bornes X1-X2 · soporte",
+"Colores de pilotos IEC 60204-1 con equipo real"
+],
+[
+"A",
+"Paro de emergencia (hongo)",
+"3SU1100-1HB20-1CG0",
+"Siemens",
+"SIRIUS ACT, hongo de plástico, Not-Halt, desenclave por giro",
+"Hongo rojo · fondo amarillo · enclavamiento · bloque NC de apertura directa",
+"Mismo estilo que G01, ahora con modelo oficial y cotas"
+],
+[
+"A",
+"Selector de llave",
+"3SU1100-4BF11-1BA0",
+"Siemens",
+"SIRIUS ACT, llave RONIS, plástico, 2 posiciones",
+"Cerradura · llave · posiciones 0/I · bloque de contacto",
+"Para qué sirve un selector de llave (permisos)"
+],
+[
+"A",
+"Bloque de contacto",
+"3SU1400-1AA10-1BA0",
+"Siemens",
+"Módulo de contacto, fijación a placa frontal, tornillo, 1NA",
+"Numeración 3-4 / 1-2 · tornillos · ventana de color · pestaña",
+"Cómo se leen los números del bloque (x3-x4 / x1-x2)"
+],
+[
+"A",
+"Caja de mando (botonera) 1 hueco",
+"3SU1801-0AA00-0AB1",
+"Siemens",
+"Caja para aparatos de mando 22 mm, redonda, plástico",
+"Caja · agujero 22 mm · entradas de cable · tornillos de tapa",
+"Botonera de campo: arrancar un motor a distancia"
+],
+[
+"A",
+"Columna de señalización (torreta)",
+"8WD4420-5AB",
+"Siemens",
+"Columna Ø70 mm, elemento luminoso rojo",
+"Elemento luminoso · base · conexión · cuerpo Ø70",
+"Torreta: colores y significado de cada nivel"
+],
+[
+"A",
+"Paro de emergencia tipo LAY37",
+"EmergencyButton-Disk_LAY37",
+"FreeCAD Parts Library (AngelLM)",
+"Modelo 3D CC BY 3.0, 22 mm, con disco amarillo",
+"Hongo · vástago · aro · placa STOP · cuerpo · bornes · bloques",
+"Ya usado en G01 (referencia aprobada). 2D se saca del STEP"
+],
+[
+"B",
+"Contactor S00",
+"3RT2015-1AP01",
+"Siemens",
+"S00, tornillo, bobina AC, 1NA integrado",
+"Bornes 1/L1-6/T3 · A1/A2 · auxiliar 13-14 · indicador de maniobra",
+"Ya usado en G06 (referencia aprobada)"
+],
+[
+"B",
+"Contactor S3 con borne de caja",
+"3RT2045-1AP00",
+"Siemens",
+"S3, conexión por borne de caja (Rahmenklemme), bobina AC",
+"Bornes de caja · bobina · auxiliares · cámara de arco",
+"Contactor grande: qué cambia frente al S00"
+],
+[
+"B",
+"Contactor auxiliar (relé contactor)",
+"3RH2122-1AP00",
+"Siemens",
+"4 polos, 2NA+2NC, tornillo, bobina AC",
+"Contactos 13-14, 21-22, 33-34, 41-42 · A1/A2",
+"Contactor auxiliar vs contactor de potencia"
+],
+[
+"B",
+"Guardamotor S00",
+"3RV2011-1KA10",
+"Siemens",
+"S00, Class 10, térmico 9–12,5 A, magnético 163 A, tornillo",
+"Dial · mando giratorio · TEST · bornes 1-6 · I>",
+"Partes y ajuste del dial en un equipo oficial"
+],
+[
+"B",
+"Relé térmico S00",
+"3RU2116-1KB0",
+"Siemens",
+"Sobrecarga térmico, S00, montaje en contactor, tornillo",
+"Dial · RESET/STOP · TEST · 95-96/97-98 · pines al contactor",
+"Cómo se acopla bajo el contactor"
+],
+[
+"B",
+"Relé de sobrecarga electrónico",
+"3RB3016-1RB0",
+"Siemens",
+"Electrónico, S00, sin detección de falla a tierra, tornillo",
+"Dial de corriente · RESET · TEST · bornes 95-96/97-98",
+"Térmico bimetálico vs electrónico"
+],
+[
+"B",
+"Combinación inversora (cambio de giro)",
+"3RA2315-8XB30-1AP0",
+"Siemens",
+"S00, dos contactores con enclavamiento mecánico y eléctrico",
+"2 contactores · enclavamiento mecánico · puentes de potencia",
+"Cambio de giro: dónde está el enclavamiento"
+],
+[
+"B",
+"Arrancador suave",
+"3RW3013-1BB14",
+"Siemens",
+"3RW30, S00, tornillo, con bypass",
+"Potenciómetros de rampa y tensión inicial · LED · bornes",
+"Arranque suave: qué ajusta cada perilla"
+],
+[
+"B",
+"Arrancador compacto inversor",
+"3RM1201-1AA04",
+"Siemens",
+"3RM1, arrancador inversor, tornillo, DC 24 V",
+"Entradas de mando · salida motor · ajuste de corriente · LED",
+"Arrancador híbrido de 22,5 mm"
+],
+[
+"B",
+"Relé de termistor PTC",
+"3RN2010-1BW30",
+"Siemens",
+"3RN2, PTC, 1 circuito de sensor, rearme automático",
+"Bornes T1-T2 · LED · contactos de salida",
+"Protección del motor por temperatura del bobinado"
+],
+[
+"C",
+"Temporizador multifunción",
+"3RP2505-1AW30",
+"Siemens",
+"Multifunción, 1 conmutado, alimentación AC/DC de rango amplio, tornillo",
+"Selector de función · dial de tiempo · rango · LED · A1/A2 · 15-16-18",
+"Funciones a la conexión / desconexión con equipo real"
+],
+[
+"C",
+"Relé de acoplamiento 3 CO",
+"3RQ2000-1CW00",
+"Siemens",
+"Relé de acoplamiento en caja industrial, 3 conmutados, tornillo",
+"Bobina · 3 conmutados · LED",
+"Interfaz entre PLC y mando"
+],
+[
+"C",
+"Relé de vigilancia de tensión",
+"3UG4513-1BR20",
+"Siemens",
+"Vigilancia de subtensión, 2 conmutados, tornillo",
+"Potenciómetros de umbral y retardo · LED · bornes",
+"Proteger equipos contra baja tensión"
+],
+[
+"C",
+"Relé de falta de fase",
+"3UG4512-1AR20",
+"Siemens",
+"Vigilancia de falta y secuencia de fase, 1 conmutado",
+"L1-L2-L3 · LED · contactos 11-12-14",
+"Por qué un motor no debe trabajar en 2 fases"
+],
+[
+"C",
+"Relé de nivel (líquidos)",
+"3UG4501-1AW30",
+"Siemens",
+"Vigilancia de nivel, tornillo, 1 conmutado",
+"Bornes de electrodos · sensibilidad · retardo · LED",
+"Control de nivel de un tanque con electrodos"
+],
+[
+"C",
+"Relé de seguridad",
+"3SK1111-1AB30",
+"Siemens",
+"3SK1 equipo base, estándar, salidas a relé, tornillo",
+"Entradas de sensores · salidas de seguridad · LED · rearme",
+"Circuito de paro de emergencia con relé de seguridad"
+],
+[
+"D",
+"Breaker (interruptor termomagnético)",
+"5SL6116-7 (1P; hay 2P y 3P)",
+"Siemens",
+"5SL, 1 polo (también 5SL6240-7 2P y 5SL6332-7 3P con 3D y 2D)",
+"Palanca · curva/corriente · bornes · ventanilla",
+"Partes y curvas con modelo oficial"
+],
+[
+"D",
+"Diferencial (RCD) 4 polos",
+"5SV3344-6",
+"Siemens",
+"Interruptor diferencial 4P, tipo A",
+"Botón de prueba T · palanca · bornes · indicador",
+"Cómo detecta la fuga a tierra"
+],
+[
+"D",
+"Breaker diferencial (RCBO)",
+"5SU1356-7KK16",
+"Siemens",
+"5SU1, 1P+N, 2 módulos, 4,5/6 kA",
+"Palanca · botón de prueba · bornes L y N",
+"Breaker + diferencial en un solo equipo"
+],
+[
+"D",
+"Supresor de sobretensiones tipo 2",
+"5SD7424-1",
+"Siemens",
+"Tipo 2, forma estrecha, clase C",
+"Módulos enchufables · indicador de estado · bornes · contacto remoto",
+"Protección contra rayos y maniobras"
+],
+[
+"D",
+"Fusible NH000 gG",
+"3NA3822",
+"Siemens",
+"NH000, 63 A, gG, 500 V AC / 250 V DC",
+"Cuchillas · indicador frontal · cuerpo cerámico · orejas",
+"Ya usado en H11; aquí con modelo 3D y cotas"
+],
+[
+"D",
+"Seccionador fusible NH",
+"3NP1123-1CA20",
+"Siemens",
+"3NP1, NH000 compacto, 3 polos",
+"Tapa · portafusibles · bornes · enclavamiento",
+"Cómo se cambia un NH con seguridad"
+],
+[
+"D",
+"Portafusible cilíndrico 10×38",
+"3NW7013",
+"Siemens",
+"1 polo, 32 A, 690 V AC",
+"Cajón · ventana · bornes · riel",
+"Fusible cilíndrico para mando y control"
+],
+[
+"D",
+"Interruptor en caja moldeada",
+"3VA1112-4ED32-0AA0",
+"Siemens",
+"3VA1, 150/160 A, disparador TM210 FTFM (térmico y magnético fijos), 3 polos",
+"Palanca · placa de datos · bornes · tapas cubrebornes",
+"MCCB vs breaker modular"
+],
+[
+"D",
+"Interruptor principal rotativo",
+"3LD2003-0TK51",
+"Siemens",
+"3LD2, tamaño 1, 16/20 A, montaje frontal, mando 66×66",
+"Mando rojo/amarillo · candado · cuerpo · bornes",
+"Interruptor general de máquina (IEC 60204-1)"
+],
+[
+"D",
+"Borne de paso de tornillo",
+"8WH1000-0AF00",
+"Siemens",
+"2,5 mm², tornillo, gris (también versión de resorte 8WH2000-0AF00)",
+"Tornillos · puente · marcador · pie de riel",
+"Borneras: tornillo vs resorte"
+],
+[
+"D",
+"Tomacorriente para riel DIN",
+"5TE6800",
+"Siemens",
+"SCHUKO 16 A para tablero (norma DIN VDE 0620)",
+"Contactos · tierra · bornes · clip de riel",
+"Toma de servicio dentro del tablero"
+],
+[
+"D",
+"Medidor multifunción",
+"7KM2112-0BA00-3AA0",
+"Siemens",
+"PAC3200, montaje en puerta",
+"Pantalla · botones · bornes de tensión y corriente",
+"Qué mide un analizador de red"
+],
+[
+"E",
+"Relé programable LOGO!",
+"6ED1052-1MD08-0BA1",
+"Siemens",
+"LOGO! 12/24 RCE, 8 entradas (4 analógicas) / 4 salidas, 400 bloques",
+"Pantalla · teclas · entradas I1-I8 · salidas Q1-Q4 · ranura",
+"Partes del LOGO! con modelo oficial"
+],
+[
+"E",
+"Fuente de 24 V para riel",
+"6EP3333-8SB00-0AY0",
+"Siemens",
+"SITOP PSU8200, 1 fase, 24 V, 5 A",
+"Bornes L-N-PE · salida +/- · potenciómetro · LED DC OK",
+"Fuente conmutada real (reemplaza a la genérica)"
+],
+[
+"E",
+"PLC S7-1200",
+"6ES7214-1AG40-0XB0",
+"Siemens",
+"CPU 1214C DC/DC/DC",
+"Bornes de alimentación · entradas · salidas · Ethernet · LEDs · tarjeta",
+"Partes del PLC y cómo se cablea"
+],
+[
+"E",
+"Módulo de entradas digitales",
+"6ES7221-1BF32-0XB0",
+"Siemens",
+"SM 1221, 8 entradas 24 V DC",
+"Bornes · LEDs · conector al CPU",
+"Ampliar entradas de un PLC"
+],
+[
+"E",
+"Pantalla HMI 7\"",
+"6AV2123-2GB03-0AX0",
+"Siemens",
+"KTP700 Basic PN, 7\"",
+"Pantalla táctil · teclas · puerto Ethernet · alimentación",
+"HMI: qué conecta con el PLC"
+],
+[
+"F",
+"Sensor inductivo M12",
+"IFS204",
+"ifm",
+"PNP NA, 4 mm, M12, conector M12 (STEP y DXF oficiales)",
+"Cara activa · rosca · tuercas · LED · conector",
+"Reemplaza al G05 genérico rechazado"
+],
+[
+"F",
+"Sensor capacitivo M30",
+"KI5083",
+"ifm",
+"PNP NA/NC, 20 mm, M30, IO-Link (STEP y DXF)",
+"Cara activa · botones de ajuste · LED · conector",
+"Detectar nivel de granos o líquidos"
+],
+[
+"F",
+"Sensor fotoeléctrico difuso",
+"O6H300",
+"ifm",
+"Reflexión difusa con supresión de fondo (STEP y DXF)",
+"Emisor · receptor · LED · ajuste · conector",
+"Cómo ve una fotocelda difusa"
+],
+[
+"F",
+"Sensor de presión con display",
+"PN7094",
+"ifm",
+"Sensor de presión con pantalla (STEP y DXF)",
+"Display · teclas · conexión a proceso · conector M12",
+"Presostato electrónico vs mecánico"
+],
+[
+"F",
+"Monitor de flujo",
+"SI5010",
+"ifm",
+"Monitor de caudal calorimétrico (STEP y DXF)",
+"Sonda · LEDs · ajuste · conector",
+"Proteger una bomba contra marcha en seco"
+],
+[
+"F",
+"Transmisor de temperatura",
+"TA2105",
+"ifm",
+"Transmisor de temperatura (STEP y DXF)",
+"Vaina · rosca · electrónica · conector",
+"Señal 4–20 mA de temperatura"
+],
+[
+"F",
+"Encoder incremental",
+"RVP510",
+"ifm",
+"Encoder incremental de eje sólido con display (STEP y DXF)",
+"Eje · brida · display · conector",
+"Medir velocidad y posición de un eje"
+]
+]

@@ -125,3 +125,8 @@ Reglas vigentes. Cada corrección nueva del usuario se agrega aquí el mismo dí
 - Serie por equipo: 1 partes · 2 funcionamiento · 3 criterios · 4 aplicación real · 5 versus (rival en tarjeta oscura, sin foto ajena) · 6 símbolo con letras en símbolo y foto.
 - Relpol R2N: bornes 11-12-14 / 41-42-44 / A1-A2 (impresos), no octal. Entregado en `Imágenes/2026-11-25_loteH_5equipos`.
 - v2 (correcciones): fotos OFICIALES del fabricante, nítidas y sin marca de agua (relpol.pl, chintglobal.com, ifm.com, download.se.com `rendition_1500_jpg`, bilddb Siemens); nunca borrar marcas de agua de fotos ajenas. Recuadros de color SIN borde (relleno ~22 %), etiquetas sin borde. NO escribir marca, serie ni código del equipo en títulos/textos/pie ("imagen oficial del fabricante"). Versus = entre TIPOS de equipo (guardamotor vs breaker, breaker vs fusible, relé vs contactor, inductivo vs capacitivo); si no hay par lógico, no se hace. Estilos en `posts13/base.py`.
+
+## Catálogo de 50 equipos 2D/3D (26-nov) — `referencias/equipos_2d3d/` (Word `Equipos_2D_3D_50.docx`, `build.js`)
+- Referencias aprobadas por el usuario: G01 (LAY37 FreeCAD en 3D) y G06 (render + dibujo acotado Siemens). G05 (sensor genérico FreeCAD) = MALO, no usar modelos genéricos.
+- Fuentes verificadas: Siemens Industry Bilddatenbank (42; búsqueda por MLFB con `multiobjecttypes` 60 = 3D-Modell, 70 = 3D-Rendering, 12 = Maßzeichnung, 4 = Produktfoto; POST a `search.aspx`), ifm (7; `restservices/us/en/productdetail/cadZips/<código>` da STEP/DXF), FreeCAD LAY37.
+- Sin 3D en Bilddatenbank: motores SIMOTICS, SINAMICS V20/G120C (solo 2D), transformadores 4AM.
